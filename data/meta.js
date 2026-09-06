@@ -1,6 +1,6 @@
 // GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-06
 window.META = {
- "total": 148,
+ "total": 198,
  "con_imagen": 37,
  "vocab": {
   "tipo": [
@@ -55,64 +55,64 @@ window.META = {
  },
  "conteos": {
   "tipo": {
-   "sentada": 29,
-   "prona": 13,
-   "supina": 17,
-   "arrodillada": 20,
-   "de pie": 39,
-   "restaurativa": 13,
-   "equilibrio de brazos": 23,
-   "invertida": 12,
-   "equilibrio": 12
+   "sentada": 43,
+   "prona": 19,
+   "supina": 19,
+   "arrodillada": 25,
+   "de pie": 50,
+   "restaurativa": 19,
+   "equilibrio de brazos": 32,
+   "invertida": 17,
+   "equilibrio": 18
   },
   "zona": {
-   "core": 46,
-   "psoas": 21,
-   "columna": 80,
-   "pecho": 35,
-   "cuádriceps": 40,
-   "cuello": 19,
+   "core": 63,
+   "psoas": 30,
+   "columna": 115,
+   "pecho": 50,
+   "cuádriceps": 48,
+   "cuello": 29,
    "glúteos": 28,
-   "caderas": 42,
-   "ingles": 27,
-   "zona lumbar": 31,
-   "hombros": 76,
-   "tobillos y pies": 19,
-   "muñecas": 23,
-   "isquiotibiales": 50
+   "caderas": 67,
+   "ingles": 30,
+   "zona lumbar": 41,
+   "hombros": 108,
+   "tobillos y pies": 20,
+   "muñecas": 29,
+   "isquiotibiales": 62
   },
   "dinamica": {
-   "fuerza": 50,
-   "equilibrio": 34,
-   "extensión de columna": 35,
-   "apertura de cadera": 56,
-   "flexión hacia adelante": 36,
-   "quietud": 23,
-   "flexión lateral": 8,
-   "inversión": 10,
-   "torsión": 17
+   "fuerza": 59,
+   "equilibrio": 49,
+   "extensión de columna": 47,
+   "apertura de cadera": 81,
+   "flexión hacia adelante": 46,
+   "quietud": 30,
+   "flexión lateral": 10,
+   "inversión": 15,
+   "torsión": 31
   },
   "tema": {
-   "energía": 46,
-   "foco": 59,
-   "expansión": 41,
-   "calma": 48,
-   "soltar": 56,
-   "corazón": 14,
-   "confianza": 39,
-   "enraizar": 25,
-   "transición": 2
+   "energía": 57,
+   "foco": 85,
+   "expansión": 54,
+   "calma": 63,
+   "soltar": 75,
+   "corazón": 17,
+   "confianza": 58,
+   "enraizar": 28,
+   "transición": 3
   },
   "nivel": {
-   "intermedio": 54,
-   "principiante": 63,
-   "avanzado": 31
+   "intermedio": 60,
+   "principiante": 81,
+   "avanzado": 57
   }
  },
  "fuentes": {
   "yoga-api": 43,
   "yoga-api+propia": 5,
   "propia": 31,
-  "propia-breve": 69
+  "propia-breve": 119
  }
 };
