@@ -3333,5 +3333,1531 @@ window.POSES = [
   ],
   "img": "img/poses/tadasana.jpg",
   "fuente": "propia"
+ },
+ {
+  "id": 72,
+  "slug": "kapotasana",
+  "nombre": "Postura de la paloma completa",
+  "nombre_en": "Kapotasana (full)",
+  "sanscrito": "Kapotasana",
+  "traduccion": "kapota = paloma",
+  "nivel": "avanzado",
+  "tipo": [
+   "arrodillada"
+  ],
+  "zona": [
+   "columna",
+   "pecho",
+   "psoas",
+   "cuádriceps",
+   "hombros"
+  ],
+  "dinamica": [
+   "extensión de columna"
+  ],
+  "tema": [
+   "expansión",
+   "corazón",
+   "confianza"
+  ],
+  "entrada": [
+   "De rodillas, arquéate hacia atrás como en el camello y sigue bajando las manos hacia los pies.",
+   "Lleva los antebrazos al suelo y camina las manos hacia los talones o los tobillos.",
+   "Muslos hacia adentro; alarga la lumbar antes de profundizar. Extensión intensa: calienta mucho antes."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Apertura profunda de todo el frente del cuerpo.",
+   "Fortalece la espalda y los hombros.",
+   "Estimula la energía y contrarresta el decaimiento."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar, de cuello u hombro; presión arterial alta o baja; migraña; embarazo."
+  ],
+  "img": "img/poses/kapotasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 73,
+  "slug": "raja-kapotasana",
+  "nombre": "Paloma real completa",
+  "nombre_en": "King Pigeon (full)",
+  "sanscrito": "Raja Kapotasana",
+  "traduccion": "raja = rey, kapota = paloma",
+  "nivel": "avanzado",
+  "tipo": [
+   "prona"
+  ],
+  "zona": [
+   "columna",
+   "psoas",
+   "cuádriceps",
+   "pecho",
+   "hombros"
+  ],
+  "dinamica": [
+   "extensión de columna",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "expansión",
+   "corazón"
+  ],
+  "entrada": [
+   "Boca abajo, antebrazos en el suelo como en la esfinge; dobla las rodillas y lleva los pies hacia la cabeza.",
+   "Si llegas, toma los pies con las manos por encima de los hombros; codos hacia el techo.",
+   "Muslos activos hacia adentro; el pecho se abre sin colapsar la lumbar."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira psoas, cuádriceps, abdomen, pecho y hombros.",
+   "Fortalece la cadena posterior.",
+   "Muy energizante."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar, de cuello u hombro; embarazo. Requiere calentamiento largo."
+  ],
+  "img": "img/poses/raja-kapotasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 74,
+  "slug": "parivrtta-utkatasana",
+  "nombre": "Silla con torsión",
+  "nombre_en": "Revolved Chair",
+  "sanscrito": "Parivrtta Utkatasana",
+  "traduccion": "parivrtta = girada, utkata = feroz",
+  "nivel": "intermedio",
+  "tipo": [
+   "de pie"
+  ],
+  "zona": [
+   "columna",
+   "cuádriceps",
+   "glúteos",
+   "core"
+  ],
+  "dinamica": [
+   "torsión",
+   "fuerza"
+  ],
+  "tema": [
+   "energía",
+   "foco"
+  ],
+  "entrada": [
+   "Desde la silla, junta las palmas frente al pecho con las rodillas parejas.",
+   "Exhala y gira el torso; el codo hace palanca por fuera del muslo contrario.",
+   "Rodillas alineadas (no adelantes una); alarga la columna antes de girar más."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Moviliza la columna y trabaja los oblicuos.",
+   "Fortalece piernas y glúteos.",
+   "Estimula la digestión."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar o de rodilla, hernia de disco, embarazo."
+  ],
+  "img": "img/poses/parivrtta-utkatasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 75,
+  "slug": "pasasana",
+  "nombre": "Postura del lazo",
+  "nombre_en": "Noose Pose",
+  "sanscrito": "Pasasana",
+  "traduccion": "pasa = lazo, soga",
+  "nivel": "avanzado",
+  "tipo": [
+   "de pie"
+  ],
+  "zona": [
+   "columna",
+   "tobillos y pies",
+   "caderas",
+   "hombros"
+  ],
+  "dinamica": [
+   "torsión",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "soltar",
+   "foco"
+  ],
+  "entrada": [
+   "En cuclillas con los pies juntos, talones en el suelo (o sobre una manta).",
+   "Gira el torso a un lado y lleva el brazo contrario por fuera del muslo opuesto.",
+   "Si llegas, engancha las manos rodeando las piernas; mirada por encima del hombro."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Torsión profunda que masajea los órganos abdominales.",
+   "Estira tobillos y muslos.",
+   "Mejora movilidad de columna y equilibrio."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar, de rodilla o de tobillo; hernia de disco; embarazo."
+  ],
+  "img": "img/poses/pasasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 76,
+  "slug": "bhujapidasana",
+  "nombre": "Presión de brazos",
+  "nombre_en": "Shoulder-Pressing Pose",
+  "sanscrito": "Bhujapidasana",
+  "traduccion": "bhuja = brazo, pida = presión",
+  "nivel": "avanzado",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "hombros",
+   "caderas"
+  ],
+  "dinamica": [
+   "fuerza",
+   "equilibrio"
+  ],
+  "tema": [
+   "confianza",
+   "foco"
+  ],
+  "entrada": [
+   "Desde cuclillas con los pies anchos, mete los hombros por dentro de las rodillas.",
+   "Apoya las manos detrás de los pies, dedos abiertos; carga el peso en las manos.",
+   "Cruza los tobillos por delante y despega los pies; mirada al frente."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece muñecas, brazos y core.",
+   "Abre las caderas.",
+   "Desarrolla foco y control."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca u hombro."
+  ],
+  "img": "img/poses/bhujapidasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 77,
+  "slug": "kukkutasana",
+  "nombre": "Postura del gallo",
+  "nombre_en": "Cockerel Pose",
+  "sanscrito": "Kukkutasana",
+  "traduccion": "kukkuta = gallo",
+  "nivel": "avanzado",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "caderas",
+   "ingles"
+  ],
+  "dinamica": [
+   "fuerza",
+   "equilibrio",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "confianza",
+   "foco"
+  ],
+  "entrada": [
+   "Desde loto (o medio loto), pasa las manos entre muslo y pantorrilla hasta apoyarlas en el suelo.",
+   "Presiona el suelo y despega los glúteos y el loto del piso.",
+   "Core activo, mirada al frente. Requiere loto cómodo."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece muñecas, brazos y abdomen.",
+   "Profundiza la apertura de cadera del loto.",
+   "Trabaja equilibrio y concentración."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla, tobillo o muñeca. No forzar el loto."
+  ],
+  "img": "img/poses/kukkutasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 78,
+  "slug": "eka-pada-chakrasana",
+  "nombre": "Rueda con una pierna",
+  "nombre_en": "One-Legged Wheel",
+  "sanscrito": "Eka Pada Urdhva Dhanurasana",
+  "traduccion": "eka pada = una pierna, chakra = rueda",
+  "nivel": "avanzado",
+  "tipo": [
+   "supina"
+  ],
+  "zona": [
+   "columna",
+   "hombros",
+   "muñecas",
+   "glúteos",
+   "cuádriceps"
+  ],
+  "dinamica": [
+   "extensión de columna",
+   "fuerza",
+   "equilibrio"
+  ],
+  "tema": [
+   "expansión",
+   "energía",
+   "confianza"
+  ],
+  "entrada": [
+   "Desde la rueda estable, lleva el peso a un pie y a las dos manos.",
+   "Estira la otra pierna hacia el techo sin dejar caer la cadera de ese lado.",
+   "Empuja fuerte con la pierna de apoyo; sal apoyando la pierna y luego la barbilla al pecho."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Extensión de columna con reto de equilibrio y fuerza.",
+   "Fortalece hombros, brazos y glúteos.",
+   "Muy energizante."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión lumbar o de hombro, presión arterial alta, embarazo."
+  ],
+  "img": "img/poses/eka-pada-chakrasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 79,
+  "slug": "parivrtta-baddha-parsvakonasana",
+  "nombre": "Ángulo lateral con torsión y bind",
+  "nombre_en": "Revolved Bound Side Angle",
+  "sanscrito": "Parivrtta Baddha Parsvakonasana",
+  "traduccion": "parivrtta = girada, baddha = atada, parsva kona = ángulo lateral",
+  "nivel": "avanzado",
+  "tipo": [
+   "de pie"
+  ],
+  "zona": [
+   "columna",
+   "cuádriceps",
+   "ingles",
+   "hombros",
+   "pecho"
+  ],
+  "dinamica": [
+   "torsión",
+   "fuerza",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "expansión",
+   "foco"
+  ],
+  "entrada": [
+   "Desde zancada, gira el torso hacia la pierna delantera y lleva el codo por fuera del muslo.",
+   "Baja el brazo por debajo del muslo y el otro por la espalda; engancha las manos (bind).",
+   "Talón de atrás firme; alarga la columna en cada inhalación, gira en cada exhalación."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Torsión profunda con apertura de pecho y hombros.",
+   "Fortalece piernas.",
+   "Estimula la digestión."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar, de rodilla u hombro; hernia de disco; presión arterial alta; embarazo."
+  ],
+  "img": "img/poses/parivrtta-baddha-parsvakonasana.jpg",
+  "fuente": "propia"
+ },
+ {
+  "id": 80,
+  "slug": "dandasana",
+  "nombre": "Postura del bastón",
+  "nombre_en": "Staff Pose",
+  "sanscrito": "Dandasana",
+  "traduccion": "danda = bastón",
+  "nivel": "principiante",
+  "tipo": [
+   "sentada"
+  ],
+  "zona": [
+   "columna",
+   "core",
+   "isquiotibiales"
+  ],
+  "dinamica": [
+   "quietud"
+  ],
+  "tema": [
+   "enraizar",
+   "foco"
+  ],
+  "entrada": [
+   "Sentada con las piernas juntas al frente, pies flex.",
+   "Manos junto a la cadera; empuja el suelo y crece por la coronilla. Base de las posturas sentadas."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Enseña la alineación erguida de la columna sentada.",
+   "Activa cuádriceps y core."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lumbar redondeada: siéntate sobre una manta o dobla las rodillas."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 81,
+  "slug": "siddhasana",
+  "nombre": "Postura del adepto",
+  "nombre_en": "Adept's Pose",
+  "sanscrito": "Siddhasana",
+  "traduccion": "siddha = perfecto, adepto",
+  "nivel": "principiante",
+  "tipo": [
+   "sentada"
+  ],
+  "zona": [
+   "caderas",
+   "columna"
+  ],
+  "dinamica": [
+   "apertura de cadera",
+   "quietud"
+  ],
+  "tema": [
+   "calma",
+   "foco",
+   "enraizar"
+  ],
+  "entrada": [
+   "Sentada, un talón cerca del perineo y el otro pie delante, tobillos casi alineados.",
+   "Siéntate sobre una manta; columna larga, manos en las rodillas. Asiento clásico de meditación."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Asiento estable para respiración y meditación.",
+   "Abre suavemente las caderas."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Molestia de rodilla: eleva el asiento o usa una silla."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 82,
+  "slug": "salamba-sirsasana",
+  "nombre": "Parada de cabeza con apoyo",
+  "nombre_en": "Supported Headstand",
+  "sanscrito": "Salamba Sirsasana",
+  "traduccion": "salamba = con apoyo, sirsa = cabeza",
+  "nivel": "avanzado",
+  "tipo": [
+   "invertida"
+  ],
+  "zona": [
+   "hombros",
+   "cuello",
+   "core",
+   "columna"
+  ],
+  "dinamica": [
+   "inversión",
+   "equilibrio"
+  ],
+  "tema": [
+   "foco",
+   "confianza",
+   "calma"
+  ],
+  "entrada": [
+   "Antebrazos en el suelo, dedos entrelazados; corona de la cabeza en el suelo, nuca del cráneo contra las manos.",
+   "Sube las caderas sobre los hombros y luego las piernas; el peso vive en los antebrazos, no en el cuello. Aprender contra la pared."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece hombros y core.",
+   "Cambia la perspectiva; efecto calmante y de foco."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de cuello, presión arterial alta, glaucoma, menstruación, embarazo. No para principiantes."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 83,
+  "slug": "parsva-bakasana",
+  "nombre": "Cuervo lateral",
+  "nombre_en": "Side Crow",
+  "sanscrito": "Parsva Bakasana",
+  "traduccion": "parsva = lado, baka = grulla",
+  "nivel": "avanzado",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "hombros",
+   "columna"
+  ],
+  "dinamica": [
+   "torsión",
+   "fuerza",
+   "equilibrio"
+  ],
+  "tema": [
+   "confianza",
+   "foco"
+  ],
+  "entrada": [
+   "Desde cuclillas, gira el torso y apoya las dos manos en el suelo a un lado, al ancho de los hombros.",
+   "Apoya la parte externa del muslo sobre el brazo de arriba, lleva el peso adelante y despega los pies."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece brazos, muñecas y core.",
+   "Combina torsión con equilibrio."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca u hombro, embarazo."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 84,
+  "slug": "astavakrasana",
+  "nombre": "Postura de los ocho ángulos",
+  "nombre_en": "Eight-Angle Pose",
+  "sanscrito": "Astavakrasana",
+  "traduccion": "asta = ocho, vakra = curvo (sabio Astavakra)",
+  "nivel": "avanzado",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "hombros",
+   "isquiotibiales"
+  ],
+  "dinamica": [
+   "fuerza",
+   "equilibrio",
+   "torsión"
+  ],
+  "tema": [
+   "confianza",
+   "foco"
+  ],
+  "entrada": [
+   "Sentada, engancha una pierna sobre el hombro del mismo lado; manos al suelo.",
+   "Cruza los tobillos alrededor de la muñeca del lado libre, despega la cadera y estira los brazos a medias mientras el pecho va adelante."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece brazos, muñecas y abdomen.",
+   "Trabaja torsión y equilibrio a la vez."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca, codo u hombro."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 85,
+  "slug": "tittibhasana",
+  "nombre": "Postura de la luciérnaga",
+  "nombre_en": "Firefly Pose",
+  "sanscrito": "Tittibhasana",
+  "traduccion": "tittibha = luciérnaga",
+  "nivel": "avanzado",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "isquiotibiales",
+   "ingles"
+  ],
+  "dinamica": [
+   "fuerza",
+   "equilibrio",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "confianza",
+   "foco"
+  ],
+  "entrada": [
+   "Con los pies anchos, mete los hombros bajo los muslos y apoya las manos detrás de los pies.",
+   "Carga el peso en las manos, despega los pies y estira las piernas al frente por dentro de los brazos."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece muñecas, brazos y core.",
+   "Estira isquiotibiales e ingle."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca u hombro, lesión de isquiotibiales."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 86,
+  "slug": "marichyasana-iii",
+  "nombre": "Torsión de Marichi",
+  "nombre_en": "Marichi's Pose III",
+  "sanscrito": "Marichyasana III",
+  "traduccion": "Marichi = sabio, hijo de Brahma",
+  "nivel": "intermedio",
+  "tipo": [
+   "sentada"
+  ],
+  "zona": [
+   "columna",
+   "caderas",
+   "hombros"
+  ],
+  "dinamica": [
+   "torsión"
+  ],
+  "tema": [
+   "soltar",
+   "energía"
+  ],
+  "entrada": [
+   "Sentada con una pierna estirada y la otra doblada, pie plano cerca del glúteo.",
+   "Abraza la rodilla doblada, alarga la columna y gira hacia ella; el otro brazo hace palanca por fuera."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Moviliza la columna y masajea el abdomen.",
+   "Estira glúteos y hombros."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar, hernia de disco, embarazo."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 87,
+  "slug": "bharadvajasana",
+  "nombre": "Torsión de Bharadvaja",
+  "nombre_en": "Bharadvaja's Twist",
+  "sanscrito": "Bharadvajasana",
+  "traduccion": "Bharadvaja = sabio védico",
+  "nivel": "principiante",
+  "tipo": [
+   "sentada"
+  ],
+  "zona": [
+   "columna",
+   "caderas",
+   "hombros",
+   "cuello"
+  ],
+  "dinamica": [
+   "torsión"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Sentada con las dos piernas dobladas hacia un lado (pies junto a una cadera).",
+   "Alarga la columna y gira suavemente hacia el lado contrario a las piernas; una mano detrás, otra en la rodilla."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Torsión suave y accesible, buena para empezar o para embarazo (abierta).",
+   "Alivia rigidez de espalda y cuello."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla: apoya soportes. Diarrea, dolor de cabeza."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 88,
+  "slug": "supta-matsyendrasana",
+  "nombre": "Torsión tumbada",
+  "nombre_en": "Supine Spinal Twist",
+  "sanscrito": "Supta Matsyendrasana",
+  "traduccion": "supta = tumbada, matsyendra = señor de los peces",
+  "nivel": "principiante",
+  "tipo": [
+   "supina",
+   "restaurativa"
+  ],
+  "zona": [
+   "columna",
+   "zona lumbar",
+   "glúteos",
+   "pecho"
+  ],
+  "dinamica": [
+   "torsión",
+   "quietud"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Boca arriba, lleva una rodilla al pecho y cruza esa pierna hacia el lado contrario.",
+   "Abre el brazo del mismo lado en cruz; hombros en el suelo, mirada hacia esa mano. Repite del otro lado."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Descarga la columna y la zona lumbar al final de la clase.",
+   "Calma el sistema nervioso."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar o sacra reciente."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 89,
+  "slug": "jathara-parivartanasana",
+  "nombre": "Torsión de vientre con piernas",
+  "nombre_en": "Revolved Abdomen Pose",
+  "sanscrito": "Jathara Parivartanasana",
+  "traduccion": "jathara = vientre, parivartana = giro",
+  "nivel": "intermedio",
+  "tipo": [
+   "supina"
+  ],
+  "zona": [
+   "core",
+   "columna",
+   "zona lumbar"
+  ],
+  "dinamica": [
+   "torsión",
+   "fuerza"
+  ],
+  "tema": [
+   "energía",
+   "soltar"
+  ],
+  "entrada": [
+   "Boca arriba, brazos en cruz, piernas hacia el techo (rectas o dobladas).",
+   "Baja las piernas juntas hacia un lado con control sin despegar el hombro contrario; súbelas usando el core. Alterna."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece los oblicuos y el core.",
+   "Moviliza la columna y masajea el abdomen."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar o de disco; hazla con rodillas dobladas."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 90,
+  "slug": "supta-padangusthasana",
+  "nombre": "Mano al dedo gordo tumbada",
+  "nombre_en": "Reclining Hand-to-Big-Toe",
+  "sanscrito": "Supta Padangusthasana",
+  "traduccion": "supta = tumbada, padangustha = dedo gordo",
+  "nivel": "principiante",
+  "tipo": [
+   "supina"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "caderas",
+   "zona lumbar"
+  ],
+  "dinamica": [
+   "flexión hacia adelante",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Boca arriba, lleva una rodilla al pecho y pasa un cinturón por la planta del pie.",
+   "Estira la pierna hacia el techo con la otra activa en el suelo; puedes abrirla al lado. Repite."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira isquiotibiales y cadera sin cargar la lumbar.",
+   "Buena preparación para posturas de pie con la pierna elevada."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Ciática aguda: no fuerces el estiramiento."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 91,
+  "slug": "apanasana",
+  "nombre": "Rodillas al pecho",
+  "nombre_en": "Knees-to-Chest",
+  "sanscrito": "Apanasana",
+  "traduccion": "apana = energía descendente",
+  "nivel": "principiante",
+  "tipo": [
+   "supina",
+   "restaurativa"
+  ],
+  "zona": [
+   "zona lumbar",
+   "caderas"
+  ],
+  "dinamica": [
+   "flexión hacia adelante",
+   "quietud"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Boca arriba, abraza las dos rodillas hacia el pecho.",
+   "Hombros y sacro en el suelo; puedes mecerte suave o hacer círculos. Descarga entre posturas."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Alivia y descarga la zona lumbar.",
+   "Ayuda a la digestión y a soltar tensión."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla: sujeta detrás de los muslos. Embarazo avanzado."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 92,
+  "slug": "purvottanasana",
+  "nombre": "Plancha hacia arriba",
+  "nombre_en": "Upward Plank",
+  "sanscrito": "Purvottanasana",
+  "traduccion": "purva = este (frente), uttana = estiramiento intenso",
+  "nivel": "intermedio",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "hombros",
+   "pecho",
+   "glúteos",
+   "isquiotibiales",
+   "muñecas"
+  ],
+  "dinamica": [
+   "extensión de columna",
+   "fuerza"
+  ],
+  "tema": [
+   "expansión",
+   "energía",
+   "corazón"
+  ],
+  "entrada": [
+   "Sentada con las piernas al frente, manos detrás de la cadera, dedos hacia los pies.",
+   "Empuja manos y pies y sube la cadera hasta formar una línea; pecho abierto, cuello largo."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece la cadena posterior y los brazos.",
+   "Abre pecho y hombros; contrarresta las flexiones hacia adelante."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca, hombro o cuello."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 93,
+  "slug": "ardha-purvottanasana",
+  "nombre": "Mesa invertida",
+  "nombre_en": "Reverse Tabletop",
+  "sanscrito": "Ardha Purvottanasana",
+  "traduccion": "ardha = media, purva uttana = estiramiento del frente",
+  "nivel": "principiante",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "hombros",
+   "pecho",
+   "glúteos",
+   "muñecas"
+  ],
+  "dinamica": [
+   "extensión de columna",
+   "fuerza"
+  ],
+  "tema": [
+   "expansión",
+   "corazón"
+  ],
+  "entrada": [
+   "Sentada, rodillas dobladas, pies planos; manos detrás de la cadera, dedos hacia los pies.",
+   "Empuja y sube la cadera hasta que los muslos y el torso queden paralelos al suelo; cabeza neutra."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Abre pecho y frente del cuerpo con menos exigencia que la plancha arriba.",
+   "Fortalece glúteos y brazos."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de muñeca u hombro."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 94,
+  "slug": "utthan-pristhasana",
+  "nombre": "Zancada del lagarto",
+  "nombre_en": "Lizard Pose",
+  "sanscrito": "Utthan Pristhasana",
+  "traduccion": "utthan = estirar, prishtha = página / lomo",
+  "nivel": "intermedio",
+  "tipo": [
+   "arrodillada"
+  ],
+  "zona": [
+   "caderas",
+   "ingles",
+   "psoas",
+   "isquiotibiales"
+  ],
+  "dinamica": [
+   "apertura de cadera"
+  ],
+  "tema": [
+   "soltar",
+   "enraizar"
+  ],
+  "entrada": [
+   "Desde zancada baja, lleva el pie delantero al borde del tapete y ambas manos por dentro de esa pierna.",
+   "Baja a los antebrazos si la cadera lo permite; rodilla de atrás en el suelo o pierna estirada."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Apertura profunda de caderas, ingle y psoas.",
+   "Estira los isquiotibiales de la pierna delantera."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla, ingle o isquiotibiales."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 95,
+  "slug": "ardha-hanumanasana",
+  "nombre": "Medio split (jinete)",
+  "nombre_en": "Half Splits",
+  "sanscrito": "Ardha Hanumanasana",
+  "traduccion": "ardha = medio, Hanuman = deidad mono",
+  "nivel": "principiante",
+  "tipo": [
+   "arrodillada"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "zona lumbar",
+   "cuádriceps"
+  ],
+  "dinamica": [
+   "flexión hacia adelante"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Desde zancada baja, lleva la cadera atrás sobre la rodilla de atrás y estira la pierna delantera.",
+   "Pie delantero flex; inclínate desde la cadera con la columna larga. Manos en el suelo o en bloques."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira isquiotibiales y gemelos de forma controlada.",
+   "Prepara para el split completo."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de isquiotibiales; molestia de rodilla de atrás (pon cojín)."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 96,
+  "slug": "parivrtta-parsvakonasana",
+  "nombre": "Ángulo lateral con torsión",
+  "nombre_en": "Revolved Side Angle",
+  "sanscrito": "Parivrtta Parsvakonasana",
+  "traduccion": "parivrtta = girada, parsva kona = ángulo lateral",
+  "nivel": "intermedio",
+  "tipo": [
+   "de pie"
+  ],
+  "zona": [
+   "columna",
+   "cuádriceps",
+   "ingles",
+   "hombros"
+  ],
+  "dinamica": [
+   "torsión",
+   "fuerza",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "energía",
+   "foco"
+  ],
+  "entrada": [
+   "Desde zancada, gira el torso hacia la pierna delantera y lleva el codo por fuera del muslo (o la mano al suelo).",
+   "Talón de atrás firme o rodilla en el suelo; alarga la columna, gira el pecho al techo."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Torsión de pie que fortalece las piernas.",
+   "Estimula la digestión y mejora el equilibrio."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión lumbar o de rodilla, presión arterial alta, embarazo."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 97,
+  "slug": "parivrtta-ardha-chandrasana",
+  "nombre": "Media luna con torsión",
+  "nombre_en": "Revolved Half Moon",
+  "sanscrito": "Parivrtta Ardha Chandrasana",
+  "traduccion": "parivrtta = girada, ardha chandra = media luna",
+  "nivel": "avanzado",
+  "tipo": [
+   "de pie",
+   "equilibrio"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "columna",
+   "core",
+   "glúteos"
+  ],
+  "dinamica": [
+   "torsión",
+   "equilibrio"
+  ],
+  "tema": [
+   "foco",
+   "confianza"
+  ],
+  "entrada": [
+   "Desde media luna con torsión de pie, lleva la mano contraria a la pierna de apoyo al suelo o a un bloque.",
+   "Eleva la pierna de atrás paralela al suelo y gira el torso hacia la pierna de apoyo; el otro brazo sube."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Combina equilibrio, torsión y estiramiento de isquiotibiales.",
+   "Afila la concentración."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Presión arterial baja, migraña, lesión lumbar o de tobillo."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 98,
+  "slug": "krounchasana",
+  "nombre": "Postura de la garza",
+  "nombre_en": "Heron Pose",
+  "sanscrito": "Krounchasana",
+  "traduccion": "krauncha = garza",
+  "nivel": "intermedio",
+  "tipo": [
+   "sentada"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "zona lumbar",
+   "columna"
+  ],
+  "dinamica": [
+   "flexión hacia adelante"
+  ],
+  "tema": [
+   "foco",
+   "soltar"
+  ],
+  "entrada": [
+   "Sentada con una pierna doblada (pie junto a la cadera, como en Virasana) y la otra hacia el pecho.",
+   "Toma el pie o un cinturón y estira esa pierna hacia arriba manteniendo la columna larga."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estiramiento intenso de isquiotibiales con la columna erguida.",
+   "Trabaja el foco y la respiración."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla (pierna doblada) o de isquiotibiales."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 99,
+  "slug": "akarna-dhanurasana",
+  "nombre": "Postura del arquero",
+  "nombre_en": "Archer Pose",
+  "sanscrito": "Akarna Dhanurasana",
+  "traduccion": "akarna = hacia la oreja, dhanur = arco",
+  "nivel": "intermedio",
+  "tipo": [
+   "sentada"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "caderas",
+   "ingles",
+   "hombros"
+  ],
+  "dinamica": [
+   "apertura de cadera",
+   "flexión hacia adelante"
+  ],
+  "tema": [
+   "foco",
+   "energía"
+  ],
+  "entrada": [
+   "Sentada con las piernas al frente, toma ambos pies (o cinturones).",
+   "Lleva un pie hacia la oreja del mismo lado, doblando la rodilla, como tensando un arco; la otra pierna sigue estirada."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Abre caderas e ingle.",
+   "Estira isquiotibiales y trabaja la coordinación."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla, cadera o isquiotibiales."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 100,
+  "slug": "bhekasana",
+  "nombre": "Postura de la rana",
+  "nombre_en": "Frog Pose",
+  "sanscrito": "Bhekasana",
+  "traduccion": "bheka = rana",
+  "nivel": "intermedio",
+  "tipo": [
+   "prona"
+  ],
+  "zona": [
+   "cuádriceps",
+   "tobillos y pies",
+   "columna",
+   "pecho"
+  ],
+  "dinamica": [
+   "extensión de columna",
+   "apertura de cadera"
+  ],
+  "tema": [
+   "expansión",
+   "soltar"
+  ],
+  "entrada": [
+   "Boca abajo apoyada en los antebrazos, dobla una rodilla y toma el empeine con la mano del mismo lado.",
+   "Gira la mano para que los dedos apunten adelante y presiona el pie hacia el suelo junto a la cadera. Repite."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira cuádriceps, empeines y tobillos en profundidad.",
+   "Abre el pecho."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla, tobillo o lumbar."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 101,
+  "slug": "mandukasana",
+  "nombre": "Rana sentada",
+  "nombre_en": "Seated Frog Pose",
+  "sanscrito": "Mandukasana",
+  "traduccion": "manduka = rana",
+  "nivel": "intermedio",
+  "tipo": [
+   "arrodillada"
+  ],
+  "zona": [
+   "caderas",
+   "ingles"
+  ],
+  "dinamica": [
+   "apertura de cadera"
+  ],
+  "tema": [
+   "soltar",
+   "enraizar"
+  ],
+  "entrada": [
+   "En cuadrupedia, abre las rodillas al ancho que permita la cadera, tobillos alineados con las rodillas.",
+   "Baja a los antebrazos y lleva la cadera atrás lentamente; sal con la misma calma."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Apertura intensa de la cara interna de la cadera y la ingle.",
+   "Libera tensión de la pelvis."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de rodilla o de ingle. Nunca rebotar; entrar y salir despacio."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 102,
+  "slug": "anantasana",
+  "nombre": "Postura del diván de Vishnú",
+  "nombre_en": "Vishnu's Couch / Side Leg Lift",
+  "sanscrito": "Anantasana",
+  "traduccion": "Ananta = infinito (serpiente de Vishnú)",
+  "nivel": "principiante",
+  "tipo": [
+   "supina"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "caderas",
+   "core"
+  ],
+  "dinamica": [
+   "apertura de cadera",
+   "equilibrio"
+  ],
+  "tema": [
+   "foco",
+   "calma"
+  ],
+  "entrada": [
+   "Tumbada de lado, apoya la cabeza en la mano con el codo en el suelo.",
+   "Toma el dedo gordo del pie de arriba y estira esa pierna hacia el techo manteniendo el equilibrio lateral."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira isquiotibiales y cara interna del muslo.",
+   "Trabaja equilibrio y control del core en decúbito lateral."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de cuello (no apoyes la cabeza en la mano; usa el brazo estirado)."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 103,
+  "slug": "tolasana",
+  "nombre": "Postura de la balanza",
+  "nombre_en": "Scale Pose",
+  "sanscrito": "Tolasana",
+  "traduccion": "tola = balanza",
+  "nivel": "intermedio",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "hombros"
+  ],
+  "dinamica": [
+   "fuerza"
+  ],
+  "tema": [
+   "energía",
+   "foco"
+  ],
+  "entrada": [
+   "En loto o piernas cruzadas, manos en el suelo junto a las caderas.",
+   "Empuja el suelo, mete el abdomen y despega glúteos y piernas unos centímetros. Respira."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece muñecas, brazos y abdomen.",
+   "Enseña a activar los bandhas y elevar desde el centro."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca; lesión de rodilla (no fuerces el loto)."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 104,
+  "slug": "karnapidasana",
+  "nombre": "Postura de presión en las orejas",
+  "nombre_en": "Ear-Pressure Pose",
+  "sanscrito": "Karnapidasana",
+  "traduccion": "karna = oreja, pida = presión",
+  "nivel": "intermedio",
+  "tipo": [
+   "invertida"
+  ],
+  "zona": [
+   "columna",
+   "zona lumbar",
+   "cuello",
+   "hombros"
+  ],
+  "dinamica": [
+   "inversión",
+   "flexión hacia adelante"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Desde el arado (Halasana), dobla las rodillas y bájalas junto a las orejas.",
+   "Manos en la espalda o entrelazadas en el suelo; nuca larga, sin girar la cabeza."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira la espalda entera; efecto calmante muy profundo.",
+   "Descarga la zona lumbar."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de cuello o de espalda, presión arterial alta, embarazo, menstruación."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 105,
+  "slug": "sasangasana",
+  "nombre": "Postura de la liebre",
+  "nombre_en": "Rabbit Pose",
+  "sanscrito": "Sasangasana",
+  "traduccion": "sasa = liebre",
+  "nivel": "intermedio",
+  "tipo": [
+   "arrodillada"
+  ],
+  "zona": [
+   "columna",
+   "cuello",
+   "hombros"
+  ],
+  "dinamica": [
+   "flexión hacia adelante"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Desde la postura del niño, toma los talones con las manos y lleva la coronilla cerca de las rodillas.",
+   "Sube un poco la cadera para redondear la columna; muy poco peso en la cabeza."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira toda la columna y la parte de atrás del cuello.",
+   "Contrapostura suave de las extensiones."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de cuello: evítala o mantén todo el peso en manos y rodillas."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 106,
+  "slug": "uttana-padasana",
+  "nombre": "Piernas y brazos elevados (pez dinámico)",
+  "nombre_en": "Raised Legs Pose",
+  "sanscrito": "Uttana Padasana",
+  "traduccion": "uttana = estirado, pada = pie",
+  "nivel": "intermedio",
+  "tipo": [
+   "supina"
+  ],
+  "zona": [
+   "core",
+   "pecho",
+   "cuello",
+   "cuádriceps"
+  ],
+  "dinamica": [
+   "extensión de columna",
+   "fuerza"
+  ],
+  "tema": [
+   "energía",
+   "expansión"
+  ],
+  "entrada": [
+   "Desde la postura del pez (coronilla apoyada, pecho abierto), eleva las piernas rectas a unos 45°.",
+   "Estira los brazos paralelos a las piernas, palmas juntas. Core muy activo."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece el abdomen y los flexores de la cadera.",
+   "Abre el pecho con trabajo intenso de core."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de cuello o de lumbar, hernia, presión arterial alta."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 107,
+  "slug": "lolasana",
+  "nombre": "Postura del péndulo",
+  "nombre_en": "Pendant Pose",
+  "sanscrito": "Lolasana",
+  "traduccion": "lola = colgante, tembloroso",
+  "nivel": "avanzado",
+  "tipo": [
+   "equilibrio de brazos"
+  ],
+  "zona": [
+   "muñecas",
+   "core",
+   "hombros"
+  ],
+  "dinamica": [
+   "fuerza"
+  ],
+  "tema": [
+   "energía",
+   "foco"
+  ],
+  "entrada": [
+   "En cuadrupedia, cruza los tobillos y lleva las manos junto a las caderas.",
+   "Empuja el suelo, mete el abdomen y despega las rodillas del piso, meciéndote hacia atrás. Muy exigente de core."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Fortalece muñecas, hombros y todo el core.",
+   "Prepara para transiciones flotadas del vinyasa."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Túnel carpiano, lesión de muñeca u hombro."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
+ },
+ {
+  "id": 108,
+  "slug": "supta-konasana",
+  "nombre": "Ángulo abierto sobre los hombros",
+  "nombre_en": "Reclining Angle Pose",
+  "sanscrito": "Supta Konasana",
+  "traduccion": "supta = tumbada, kona = ángulo",
+  "nivel": "intermedio",
+  "tipo": [
+   "invertida"
+  ],
+  "zona": [
+   "isquiotibiales",
+   "columna",
+   "hombros",
+   "cuello"
+  ],
+  "dinamica": [
+   "inversión",
+   "flexión hacia adelante"
+  ],
+  "tema": [
+   "calma",
+   "soltar"
+  ],
+  "entrada": [
+   "Desde el arado, abre las piernas rectas hacia los lados y toma los dedos gordos.",
+   "Nuca larga; sal subiendo las piernas con control usando el abdomen."
+  ],
+  "entrada_en": "",
+  "beneficios": [
+   "Estira la cara interna y posterior de las piernas.",
+   "Efecto calmante de las inversiones suaves."
+  ],
+  "beneficios_en": [],
+  "precaucion": [
+   "Lesión de cuello o de espalda, presión arterial alta, embarazo, menstruación."
+  ],
+  "img": null,
+  "fuente": "propia-breve"
  }
 ];

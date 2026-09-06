@@ -25,13 +25,23 @@
   </div>
 </header>
 
-<div class="filters">
+<div class="toolbar">
   <div class="wrap">
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
       <input id="q" type="search" autocomplete="off" placeholder="Buscar…" aria-label="Buscar postura">
     </div>
-    <div class="facets" id="facets"></div>
+    <button type="button" id="filtersToggle" class="filters-toggle" aria-expanded="false" aria-controls="panel">
+      <span class="label">Filtros</span>
+      <span class="badge" id="fBadge" hidden></span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="panel" hidden>
+    <div class="panel-inner"></div>
   </div>
 </div>
 
@@ -53,8 +63,8 @@
   <div class="dlg-body">
     <h2>Créditos y licencias</h2>
     <p><strong>Ilustraciones de posturas.</strong> Autora de los dibujos: <em>Nina Mel</em> (Yoga Teacher). Alojadas en Wikimedia Commons (subidas por el usuario Kennguru) bajo licencia <strong>Creative Commons Attribution 3.0</strong> (CC BY 3.0). Se usan sin modificar salvo cambio de tamaño. <br>Enlace: <code>commons.wikimedia.org</code> — buscar «Yoga-Asana Nina-Mel».</p>
-    <p><strong>Datos de las posturas.</strong> Nombres en inglés, sánscrito, traducciones y descripciones base tomados de <em>yoga-api</em> (alexcumplido, código MIT; textos de dominio público). Las cues en español, las etiquetas de zona, dinámica y tema, las precauciones y las posturas marcadas «redactada para esta app» son contenido propio del proyecto y deben revisarse con criterio de maestra.</p>
-    <p><strong>Posturas sin ilustración.</strong> Todavía no tienen dibujo en el set de Nina Mel; muestran una tarjeta con el nombre sobre fondo degradado. Se pueden sustituir por foto propia más adelante.</p>
+    <p><strong>Datos de las posturas.</strong> 48 posturas parten de <em>yoga-api</em> (alexcumplido, código MIT; textos de dominio público), traducidas y resumidas. El resto tiene ficha redactada para esta app: las marcadas «Ficha breve — por completar» traen lo esencial (nombre, sánscrito, cómo entrar, un par de beneficios) y están pensadas para que Andrea las complete. Las cues en español, las etiquetas de nivel / zona / dinámica / tema y las precauciones son contenido propio y deben revisarse con criterio de maestra.</p>
+    <p><strong>Posturas sin ilustración.</strong> Solo ~37 posturas tienen dibujo en el set de Nina Mel; el resto muestra una tarjeta con el nombre sobre fondo degradado. Se pueden sustituir por foto propia más adelante.</p>
     <button type="button" class="dlg-close">Cerrar</button>
   </div>
 </dialog>
