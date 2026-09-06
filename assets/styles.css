@@ -290,7 +290,15 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-add{border:1px dashed var(--line-strong);background:transparent;color:var(--purple-deep);font:inherit;font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:9px;cursor:pointer}
 .b-add.ghost{border-style:solid;color:var(--ink-soft)}
 .b-add:hover{border-color:var(--purple)}
-.b-addblock{align-self:flex-start;border:1px dashed var(--line-strong);background:transparent;color:var(--purple-deep);font:inherit;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer}
+.b-addblock{border:1px dashed var(--line-strong);background:transparent;color:var(--purple-deep);font:inherit;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer}
+.b-blkbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.b-tplsel{max-width:220px}
+.b-grip{cursor:grab;color:var(--ink-soft);opacity:.55;font-size:14px;user-select:none;padding:0 2px;flex:none}
+.b-grip:active{cursor:grabbing}
+.b-item.dragging,.b-bloque.dragging{opacity:.4}
+.b-item.drop-before{box-shadow:inset 0 3px 0 var(--purple)}
+.b-bloque.drop-before{box-shadow:0 -3px 0 var(--purple)}
+.b-bloque.drop-into{outline:2px dashed var(--purple-pale);outline-offset:-3px}
 
 .b-picker,.b-sug{padding:10px 12px;background:var(--card-2);border-top:1px solid var(--line)}
 .b-picker-q{width:100%;margin-bottom:6px}

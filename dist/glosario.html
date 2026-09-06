@@ -297,7 +297,15 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-add{border:1px dashed var(--line-strong);background:transparent;color:var(--purple-deep);font:inherit;font-size:12.5px;font-weight:700;padding:7px 12px;border-radius:9px;cursor:pointer}
 .b-add.ghost{border-style:solid;color:var(--ink-soft)}
 .b-add:hover{border-color:var(--purple)}
-.b-addblock{align-self:flex-start;border:1px dashed var(--line-strong);background:transparent;color:var(--purple-deep);font:inherit;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer}
+.b-addblock{border:1px dashed var(--line-strong);background:transparent;color:var(--purple-deep);font:inherit;font-weight:700;padding:9px 16px;border-radius:10px;cursor:pointer}
+.b-blkbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.b-tplsel{max-width:220px}
+.b-grip{cursor:grab;color:var(--ink-soft);opacity:.55;font-size:14px;user-select:none;padding:0 2px;flex:none}
+.b-grip:active{cursor:grabbing}
+.b-item.dragging,.b-bloque.dragging{opacity:.4}
+.b-item.drop-before{box-shadow:inset 0 3px 0 var(--purple)}
+.b-bloque.drop-before{box-shadow:0 -3px 0 var(--purple)}
+.b-bloque.drop-into{outline:2px dashed var(--purple-pale);outline-offset:-3px}
 
 .b-picker,.b-sug{padding:10px 12px;background:var(--card-2);border-top:1px solid var(--line)}
 .b-picker-q{width:100%;margin-bottom:6px}
@@ -9571,6 +9579,65 @@ window.POSES = [
     return scored.slice(0, 6).map(function (x) { return x.p; });
   }
 
+  /* ---------- plantillas de bloque ---------- */
+  function loadPlantillas() { return LS.get("plantillas", []); }
+  function savePlantillas(a) { LS.set("plantillas", a); }
+
+  /* ---------- arrastrar y soltar ---------- */
+  var dnd = null; // { type:'item', bi, ii }  |  { type:'block', bi }
+  function moverItem(c, fromBi, fromIi, toBi, toIi) {
+    var it = c.bloques[fromBi].items.splice(fromIi, 1)[0];
+    if (fromBi === toBi && fromIi < toIi) toIi--;
+    c.bloques[toBi].items.splice(Math.max(0, toIi), 0, it);
+  }
+  function hookDrag(node, handle, payload) {
+    handle.addEventListener("mousedown", function () { node.draggable = true; });
+    handle.addEventListener("touchstart", function () { node.draggable = true; }, { passive: true });
+    node.addEventListener("dragend", function () { node.draggable = false; node.classList.remove("dragging"); clearDropMarks(); });
+    node.addEventListener("dragstart", function (e) {
+      dnd = payload; node.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+      try { e.dataTransfer.setData("text/plain", "x"); } catch (x) {}
+    });
+  }
+  function clearDropMarks() { document.querySelectorAll(".drop-before,.drop-into").forEach(function (n) { n.classList.remove("drop-before", "drop-into"); }); }
+  function hookDropItem(c, row, bi, ii) {
+    row.addEventListener("dragover", function (e) {
+      if (!dnd || dnd.type !== "item") return;
+      e.preventDefault(); clearDropMarks(); row.classList.add("drop-before");
+    });
+    row.addEventListener("drop", function (e) {
+      if (!dnd || dnd.type !== "item") return;
+      e.preventDefault(); e.stopPropagation();
+      moverItem(c, dnd.bi, dnd.ii, bi, ii); dnd = null; renderBuilder();
+    });
+  }
+  function hookDropBlock(c, box, bi) {
+    box.addEventListener("dragover", function (e) {
+      if (!dnd) return;
+      e.preventDefault();
+      if (dnd.type === "item") { clearDropMarks(); box.classList.add("drop-into"); }
+    });
+    box.addEventListener("drop", function (e) {
+      if (!dnd) return;
+      e.preventDefault();
+      if (dnd.type === "item") { moverItem(c, dnd.bi, dnd.ii, bi, c.bloques[bi].items.length); dnd = null; renderBuilder(); }
+    });
+    var head = box.querySelector(".b-bloque-head");
+    head.addEventListener("dragover", function (e) {
+      if (!dnd || dnd.type !== "block") return;
+      e.preventDefault(); clearDropMarks(); box.classList.add("drop-before");
+    });
+    head.addEventListener("drop", function (e) {
+      if (!dnd || dnd.type !== "block") return;
+      e.preventDefault(); e.stopPropagation();
+      var from = dnd.bi, to = bi;
+      var blk = c.bloques.splice(from, 1)[0];
+      if (from < to) to--;
+      c.bloques.splice(to, 0, blk); dnd = null; renderBuilder();
+    });
+  }
+
   /* ---------- estado de vista ---------- */
   var state = { editando: null }; // clase en edición (copia)
 
@@ -9699,10 +9766,25 @@ window.POSES = [
       root.appendChild(bloqueEl(c, bl, bi));
     });
 
+    var blkBar = el("div", "b-blkbar");
     var addBl = el("button", "b-addblock", "+ Bloque");
     addBl.type = "button";
     addBl.addEventListener("click", function () { c.bloques.push({ id: uid("b"), titulo: "Nuevo bloque", items: [] }); renderBuilder(); });
-    root.appendChild(addBl);
+    blkBar.appendChild(addBl);
+    var plantillas = loadPlantillas();
+    if (plantillas.length) {
+      var sel = el("select", "b-select b-tplsel");
+      sel.appendChild(el("option", null, "Insertar plantilla…")).value = "";
+      plantillas.forEach(function (t, i) { var o = el("option", null, t.nombre); o.value = i; sel.appendChild(o); });
+      sel.addEventListener("change", function () {
+        if (sel.value === "") return;
+        var t = plantillas[+sel.value];
+        c.bloques.push({ id: uid("b"), titulo: t.titulo, items: JSON.parse(JSON.stringify(t.items)) });
+        renderBuilder();
+      });
+      blkBar.appendChild(sel);
+    }
+    root.appendChild(blkBar);
 
     // notas generales + fechas
     var nt = el("textarea", "b-notas");
@@ -9727,16 +9809,34 @@ window.POSES = [
   function bloqueEl(c, bl, bi) {
     var box = el("section", "b-bloque");
     var bh = el("div", "b-bloque-head");
+    var grip = el("span", "b-grip", "⠿"); grip.title = "Arrastra para reordenar el bloque";
+    bh.appendChild(grip);
     var ti = el("input", "b-bloque-ti"); ti.value = bl.titulo;
     ti.addEventListener("input", function () { bl.titulo = ti.value; });
     bh.appendChild(ti);
     var mins = el("span", "b-bloque-min", "~" + Math.round(bl.items.reduce(function (a, it) { return a + minItem(it); }, 0)) + " min");
     bh.appendChild(mins);
-    bh.appendChild(moveBtns(function () { swap(c.bloques, bi, bi - 1); renderBuilder(); }, function () { swap(c.bloques, bi, bi + 1); renderBuilder(); },
-      function () { if (confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) { c.bloques.splice(bi, 1); renderBuilder(); } }));
+    var ctl = el("div", "b-move");
+    var up = el("button", null, "↑"); up.type = "button"; up.title = "Subir"; up.addEventListener("click", function () { swap(c.bloques, bi, bi - 1); renderBuilder(); });
+    var dn = el("button", null, "↓"); dn.type = "button"; dn.title = "Bajar"; dn.addEventListener("click", function () { swap(c.bloques, bi, bi + 1); renderBuilder(); });
+    var dup = el("button", null, "⎘"); dup.type = "button"; dup.title = "Duplicar bloque";
+    dup.addEventListener("click", function () { c.bloques.splice(bi + 1, 0, { id: uid("b"), titulo: bl.titulo + " (copia)", items: JSON.parse(JSON.stringify(bl.items)) }); renderBuilder(); });
+    var tpl = el("button", null, "★"); tpl.type = "button"; tpl.title = "Guardar como plantilla";
+    tpl.addEventListener("click", function () {
+      var nombre = prompt("Nombre de la plantilla:", bl.titulo);
+      if (!nombre) return;
+      var arr = loadPlantillas(); arr.push({ nombre: nombre, titulo: bl.titulo, items: JSON.parse(JSON.stringify(bl.items)) }); savePlantillas(arr);
+      flash("Plantilla guardada");
+    });
+    var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar bloque";
+    del.addEventListener("click", function () { if (confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) { c.bloques.splice(bi, 1); renderBuilder(); } });
+    [up, dn, dup, tpl, del].forEach(function (b) { ctl.appendChild(b); });
+    bh.appendChild(ctl);
     box.appendChild(bh);
+    hookDrag(box, grip, { type: "block", bi: bi });
+    hookDropBlock(c, box, bi);
 
-    bl.items.forEach(function (it, ii) { box.appendChild(itemEl(c, bl, it, ii)); });
+    bl.items.forEach(function (it, ii) { box.appendChild(itemEl(c, bl, it, ii, bi)); });
 
     var bar = el("div", "b-bloque-bar");
     var addP = el("button", "b-add", "+ Postura"); addP.type = "button";
@@ -9750,8 +9850,12 @@ window.POSES = [
     return box;
   }
 
-  function itemEl(c, bl, it, ii) {
+  function itemEl(c, bl, it, ii, bi) {
     var row = el("div", "b-item" + (it.tipo === "texto" ? " txt" : ""));
+    var grip = el("span", "b-grip", "⠿"); grip.title = "Arrastra para reordenar";
+    row.appendChild(grip);
+    hookDrag(row, grip, { type: "item", bi: bi, ii: ii });
+    hookDropItem(c, row, bi, ii);
     if (it.tipo === "texto") {
       var ta = el("textarea", "b-item-txt");
       ta.placeholder = "Lectura, pranayama, intención, indicación de transición…";
