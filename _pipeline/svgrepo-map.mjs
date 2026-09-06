@@ -1,50 +1,41 @@
 // Mapa: slug de postura -> índice del archivo de SVG Repo (colección "Yoga Poses", CC0).
 // Índice 0 = "yoga-svgrepo-com.svg"; N = "yoga-svgrepo-com (N).svg".
-// Solo se incluyen las identificadas con confianza razonable desde _pipeline/contact.html.
-// El resto se asigna desde la app con "Cambiar dibujo" (Andrea reconoce cada postura al verla).
+//
+// ⚠ Cómo se decidió cada uno:
+//  [ok]  verificado contra los dibujos ETIQUETADOS de yoga-api — son el mismo set de arte y
+//        se emparejaron comparando los datos de path (ver _pipeline/match-svgs.mjs).
+//        Esto es certeza, no apreciación.
+//  [ojo] identificado a ojo, silueta inconfundible. Puede fallar.
+//
+// Todo lo demás se dejó SIN dibujo a propósito: identificar a ojo estas figuras resultó
+// poco fiable (varias asignaciones anteriores estaban mal). Andrea las asigna desde la
+// app con "Cambiar dibujo", que es más rápido y más fiable que adivinar aquí.
 export const SVGREPO = {
-  // --- alta confianza ---
-  "utkatasana": 0,
-  "vrksasana": 1,
-  "urdhva-hastasana": 2,
-  "sukhasana": 3,
-  "balasana": 4,
-  "marjaryasana": 5,
-  "setu-bandha-sarvangasana": 6,
-  "salamba-sarvangasana": 7,
-  "salamba-sirsasana": 8,
-  "hanumanasana": 10,
-  "vasisthasana": 12,
-  "advasana": 13,
-  "dhanurasana": 14,
-  "siddhasana": 15,
-  "natarajasana": 16,
-  "salabhasana": 19,
-  "paschimottanasana": 20,
-  "parivrtta-parsvakonasana": 21,
-  "parivrtta-utkatasana": 22,
-  "urdhva-mukha-svanasana": 23,
-  "anjaneyasana": 25,
-  "hasta-uttanasana": 26,
-  "tiryaka-tadasana": 27,
-  "phalakasana": 28,
-  "supta-padangusthasana": 29,
-  "adho-mukha-svanasana": 30,
-  "uttanasana": 31,
-  "adho-mukha-vrksasana": 32,
-  "pincha-mayurasana": 33,
-  "utthita-tadasana": 34,
-  "halasana": 38,
-  "ustrasana": 47,
-  "prasarita-padottanasana": 53,
-  "purvottanasana": 54,
-  "chaturanga-dandasana": 55,
-  "salamba-bhujangasana": 56,
-  "makarasana": 58,
-  "parvatasana": 63,
+  // --- [ok] verificados contra yoga-api ---
+  "balasana": 4,                    // Balasana
+  "setu-bandha-sarvangasana": 6,    // Setu Bandha Sarvangasana
+  "salamba-sarvangasana": 8,        // Salamba Sarvangasana
+  "hanumanasana": 10,               // Hanumanasana
+  "vasisthasana": 12,               // Vasisthasana
+  "dhanurasana": 14,                // Dhanurasana
+  "camatkarasana": 17,              // Camatkarasana
+  "virabhadrasana-i": 18,           // Virabhadrasana I
+  "alanasana": 25,                  // Alanasana (zancada alta / luna creciente)
+  "phalakasana": 28,                // Phalakasana
+  "adho-mukha-svanasana": 30,       // Adho Mukha Svanasana
+  "adho-mukha-vrksasana": 32,       // Adho Mukha Vrksasana
+  "upavistha-konasana": 34,         // Upavistha Konasana
 
-  // --- confianza media (forma correcta; puede no ser exacta) ---
-  "alanasana": 18,
-  "malasana": 57,
-  "samakonasana": 46,
+  // --- [ojo] silueta inconfundible ---
+  "vrksasana": 1,                   // de pie, pie al muslo interno, brazos abiertos
+  "sukhasana": 3,                   // sentada con piernas cruzadas
+  "marjaryasana": 5,                // cuadrupedia
+  "natarajasana": 16,               // de pie sujetando el pie por detrás, arqueada
+  "salabhasana": 19,                // boca abajo, pecho y piernas elevados
+  "parivrtta-utkatasana": 22,       // cuclillas con torsión, manos al pecho
+  "uttanasana": 31,                 // pinza de pie
+  "prasarita-padottanasana": 53,    // piernas separadas, cabeza abajo
+  "salamba-bhujangasana": 56,       // esfinge: boca abajo sobre antebrazos
+  "malasana": 57,                   // sentadilla profunda
+  "makarasana": 58,                 // boca abajo en reposo
 };

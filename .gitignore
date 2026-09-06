@@ -5,3 +5,7 @@ _pipeline/node_modules/
 .DS_Store
 
 _pipeline/svgrepo-raw/
+_pipeline/yoga-api-svg/
+_pipeline/audit-img.html
+_pipeline/audit-zoom.html
+_pipeline/contact.html

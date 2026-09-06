@@ -24,3 +24,13 @@ todo el glosario tenga un único estilo. El script `_pipeline/fetch-img.mjs` sig
 ## Referencias de consulta (no incorporadas como datos)
 - Tummee (tummee.com) — modelo de biblioteca de posturas y secuenciador.
 - Wikipedia, «List of asanas» — para el bloque extendido futuro.
+
+## Verificaciones hechas sobre el contenido
+- `node _pipeline/verify-names.mjs` — compara los nombres en sánscrito contra la lista de asanas de
+  Wikipedia. Resultado: 0 nombres inventados (las no reconocidas son asanas reales que esa lista concreta
+  no incluye).
+- `node _pipeline/audit.mjs` — busca contradicciones entre las cues y las etiquetas (tipo/dinámica/nivel),
+  duplicados y campos flojos.
+- `node _pipeline/match-svgs.mjs` — los dibujos de SVG Repo y los de yoga-api son **el mismo set de arte**;
+  el script los empareja comparando los datos de path, lo que da la identidad REAL de cada dibujo sin
+  depender de identificarlos a ojo. 13 posturas quedaron verificadas así.

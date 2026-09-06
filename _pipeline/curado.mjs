@@ -1086,7 +1086,7 @@ export const curado = [
   // ---------- Con ilustración Nina Mel (posturas menos comunes, ficha propia) ----------
   {
     slug: "kapotasana", apiId: null, fuente: "propia",
-    es: "Postura de la paloma completa", en: "Kapotasana (full)", san: "Kapotasana", trad: "kapota = paloma",
+    es: "Postura del pichón (extensión de rodillas)", en: "Kapotasana", san: "Kapotasana", trad: "kapota = paloma",
     nivel: "avanzado", tipo: ["arrodillada"], zona: ["columna", "pecho", "psoas", "cuádriceps", "hombros"],
     dinamica: ["extensión de columna"], tema: ["expansión", "corazón", "confianza"],
     img: "Kapotasana Yoga-Asana Nina-Mel.jpg",
@@ -1356,7 +1356,7 @@ export const curado = [
     es: "Media luna con torsión", en: "Revolved Half Moon", san: "Parivrtta Ardha Chandrasana", trad: "parivrtta = girada, ardha chandra = media luna",
     nivel: "avanzado", tipo: ["de pie", "equilibrio"], zona: ["isquiotibiales", "columna", "core", "glúteos"],
     dinamica: ["torsión", "equilibrio"], tema: ["foco", "confianza"], img: null,
-    entrada: ["Desde media luna con torsión de pie, lleva la mano contraria a la pierna de apoyo al suelo o a un bloque.", "Eleva la pierna de atrás paralela al suelo y gira el torso hacia la pierna de apoyo; el otro brazo sube."],
+    entrada: ["Desde el triángulo con torsión, lleva la mano contraria a la pierna delantera al suelo o a un bloque.", "Eleva la pierna de atrás paralela al suelo y gira el torso hacia la pierna de apoyo; el otro brazo sube."],
     beneficios: ["Combina equilibrio, torsión y estiramiento de isquiotibiales.", "Afila la concentración."],
     precaucion: ["Presión arterial baja, migraña, lesión lumbar o de tobillo."],
   },
@@ -1446,7 +1446,7 @@ export const curado = [
     es: "Postura del péndulo", en: "Pendant Pose", san: "Lolasana", trad: "lola = colgante, tembloroso",
     nivel: "avanzado", tipo: ["equilibrio de brazos"], zona: ["muñecas", "core", "hombros"],
     dinamica: ["fuerza"], tema: ["energía", "foco"], img: null,
-    entrada: ["En cuadrupedia, cruza los tobillos y lleva las manos junto a las caderas.", "Empuja el suelo, mete el abdomen y despega las rodillas del piso, meciéndote hacia atrás. Muy exigente de core."],
+    entrada: ["Sentada sobre los talones (o en cuclillas), cruza los tobillos y apoya las manos en el suelo junto a las caderas.", "Empuja el suelo, mete el abdomen y despega las rodillas del piso, meciéndote hacia atrás. Muy exigente de core."],
     beneficios: ["Fortalece muñecas, hombros y todo el core.", "Prepara para transiciones flotadas del vinyasa."],
     precaucion: ["Túnel carpiano, lesión de muñeca u hombro."],
   },
@@ -1898,7 +1898,7 @@ export const curado = [
   {
     slug: "vatayanasana", apiId: null, fuente: "propia-breve",
     es: "Postura del caballo", en: "Horse Pose (kneeling)", san: "Vatayanasana", trad: "vatayana = caballo",
-    nivel: "avanzado", tipo: ["de pie", "equilibrio"], zona: ["caderas", "cuádriceps", "hombros", "ingles"],
+    nivel: "avanzado", tipo: ["arrodillada", "equilibrio"], zona: ["caderas", "cuádriceps", "hombros", "ingles"],
     dinamica: ["equilibrio", "apertura de cadera", "torsión"], tema: ["foco", "confianza"], img: null,
     entrada: ["Con un pie en medio loto, dobla la rodilla de apoyo y baja hasta apoyar la rodilla del loto junto al pie contrario.", "Entrelaza los brazos frente al pecho (como en el águila) y crece por la columna."],
     beneficios: ["Abre caderas e ingles en profundidad.", "Trabaja equilibrio, torsión y fuerza de pierna."],
@@ -2051,8 +2051,8 @@ export const curado = [
   {
     slug: "ganda-bherundasana", apiId: null, fuente: "propia-breve",
     es: "Postura del mentón (rostro formidable)", en: "Chin Stand / Formidable Face Pose", san: "Ganda Bherundasana", trad: "ganda = mejilla, bherunda = formidable",
-    nivel: "avanzado", tipo: ["prona", "equilibrio de brazos"], zona: ["columna", "pecho", "hombros", "cuádriceps"],
-    dinamica: ["extensión de columna", "equilibrio"], tema: ["confianza", "expansión"], img: null,
+    nivel: "avanzado", tipo: ["prona", "equilibrio de brazos", "invertida"], zona: ["columna", "pecho", "hombros", "cuádriceps"],
+    dinamica: ["extensión de columna", "equilibrio", "inversión"], tema: ["confianza", "expansión"], img: null,
     entrada: ["Boca abajo, manos junto al pecho; apoya la barbilla en el suelo y sube las piernas dobladas hacia la cabeza.", "El peso se reparte entre la barbilla, el pecho y las manos. Extensión y equilibrio extremos; solo con base muy sólida."],
     beneficios: ["Extensión de columna profundísima con equilibrio.", "Fortalece espalda y hombros."],
     precaucion: ["Lesión de cuello, garganta, lumbar u hombro. Riesgo alto: solo con preparación avanzada y supervisión."],

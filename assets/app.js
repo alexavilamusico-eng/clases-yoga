@@ -14,7 +14,7 @@
     q: "",
     open: false,
     soloFav: false,
-    fav: LS.get("fav", []),
+    fav: (function () { var f = LS.get("fav", []); return Array.isArray(f) ? f : []; })(),
     facets: LS.get("facets", { nivel: [], tipo: [], zona: [], dinamica: [] })
   };
   function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }

@@ -1,0 +1,21 @@
+Auditoría del glosario — 198 posturas
+alta: 1   media: 6   baja: 2
+
+[alta] tiryaka-bhujangasana
+        las cues dicen «de pie» pero tipo = [prona]
+[media] bharadvajasana / bharadvajasana-ii
+        mismo sánscrito (esqueleto): 2 posturas
+[media] eka-pada-koundinyasana-ii / eka-pada-koundinyasana-i
+        mismo sánscrito (esqueleto): 2 posturas
+[media] eka-pada-rajakapotasana / eka-pada-rajakapotasana-ii
+        mismo sánscrito (esqueleto): 2 posturas
+[media] marichyasana-iii / marichyasana-i / marichyasana-ii
+        mismo sánscrito (esqueleto): 3 posturas
+[media] salamba-sirsasana / salamba-sirsasana-ii
+        mismo sánscrito (esqueleto): 2 posturas
+[media] virabhadrasana-i / virabhadrasana-ii / virabhadrasana-iii
+        mismo sánscrito (esqueleto): 3 posturas
+[baja] adho-mukha-svanasana
+        tipo «invertida» pero dinámica sin «inversión» [flexión hacia adelante, fuerza]
+[baja] ardha-pincha-mayurasana
+        tipo «invertida» pero dinámica sin «inversión» [fuerza, flexión hacia adelante]

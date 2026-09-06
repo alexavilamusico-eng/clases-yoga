@@ -1,7 +1,7 @@
 // GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-06
 window.META = {
  "total": 198,
- "con_imagen": 41,
+ "con_imagen": 24,
  "svgCount": 64,
  "vocab": {
   "tipo": [
@@ -59,11 +59,11 @@ window.META = {
    "sentada": 43,
    "prona": 19,
    "supina": 19,
-   "arrodillada": 25,
-   "de pie": 50,
+   "arrodillada": 26,
+   "de pie": 49,
    "restaurativa": 19,
    "equilibrio de brazos": 32,
-   "invertida": 17,
+   "invertida": 18,
    "equilibrio": 18
   },
   "zona": {
@@ -90,7 +90,7 @@ window.META = {
    "flexión hacia adelante": 46,
    "quietud": 30,
    "flexión lateral": 10,
-   "inversión": 15,
+   "inversión": 16,
    "torsión": 31
   },
   "tema": {

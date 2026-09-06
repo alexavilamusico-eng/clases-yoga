@@ -21,7 +21,33 @@
   var SEMILLA_TIPOS = { "": "—", tema: "Tema", zona: "Parte del cuerpo", dinamica: "Dinámica de movimiento" };
 
   /* ---------- almacenamiento ---------- */
-  function loadClases() { return LS.get("clases", []); }
+  // normaliza una clase por si viene de un respaldo viejo o incompleto:
+  // sin esto, una clase sin "semilla" o sin "bloques" rompía el banco entero.
+  function normalizarClase(c) {
+    if (!c || typeof c !== "object") return null;
+    c.id = c.id || uid("c");
+    c.nombre = typeof c.nombre === "string" ? c.nombre : "";
+    c.estilo = typeof c.estilo === "string" ? c.estilo : "";
+    c.objetivo = +c.objetivo || 60;
+    if (!c.semilla || typeof c.semilla !== "object") c.semilla = { tipo: "", valor: "" };
+    c.semilla.tipo = c.semilla.tipo || "";
+    c.semilla.valor = c.semilla.valor || "";
+    if (!Array.isArray(c.bloques)) c.bloques = [];
+    c.bloques = c.bloques.filter(Boolean).map(function (b) {
+      return { id: b.id || uid("b"), titulo: typeof b.titulo === "string" ? b.titulo : "Bloque",
+        items: Array.isArray(b.items) ? b.items.filter(Boolean) : [] };
+    });
+    c.notas = typeof c.notas === "string" ? c.notas : "";
+    c.fechas = Array.isArray(c.fechas) ? c.fechas : [];
+    c.creada = c.creada || nowISO();
+    c.modificada = c.modificada || c.creada;
+    return c;
+  }
+  function loadClases() {
+    var arr = LS.get("clases", []);
+    if (!Array.isArray(arr)) return [];
+    return arr.map(normalizarClase).filter(Boolean);
+  }
   function saveClases(arr) { LS.set("clases", arr); }
   function claseNueva() {
     return {
@@ -94,11 +120,20 @@
   function hookDrag(node, handle, payload) {
     handle.addEventListener("mousedown", function () { node.draggable = true; });
     handle.addEventListener("touchstart", function () { node.draggable = true; }, { passive: true });
-    node.addEventListener("dragend", function () { node.draggable = false; node.classList.remove("dragging"); clearDropMarks(); });
+    node.addEventListener("dragend", function (e) {
+      if (e.target !== node) return;
+      node.draggable = false; node.classList.remove("dragging"); clearDropMarks(); dnd = null;
+    });
     node.addEventListener("dragstart", function (e) {
+      // el bloque también es arrastrable y contiene a los items: sin esto, el dragstart
+      // de una postura burbujea hasta el bloque y se pierde qué se está arrastrando.
+      if (e.target !== node) return;
+      e.stopPropagation();
       dnd = payload; node.classList.add("dragging");
-      e.dataTransfer.effectAllowed = "move";
-      try { e.dataTransfer.setData("text/plain", "x"); } catch (x) {}
+      if (e.dataTransfer) {
+        e.dataTransfer.effectAllowed = "move";
+        try { e.dataTransfer.setData("text/plain", "x"); } catch (x) {}
+      }
     });
   }
   function clearDropMarks() { document.querySelectorAll(".drop-before,.drop-into").forEach(function (n) { n.classList.remove("drop-before", "drop-into"); }); }
@@ -117,7 +152,10 @@
     box.addEventListener("dragover", function (e) {
       if (!dnd) return;
       e.preventDefault();
-      if (dnd.type === "item") { clearDropMarks(); box.classList.add("drop-into"); }
+      // si el cursor está sobre una fila, esa fila ya marcó dónde caería: no la pisemos
+      if (dnd.type === "item" && !(e.target.closest && e.target.closest(".b-item"))) {
+        clearDropMarks(); box.classList.add("drop-into");
+      }
     });
     box.addEventListener("drop", function (e) {
       if (!dnd) return;
@@ -641,7 +679,7 @@
       var arr = loadClases();
       var ids = {}; arr.forEach(function (c) { ids[c.id] = 1; });
       var add = 0;
-      nuevas.forEach(function (c) { if (c && c.id && !ids[c.id]) { arr.push(c); add++; } });
+      nuevas.forEach(function (c) { var n = normalizarClase(c); if (n && !ids[n.id]) { arr.push(n); add++; } });
       saveClases(arr); renderBanco();
       alert("Importadas " + add + " clases nuevas.");
     } catch (e) { alert("No se pudo leer el respaldo."); }

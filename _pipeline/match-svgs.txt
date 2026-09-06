@@ -1,0 +1,26 @@
+EMPAREJAMIENTO EXACTO (19):
+  # 2 = Ashta Chandrasana  (Crescent Moon)
+  # 4 = Balasana  (Child's Pose)
+  # 6 = Setu Bandha Sarvangasana  (Bridge)
+  # 8 = Salamba Sarvangasana  (Shoulder Stand)
+  #10 = Hanumanasana  (Splits)
+  #12 = Vasisthasana  (Side Plank)
+  #14 = Dhanurasana  (Bow)
+  #17 = Camatkarasana  (Wild Thing)
+  #18 = Virabhadrasana One  (Warrior One)
+  #25 = Alanasana  (Crescent Lunge)
+  #28 = Phalakasana  (Plank)
+  #30 = Adho Mukha Svanasana  (Downward-Facing Dog)
+  #32 = Adho Mukha Vrksasana  (Handstand)
+  #34 = Upavistha Konasana  (Side Splits)
+  #41 = Balasana  (Child's Pose)
+  #43 = Setu Bandha Sarvangasana  (Bridge)
+  #45 = Salamba Sarvangasana  (Shoulder Stand)
+  #47 = Hanumanasana  (Splits)
+  #50 = Ashta Chandrasana  (Crescent Moon)
+
+EMPAREJAMIENTO PARCIAL (0):
+
+SIN EMPAREJAR (45): 0, 1, 3, 5, 7, 9, 11, 13, 15, 16, 19, 20, 21, 22, 23, 24, 26, 27, 29, 31, 33, 35, 36, 37, 38, 39, 40, 42, 44, 46, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63
+
+Dibujos de yoga-api no encontrados en el set: Boat, Half Boat, Butterfly, Camel, Cat, Cow, Chair, Corpse, Crow, Dolphin, Eagle, Extended Hand to Toe, Extended Side Angle, Forearm Stand, Forward Bend with Shoulder Opener, Half-Moon, Low Lunge, Pigeon, King Pigeon, Plow, Pyramid, Reverse Warrior, Seated Forward Bend, Lotus, Half Lord of the Fishes, Sphinx, Garland Pose, Standing Forward Bend, Tree, Triangle, Upward-Facing Dog, Warrior Two, Warrior Three, Wheel
