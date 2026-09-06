@@ -33,6 +33,13 @@ Referencia de producto: Tummee.
   si el cambio es visible, probarlo en el navegador.
 
 ## Estado / pendientes
-- Fase A: glosario con ~71 posturas núcleo. ~29 con ilustración Nina Mel; el resto con placeholder tipográfico.
-- Siguiente: completar imágenes que falten; luego constructor de clases + banco de clases.
-- Bloque B (banco extendido de ~150 nombres desde Wikipedia) queda para después, si Andrea lo quiere.
+- Fase A: glosario con 198 posturas. 41 con dibujo por defecto (SVG Repo); el resto placeholder.
+  Selector "Cambiar dibujo" en cada tarjeta (64 dibujos disponibles, elección en localStorage).
+  Nombres verificados contra Wikipedia (`node _pipeline/verify-names.mjs`): 0 inventados.
+- Fase B: constructor de clases + banco (`assets/clases.js`). Pestañas Glosario / Clases.
+  - Clase = { nombre, estilo, objetivo(min), semilla{tipo,valor}, bloques[{titulo,items[]}], notas, fechas[] }.
+  - item postura = { slug, lado, dur, durUnit(resp|min), nota };  item texto = { texto, min }.
+  - Todo en `localStorage['glosario.clases']`. Respaldo = export/import JSON.
+  - "Sugerir" por bloque: puntúa POSES por la semilla + rol del bloque. "Ver plan" abre ventana imprimible.
+- Pendiente Fase B: reordenar por arrastre (hoy con flechas ↑↓), slideshow con timer, PDF nativo,
+  más precisión en el mapa de dibujos, revisar las ~120 fichas breves.

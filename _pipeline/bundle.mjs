@@ -29,6 +29,7 @@ const svgMapJs = "window.SVGREPO_IMG = " + JSON.stringify(svgMap) + ";";
 const css = read("assets/styles.css");
 const metaJs = read("data/meta.js");
 const appJs = read("assets/app.js");
+const clasesJs = read("assets/clases.js");
 
 // tomar solo el <body>...</body> del index.html y el <dialog>
 const html = read("index.html");
@@ -59,6 +60,9 @@ ${posesJs}
 </script>
 <script>
 ${appJs}
+</script>
+<script>
+${clasesJs}
 </script>
 `;
 

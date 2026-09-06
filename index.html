@@ -15,7 +15,7 @@
   <div class="wrap head-top">
     <div>
       <p class="eyebrow">Yoga con Andrea</p>
-      <h1>Glosario de posturas</h1>
+      <h1 id="pageTitle">Glosario de posturas</h1>
       <p class="count" id="count">…</p>
     </div>
     <div class="seg" id="langSeg" role="group" aria-label="Idioma">
@@ -23,33 +23,74 @@
       <button type="button" data-lang="en" aria-pressed="false">EN + sánscrito</button>
     </div>
   </div>
+  <div class="wrap">
+    <div class="tabs" id="tabs" role="tablist">
+      <button type="button" data-view="glosario" aria-pressed="true">Glosario</button>
+      <button type="button" data-view="clases" aria-pressed="false">Clases</button>
+    </div>
+  </div>
 </header>
 
-<div class="toolbar">
-  <div class="wrap">
-    <div class="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="q" type="search" autocomplete="off" placeholder="Buscar…" aria-label="Buscar postura">
+<div id="view-glosario">
+  <div class="toolbar">
+    <div class="wrap">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="q" type="search" autocomplete="off" placeholder="Buscar…" aria-label="Buscar postura">
+      </div>
+      <button type="button" id="filtersToggle" class="filters-toggle" aria-expanded="false" aria-controls="panel">
+        <span class="label">Filtros</span>
+        <span class="badge" id="fBadge" hidden></span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
     </div>
-    <button type="button" id="filtersToggle" class="filters-toggle" aria-expanded="false" aria-controls="panel">
-      <span class="label">Filtros</span>
-      <span class="badge" id="fBadge" hidden></span>
-      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-    </button>
   </div>
-</div>
 
-<div class="wrap">
-  <div id="panel" hidden>
-    <div class="panel-inner"></div>
-  </div>
-</div>
-
-<main>
   <div class="wrap">
-    <div class="grid" id="grid"></div>
+    <div id="panel" hidden>
+      <div class="panel-inner"></div>
+    </div>
   </div>
-</main>
+
+  <main>
+    <div class="wrap">
+      <div class="grid" id="grid"></div>
+    </div>
+  </main>
+</div>
+
+<div id="view-clases" hidden>
+  <div class="wrap clases-top">
+    <button type="button" id="nuevaClase" class="btn-primary">+ Nueva clase</button>
+    <div class="search sm">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="claseQ" type="search" autocomplete="off" placeholder="Buscar en el banco…" aria-label="Buscar clase">
+    </div>
+    <span class="count" id="claseCount"></span>
+    <span class="clases-backup">
+      <button type="button" id="exportarClases" class="mini">Respaldo</button>
+      <button type="button" id="importarClases" class="mini">Importar</button>
+    </span>
+  </div>
+  <main>
+    <div class="wrap"><div id="banco" class="banco"></div></div>
+  </main>
+</div>
+
+<div id="builder" hidden>
+  <div class="b-head">
+    <div class="wrap">
+      <button type="button" class="b-back">← Volver</button>
+      <input type="text" class="b-nombre" placeholder="Nombre de la clase" aria-label="Nombre de la clase">
+      <span class="b-total"></span>
+      <span class="b-flash"></span>
+      <button type="button" class="b-plan mini">Ver plan</button>
+      <button type="button" class="b-save mini">Guardar</button>
+      <button type="button" class="b-save-exit btn-primary">Guardar y volver</button>
+    </div>
+  </div>
+  <div class="b-body wrap"></div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -72,5 +113,6 @@
 <script src="data/meta.js"></script>
 <script src="data/poses.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/clases.js"></script>
 </body>
 </html>
