@@ -64,6 +64,14 @@ header{padding:44px 0 22px}
 .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);font-weight:700;margin:0 0 8px}
 h1{font-size:clamp(28px,6vw,40px);margin:0;line-height:1.1}
 .count{color:var(--ink-soft);font-size:13.5px;margin:8px 0 0}
+.head-right{display:flex;align-items:center;gap:8px}
+.help-btn{width:32px;height:32px;border-radius:999px;border:1px solid var(--line-strong);background:var(--card);color:var(--purple-deep);font-weight:800;font-size:15px;cursor:pointer;line-height:1}
+.help-btn:hover{border-color:var(--purple-pale)}
+.help-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.fav-toggle{width:44px;border-radius:14px;border:1px solid var(--line-strong);background:var(--card);color:var(--line-strong);font-size:17px;cursor:pointer}
+.fav-toggle.on{color:#e6b422;border-color:#e6b422;background:#fdf6e3}
+:root:not([data-theme="light"]) .fav-toggle.on{background:#3a3320}
+.fav-toggle:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .seg{display:inline-flex;background:var(--chip);border-radius:999px;padding:4px}
 .seg button{
   border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:13px;font-weight:700;
@@ -149,6 +157,12 @@ main{padding:14px 0 64px}
 .front-meta{padding:14px 16px 17px}
 .front-meta .name{font-family:"Fraunces",serif;font-size:18px;line-height:1.18;margin:0 0 2px}
 .front-meta .san{font-family:"Fraunces",serif;font-style:italic;color:var(--purple);font-size:12.5px;margin:0}
+.card .fav{position:absolute;top:9px;left:11px;z-index:3;font-size:18px;line-height:1;color:rgba(255,255,255,.5);cursor:pointer;text-shadow:0 1px 3px rgba(60,40,90,.4)}
+.card .fav.on{color:#ffd24a}
+.card .fav:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}
+.rel-row{display:flex;flex-wrap:wrap;gap:5px;padding:4px 0 8px}
+.rel-chip{background:var(--chip);border:1px solid var(--line-strong);color:var(--purple-deep);font:inherit;font-size:11px;font-weight:600;padding:4px 10px;border-radius:999px;cursor:pointer}
+.rel-chip:hover{border-color:var(--purple)}
 
 /* reverso — una sección visible, el resto plegado */
 .back .scroll{padding:17px 16px 15px;overflow:auto;height:100%}
@@ -320,9 +334,12 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
       <h1 id="pageTitle">Glosario de posturas</h1>
       <p class="count" id="count">…</p>
     </div>
-    <div class="seg" id="langSeg" role="group" aria-label="Idioma">
-      <button type="button" data-lang="es" aria-pressed="true">ES + sánscrito</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN + sánscrito</button>
+    <div class="head-right">
+      <div class="seg" id="langSeg" role="group" aria-label="Idioma">
+        <button type="button" data-lang="es" aria-pressed="true">ES + sánscrito</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN + sánscrito</button>
+      </div>
+      <button type="button" id="helpBtn" class="help-btn" aria-label="Ayuda">?</button>
     </div>
   </div>
   <div class="wrap">
@@ -340,6 +357,7 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="q" type="search" autocomplete="off" placeholder="Buscar…" aria-label="Buscar postura">
       </div>
+      <button type="button" id="favToggle" class="fav-toggle" aria-pressed="false" aria-label="Solo favoritas" title="Solo favoritas">★</button>
       <button type="button" id="filtersToggle" class="filters-toggle" aria-expanded="false" aria-controls="panel">
         <span class="label">Filtros</span>
         <span class="badge" id="fBadge" hidden></span>
@@ -401,6 +419,18 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
     <a id="creditsLink" role="button" tabindex="0">Ver créditos</a>
   </div>
 </footer>
+
+<dialog id="help">
+  <div class="dlg-body">
+    <h2>Cómo se usa</h2>
+    <p>Arriba hay dos pestañas:</p>
+    <p><strong>Glosario</strong> — todas las posturas. Toca una tarjeta para ver el reverso: cómo entrar, beneficios, precaución, etiquetas, posturas relacionadas y «Cambiar dibujo». La estrella ★ marca favoritas. El buscador entiende nombre, sánscrito y también etiquetas (escribe «cadera», «torsión», «restaurativa»…). «Filtros» abre el panel para acotar.</p>
+    <p><strong>Clases</strong> — el cuaderno digital. «+ Nueva clase» abre el constructor: eliges una <em>semilla</em> (un tema, una parte del cuerpo o una dinámica) y armas la clase por bloques. En cada bloque puedes añadir posturas, textos (lectura, pranayama, transición) o pedir <em>sugerencias</em>. Cada postura lleva lado, duración y nota. Al terminar, «Guardar y volver»: queda en el banco para reabrirla, duplicarla o darla.</p>
+    <p><strong>Modo clase</strong> — desde una clase guardada, «Dar clase» abre el modo pantalla completa con timer, para seguir la secuencia mientras la impartes.</p>
+    <p><strong>Respaldo</strong> — en Clases, «Respaldo» copia todas tus clases como texto. Guárdalo de vez en cuando: los datos viven solo en este navegador.</p>
+    <button type="button" class="dlg-close">Entendido</button>
+  </div>
+</dialog>
 
 <dialog id="credits">
   <div class="dlg-body">
@@ -9098,12 +9128,38 @@ window.POSES = [
     lang: LS.get("lang", "es"),
     q: "",
     open: false,
+    soloFav: false,
+    fav: LS.get("fav", []),
     facets: LS.get("facets", { nivel: [], tipo: [], zona: [], dinamica: [] })
   };
+  function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function isFav(slug) { return state.fav.indexOf(slug) > -1; }
+  function toggleFav(slug) {
+    var i = state.fav.indexOf(slug);
+    if (i > -1) state.fav.splice(i, 1); else state.fav.push(slug);
+    LS.set("fav", state.fav);
+  }
+  // posturas relacionadas: comparten >=2 etiquetas de zona/dinámica
+  var OPUESTAS = {
+    "extensión de columna": "flexión hacia adelante", "flexión hacia adelante": "extensión de columna",
+    "torsión": "flexión hacia adelante", "inversión": "quietud", "fuerza": "quietud"
+  };
+  function relacionadas(p) {
+    var setP = {};
+    p.zona.concat(p.dinamica).forEach(function (x) { setP[x] = 1; });
+    var op = null; p.dinamica.forEach(function (d) { if (OPUESTAS[d]) op = OPUESTAS[d]; });
+    return POSES.map(function (q) {
+      if (q.slug === p.slug) return null;
+      var comun = q.zona.concat(q.dinamica).filter(function (x) { return setP[x]; }).length;
+      var contra = op && q.dinamica.indexOf(op) > -1;
+      var s = comun + (contra ? 2.5 : 0) + (q.nivel === p.nivel ? 0.3 : 0);
+      return s >= 2 ? { q: q, s: s } : null;
+    }).filter(Boolean).sort(function (a, b) { return b.s - a.s; }).slice(0, 6).map(function (x) { return x.q; });
+  }
 
   var T = {
     es: {
-      entrada: "Cómo entrar", beneficios: "Beneficios", precaucion: "Precaución", etiquetas: "Etiquetas",
+      entrada: "Cómo entrar", beneficios: "Beneficios", precaucion: "Precaución", etiquetas: "Etiquetas", relacionadas: "Relacionadas",
       buscar: "Buscar postura o sánscrito…", nada: "Ninguna postura coincide.", filtros: "Filtros",
       limpiar: "Quitar filtros", de: "de", posturas: "posturas",
       nivelL: "Nivel", tipoL: "Tipo", zonaL: "Zona del cuerpo", dinL: "Dinámica",
@@ -9111,7 +9167,7 @@ window.POSES = [
       cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo"
     },
     en: {
-      entrada: "How to enter", beneficios: "Benefits", precaucion: "Caution", etiquetas: "Tags",
+      entrada: "How to enter", beneficios: "Benefits", precaucion: "Caution", etiquetas: "Tags", relacionadas: "Related",
       buscar: "Search pose or Sanskrit…", nada: "No pose matches.", filtros: "Filters",
       limpiar: "Clear filters", de: "of", posturas: "poses",
       nivelL: "Level", tipoL: "Type", zonaL: "Body zone", dinL: "Dynamic",
@@ -9180,13 +9236,15 @@ window.POSES = [
 
   function match(p) {
     var f = state.facets;
+    if (state.soloFav && !isFav(p.slug)) return false;
     if (f.nivel.length && f.nivel.indexOf(p.nivel) < 0) return false;
     if (f.tipo.length && !f.tipo.some(function (v) { return p.tipo.indexOf(v) > -1; })) return false;
     if (f.zona.length && !f.zona.some(function (v) { return p.zona.indexOf(v) > -1; })) return false;
     if (f.dinamica.length && !f.dinamica.some(function (v) { return p.dinamica.indexOf(v) > -1; })) return false;
     if (state.q) {
-      var hay = (p.nombre + " " + p.nombre_en + " " + p.sanscrito + " " + p.traduccion).toLowerCase();
-      if (hay.indexOf(state.q.toLowerCase()) < 0) return false;
+      var hay = norm(p.nombre + " " + p.nombre_en + " " + p.sanscrito + " " + p.traduccion + " " +
+        p.nivel + " " + p.tipo.join(" ") + " " + p.zona.join(" ") + " " + p.dinamica.join(" ") + " " + p.tema.join(" "));
+      if (hay.indexOf(norm(state.q)) < 0) return false;
     }
     return true;
   }
@@ -9235,6 +9293,21 @@ window.POSES = [
     }
     paintThumb();
     front.appendChild(thumb);
+    var star = el("span", "fav" + (isFav(p.slug) ? " on" : ""), "★");
+    star.setAttribute("role", "button");
+    star.setAttribute("tabindex", "0");
+    star.setAttribute("aria-label", "Favorita");
+    star.setAttribute("aria-pressed", isFav(p.slug) ? "true" : "false");
+    function flipFav(e) {
+      e.stopPropagation();
+      toggleFav(p.slug);
+      star.classList.toggle("on");
+      star.setAttribute("aria-pressed", isFav(p.slug) ? "true" : "false");
+      if (state.soloFav) render();
+    }
+    star.addEventListener("click", flipFav);
+    star.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipFav(e); } });
+    front.appendChild(star);
     var fm = el("div", "front-meta");
     fm.appendChild(el("p", "name", name));
     fm.appendChild(el("p", "san", p.sanscrito));
@@ -9277,6 +9350,24 @@ window.POSES = [
       body.appendChild(tr);
     }));
 
+    var rel = relacionadas(p);
+    if (rel.length) {
+      sc.appendChild(details("relacionadas", function (body) {
+        var r = el("div", "rel-row");
+        rel.forEach(function (q) {
+          var b = el("button", "rel-chip", state.lang === "en" ? q.nombre_en : q.nombre);
+          b.type = "button";
+          b.addEventListener("click", function (e) {
+            e.stopPropagation();
+            state.q = q.nombre; var qi = $("#q"); if (qi) qi.value = q.nombre;
+            render(); var g = $("#grid"); if (g) g.scrollIntoView({ block: "start" });
+          });
+          r.appendChild(b);
+        });
+        body.appendChild(r);
+      }));
+    }
+
     if (SVG_COUNT) {
       sc.appendChild(details("cambiarDibujo", function (body) {
         var grid = el("div", "pick");
@@ -9314,8 +9405,8 @@ window.POSES = [
     inner.appendChild(back);
     c.appendChild(inner);
     c.addEventListener("click", function (e) {
-      // dejar que los <details> del reverso funcionen sin voltear la tarjeta
-      if (e.target.closest("details")) return;
+      // dejar que los <details>, la estrella y los chips funcionen sin voltear la tarjeta
+      if (e.target.closest("details") || e.target.closest(".fav")) return;
       c.classList.toggle("flipped");
     });
     return c;
@@ -9374,6 +9465,21 @@ window.POSES = [
     if (cr && dlg) {
       cr.addEventListener("click", function () { dlg.showModal(); });
       $("#credits .dlg-close").addEventListener("click", function () { dlg.close(); });
+    }
+
+    var favT = $("#favToggle");
+    if (favT) favT.addEventListener("click", function () {
+      state.soloFav = !state.soloFav;
+      favT.setAttribute("aria-pressed", state.soloFav ? "true" : "false");
+      favT.classList.toggle("on", state.soloFav);
+      render();
+    });
+
+    var help = $("#help"), helpBtn = $("#helpBtn");
+    if (help && helpBtn) {
+      helpBtn.addEventListener("click", function () { help.showModal(); });
+      $("#help .dlg-close").addEventListener("click", function () { help.close(); });
+      if (!LS.get("seen", false)) { try { help.showModal(); } catch (e) {} LS.set("seen", true); }
     }
 
     buildPanel();

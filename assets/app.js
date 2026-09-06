@@ -13,12 +13,38 @@
     lang: LS.get("lang", "es"),
     q: "",
     open: false,
+    soloFav: false,
+    fav: LS.get("fav", []),
     facets: LS.get("facets", { nivel: [], tipo: [], zona: [], dinamica: [] })
   };
+  function norm(s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function isFav(slug) { return state.fav.indexOf(slug) > -1; }
+  function toggleFav(slug) {
+    var i = state.fav.indexOf(slug);
+    if (i > -1) state.fav.splice(i, 1); else state.fav.push(slug);
+    LS.set("fav", state.fav);
+  }
+  // posturas relacionadas: comparten >=2 etiquetas de zona/dinámica
+  var OPUESTAS = {
+    "extensión de columna": "flexión hacia adelante", "flexión hacia adelante": "extensión de columna",
+    "torsión": "flexión hacia adelante", "inversión": "quietud", "fuerza": "quietud"
+  };
+  function relacionadas(p) {
+    var setP = {};
+    p.zona.concat(p.dinamica).forEach(function (x) { setP[x] = 1; });
+    var op = null; p.dinamica.forEach(function (d) { if (OPUESTAS[d]) op = OPUESTAS[d]; });
+    return POSES.map(function (q) {
+      if (q.slug === p.slug) return null;
+      var comun = q.zona.concat(q.dinamica).filter(function (x) { return setP[x]; }).length;
+      var contra = op && q.dinamica.indexOf(op) > -1;
+      var s = comun + (contra ? 2.5 : 0) + (q.nivel === p.nivel ? 0.3 : 0);
+      return s >= 2 ? { q: q, s: s } : null;
+    }).filter(Boolean).sort(function (a, b) { return b.s - a.s; }).slice(0, 6).map(function (x) { return x.q; });
+  }
 
   var T = {
     es: {
-      entrada: "Cómo entrar", beneficios: "Beneficios", precaucion: "Precaución", etiquetas: "Etiquetas",
+      entrada: "Cómo entrar", beneficios: "Beneficios", precaucion: "Precaución", etiquetas: "Etiquetas", relacionadas: "Relacionadas",
       buscar: "Buscar postura o sánscrito…", nada: "Ninguna postura coincide.", filtros: "Filtros",
       limpiar: "Quitar filtros", de: "de", posturas: "posturas",
       nivelL: "Nivel", tipoL: "Tipo", zonaL: "Zona del cuerpo", dinL: "Dinámica",
@@ -26,7 +52,7 @@
       cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo"
     },
     en: {
-      entrada: "How to enter", beneficios: "Benefits", precaucion: "Caution", etiquetas: "Tags",
+      entrada: "How to enter", beneficios: "Benefits", precaucion: "Caution", etiquetas: "Tags", relacionadas: "Related",
       buscar: "Search pose or Sanskrit…", nada: "No pose matches.", filtros: "Filters",
       limpiar: "Clear filters", de: "of", posturas: "poses",
       nivelL: "Level", tipoL: "Type", zonaL: "Body zone", dinL: "Dynamic",
@@ -95,13 +121,15 @@
 
   function match(p) {
     var f = state.facets;
+    if (state.soloFav && !isFav(p.slug)) return false;
     if (f.nivel.length && f.nivel.indexOf(p.nivel) < 0) return false;
     if (f.tipo.length && !f.tipo.some(function (v) { return p.tipo.indexOf(v) > -1; })) return false;
     if (f.zona.length && !f.zona.some(function (v) { return p.zona.indexOf(v) > -1; })) return false;
     if (f.dinamica.length && !f.dinamica.some(function (v) { return p.dinamica.indexOf(v) > -1; })) return false;
     if (state.q) {
-      var hay = (p.nombre + " " + p.nombre_en + " " + p.sanscrito + " " + p.traduccion).toLowerCase();
-      if (hay.indexOf(state.q.toLowerCase()) < 0) return false;
+      var hay = norm(p.nombre + " " + p.nombre_en + " " + p.sanscrito + " " + p.traduccion + " " +
+        p.nivel + " " + p.tipo.join(" ") + " " + p.zona.join(" ") + " " + p.dinamica.join(" ") + " " + p.tema.join(" "));
+      if (hay.indexOf(norm(state.q)) < 0) return false;
     }
     return true;
   }
@@ -150,6 +178,21 @@
     }
     paintThumb();
     front.appendChild(thumb);
+    var star = el("span", "fav" + (isFav(p.slug) ? " on" : ""), "★");
+    star.setAttribute("role", "button");
+    star.setAttribute("tabindex", "0");
+    star.setAttribute("aria-label", "Favorita");
+    star.setAttribute("aria-pressed", isFav(p.slug) ? "true" : "false");
+    function flipFav(e) {
+      e.stopPropagation();
+      toggleFav(p.slug);
+      star.classList.toggle("on");
+      star.setAttribute("aria-pressed", isFav(p.slug) ? "true" : "false");
+      if (state.soloFav) render();
+    }
+    star.addEventListener("click", flipFav);
+    star.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipFav(e); } });
+    front.appendChild(star);
     var fm = el("div", "front-meta");
     fm.appendChild(el("p", "name", name));
     fm.appendChild(el("p", "san", p.sanscrito));
@@ -192,6 +235,24 @@
       body.appendChild(tr);
     }));
 
+    var rel = relacionadas(p);
+    if (rel.length) {
+      sc.appendChild(details("relacionadas", function (body) {
+        var r = el("div", "rel-row");
+        rel.forEach(function (q) {
+          var b = el("button", "rel-chip", state.lang === "en" ? q.nombre_en : q.nombre);
+          b.type = "button";
+          b.addEventListener("click", function (e) {
+            e.stopPropagation();
+            state.q = q.nombre; var qi = $("#q"); if (qi) qi.value = q.nombre;
+            render(); var g = $("#grid"); if (g) g.scrollIntoView({ block: "start" });
+          });
+          r.appendChild(b);
+        });
+        body.appendChild(r);
+      }));
+    }
+
     if (SVG_COUNT) {
       sc.appendChild(details("cambiarDibujo", function (body) {
         var grid = el("div", "pick");
@@ -229,8 +290,8 @@
     inner.appendChild(back);
     c.appendChild(inner);
     c.addEventListener("click", function (e) {
-      // dejar que los <details> del reverso funcionen sin voltear la tarjeta
-      if (e.target.closest("details")) return;
+      // dejar que los <details>, la estrella y los chips funcionen sin voltear la tarjeta
+      if (e.target.closest("details") || e.target.closest(".fav")) return;
       c.classList.toggle("flipped");
     });
     return c;
@@ -289,6 +350,21 @@
     if (cr && dlg) {
       cr.addEventListener("click", function () { dlg.showModal(); });
       $("#credits .dlg-close").addEventListener("click", function () { dlg.close(); });
+    }
+
+    var favT = $("#favToggle");
+    if (favT) favT.addEventListener("click", function () {
+      state.soloFav = !state.soloFav;
+      favT.setAttribute("aria-pressed", state.soloFav ? "true" : "false");
+      favT.classList.toggle("on", state.soloFav);
+      render();
+    });
+
+    var help = $("#help"), helpBtn = $("#helpBtn");
+    if (help && helpBtn) {
+      helpBtn.addEventListener("click", function () { help.showModal(); });
+      $("#help .dlg-close").addEventListener("click", function () { help.close(); });
+      if (!LS.get("seen", false)) { try { help.showModal(); } catch (e) {} LS.set("seen", true); }
     }
 
     buildPanel();

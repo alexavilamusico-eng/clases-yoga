@@ -18,9 +18,12 @@
       <h1 id="pageTitle">Glosario de posturas</h1>
       <p class="count" id="count">…</p>
     </div>
-    <div class="seg" id="langSeg" role="group" aria-label="Idioma">
-      <button type="button" data-lang="es" aria-pressed="true">ES + sánscrito</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN + sánscrito</button>
+    <div class="head-right">
+      <div class="seg" id="langSeg" role="group" aria-label="Idioma">
+        <button type="button" data-lang="es" aria-pressed="true">ES + sánscrito</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN + sánscrito</button>
+      </div>
+      <button type="button" id="helpBtn" class="help-btn" aria-label="Ayuda">?</button>
     </div>
   </div>
   <div class="wrap">
@@ -38,6 +41,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         <input id="q" type="search" autocomplete="off" placeholder="Buscar…" aria-label="Buscar postura">
       </div>
+      <button type="button" id="favToggle" class="fav-toggle" aria-pressed="false" aria-label="Solo favoritas" title="Solo favoritas">★</button>
       <button type="button" id="filtersToggle" class="filters-toggle" aria-expanded="false" aria-controls="panel">
         <span class="label">Filtros</span>
         <span class="badge" id="fBadge" hidden></span>
@@ -99,6 +103,18 @@
     <a id="creditsLink" role="button" tabindex="0">Ver créditos</a>
   </div>
 </footer>
+
+<dialog id="help">
+  <div class="dlg-body">
+    <h2>Cómo se usa</h2>
+    <p>Arriba hay dos pestañas:</p>
+    <p><strong>Glosario</strong> — todas las posturas. Toca una tarjeta para ver el reverso: cómo entrar, beneficios, precaución, etiquetas, posturas relacionadas y «Cambiar dibujo». La estrella ★ marca favoritas. El buscador entiende nombre, sánscrito y también etiquetas (escribe «cadera», «torsión», «restaurativa»…). «Filtros» abre el panel para acotar.</p>
+    <p><strong>Clases</strong> — el cuaderno digital. «+ Nueva clase» abre el constructor: eliges una <em>semilla</em> (un tema, una parte del cuerpo o una dinámica) y armas la clase por bloques. En cada bloque puedes añadir posturas, textos (lectura, pranayama, transición) o pedir <em>sugerencias</em>. Cada postura lleva lado, duración y nota. Al terminar, «Guardar y volver»: queda en el banco para reabrirla, duplicarla o darla.</p>
+    <p><strong>Modo clase</strong> — desde una clase guardada, «Dar clase» abre el modo pantalla completa con timer, para seguir la secuencia mientras la impartes.</p>
+    <p><strong>Respaldo</strong> — en Clases, «Respaldo» copia todas tus clases como texto. Guárdalo de vez en cuando: los datos viven solo en este navegador.</p>
+    <button type="button" class="dlg-close">Entendido</button>
+  </div>
+</dialog>
 
 <dialog id="credits">
   <div class="dlg-body">
