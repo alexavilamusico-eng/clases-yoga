@@ -182,6 +182,9 @@
       h.addEventListener("click", function () { abrirBuilder(JSON.parse(JSON.stringify(c))); });
       card.appendChild(h);
       var acc = el("div", "clase-acc");
+      var play = el("button", "mini play", "▶ Dar clase"); play.type = "button";
+      play.addEventListener("click", function () { abrirPlayer(c); });
+      acc.appendChild(play);
       var dup = el("button", "mini", "Duplicar"); dup.type = "button";
       dup.addEventListener("click", function () {
         var copy = JSON.parse(JSON.stringify(c));
@@ -508,6 +511,112 @@
   }
   function esc(s) { return (s || "").replace(/[&<>"]/g, function (m) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[m]; }); }
 
+  /* ---------- modo clase (slideshow con timer) ---------- */
+  var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null };
+
+  function imgForP(p) {
+    var ov = LS.get("img." + p.slug, null);
+    if (ov === "none") return null;
+    if (typeof ov === "number") return (window.SVGREPO_IMG && window.SVGREPO_IMG[ov]) || ("img/svgrepo/" + ov + ".svg");
+    return p.img || null;
+  }
+  function segundos(it) {
+    if (it.tipo === "texto") return (+it.min || 0) * 60;
+    var d = +it.dur || 0;
+    return it.durUnit === "min" ? d * 60 : d * 5;
+  }
+  function construirPasos(c) {
+    var pasos = [];
+    c.bloques.forEach(function (bl) {
+      bl.items.forEach(function (it) {
+        if (it.tipo === "texto") {
+          if ((it.texto || "").trim()) pasos.push({ tipo: "texto", texto: it.texto, bloque: bl.titulo, seg: segundos(it) });
+          return;
+        }
+        var p = bySlug[it.slug]; if (!p) return;
+        if (it.lado === "ambos") {
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: "Lado izquierdo", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: "Lado derecho", nota: it.nota, seg: segundos(it) });
+        } else {
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: it.lado === "izq" ? "Lado izquierdo" : it.lado === "der" ? "Lado derecho" : "", nota: it.nota, seg: segundos(it) });
+        }
+      });
+    });
+    return pasos;
+  }
+  function abrirPlayer(c) {
+    PL.pasos = construirPasos(c);
+    if (!PL.pasos.length) { alert("Esta clase todavía no tiene posturas ni textos."); return; }
+    PL.i = 0; PL.playing = false;
+    $("#player").hidden = false; document.body.style.overflow = "hidden";
+    $("#player .pl-auto-chk").checked = PL.auto;
+    if (navigator.wakeLock) navigator.wakeLock.request("screen").then(function (w) { PL.wake = w; }, function () {});
+    cargarPaso(0);
+  }
+  function cerrarPlayer() {
+    pausar();
+    if (PL.wake) { try { PL.wake.release(); } catch (e) {} PL.wake = null; }
+    $("#player").hidden = true; document.body.style.overflow = "";
+  }
+  function cargarPaso(i) {
+    PL.i = Math.max(0, Math.min(i, PL.pasos.length - 1));
+    PL.restante = PL.pasos[PL.i].seg || 0;
+    renderPaso();
+    actualizarTimer();
+    if (PL.playing) arrancar();
+  }
+  function renderPaso() {
+    var s = PL.pasos[PL.i], st = $("#player .pl-stage");
+    st.textContent = "";
+    if (s.tipo === "texto") {
+      var tx = el("div", "pl-texto", s.texto);
+      st.appendChild(tx);
+    } else {
+      var fig = el("div", "pl-figure");
+      var src = imgForP(s.p);
+      if (src) { var im = el("img"); im.src = src; im.alt = ""; fig.appendChild(im); }
+      else { fig.classList.add("ph"); fig.appendChild(el("span", "pl-ph-san", s.p.sanscrito)); }
+      st.appendChild(fig);
+      var txt = el("div", "pl-txt");
+      txt.appendChild(el("h2", "pl-name", s.p.nombre));
+      txt.appendChild(el("p", "pl-san", s.p.sanscrito + (s.lado ? "  ·  " + s.lado : "")));
+      if (s.nota) txt.appendChild(el("p", "pl-nota", s.nota));
+      if (s.p.entrada && s.p.entrada.length) {
+        var ul = el("ul", "pl-cues");
+        s.p.entrada.forEach(function (x) { ul.appendChild(el("li", null, x)); });
+        txt.appendChild(ul);
+      }
+      st.appendChild(txt);
+    }
+    var t = el("div", "pl-time"); t.id = "plTime";
+    st.appendChild(t);
+    $("#player .pl-pos").textContent = s.bloque + "  ·  " + (PL.i + 1) + " / " + PL.pasos.length;
+  }
+  function actualizarTimer() {
+    var s = PL.pasos[PL.i], t = document.getElementById("plTime");
+    if (t) {
+      t.classList.toggle("done", s.seg > 0 && PL.restante <= 0);
+      if (!s.seg) t.textContent = "";
+      else { var m = Math.floor(PL.restante / 60), sec = PL.restante % 60; t.textContent = m + ":" + (sec < 10 ? "0" : "") + sec; }
+    }
+    var bar = $("#player .pl-progress i");
+    if (bar) bar.style.width = (s.seg ? 100 * (1 - PL.restante / s.seg) : (PL.i + 1) / PL.pasos.length * 100) + "%";
+  }
+  function tick() {
+    if (PL.restante > 0) PL.restante--;
+    actualizarTimer();
+    if (PL.restante <= 0) {
+      clearInterval(PL.timer);
+      if (PL.auto && PL.i < PL.pasos.length - 1) setTimeout(function () { if (PL.playing) siguiente(); }, 1000);
+      else pausar();
+    }
+  }
+  function arrancar() { clearInterval(PL.timer); if (PL.pasos[PL.i].seg) PL.timer = setInterval(tick, 1000); }
+  function reproducir() { PL.playing = true; $("#player .pl-play").textContent = "⏸"; arrancar(); }
+  function pausar() { PL.playing = false; clearInterval(PL.timer); var b = $("#player .pl-play"); if (b) b.textContent = "▶"; }
+  function siguiente() { if (PL.i < PL.pasos.length - 1) cargarPaso(PL.i + 1); else pausar(); }
+  function anterior() { cargarPaso(PL.i - 1); }
+
   /* ---------- respaldo ---------- */
   function exportar() {
     var data = JSON.stringify({ app: "yoga-clases", v: 1, clases: loadClases() }, null, 1);
@@ -556,6 +665,23 @@
     bh.querySelector(".b-save").addEventListener("click", function () { guardar(false); });
     bh.querySelector(".b-save-exit").addEventListener("click", function () { guardar(true); });
     bh.querySelector(".b-plan").addEventListener("click", verPlan);
+    bh.querySelector(".b-play").addEventListener("click", function () { if (state.editando) abrirPlayer(state.editando); });
+
+    // controles del modo clase
+    var pl = $("#player");
+    pl.querySelector(".pl-prev").addEventListener("click", anterior);
+    pl.querySelector(".pl-next").addEventListener("click", siguiente);
+    pl.querySelector(".pl-play").addEventListener("click", function () { PL.playing ? pausar() : reproducir(); });
+    pl.querySelector(".pl-reset").addEventListener("click", function () { PL.restante = PL.pasos[PL.i].seg || 0; actualizarTimer(); });
+    pl.querySelector(".pl-exit").addEventListener("click", cerrarPlayer);
+    pl.querySelector(".pl-auto-chk").addEventListener("change", function (e) { PL.auto = e.target.checked; LS.set("plAuto", PL.auto); });
+    document.addEventListener("keydown", function (e) {
+      if ($("#player").hidden) return;
+      if (e.key === "ArrowLeft") anterior();
+      else if (e.key === "ArrowRight") siguiente();
+      else if (e.key === " ") { e.preventDefault(); PL.playing ? pausar() : reproducir(); }
+      else if (e.key === "Escape") cerrarPlayer();
+    });
 
     var v = "glosario";
     try { v = localStorage.getItem("glosario.view") || "glosario"; } catch (e) {}

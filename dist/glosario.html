@@ -323,6 +323,37 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-fecha-chip{background:var(--chip);color:var(--purple-deep);font-size:11px;font-weight:700;padding:4px 6px 4px 10px;border-radius:999px;display:inline-flex;gap:4px;align-items:center}
 .b-fecha-chip button{border:0;background:none;color:var(--purple);cursor:pointer;font-size:13px;line-height:1}
 
+/* ===== modo clase (slideshow) ===== */
+#player{position:fixed;inset:0;z-index:60;background:linear-gradient(180deg,var(--ground-2),var(--ground));display:flex;flex-direction:column;color:var(--ink)}
+.pl-stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:34px 24px 10px;text-align:center;overflow:auto}
+.pl-figure{width:min(46vh,320px);aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:28px;
+  background:radial-gradient(120% 92% at 32% 24%,#DCCFF0 0%,#BAA3DC 46%,#9EA4DF 74%,#8069B7 108%)}
+.pl-figure img{max-width:86%;max-height:86%;object-fit:contain;mix-blend-mode:multiply;filter:saturate(.8) contrast(1.03)}
+.pl-figure.ph{color:#fff}
+.pl-ph-san{font-family:"Fraunces",serif;font-style:italic;font-size:22px}
+.pl-txt{max-width:620px;display:flex;flex-direction:column;gap:6px;align-items:center}
+.pl-name{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(24px,5vw,36px);line-height:1.12;margin:0}
+.pl-san{font-family:"Fraunces",serif;font-style:italic;color:var(--purple);font-size:15px;margin:0}
+.pl-nota{font-size:14px;color:var(--ink-soft);margin:2px 0 0}
+.pl-cues{list-style:none;padding:0;margin:8px 0 0;max-width:520px;text-align:left;display:flex;flex-direction:column;gap:6px}
+.pl-cues li{font-size:15px;line-height:1.5;padding-left:16px;position:relative}
+.pl-cues li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:999px;background:var(--purple-pale)}
+.pl-texto{font-family:"Fraunces",serif;font-size:clamp(20px,4.5vw,30px);line-height:1.4;max-width:640px;white-space:pre-wrap}
+.pl-time{font-variant-numeric:tabular-nums;font-weight:700;font-size:clamp(30px,7vw,52px);color:var(--purple-deep);letter-spacing:.02em}
+.pl-time.done{color:#b06a2e}
+.pl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;padding:12px 20px 16px;border-top:1px solid var(--line)}
+.pl-pos{font-size:12px;color:var(--ink-soft);flex-basis:100%;text-align:center;order:-1}
+.pl-ctrls{display:flex;align-items:center;gap:8px}
+.pl-ctrls button{border:1px solid var(--line-strong);background:var(--card);color:var(--ink);border-radius:999px;cursor:pointer;font:inherit}
+.pl-prev,.pl-next,.pl-play{width:48px;height:48px;font-size:20px;line-height:1}
+.pl-play{background:var(--purple);color:#fff;border-color:var(--purple);width:58px;height:58px;font-size:22px}
+.pl-reset{width:40px;height:40px}
+.pl-ctrls button:focus-visible,.pl-exit:focus-visible,.pl-auto:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.pl-auto{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px;cursor:pointer}
+.pl-progress{height:4px;background:var(--line)}
+.pl-progress i{display:block;height:100%;background:var(--purple);width:0;transition:width .9s linear}
+@media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .card-inner{transition:opacity .2s}
@@ -412,12 +443,29 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
       <input type="text" class="b-nombre" placeholder="Nombre de la clase" aria-label="Nombre de la clase">
       <span class="b-total"></span>
       <span class="b-flash"></span>
+      <button type="button" class="b-play mini">▶ Dar clase</button>
       <button type="button" class="b-plan mini">Ver plan</button>
       <button type="button" class="b-save mini">Guardar</button>
       <button type="button" class="b-save-exit btn-primary">Guardar y volver</button>
     </div>
   </div>
   <div class="b-body wrap"></div>
+</div>
+
+<div id="player" hidden>
+  <div class="pl-stage"></div>
+  <div class="pl-bar">
+    <span class="pl-pos"></span>
+    <div class="pl-ctrls">
+      <button type="button" class="pl-prev" aria-label="Anterior">‹</button>
+      <button type="button" class="pl-play" aria-label="Reproducir / pausar">▶</button>
+      <button type="button" class="pl-next" aria-label="Siguiente">›</button>
+      <button type="button" class="pl-reset mini" aria-label="Reiniciar paso">⟳</button>
+    </div>
+    <label class="pl-auto"><input type="checkbox" class="pl-auto-chk"> avance automático</label>
+    <button type="button" class="pl-exit mini" aria-label="Salir">Salir ×</button>
+  </div>
+  <div class="pl-progress"><i></i></div>
 </div>
 
 <footer>
@@ -9681,6 +9729,9 @@ window.POSES = [
       h.addEventListener("click", function () { abrirBuilder(JSON.parse(JSON.stringify(c))); });
       card.appendChild(h);
       var acc = el("div", "clase-acc");
+      var play = el("button", "mini play", "▶ Dar clase"); play.type = "button";
+      play.addEventListener("click", function () { abrirPlayer(c); });
+      acc.appendChild(play);
       var dup = el("button", "mini", "Duplicar"); dup.type = "button";
       dup.addEventListener("click", function () {
         var copy = JSON.parse(JSON.stringify(c));
@@ -10007,6 +10058,112 @@ window.POSES = [
   }
   function esc(s) { return (s || "").replace(/[&<>"]/g, function (m) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[m]; }); }
 
+  /* ---------- modo clase (slideshow con timer) ---------- */
+  var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null };
+
+  function imgForP(p) {
+    var ov = LS.get("img." + p.slug, null);
+    if (ov === "none") return null;
+    if (typeof ov === "number") return (window.SVGREPO_IMG && window.SVGREPO_IMG[ov]) || ("img/svgrepo/" + ov + ".svg");
+    return p.img || null;
+  }
+  function segundos(it) {
+    if (it.tipo === "texto") return (+it.min || 0) * 60;
+    var d = +it.dur || 0;
+    return it.durUnit === "min" ? d * 60 : d * 5;
+  }
+  function construirPasos(c) {
+    var pasos = [];
+    c.bloques.forEach(function (bl) {
+      bl.items.forEach(function (it) {
+        if (it.tipo === "texto") {
+          if ((it.texto || "").trim()) pasos.push({ tipo: "texto", texto: it.texto, bloque: bl.titulo, seg: segundos(it) });
+          return;
+        }
+        var p = bySlug[it.slug]; if (!p) return;
+        if (it.lado === "ambos") {
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: "Lado izquierdo", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: "Lado derecho", nota: it.nota, seg: segundos(it) });
+        } else {
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: it.lado === "izq" ? "Lado izquierdo" : it.lado === "der" ? "Lado derecho" : "", nota: it.nota, seg: segundos(it) });
+        }
+      });
+    });
+    return pasos;
+  }
+  function abrirPlayer(c) {
+    PL.pasos = construirPasos(c);
+    if (!PL.pasos.length) { alert("Esta clase todavía no tiene posturas ni textos."); return; }
+    PL.i = 0; PL.playing = false;
+    $("#player").hidden = false; document.body.style.overflow = "hidden";
+    $("#player .pl-auto-chk").checked = PL.auto;
+    if (navigator.wakeLock) navigator.wakeLock.request("screen").then(function (w) { PL.wake = w; }, function () {});
+    cargarPaso(0);
+  }
+  function cerrarPlayer() {
+    pausar();
+    if (PL.wake) { try { PL.wake.release(); } catch (e) {} PL.wake = null; }
+    $("#player").hidden = true; document.body.style.overflow = "";
+  }
+  function cargarPaso(i) {
+    PL.i = Math.max(0, Math.min(i, PL.pasos.length - 1));
+    PL.restante = PL.pasos[PL.i].seg || 0;
+    renderPaso();
+    actualizarTimer();
+    if (PL.playing) arrancar();
+  }
+  function renderPaso() {
+    var s = PL.pasos[PL.i], st = $("#player .pl-stage");
+    st.textContent = "";
+    if (s.tipo === "texto") {
+      var tx = el("div", "pl-texto", s.texto);
+      st.appendChild(tx);
+    } else {
+      var fig = el("div", "pl-figure");
+      var src = imgForP(s.p);
+      if (src) { var im = el("img"); im.src = src; im.alt = ""; fig.appendChild(im); }
+      else { fig.classList.add("ph"); fig.appendChild(el("span", "pl-ph-san", s.p.sanscrito)); }
+      st.appendChild(fig);
+      var txt = el("div", "pl-txt");
+      txt.appendChild(el("h2", "pl-name", s.p.nombre));
+      txt.appendChild(el("p", "pl-san", s.p.sanscrito + (s.lado ? "  ·  " + s.lado : "")));
+      if (s.nota) txt.appendChild(el("p", "pl-nota", s.nota));
+      if (s.p.entrada && s.p.entrada.length) {
+        var ul = el("ul", "pl-cues");
+        s.p.entrada.forEach(function (x) { ul.appendChild(el("li", null, x)); });
+        txt.appendChild(ul);
+      }
+      st.appendChild(txt);
+    }
+    var t = el("div", "pl-time"); t.id = "plTime";
+    st.appendChild(t);
+    $("#player .pl-pos").textContent = s.bloque + "  ·  " + (PL.i + 1) + " / " + PL.pasos.length;
+  }
+  function actualizarTimer() {
+    var s = PL.pasos[PL.i], t = document.getElementById("plTime");
+    if (t) {
+      t.classList.toggle("done", s.seg > 0 && PL.restante <= 0);
+      if (!s.seg) t.textContent = "";
+      else { var m = Math.floor(PL.restante / 60), sec = PL.restante % 60; t.textContent = m + ":" + (sec < 10 ? "0" : "") + sec; }
+    }
+    var bar = $("#player .pl-progress i");
+    if (bar) bar.style.width = (s.seg ? 100 * (1 - PL.restante / s.seg) : (PL.i + 1) / PL.pasos.length * 100) + "%";
+  }
+  function tick() {
+    if (PL.restante > 0) PL.restante--;
+    actualizarTimer();
+    if (PL.restante <= 0) {
+      clearInterval(PL.timer);
+      if (PL.auto && PL.i < PL.pasos.length - 1) setTimeout(function () { if (PL.playing) siguiente(); }, 1000);
+      else pausar();
+    }
+  }
+  function arrancar() { clearInterval(PL.timer); if (PL.pasos[PL.i].seg) PL.timer = setInterval(tick, 1000); }
+  function reproducir() { PL.playing = true; $("#player .pl-play").textContent = "⏸"; arrancar(); }
+  function pausar() { PL.playing = false; clearInterval(PL.timer); var b = $("#player .pl-play"); if (b) b.textContent = "▶"; }
+  function siguiente() { if (PL.i < PL.pasos.length - 1) cargarPaso(PL.i + 1); else pausar(); }
+  function anterior() { cargarPaso(PL.i - 1); }
+
   /* ---------- respaldo ---------- */
   function exportar() {
     var data = JSON.stringify({ app: "yoga-clases", v: 1, clases: loadClases() }, null, 1);
@@ -10055,6 +10212,23 @@ window.POSES = [
     bh.querySelector(".b-save").addEventListener("click", function () { guardar(false); });
     bh.querySelector(".b-save-exit").addEventListener("click", function () { guardar(true); });
     bh.querySelector(".b-plan").addEventListener("click", verPlan);
+    bh.querySelector(".b-play").addEventListener("click", function () { if (state.editando) abrirPlayer(state.editando); });
+
+    // controles del modo clase
+    var pl = $("#player");
+    pl.querySelector(".pl-prev").addEventListener("click", anterior);
+    pl.querySelector(".pl-next").addEventListener("click", siguiente);
+    pl.querySelector(".pl-play").addEventListener("click", function () { PL.playing ? pausar() : reproducir(); });
+    pl.querySelector(".pl-reset").addEventListener("click", function () { PL.restante = PL.pasos[PL.i].seg || 0; actualizarTimer(); });
+    pl.querySelector(".pl-exit").addEventListener("click", cerrarPlayer);
+    pl.querySelector(".pl-auto-chk").addEventListener("change", function (e) { PL.auto = e.target.checked; LS.set("plAuto", PL.auto); });
+    document.addEventListener("keydown", function (e) {
+      if ($("#player").hidden) return;
+      if (e.key === "ArrowLeft") anterior();
+      else if (e.key === "ArrowRight") siguiente();
+      else if (e.key === " ") { e.preventDefault(); PL.playing ? pausar() : reproducir(); }
+      else if (e.key === "Escape") cerrarPlayer();
+    });
 
     var v = "glosario";
     try { v = localStorage.getItem("glosario.view") || "glosario"; } catch (e) {}

@@ -316,6 +316,37 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-fecha-chip{background:var(--chip);color:var(--purple-deep);font-size:11px;font-weight:700;padding:4px 6px 4px 10px;border-radius:999px;display:inline-flex;gap:4px;align-items:center}
 .b-fecha-chip button{border:0;background:none;color:var(--purple);cursor:pointer;font-size:13px;line-height:1}
 
+/* ===== modo clase (slideshow) ===== */
+#player{position:fixed;inset:0;z-index:60;background:linear-gradient(180deg,var(--ground-2),var(--ground));display:flex;flex-direction:column;color:var(--ink)}
+.pl-stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:34px 24px 10px;text-align:center;overflow:auto}
+.pl-figure{width:min(46vh,320px);aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:28px;
+  background:radial-gradient(120% 92% at 32% 24%,#DCCFF0 0%,#BAA3DC 46%,#9EA4DF 74%,#8069B7 108%)}
+.pl-figure img{max-width:86%;max-height:86%;object-fit:contain;mix-blend-mode:multiply;filter:saturate(.8) contrast(1.03)}
+.pl-figure.ph{color:#fff}
+.pl-ph-san{font-family:"Fraunces",serif;font-style:italic;font-size:22px}
+.pl-txt{max-width:620px;display:flex;flex-direction:column;gap:6px;align-items:center}
+.pl-name{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(24px,5vw,36px);line-height:1.12;margin:0}
+.pl-san{font-family:"Fraunces",serif;font-style:italic;color:var(--purple);font-size:15px;margin:0}
+.pl-nota{font-size:14px;color:var(--ink-soft);margin:2px 0 0}
+.pl-cues{list-style:none;padding:0;margin:8px 0 0;max-width:520px;text-align:left;display:flex;flex-direction:column;gap:6px}
+.pl-cues li{font-size:15px;line-height:1.5;padding-left:16px;position:relative}
+.pl-cues li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:999px;background:var(--purple-pale)}
+.pl-texto{font-family:"Fraunces",serif;font-size:clamp(20px,4.5vw,30px);line-height:1.4;max-width:640px;white-space:pre-wrap}
+.pl-time{font-variant-numeric:tabular-nums;font-weight:700;font-size:clamp(30px,7vw,52px);color:var(--purple-deep);letter-spacing:.02em}
+.pl-time.done{color:#b06a2e}
+.pl-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:14px;padding:12px 20px 16px;border-top:1px solid var(--line)}
+.pl-pos{font-size:12px;color:var(--ink-soft);flex-basis:100%;text-align:center;order:-1}
+.pl-ctrls{display:flex;align-items:center;gap:8px}
+.pl-ctrls button{border:1px solid var(--line-strong);background:var(--card);color:var(--ink);border-radius:999px;cursor:pointer;font:inherit}
+.pl-prev,.pl-next,.pl-play{width:48px;height:48px;font-size:20px;line-height:1}
+.pl-play{background:var(--purple);color:#fff;border-color:var(--purple);width:58px;height:58px;font-size:22px}
+.pl-reset{width:40px;height:40px}
+.pl-ctrls button:focus-visible,.pl-exit:focus-visible,.pl-auto:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.pl-auto{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px;cursor:pointer}
+.pl-progress{height:4px;background:var(--line)}
+.pl-progress i{display:block;height:100%;background:var(--purple);width:0;transition:width .9s linear}
+@media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}}
+
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .card-inner{transition:opacity .2s}

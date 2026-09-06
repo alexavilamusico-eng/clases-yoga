@@ -88,12 +88,29 @@
       <input type="text" class="b-nombre" placeholder="Nombre de la clase" aria-label="Nombre de la clase">
       <span class="b-total"></span>
       <span class="b-flash"></span>
+      <button type="button" class="b-play mini">▶ Dar clase</button>
       <button type="button" class="b-plan mini">Ver plan</button>
       <button type="button" class="b-save mini">Guardar</button>
       <button type="button" class="b-save-exit btn-primary">Guardar y volver</button>
     </div>
   </div>
   <div class="b-body wrap"></div>
+</div>
+
+<div id="player" hidden>
+  <div class="pl-stage"></div>
+  <div class="pl-bar">
+    <span class="pl-pos"></span>
+    <div class="pl-ctrls">
+      <button type="button" class="pl-prev" aria-label="Anterior">‹</button>
+      <button type="button" class="pl-play" aria-label="Reproducir / pausar">▶</button>
+      <button type="button" class="pl-next" aria-label="Siguiente">›</button>
+      <button type="button" class="pl-reset mini" aria-label="Reiniciar paso">⟳</button>
+    </div>
+    <label class="pl-auto"><input type="checkbox" class="pl-auto-chk"> avance automático</label>
+    <button type="button" class="pl-exit mini" aria-label="Salir">Salir ×</button>
+  </div>
+  <div class="pl-progress"><i></i></div>
 </div>
 
 <footer>
