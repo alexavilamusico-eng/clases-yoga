@@ -415,13 +415,16 @@
   /* ---------- respaldo ---------- */
   function exportar() {
     var data = JSON.stringify({ app: "yoga-clases", v: 1, clases: loadClases() }, null, 1);
+    var dl = false;
     try {
       var a = document.createElement("a");
       a.href = "data:application/json;charset=utf-8," + encodeURIComponent(data);
       a.download = "clases-yoga-" + nowISO().slice(0, 10) + ".json";
-      a.click();
+      a.click(); dl = true;
     } catch (e) {}
-    if (navigator.clipboard) navigator.clipboard.writeText(data).then(function () { alert("Respaldo copiado al portapapeles (y descargado si tu navegador lo permite)."); }, function () {});
+    function done() { alert("Respaldo copiado al portapapeles" + (dl ? " y descargado" : "") + ".\nGuárdalo pegándolo en una nota o archivo de texto; sirve para restaurar tus clases o pasarlas a otro dispositivo."); }
+    if (navigator.clipboard) navigator.clipboard.writeText(data).then(done, function () { window.prompt("Copia este respaldo y guárdalo:", data); });
+    else window.prompt("Copia este respaldo y guárdalo:", data);
   }
   function importar() {
     var txt = prompt("Pega aquí el contenido del archivo de respaldo:");
