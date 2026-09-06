@@ -33,13 +33,30 @@ Referencia de producto: Tummee.
   si el cambio es visible, probarlo en el navegador.
 
 ## Estado / pendientes
-- Fase A: glosario con 198 posturas. 41 con dibujo por defecto (SVG Repo); el resto placeholder.
+- Fase A: glosario con 198 posturas. 24 con dibujo por defecto (SVG Repo, 13 verificados por
+  emparejamiento de paths contra yoga-api); el resto placeholder.
   Selector "Cambiar dibujo" en cada tarjeta (64 dibujos disponibles, elección en localStorage).
   Nombres verificados contra Wikipedia (`node _pipeline/verify-names.mjs`): 0 inventados.
 - Fase B: constructor de clases + banco (`assets/clases.js`). Pestañas Glosario / Clases.
-  - Clase = { nombre, estilo, objetivo(min), semilla{tipo,valor}, bloques[{titulo,items[]}], notas, fechas[] }.
+  - Clase = { nombre, estilo, objetivo(min), semilla{tipo,valor}, bloques[{titulo,objetivo(min),items[]}], notas, fechas[] }.
   - item postura = { slug, lado, dur, durUnit(resp|min), nota };  item texto = { texto, min }.
   - Todo en `localStorage['glosario.clases']`. Respaldo = export/import JSON.
   - "Sugerir" por bloque: puntúa POSES por la semilla + rol del bloque. "Ver plan" abre ventana imprimible.
-- Pendiente Fase B: reordenar por arrastre (hoy con flechas ↑↓), slideshow con timer, PDF nativo,
-  más precisión en el mapa de dibujos, revisar las ~120 fichas breves.
+  - Reordenar: arrastre desde el grip (escritorio) + flechas ↑↓ (el arrastre HTML5 no va en móvil).
+  - El bloque "Cierre · Savasana" nace con Savasana ya puesta.
+
+## Accesibilidad — no negociable
+Andrea tiene autismo: **demasiada información en pantalla la abruma**. Todo lo secundario va plegado.
+- Fila de postura: solo nombre + un chip con la duración. Lado / unidad / nota / ↑↓ se abren al tocarla.
+- Cabecera de bloque: título + tiempo + ↑↓; duplicar, plantilla y borrar detrás de `···`.
+- Filtros del glosario y los detalles de cada ficha, igual: plegados por defecto.
+Al agregar algo al constructor, la pregunta es "¿esto tiene que verse siempre?". Casi nunca.
+
+## Modo clase (dos modos, se elige al tocar "Dar clase")
+- **Tranquilo** (por defecto): sin cronómetro, sin barra de avance. La pantalla entera avanza al tocarla;
+  el 22% izquierdo regresa. Dos taps en <420 ms cuentan como uno (doble tap accidental). Muestra la
+  hora del día, no una cuenta atrás. Es el que usa dando clase con gente enfrente.
+- **Con tiempos**: cronómetro por postura y avance automático opcional.
+
+- Pendiente: PDF nativo, más precisión en el mapa de dibujos, revisar las ~120 fichas breves,
+  sincronizar entre dispositivos (hoy solo respaldo manual por portapapeles).

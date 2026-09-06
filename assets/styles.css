@@ -288,10 +288,23 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-insert button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .b-item{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
 .b-item.txt{background:var(--card-2)}
-.b-item-info{flex:1;min-width:120px;display:flex;flex-direction:column}
+.b-item.open{background:var(--card-2)}
+.b-item-info{flex:1;min-width:120px;display:flex;flex-direction:column;cursor:pointer}
 .b-item-name{font-size:13.5px;font-weight:700}
 .b-item-san{font-family:"Fraunces",serif;font-style:italic;font-size:11px;color:var(--purple)}
 .b-item-txt{flex:1;min-width:180px;min-height:38px;resize:vertical}
+/* la fila plegada: solo nombre + duración. Todo lo demás vive en .b-item-det */
+.b-item-chip{flex:none;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);font:inherit;
+  font-size:12px;font-weight:700;white-space:nowrap;border-radius:999px;padding:6px 12px;cursor:pointer}
+.b-item-chip:hover{border-color:var(--purple);color:var(--purple-deep)}
+.b-item-chip:focus-visible,.b-mas:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.b-item.open .b-item-chip{background:var(--purple);border-color:var(--purple);color:#fff}
+.b-item-notachip{flex:none;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:11.5px;color:var(--ink-soft);font-style:italic}
+.b-item-det{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0 2px}
+.b-mas{width:26px;height:26px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
+  border-radius:7px;cursor:pointer;font:inherit;font-size:12px;line-height:1}
+.b-extra{display:inline-flex;gap:2px}
 .b-dur{width:56px;text-align:center}
 .b-min{width:48px;text-align:center}
 .b-nota{width:130px;flex:1;min-width:90px}
@@ -363,6 +376,33 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .pl-auto{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px;cursor:pointer}
 .pl-progress{height:4px;background:var(--line)}
 .pl-progress i{display:block;height:100%;background:var(--purple);width:0;transition:width .9s linear}
+
+/* ---- modo tranquilo: sin reloj de cuenta atrás; la pantalla entera avanza ---- */
+.pl-atras,.pl-reloj{display:none}
+#player.modo-calma .pl-ctrls,#player.modo-calma .pl-auto,#player.modo-calma .pl-progress{display:none}
+#player.modo-calma .pl-atras,#player.modo-calma .pl-reloj{display:inline-flex;align-items:center}
+#player.modo-calma .pl-stage{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;position:relative;padding-bottom:24px}
+/* pista de la franja de la izquierda: ahí se regresa */
+#player.modo-calma .pl-stage::before{content:"‹";position:absolute;left:0;top:0;bottom:0;width:22%;
+  display:flex;align-items:center;padding-left:10px;font-size:34px;color:var(--ink-soft);opacity:.3;pointer-events:none}
+#player.modo-calma .pl-name{font-size:clamp(28px,6.5vw,44px)}
+#player.modo-calma .pl-cues li{font-size:16px}
+.pl-atras{border:1px solid var(--line-strong);background:var(--card);color:var(--ink);font:inherit;font-weight:700;
+  border-radius:999px;padding:12px 22px;cursor:pointer}
+.pl-atras:disabled{opacity:.35;cursor:default}
+.pl-atras:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.pl-reloj{font-variant-numeric:tabular-nums;font-size:13px;color:var(--ink-soft)}
+
+/* elegir el modo antes de empezar */
+.md-body{display:flex;flex-direction:column;gap:12px;max-width:420px}
+.md-op{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid var(--line-strong);background:var(--card);
+  color:var(--ink);font:inherit;border-radius:16px;padding:16px 18px;cursor:pointer}
+.md-op b{font-size:17px}
+.md-op span{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.md-op:hover{border-color:var(--purple)}
+.md-op.sel{border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple)}
+.md-op:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.md-cancel{align-self:center;border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:13px;padding:8px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
   .b-insert button,.b-insert::before{transition:none}
   .b-insert button:hover,.b-insert button:focus-visible{transform:none}}

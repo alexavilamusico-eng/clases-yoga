@@ -295,10 +295,23 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-insert button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .b-item{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
 .b-item.txt{background:var(--card-2)}
-.b-item-info{flex:1;min-width:120px;display:flex;flex-direction:column}
+.b-item.open{background:var(--card-2)}
+.b-item-info{flex:1;min-width:120px;display:flex;flex-direction:column;cursor:pointer}
 .b-item-name{font-size:13.5px;font-weight:700}
 .b-item-san{font-family:"Fraunces",serif;font-style:italic;font-size:11px;color:var(--purple)}
 .b-item-txt{flex:1;min-width:180px;min-height:38px;resize:vertical}
+/* la fila plegada: solo nombre + duración. Todo lo demás vive en .b-item-det */
+.b-item-chip{flex:none;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);font:inherit;
+  font-size:12px;font-weight:700;white-space:nowrap;border-radius:999px;padding:6px 12px;cursor:pointer}
+.b-item-chip:hover{border-color:var(--purple);color:var(--purple-deep)}
+.b-item-chip:focus-visible,.b-mas:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.b-item.open .b-item-chip{background:var(--purple);border-color:var(--purple);color:#fff}
+.b-item-notachip{flex:none;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  font-size:11.5px;color:var(--ink-soft);font-style:italic}
+.b-item-det{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0 2px}
+.b-mas{width:26px;height:26px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
+  border-radius:7px;cursor:pointer;font:inherit;font-size:12px;line-height:1}
+.b-extra{display:inline-flex;gap:2px}
 .b-dur{width:56px;text-align:center}
 .b-min{width:48px;text-align:center}
 .b-nota{width:130px;flex:1;min-width:90px}
@@ -370,6 +383,33 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .pl-auto{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px;cursor:pointer}
 .pl-progress{height:4px;background:var(--line)}
 .pl-progress i{display:block;height:100%;background:var(--purple);width:0;transition:width .9s linear}
+
+/* ---- modo tranquilo: sin reloj de cuenta atrás; la pantalla entera avanza ---- */
+.pl-atras,.pl-reloj{display:none}
+#player.modo-calma .pl-ctrls,#player.modo-calma .pl-auto,#player.modo-calma .pl-progress{display:none}
+#player.modo-calma .pl-atras,#player.modo-calma .pl-reloj{display:inline-flex;align-items:center}
+#player.modo-calma .pl-stage{cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent;position:relative;padding-bottom:24px}
+/* pista de la franja de la izquierda: ahí se regresa */
+#player.modo-calma .pl-stage::before{content:"‹";position:absolute;left:0;top:0;bottom:0;width:22%;
+  display:flex;align-items:center;padding-left:10px;font-size:34px;color:var(--ink-soft);opacity:.3;pointer-events:none}
+#player.modo-calma .pl-name{font-size:clamp(28px,6.5vw,44px)}
+#player.modo-calma .pl-cues li{font-size:16px}
+.pl-atras{border:1px solid var(--line-strong);background:var(--card);color:var(--ink);font:inherit;font-weight:700;
+  border-radius:999px;padding:12px 22px;cursor:pointer}
+.pl-atras:disabled{opacity:.35;cursor:default}
+.pl-atras:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.pl-reloj{font-variant-numeric:tabular-nums;font-size:13px;color:var(--ink-soft)}
+
+/* elegir el modo antes de empezar */
+.md-body{display:flex;flex-direction:column;gap:12px;max-width:420px}
+.md-op{display:flex;flex-direction:column;gap:4px;text-align:left;border:1px solid var(--line-strong);background:var(--card);
+  color:var(--ink);font:inherit;border-radius:16px;padding:16px 18px;cursor:pointer}
+.md-op b{font-size:17px}
+.md-op span{font-size:13px;color:var(--ink-soft);line-height:1.45}
+.md-op:hover{border-color:var(--purple)}
+.md-op.sel{border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple)}
+.md-op:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.md-cancel{align-self:center;border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:13px;padding:8px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
   .b-insert button,.b-insert::before{transition:none}
   .b-insert button:hover,.b-insert button:focus-visible{transform:none}}
@@ -476,6 +516,7 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
   <div class="pl-stage"></div>
   <div class="pl-bar">
     <span class="pl-pos"></span>
+    <button type="button" class="pl-atras">‹ Atrás</button>
     <div class="pl-ctrls">
       <button type="button" class="pl-prev" aria-label="Anterior">‹</button>
       <button type="button" class="pl-play" aria-label="Reproducir / pausar">▶</button>
@@ -483,10 +524,26 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
       <button type="button" class="pl-reset mini" aria-label="Reiniciar paso">⟳</button>
     </div>
     <label class="pl-auto"><input type="checkbox" class="pl-auto-chk"> avance automático</label>
+    <span class="pl-reloj" aria-label="Hora"></span>
     <button type="button" class="pl-exit mini" aria-label="Salir">Salir ×</button>
   </div>
   <div class="pl-progress"><i></i></div>
 </div>
+
+<dialog id="modoClase">
+  <div class="dlg-body md-body">
+    <h2>¿Cómo quieres darla?</h2>
+    <button type="button" class="md-op" data-modo="calma">
+      <b>Tranquilo</b>
+      <span>Tú avanzas cuando quieras. Sin reloj ni cuenta atrás. Tocas la pantalla para pasar a la siguiente.</span>
+    </button>
+    <button type="button" class="md-op" data-modo="tiempos">
+      <b>Con tiempos</b>
+      <span>Cada postura con su cronómetro, como estaba. Puede avanzar sola al terminar.</span>
+    </button>
+    <button type="button" class="md-cancel">Cancelar</button>
+  </div>
+</dialog>
 
 <footer>
   <div class="wrap">
@@ -9585,7 +9642,8 @@ window.POSES = [
   function nowISO() { return new Date().toISOString(); }
   function fechaCorta(iso) { try { return new Date(iso).toLocaleDateString("es", { day: "numeric", month: "short", year: "numeric" }); } catch (e) { return ""; } }
 
-  var BLOQUES_DEF = ["Llegada · centramiento", "Calentamiento", "Desarrollo", "Enfriamiento", "Cierre · Savasana"];
+  var CIERRE = "Cierre · Savasana";
+  var BLOQUES_DEF = ["Llegada · centramiento", "Calentamiento", "Desarrollo", "Enfriamiento", CIERRE];
   var ESTILOS = ["", "Hatha", "Vinyasa", "Hatha-Vinyasa", "Ashtanga", "Yin", "Restaurativo", "Suave / terapéutico"];
   var SEMILLA_TIPOS = { "": "—", tema: "Tema", zona: "Parte del cuerpo", dinamica: "Dinámica de movimiento" };
 
@@ -9623,7 +9681,14 @@ window.POSES = [
     return {
       id: uid("c"), nombre: "", estilo: "", objetivo: 60,
       semilla: { tipo: "", valor: "" },
-      bloques: BLOQUES_DEF.map(function (t) { return { id: uid("b"), titulo: t, objetivo: 0, items: [] }; }),
+      // el cierre ya viene con Savasana puesta: ese bloque siempre es Savasana,
+      // no tiene caso que Andrea la agregue a mano en cada clase.
+      bloques: BLOQUES_DEF.map(function (t) {
+        var items = t === CIERRE && bySlug["savasana"]
+          ? [{ tipo: "postura", slug: "savasana", lado: "", dur: 5, durUnit: "min", nota: "" }]
+          : [];
+        return { id: uid("b"), titulo: t, objetivo: 0, items: items };
+      }),
       notas: "", fechas: [], creada: nowISO(), modificada: nowISO()
     };
   }
@@ -9791,7 +9856,7 @@ window.POSES = [
       card.appendChild(h);
       var acc = el("div", "clase-acc");
       var play = el("button", "mini play", "▶ Dar clase"); play.type = "button";
-      play.addEventListener("click", function () { abrirPlayer(c); });
+      play.addEventListener("click", function () { elegirModo(c); });
       acc.appendChild(play);
       var dup = el("button", "mini", "Duplicar"); dup.type = "button";
       dup.addEventListener("click", function () {
@@ -9978,6 +10043,7 @@ window.POSES = [
     tiempo.appendChild(objIn);
     tiempo.appendChild(el("span", "b-bloque-unit", "min"));
     pintaMin();
+    box._pintaMin = pintaMin;
     bh.appendChild(tiempo);
     var ctl = el("div", "b-move");
     var up = el("button", null, "↑"); up.type = "button"; up.title = "Subir"; up.addEventListener("click", function () { swap(c.bloques, bi, bi - 1); renderBuilder(); });
@@ -9993,7 +10059,17 @@ window.POSES = [
     });
     var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar bloque";
     del.addEventListener("click", function () { if (confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) { c.bloques.splice(bi, 1); renderBuilder(); } });
-    [up, dn, dup, tpl, del].forEach(function (b) { ctl.appendChild(b); });
+    // duplicar / plantilla / borrar viven detrás de "···": son de uso raro y
+    // tener cinco botones en cada bloque llenaba la pantalla de golpe
+    var mas = el("button", "b-mas", "···"); mas.type = "button"; mas.title = "Más opciones";
+    mas.setAttribute("aria-expanded", "false");
+    var extra = el("span", "b-extra"); extra.hidden = true;
+    [dup, tpl, del].forEach(function (b) { extra.appendChild(b); });
+    mas.addEventListener("click", function () {
+      extra.hidden = !extra.hidden;
+      mas.setAttribute("aria-expanded", extra.hidden ? "false" : "true");
+    });
+    [up, dn, mas, extra].forEach(function (b) { ctl.appendChild(b); });
     bh.appendChild(ctl);
     box.appendChild(bh);
     hookDrag(box, grip, { type: "block", bi: bi });
@@ -10013,42 +10089,91 @@ window.POSES = [
     return box;
   }
 
+  // Resumen corto de un item, lo único que se ve cuando está plegado.
+  function resumenItem(it) {
+    if (it.tipo === "texto") return (+it.min ? it.min + " min" : "texto");
+    var u = it.durUnit === "min" ? "min" : "resp";
+    var lado = it.lado === "ambos" ? " ×2" : it.lado === "izq" ? " izq" : it.lado === "der" ? " der" : "";
+    return (+it.dur || 0) + " " + u + lado;
+  }
+
+  // Qué items están abiertos ahora mismo (por bloque+posición). No se guarda:
+  // al volver a entrar todo está plegado, que es como Andrea quiere verlo.
+  var abiertos = {};
+  function claveItem(bi, ii) { return bi + ":" + ii; }
+
   function itemEl(c, bl, it, ii, bi) {
     var row = el("div", "b-item" + (it.tipo === "texto" ? " txt" : ""));
+    var abierto = !!abiertos[claveItem(bi, ii)];
+    if (abierto) row.classList.add("open");
     var grip = el("span", "b-grip", "⠿"); grip.title = "Arrastra para reordenar";
     row.appendChild(grip);
     hookDrag(row, grip, { type: "item", bi: bi, ii: ii });
     hookDropItem(c, row, bi, ii);
+
+    // ---- línea de resumen: nombre + duración + abrir/cerrar + quitar ----
+    var chip = el("button", "b-item-chip", resumenItem(it));
+    chip.type = "button";
+    chip.title = "Abrir los detalles";
+    var det = el("div", "b-item-det");
+    det.hidden = !abierto;
+    function alterna() {
+      var v = det.hidden;
+      det.hidden = !v;
+      row.classList.toggle("open", v);
+      abiertos[claveItem(bi, ii)] = v;
+      chip.setAttribute("aria-expanded", v ? "true" : "false");
+    }
+    chip.setAttribute("aria-expanded", abierto ? "true" : "false");
+    chip.addEventListener("click", alterna);
+
     if (it.tipo === "texto") {
       var ta = el("textarea", "b-item-txt");
       ta.placeholder = "Lectura, pranayama, intención, indicación de transición…";
       ta.value = it.texto;
       ta.addEventListener("input", function () { it.texto = ta.value; });
       row.appendChild(ta);
+      row.appendChild(chip);
       var mn = el("input", "b-min"); mn.type = "number"; mn.min = "0"; mn.step = "1"; mn.value = it.min || 0; mn.title = "minutos";
-      mn.addEventListener("input", function () { it.min = +mn.value || 0; renderBuilder(); });
-      row.appendChild(wrapLabel("min", mn));
+      mn.addEventListener("input", function () { it.min = +mn.value || 0; chip.textContent = resumenItem(it); pintaCabecera(); });
+      det.appendChild(wrapLabel("min", mn));
     } else {
       var p = bySlug[it.slug];
       var info = el("div", "b-item-info");
       info.appendChild(el("span", "b-item-name", p ? p.nombre : it.slug));
       if (p) info.appendChild(el("span", "b-item-san", p.sanscrito));
+      // tocar el nombre también abre el detalle: blanco grande, fácil de atinar
+      info.addEventListener("click", alterna);
       row.appendChild(info);
-      row.appendChild(segEl(["", "izq", "der", "ambos"], it.lado || "", ["—", "Izq", "Der", "Ambos"], function (v) { it.lado = v; renderBuilder(); }));
+      if (it.nota) row.appendChild(el("span", "b-item-notachip", it.nota));
+      row.appendChild(chip);
+
+      det.appendChild(segEl(["", "izq", "der", "ambos"], it.lado || "", ["—", "Izq", "Der", "Ambos"], function (v) {
+        it.lado = v; chip.textContent = resumenItem(it); pintaCabecera(); pintaMinDe(row);
+      }));
       var dur = el("input", "b-dur"); dur.type = "number"; dur.min = "0"; dur.step = "1"; dur.value = it.dur || 0;
-      dur.addEventListener("input", function () { it.dur = +dur.value || 0; renderBuilder(); });
-      row.appendChild(dur);
-      row.appendChild(segEl(["resp", "min"], it.durUnit || "resp", ["resp", "min"], function (v) { it.durUnit = v; renderBuilder(); }));
+      dur.addEventListener("input", function () { it.dur = +dur.value || 0; chip.textContent = resumenItem(it); pintaCabecera(); pintaMinDe(row); });
+      det.appendChild(dur);
+      det.appendChild(segEl(["resp", "min"], it.durUnit || "resp", ["resp", "min"], function (v) {
+        it.durUnit = v; chip.textContent = resumenItem(it); pintaCabecera(); pintaMinDe(row);
+      }));
       var nota = el("input", "b-nota"); nota.placeholder = "nota…"; nota.value = it.nota || "";
       nota.addEventListener("input", function () { it.nota = nota.value; });
-      row.appendChild(nota);
+      det.appendChild(nota);
     }
-    row.appendChild(moveBtns(
+    det.appendChild(moveBtns(
       function () { swap(bl.items, ii, ii - 1); renderBuilder(); },
       function () { swap(bl.items, ii, ii + 1); renderBuilder(); },
-      function () { bl.items.splice(ii, 1); renderBuilder(); }
+      function () { bl.items.splice(ii, 1); delete abiertos[claveItem(bi, ii)]; renderBuilder(); }
     ));
+    row.appendChild(det);
     return row;
+  }
+
+  // repinta el "~X" del bloque que contiene esta fila, sin re-renderizar nada
+  function pintaMinDe(row) {
+    var box = row.closest && row.closest(".b-bloque");
+    if (box && box._pintaMin) box._pintaMin();
   }
 
   /* ---------- picker de posturas ---------- */
@@ -10121,7 +10246,12 @@ window.POSES = [
     vals.forEach(function (v, i) {
       var b = el("button", null, labels[i]); b.type = "button";
       b.setAttribute("aria-pressed", v === cur ? "true" : "false");
-      b.addEventListener("click", function () { onChange(v); });
+      // se pinta a sí mismo: ya nadie re-renderiza el constructor al tocarlo
+      b.addEventListener("click", function () {
+        w.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        onChange(v);
+      });
       w.appendChild(b);
     });
     return w;
@@ -10172,7 +10302,8 @@ window.POSES = [
   function esc(s) { return (s || "").replace(/[&<>"]/g, function (m) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[m]; }); }
 
   /* ---------- modo clase (slideshow con timer) ---------- */
-  var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null };
+  var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null,
+    modo: LS.get("plModo", "calma"), reloj: null, ultimoTap: 0 };
 
   function imgForP(p) {
     var ov = LS.get("img." + p.slug, null);
@@ -10205,19 +10336,55 @@ window.POSES = [
     });
     return pasos;
   }
-  function abrirPlayer(c) {
+  // Antes de dar la clase se elige el modo. Se recuerda el último elegido.
+  function elegirModo(c) {
+    if (!construirPasos(c).length) { alert("Esta clase todavía no tiene posturas ni textos."); return; }
+    var dlg = $("#modoClase");
+    if (!dlg || !dlg.showModal) { abrirPlayer(c, PL.modo); return; }
+    dlg.querySelectorAll(".md-op").forEach(function (b) {
+      b.classList.toggle("sel", b.dataset.modo === PL.modo);
+      b.onclick = function () { dlg.close(); abrirPlayer(c, b.dataset.modo); };
+    });
+    dlg.querySelector(".md-cancel").onclick = function () { dlg.close(); };
+    dlg.showModal();
+  }
+
+  function abrirPlayer(c, modo) {
     PL.pasos = construirPasos(c);
     if (!PL.pasos.length) { alert("Esta clase todavía no tiene posturas ni textos."); return; }
-    PL.i = 0; PL.playing = false;
-    $("#player").hidden = false; document.body.style.overflow = "hidden";
-    $("#player .pl-auto-chk").checked = PL.auto;
+    PL.modo = modo === "tiempos" ? "tiempos" : "calma";
+    LS.set("plModo", PL.modo);
+    PL.i = 0; PL.playing = false; PL.ultimoTap = 0;
+    var pl = $("#player");
+    pl.classList.toggle("modo-calma", PL.modo === "calma");
+    pl.hidden = false; document.body.style.overflow = "hidden";
+    pl.querySelector(".pl-auto-chk").checked = PL.auto;
+    if (PL.modo === "calma") { pintaReloj(); PL.reloj = setInterval(pintaReloj, 15000); }
     if (navigator.wakeLock) navigator.wakeLock.request("screen").then(function (w) { PL.wake = w; }, function () {});
     cargarPaso(0);
   }
+  function pintaReloj() {
+    var r = $("#player .pl-reloj"); if (!r) return;
+    var d = new Date(), h = d.getHours(), m = d.getMinutes();
+    r.textContent = h + ":" + (m < 10 ? "0" : "") + m;
+  }
   function cerrarPlayer() {
     pausar();
+    clearInterval(PL.reloj); PL.reloj = null;
     if (PL.wake) { try { PL.wake.release(); } catch (e) {} PL.wake = null; }
     $("#player").hidden = true; document.body.style.overflow = "";
+  }
+
+  // Tap en la pantalla durante el modo tranquilo.
+  // El 22% izquierdo regresa, el resto avanza. Dos taps en menos de 420 ms
+  // cuentan como uno solo: si le tiembla la mano no se brinca una postura.
+  function tapEscenario(e) {
+    if (PL.modo !== "calma") return;
+    var t = Date.now();
+    if (t - PL.ultimoTap < 420) return;
+    PL.ultimoTap = t;
+    var r = e.currentTarget.getBoundingClientRect();
+    if ((e.clientX - r.left) / r.width < 0.22) anterior(); else siguiente();
   }
   function cargarPaso(i) {
     PL.i = Math.max(0, Math.min(i, PL.pasos.length - 1));
@@ -10249,10 +10416,11 @@ window.POSES = [
       }
       st.appendChild(txt);
     }
-    var t = el("div", "pl-time"); t.id = "plTime";
-    st.appendChild(t);
+    if (PL.modo !== "calma") { var t = el("div", "pl-time"); t.id = "plTime"; st.appendChild(t); }
+    var fin = PL.i === PL.pasos.length - 1;
     $("#player .pl-pos").textContent = s.bloque + (s.bloqueObj ? "  ·  " + s.bloqueObj + " min" : "") +
-      "  ·  " + (PL.i + 1) + " / " + PL.pasos.length;
+      "  ·  " + (PL.i + 1) + " / " + PL.pasos.length + (fin && PL.modo === "calma" ? "  ·  última" : "");
+    var at = $("#player .pl-atras"); if (at) at.disabled = PL.i === 0;
   }
   function actualizarTimer() {
     var s = PL.pasos[PL.i], t = document.getElementById("plTime");
@@ -10327,10 +10495,12 @@ window.POSES = [
     bh.querySelector(".b-save").addEventListener("click", function () { guardar(false); });
     bh.querySelector(".b-save-exit").addEventListener("click", function () { guardar(true); });
     bh.querySelector(".b-plan").addEventListener("click", verPlan);
-    bh.querySelector(".b-play").addEventListener("click", function () { if (state.editando) abrirPlayer(state.editando); });
+    bh.querySelector(".b-play").addEventListener("click", function () { if (state.editando) elegirModo(state.editando); });
 
     // controles del modo clase
     var pl = $("#player");
+    pl.querySelector(".pl-stage").addEventListener("click", tapEscenario);
+    pl.querySelector(".pl-atras").addEventListener("click", anterior);
     pl.querySelector(".pl-prev").addEventListener("click", anterior);
     pl.querySelector(".pl-next").addEventListener("click", siguiente);
     pl.querySelector(".pl-play").addEventListener("click", function () { PL.playing ? pausar() : reproducir(); });

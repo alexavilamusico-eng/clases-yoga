@@ -101,6 +101,7 @@
   <div class="pl-stage"></div>
   <div class="pl-bar">
     <span class="pl-pos"></span>
+    <button type="button" class="pl-atras">‹ Atrás</button>
     <div class="pl-ctrls">
       <button type="button" class="pl-prev" aria-label="Anterior">‹</button>
       <button type="button" class="pl-play" aria-label="Reproducir / pausar">▶</button>
@@ -108,10 +109,26 @@
       <button type="button" class="pl-reset mini" aria-label="Reiniciar paso">⟳</button>
     </div>
     <label class="pl-auto"><input type="checkbox" class="pl-auto-chk"> avance automático</label>
+    <span class="pl-reloj" aria-label="Hora"></span>
     <button type="button" class="pl-exit mini" aria-label="Salir">Salir ×</button>
   </div>
   <div class="pl-progress"><i></i></div>
 </div>
+
+<dialog id="modoClase">
+  <div class="dlg-body md-body">
+    <h2>¿Cómo quieres darla?</h2>
+    <button type="button" class="md-op" data-modo="calma">
+      <b>Tranquilo</b>
+      <span>Tú avanzas cuando quieras. Sin reloj ni cuenta atrás. Tocas la pantalla para pasar a la siguiente.</span>
+    </button>
+    <button type="button" class="md-op" data-modo="tiempos">
+      <b>Con tiempos</b>
+      <span>Cada postura con su cronómetro, como estaba. Puede avanzar sola al terminar.</span>
+    </button>
+    <button type="button" class="md-cancel">Cancelar</button>
+  </div>
+</dialog>
 
 <footer>
   <div class="wrap">
