@@ -1,9 +1,10 @@
 // Mapa: slug de postura -> índice del archivo de SVG Repo (colección "Yoga Poses", CC0).
 // Índice 0 = "yoga-svgrepo-com.svg"; N = "yoga-svgrepo-com (N).svg".
-// Solo se incluyen las que se identificaron con seguridad razonable desde el contact sheet
-// (_pipeline/contact.html). Andrea puede corregir/añadir desde la app (botón "Cambiar dibujo").
+// Solo se incluyen las identificadas con confianza razonable desde _pipeline/contact.html.
+// El resto se asigna desde la app con "Cambiar dibujo" (Andrea reconoce cada postura al verla).
 export const SVGREPO = {
-  // alta confianza
+  // --- alta confianza ---
+  "utkatasana": 0,
   "vrksasana": 1,
   "urdhva-hastasana": 2,
   "sukhasana": 3,
@@ -11,39 +12,39 @@ export const SVGREPO = {
   "marjaryasana": 5,
   "setu-bandha-sarvangasana": 6,
   "salamba-sarvangasana": 7,
+  "salamba-sirsasana": 8,
   "hanumanasana": 10,
   "vasisthasana": 12,
+  "advasana": 13,
   "dhanurasana": 14,
+  "siddhasana": 15,
   "natarajasana": 16,
   "salabhasana": 19,
   "paschimottanasana": 20,
-  "anjaneyasana": 25,
-  "adho-mukha-svanasana": 30,
-  "uttanasana": 31,
-  "adho-mukha-vrksasana": 32,
-  "utthita-tadasana": 34,
-  "ustrasana": 47,
-  "prasarita-padottanasana": 53,
-  "salamba-bhujangasana": 56,
-  "malasana": 57,
-
-  // confianza media
-  "utkatasana": 0,
-  "salamba-sirsasana": 8,
-  "advasana": 13,
-  "alanasana": 18,
   "parivrtta-parsvakonasana": 21,
   "parivrtta-utkatasana": 22,
   "urdhva-mukha-svanasana": 23,
+  "anjaneyasana": 25,
   "hasta-uttanasana": 26,
   "tiryaka-tadasana": 27,
   "phalakasana": 28,
   "supta-padangusthasana": 29,
+  "adho-mukha-svanasana": 30,
+  "uttanasana": 31,
+  "adho-mukha-vrksasana": 32,
   "pincha-mayurasana": 33,
-  "upavistha-konasana": 38,
-  "samakonasana": 46,
+  "utthita-tadasana": 34,
+  "halasana": 38,
+  "ustrasana": 47,
+  "prasarita-padottanasana": 53,
   "purvottanasana": 54,
   "chaturanga-dandasana": 55,
+  "salamba-bhujangasana": 56,
   "makarasana": 58,
   "parvatasana": 63,
+
+  // --- confianza media (forma correcta; puede no ser exacta) ---
+  "alanasana": 18,
+  "malasana": 57,
+  "samakonasana": 46,
 };

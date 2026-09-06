@@ -1310,7 +1310,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, presión arterial alta, menstruación, embarazo, glaucoma."
   ],
-  "img": null,
+  "img": "img/poses/halasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1945,7 +1945,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de isquiotibiales."
   ],
-  "img": "img/poses/upavistha-konasana.svg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -3762,7 +3762,7 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: eleva el asiento o usa una silla."
   ],
-  "img": null,
+  "img": "img/poses/siddhasana.svg",
   "fuente": "propia-breve"
  },
  {
