@@ -35,6 +35,7 @@
     if (!Array.isArray(c.bloques)) c.bloques = [];
     c.bloques = c.bloques.filter(Boolean).map(function (b) {
       return { id: b.id || uid("b"), titulo: typeof b.titulo === "string" ? b.titulo : "Bloque",
+        objetivo: +b.objetivo || 0,
         items: Array.isArray(b.items) ? b.items.filter(Boolean) : [] };
     });
     c.notas = typeof c.notas === "string" ? c.notas : "";
@@ -53,7 +54,7 @@
     return {
       id: uid("c"), nombre: "", estilo: "", objetivo: 60,
       semilla: { tipo: "", valor: "" },
-      bloques: BLOQUES_DEF.map(function (t) { return { id: uid("b"), titulo: t, items: [] }; }),
+      bloques: BLOQUES_DEF.map(function (t) { return { id: uid("b"), titulo: t, objetivo: 0, items: [] }; }),
       notas: "", fechas: [], creada: nowISO(), modificada: nowISO()
     };
   }
@@ -286,10 +287,7 @@
     // cabecera
     var head = $("#builder .b-head");
     head.querySelector(".b-nombre").value = c.nombre;
-    var tot = minClase(c), obj = +c.objetivo || 0;
-    var totEl = head.querySelector(".b-total");
-    totEl.textContent = "~" + tot + " / " + obj + " min  ·  " + txtPosturas(c);
-    totEl.className = "b-total" + (obj && Math.abs(tot - obj) > obj * 0.15 ? " off" : "");
+    pintaCabecera();
 
     // semilla + estilo + objetivo
     var setup = el("div", "b-setup");
@@ -299,19 +297,21 @@
     setup.appendChild(field("Semilla de la clase", wrapTwo(semTipo, semVal)));
     setup.appendChild(field("Estilo", selectEl(ESTILOS, c.estilo, function (v) { c.estilo = v; })));
     var objIn = el("input", "b-num"); objIn.type = "number"; objIn.min = "10"; objIn.step = "5"; objIn.value = c.objetivo;
-    objIn.addEventListener("input", function () { c.objetivo = +objIn.value || 0; renderBuilder(); });
+    // repinta solo el total: re-renderizar aquí hacía perder el foco al escribir
+    objIn.addEventListener("input", function () { c.objetivo = +objIn.value || 0; pintaCabecera(); });
     setup.appendChild(field("Duración objetivo (min)", objIn));
     root.appendChild(setup);
 
-    // bloques
+    // bloques, con un insertador discreto en cada hueco entre secciones
     c.bloques.forEach(function (bl, bi) {
+      if (bi > 0) root.appendChild(insertarBloqueEl(c, bi));
       root.appendChild(bloqueEl(c, bl, bi));
     });
 
     var blkBar = el("div", "b-blkbar");
-    var addBl = el("button", "b-addblock", "+ Bloque");
+    var addBl = el("button", "b-addblock", "+ Sección");
     addBl.type = "button";
-    addBl.addEventListener("click", function () { c.bloques.push({ id: uid("b"), titulo: "Nuevo bloque", items: [] }); renderBuilder(); });
+    addBl.addEventListener("click", function () { nuevoBloqueEn(c, c.bloques.length); });
     blkBar.appendChild(addBl);
     var plantillas = loadPlantillas();
     if (plantillas.length) {
@@ -320,9 +320,7 @@
       plantillas.forEach(function (t, i) { var o = el("option", null, t.nombre); o.value = i; sel.appendChild(o); });
       sel.addEventListener("change", function () {
         if (sel.value === "") return;
-        var t = plantillas[+sel.value];
-        c.bloques.push({ id: uid("b"), titulo: t.titulo, items: JSON.parse(JSON.stringify(t.items)) });
-        renderBuilder();
+        nuevoBloqueEn(c, c.bloques.length, plantillas[+sel.value]);
       });
       blkBar.appendChild(sel);
     }
@@ -348,6 +346,39 @@
     root.appendChild(field("Veces que la diste", fechasWrap));
   }
 
+  // repinta el total de la clase en la barra de arriba sin re-renderizar todo
+  // (re-renderizar mientras se escribe en un campo hace perder el foco)
+  function pintaCabecera() {
+    var c = state.editando; if (!c) return;
+    var totEl = $("#builder .b-total"); if (!totEl) return;
+    var tot = minClase(c), obj = +c.objetivo || 0;
+    totEl.textContent = "~" + tot + " / " + obj + " min  ·  " + txtPosturas(c);
+    totEl.className = "b-total" + (obj && Math.abs(tot - obj) > obj * 0.15 ? " off" : "");
+  }
+
+  function nuevoBloqueEn(c, i, plantilla) {
+    var bl = plantilla
+      ? { id: uid("b"), titulo: plantilla.titulo, objetivo: +plantilla.objetivo || 0, items: JSON.parse(JSON.stringify(plantilla.items)) }
+      : { id: uid("b"), titulo: "Nueva sección", objetivo: 0, items: [] };
+    c.bloques.splice(i, 0, bl);
+    renderBuilder();
+    // deja el nombre listo para escribir
+    var cajas = document.querySelectorAll("#builder .b-bloque-ti");
+    if (cajas[i]) { cajas[i].focus(); cajas[i].select(); }
+  }
+
+  // separador discreto con un "+" para meter una sección justo ahí
+  function insertarBloqueEl(c, i) {
+    var w = el("div", "b-insert");
+    var b = el("button", null, "+");
+    b.type = "button";
+    b.title = "Añadir una sección aquí";
+    b.setAttribute("aria-label", "Añadir una sección aquí");
+    b.addEventListener("click", function () { nuevoBloqueEn(c, i); });
+    w.appendChild(b);
+    return w;
+  }
+
   function bloqueEl(c, bl, bi) {
     var box = el("section", "b-bloque");
     var bh = el("div", "b-bloque-head");
@@ -356,18 +387,39 @@
     var ti = el("input", "b-bloque-ti"); ti.value = bl.titulo;
     ti.addEventListener("input", function () { bl.titulo = ti.value; });
     bh.appendChild(ti);
-    var mins = el("span", "b-bloque-min", "~" + Math.round(bl.items.reduce(function (a, it) { return a + minItem(it); }, 0)) + " min");
-    bh.appendChild(mins);
+
+    // tiempo de la sección: lo que suman las posturas  /  lo que quiere que dure
+    var tiempo = el("div", "b-bloque-time");
+    var mins = el("span", "b-bloque-min");
+    var objIn = el("input", "b-bloque-obj");
+    objIn.type = "number"; objIn.min = "0"; objIn.step = "5";
+    objIn.value = bl.objetivo || "";
+    objIn.placeholder = "—";
+    objIn.title = "Cuánto quieres que dure esta sección (min)";
+    objIn.setAttribute("aria-label", "Duración objetivo de la sección en minutos");
+    function pintaMin() {
+      var real = Math.round(bl.items.reduce(function (a, it) { return a + minItem(it); }, 0));
+      var o = +bl.objetivo || 0;
+      mins.textContent = "~" + real;
+      tiempo.className = "b-bloque-time" + (o && Math.abs(real - o) > Math.max(2, o * 0.2) ? " off" : "");
+    }
+    objIn.addEventListener("input", function () { bl.objetivo = +objIn.value || 0; pintaMin(); });
+    tiempo.appendChild(mins);
+    tiempo.appendChild(el("span", "b-bloque-sep", "/"));
+    tiempo.appendChild(objIn);
+    tiempo.appendChild(el("span", "b-bloque-unit", "min"));
+    pintaMin();
+    bh.appendChild(tiempo);
     var ctl = el("div", "b-move");
     var up = el("button", null, "↑"); up.type = "button"; up.title = "Subir"; up.addEventListener("click", function () { swap(c.bloques, bi, bi - 1); renderBuilder(); });
     var dn = el("button", null, "↓"); dn.type = "button"; dn.title = "Bajar"; dn.addEventListener("click", function () { swap(c.bloques, bi, bi + 1); renderBuilder(); });
     var dup = el("button", null, "⎘"); dup.type = "button"; dup.title = "Duplicar bloque";
-    dup.addEventListener("click", function () { c.bloques.splice(bi + 1, 0, { id: uid("b"), titulo: bl.titulo + " (copia)", items: JSON.parse(JSON.stringify(bl.items)) }); renderBuilder(); });
+    dup.addEventListener("click", function () { c.bloques.splice(bi + 1, 0, { id: uid("b"), titulo: bl.titulo + " (copia)", objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) }); renderBuilder(); });
     var tpl = el("button", null, "★"); tpl.type = "button"; tpl.title = "Guardar como plantilla";
     tpl.addEventListener("click", function () {
       var nombre = prompt("Nombre de la plantilla:", bl.titulo);
       if (!nombre) return;
-      var arr = loadPlantillas(); arr.push({ nombre: nombre, titulo: bl.titulo, items: JSON.parse(JSON.stringify(bl.items)) }); savePlantillas(arr);
+      var arr = loadPlantillas(); arr.push({ nombre: nombre, titulo: bl.titulo, objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) }); savePlantillas(arr);
       flash("Plantilla guardada");
     });
     var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar bloque";
@@ -523,7 +575,7 @@
     var lineas = [];
     c.bloques.forEach(function (bl) {
       if (!bl.items.length) return;
-      lineas.push("<h2>" + esc(bl.titulo) + "</h2><ul>");
+      lineas.push("<h2>" + esc(bl.titulo) + (bl.objetivo ? "<span class=m>" + bl.objetivo + " min</span>" : "") + "</h2><ul>");
       bl.items.forEach(function (it) {
         if (it.tipo === "texto") { lineas.push("<li class=t>" + esc(it.texto || "").replace(/\n/g, "<br>") + "</li>"); return; }
         var p = bySlug[it.slug];
@@ -537,6 +589,7 @@
     w.document.write('<meta charset=utf-8><title>' + esc(c.nombre || "Clase") + '</title><style>' +
       'body{font:14px/1.5 Georgia,serif;max-width:640px;margin:32px auto;padding:0 16px;color:#2b2340}' +
       'h1{font-size:24px}h2{font-size:14px;text-transform:uppercase;letter-spacing:.1em;color:#7b62b3;margin:22px 0 6px}' +
+      'h2 .m{float:right;font-weight:400;letter-spacing:0;text-transform:none;color:#a08fc0}' +
       'ul{list-style:none;padding:0}li{margin:0 0 10px;padding-left:12px;border-left:2px solid #e0d3ee}' +
       'li.t{font-style:italic;border-color:#e7d2e3}.n{color:#6a5;}.c{color:#888;font-size:12px}.n,.c{font-family:system-ui}' +
       '@media print{body{margin:0}}</style>' +
@@ -566,17 +619,18 @@
   function construirPasos(c) {
     var pasos = [];
     c.bloques.forEach(function (bl) {
+      var ob = +bl.objetivo || 0;
       bl.items.forEach(function (it) {
         if (it.tipo === "texto") {
-          if ((it.texto || "").trim()) pasos.push({ tipo: "texto", texto: it.texto, bloque: bl.titulo, seg: segundos(it) });
+          if ((it.texto || "").trim()) pasos.push({ tipo: "texto", texto: it.texto, bloque: bl.titulo, bloqueObj: ob, seg: segundos(it) });
           return;
         }
         var p = bySlug[it.slug]; if (!p) return;
         if (it.lado === "ambos") {
-          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: "Lado izquierdo", nota: it.nota, seg: segundos(it) });
-          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: "Lado derecho", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bloqueObj: ob, lado: "Lado izquierdo", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bloqueObj: ob, lado: "Lado derecho", nota: it.nota, seg: segundos(it) });
         } else {
-          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, lado: it.lado === "izq" ? "Lado izquierdo" : it.lado === "der" ? "Lado derecho" : "", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bloqueObj: ob, lado: it.lado === "izq" ? "Lado izquierdo" : it.lado === "der" ? "Lado derecho" : "", nota: it.nota, seg: segundos(it) });
         }
       });
     });
@@ -628,7 +682,8 @@
     }
     var t = el("div", "pl-time"); t.id = "plTime";
     st.appendChild(t);
-    $("#player .pl-pos").textContent = s.bloque + "  ·  " + (PL.i + 1) + " / " + PL.pasos.length;
+    $("#player .pl-pos").textContent = s.bloque + (s.bloqueObj ? "  ·  " + s.bloqueObj + " min" : "") +
+      "  ·  " + (PL.i + 1) + " / " + PL.pasos.length;
   }
   function actualizarTimer() {
     var s = PL.pasos[PL.i], t = document.getElementById("plTime");

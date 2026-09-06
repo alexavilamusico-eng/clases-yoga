@@ -265,9 +265,27 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-select:focus-visible,.b-num:focus-visible,.b-notas:focus-visible,.b-item-txt:focus-visible,.b-nota:focus-visible,.b-dur:focus-visible,.b-min:focus-visible,.b-picker-q:focus-visible,.b-bloque-ti:focus-visible{outline:2px solid var(--focus);outline-offset:0}
 
 .b-bloque{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}
-.b-bloque-head{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--card-2);border-bottom:1px solid var(--line)}
-.b-bloque-ti{flex:1;font-weight:700;border-color:transparent;background:transparent}
+.b-bloque-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;background:var(--card-2);border-bottom:1px solid var(--line)}
+.b-bloque-ti{flex:1;min-width:120px;font-weight:700;border-color:transparent;background:transparent}
 .b-bloque-min{font-size:11px;color:var(--ink-soft);white-space:nowrap}
+
+/* tiempo de la sección: ~real / objetivo min  (el objetivo se escribe ahí mismo) */
+.b-bloque-time{display:inline-flex;align-items:center;gap:3px;flex:none;font-size:11px;color:var(--ink-soft);white-space:nowrap}
+.b-bloque-time.off{color:#b06a2e}
+.b-bloque-sep{opacity:.45}
+.b-bloque-obj{width:36px;text-align:center;border:1px solid transparent;background:var(--chip);color:inherit;font:inherit;font-size:11px;font-weight:700;border-radius:7px;padding:3px 2px;-moz-appearance:textfield}
+.b-bloque-obj::-webkit-outer-spin-button,.b-bloque-obj::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.b-bloque-obj:hover{border-color:var(--line-strong)}
+.b-bloque-obj:focus-visible{outline:2px solid var(--focus);outline-offset:0}
+
+/* insertar una sección justo en el hueco entre dos bloques.
+   height:0 + margin -8px hace que ocupe exactamente el gap de 16px de .b-body */
+.b-insert{height:0;margin:-8px 0;display:flex;align-items:center;justify-content:center;position:relative}
+.b-insert::before{content:"";position:absolute;left:8%;right:8%;top:0;height:1px;background:var(--line);opacity:.5;transition:opacity .18s}
+.b-insert button{position:relative;z-index:1;width:26px;height:26px;padding:0;border:1px solid var(--line-strong);border-radius:50%;background:var(--chip);color:var(--purple);font:inherit;font-size:16px;font-weight:700;line-height:1;display:grid;place-items:center;cursor:pointer;opacity:.75;transition:opacity .18s,transform .18s,background .18s,color .18s,border-color .18s}
+.b-insert:hover::before{opacity:1}
+.b-insert button:hover,.b-insert button:focus-visible{opacity:1;transform:scale(1.12);background:var(--purple);color:#fff;border-color:var(--purple)}
+.b-insert button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .b-item{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
 .b-item.txt{background:var(--card-2)}
 .b-item-info{flex:1;min-width:120px;display:flex;flex-direction:column}
@@ -345,7 +363,9 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .pl-auto{font-size:12px;color:var(--ink-soft);display:flex;align-items:center;gap:5px;cursor:pointer}
 .pl-progress{height:4px;background:var(--line)}
 .pl-progress i{display:block;height:100%;background:var(--purple);width:0;transition:width .9s linear}
-@media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}}
+@media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
+  .b-insert button,.b-insert::before{transition:none}
+  .b-insert button:hover,.b-insert button:focus-visible{transform:none}}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
