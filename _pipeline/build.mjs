@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { createRequire } from "node:module";
 import { curado, beneficiosES } from "./curado.mjs";
+import { SVGREPO } from "./svgrepo-map.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -75,7 +76,7 @@ const poses = curado.map((c, i) => {
     beneficios,
     beneficios_en: splitBen(api?.ben),
     precaucion: c.precaucion || [],
-    img: c.img ? `img/poses/${c.slug}.jpg` : null,
+    img: (c.slug in SVGREPO) ? `img/poses/${c.slug}.svg` : null,
     fuente: c.fuente,
   };
 });
@@ -94,9 +95,13 @@ const count = (key) => {
   });
   return m;
 };
+let svgCount = 0;
+try { svgCount = JSON.parse(readFileSync(join(__dirname, "svgrepo-count.json"), "utf8")).count; } catch (e) {}
+
 const meta = {
   total: poses.length,
   con_imagen: poses.filter((p) => p.img).length,
+  svgCount,
   vocab: VOCAB,
   conteos: { tipo: count("tipo"), zona: count("zona"), dinamica: count("dinamica"), tema: count("tema"), nivel: count("nivel") },
   fuentes: count("fuente"),
@@ -106,6 +111,6 @@ const banner = `// GENERADO por _pipeline/build.mjs — no editar a mano. ${new 
 writeFileSync(join(ROOT, "data/poses.js"), banner + "window.POSES = " + JSON.stringify(poses, null, 1) + ";\n");
 writeFileSync(join(ROOT, "data/meta.js"), banner + "window.META = " + JSON.stringify(meta, null, 1) + ";\n");
 
-console.log(`OK  ${poses.length} posturas  ·  ${meta.con_imagen} con ilustración Nina-Mel  ·  ${poses.length - meta.con_imagen} con placeholder`);
+console.log(`OK  ${poses.length} posturas  ·  ${meta.con_imagen} con ilustración  ·  ${poses.length - meta.con_imagen} con placeholder`);
 console.log("nivel:", meta.conteos.nivel);
 console.log("tipo :", meta.conteos.tipo);

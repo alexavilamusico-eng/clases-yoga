@@ -1,7 +1,8 @@
 // GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-06
 window.META = {
  "total": 198,
- "con_imagen": 37,
+ "con_imagen": 40,
+ "svgCount": 64,
  "vocab": {
   "tipo": [
    "de pie",

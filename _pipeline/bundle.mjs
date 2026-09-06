@@ -1,22 +1,30 @@
 // Empaqueta el glosario en un solo HTML autónomo (CSS + JS + datos + imágenes en base64).
 // Sirve para publicarlo como página o para pasarlo por correo/USB.
 // Uso:  node _pipeline/bundle.mjs   ->  dist/glosario.html
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
+const svgDataUri = (abs) => "data:image/svg+xml;base64," + readFileSync(abs).toString("base64");
 
 let posesJs = read("data/poses.js");
 
-// convertir "img/poses/slug.jpg" -> data URI base64
-posesJs = posesJs.replace(/"img\/poses\/([a-z0-9-]+)\.jpg"/g, (m, slug) => {
-  const p = join(ROOT, "img", "poses", slug + ".jpg");
-  if (!existsSync(p)) return "null";
-  const b64 = readFileSync(p).toString("base64");
-  return `"data:image/jpeg;base64,${b64}"`;
+// "img/poses/slug.svg" -> data URI (dibujo por defecto de cada postura)
+posesJs = posesJs.replace(/"img\/poses\/([a-z0-9-]+)\.svg"/g, (m, slug) => {
+  const p = join(ROOT, "img", "poses", slug + ".svg");
+  return existsSync(p) ? `"${svgDataUri(p)}"` : "null";
 });
+
+// window.SVGREPO_IMG = { 0: "data:...", ... }  (para el selector de dibujo)
+const setDir = join(ROOT, "img", "svgrepo");
+const svgMap = {};
+for (const f of readdirSync(setDir)) {
+  const m = f.match(/^(\d+)\.svg$/);
+  if (m) svgMap[+m[1]] = svgDataUri(join(setDir, f));
+}
+const svgMapJs = "window.SVGREPO_IMG = " + JSON.stringify(svgMap) + ";";
 
 const css = read("assets/styles.css");
 const metaJs = read("data/meta.js");
@@ -42,6 +50,9 @@ ${bodyInner}
 
 <script>
 ${metaJs}
+</script>
+<script>
+${svgMapJs}
 </script>
 <script>
 ${posesJs}

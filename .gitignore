@@ -3,3 +3,6 @@ _fuentes/
 _pipeline/node_modules/
 *.log
 .DS_Store
+
+img/svgrepo/
+_pipeline/svgrepo-raw/

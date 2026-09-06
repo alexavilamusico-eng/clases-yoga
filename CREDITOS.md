@@ -1,13 +1,15 @@
 # Créditos y licencias
 
 ## Ilustraciones de las posturas
-- **Autora de los dibujos:** Nina Mel (Yoga Teacher).
-- **Fuente:** Wikimedia Commons (archivos «… Yoga-Asana Nina-Mel.jpg», subidos por el usuario *Kennguru*).
-- **Licencia:** Creative Commons Attribution 3.0 Unported (CC BY 3.0).
-- **Cambios:** solo redimensionado (ancho 520 px). Sin otras modificaciones.
-- La atribución también aparece en el pie y en la pantalla de créditos de la app.
+- **Fuente:** colección «Yoga Poses» de **SVG Repo** (svgrepo.com) — 64 dibujos de figura, un solo estilo, formato SVG.
+- **Licencia:** libre / CC0 (uso comercial permitido; atribución no obligatoria pero se incluye aquí).
+- **Cambios:** se quitó el círculo crema del fondo de cada dibujo. Sin otras modificaciones.
+- Los 64 dibujos quedan disponibles dentro de la app: en cada tarjeta, «Cambiar dibujo» permite a Andrea
+  asignar o corregir el dibujo de cualquier postura (su elección se guarda en el navegador).
+- Procesado reproducible: `node _pipeline/process-svgrepo.mjs` (lee `_pipeline/svgrepo-raw/` y `svgrepo-map.mjs`).
 
-Descarga reproducible: `node _pipeline/fetch-img.mjs` (idempotente; re-ejecutar para completar las que falten).
+Antes se usó el set «Nina-Mel» (Wikimedia Commons, CC BY 3.0). Se reemplazó por el de SVG Repo para que
+todo el glosario tenga un único estilo. El script `_pipeline/fetch-img.mjs` sigue ahí por si se quiere recuperar.
 
 ## Datos de las posturas
 - **yoga-api** — https://github.com/alexcumplido/yoga-api

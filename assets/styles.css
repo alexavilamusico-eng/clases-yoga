@@ -167,6 +167,18 @@ main{padding:14px 0 64px}
 .back .tag-row span{font-size:10px;font-weight:700;background:var(--chip);color:var(--purple-deep);padding:3px 8px;border-radius:999px}
 .src{margin-top:12px;font-size:9.5px;color:var(--ink-soft);font-style:italic}
 
+/* selector de dibujo */
+.pick{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:4px 0 6px}
+.pick-tile{
+  border:1px solid var(--line);border-radius:9px;background:var(--card-2);
+  aspect-ratio:1;padding:3px;cursor:pointer;display:grid;place-items:center;overflow:hidden;
+}
+.pick-tile.wide{grid-column:1/-1;aspect-ratio:auto;padding:7px}
+.pick-tile img{width:100%;height:100%;object-fit:contain}
+.pick-tile.on{border-color:var(--purple);box-shadow:0 0 0 1.5px var(--purple)}
+.pick-tile:focus-visible{outline:2px solid var(--focus);outline-offset:1px}
+.pick-none{font-size:11px;font-weight:700;color:var(--ink-soft)}
+
 /* ---- footer / créditos ---- */
 footer{border-top:1px solid var(--line);padding:28px 0 44px;color:var(--ink-soft);font-size:12.5px;line-height:1.7}
 footer a{color:var(--purple);font-weight:700;cursor:pointer}

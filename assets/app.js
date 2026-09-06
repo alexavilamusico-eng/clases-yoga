@@ -22,20 +22,33 @@
       buscar: "Buscar postura o sánscrito…", nada: "Ninguna postura coincide.", filtros: "Filtros",
       limpiar: "Quitar filtros", de: "de", posturas: "posturas",
       nivelL: "Nivel", tipoL: "Tipo", zonaL: "Zona del cuerpo", dinL: "Dinámica",
-      propia: "Ficha redactada para esta app.", breve: "Ficha breve — por completar.", api: "Datos base: yoga-api."
+      propia: "Ficha redactada para esta app.", breve: "Ficha breve — por completar.", api: "Datos base: yoga-api.",
+      cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo"
     },
     en: {
       entrada: "How to enter", beneficios: "Benefits", precaucion: "Caution", etiquetas: "Tags",
       buscar: "Search pose or Sanskrit…", nada: "No pose matches.", filtros: "Filters",
       limpiar: "Clear filters", de: "of", posturas: "poses",
       nivelL: "Level", tipoL: "Type", zonaL: "Body zone", dinL: "Dynamic",
-      propia: "Entry written for this app.", breve: "Short entry — to be completed.", api: "Base data: yoga-api."
+      propia: "Entry written for this app.", breve: "Short entry — to be completed.", api: "Base data: yoga-api.",
+      cambiarDibujo: "Change drawing", sinDibujo: "No drawing"
     }
   };
   function t(k) { return (T[state.lang] || T.es)[k]; }
 
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+  var SVG_COUNT = META.svgCount || 0;
+  // en el archivo empaquetado los dibujos vienen embebidos en window.SVGREPO_IMG
+  function svgUrl(i) { return (window.SVGREPO_IMG && window.SVGREPO_IMG[i]) || ("img/svgrepo/" + i + ".svg"); }
+  // dibujo efectivo de una postura: override elegido por Andrea > dibujo por defecto
+  function imgFor(p) {
+    var ov = LS.get("img." + p.slug, null);
+    if (ov === "none") return null;
+    if (typeof ov === "number") return svgUrl(ov);
+    return p.img || null;
+  }
 
   function nActive() {
     var f = state.facets;
@@ -121,15 +134,21 @@
     // frente
     var front = el("div", "face front");
     var thumb = el("div", "thumb");
-    if (p.img) {
-      var img = el("img");
-      img.src = p.img; img.alt = name; img.loading = "lazy";
-      img.addEventListener("error", function () { thumb.classList.add("ph"); thumb.textContent = ""; thumb.appendChild(phInner(p)); });
-      thumb.appendChild(img);
-    } else {
-      thumb.classList.add("ph");
-      thumb.appendChild(phInner(p));
+    function paintThumb() {
+      thumb.textContent = "";
+      thumb.classList.remove("ph");
+      var src = imgFor(p);
+      if (src) {
+        var img = el("img");
+        img.src = src; img.alt = name; img.loading = "lazy";
+        img.addEventListener("error", function () { thumb.classList.add("ph"); thumb.textContent = ""; thumb.appendChild(phInner(p)); });
+        thumb.appendChild(img);
+      } else {
+        thumb.classList.add("ph");
+        thumb.appendChild(phInner(p));
+      }
     }
+    paintThumb();
     front.appendChild(thumb);
     var fm = el("div", "front-meta");
     fm.appendChild(el("p", "name", name));
@@ -172,6 +191,35 @@
       [p.nivel].concat(p.tipo, p.zona, p.dinamica, p.tema).forEach(function (x) { tr.appendChild(el("span", null, x)); });
       body.appendChild(tr);
     }));
+
+    if (SVG_COUNT) {
+      sc.appendChild(details("cambiarDibujo", function (body) {
+        var grid = el("div", "pick");
+        function tile(cls, kind, val) {
+          var b = el("button", "pick-tile" + (cls ? " " + cls : ""));
+          b.type = "button";
+          if (kind === "svg") { var im = el("img"); im.src = svgUrl(val); im.loading = "lazy"; im.alt = ""; b.appendChild(im); }
+          else { b.appendChild(el("span", "pick-none", t("sinDibujo"))); }
+          b.addEventListener("click", function () {
+            LS.set("img." + p.slug, kind === "svg" ? val : "none");
+            paintThumb();
+            grid.querySelectorAll(".pick-tile").forEach(function (x) { x.classList.remove("on"); });
+            b.classList.add("on");
+          });
+          return b;
+        }
+        var cur = LS.get("img." + p.slug, null);
+        var none = tile("wide", "none");
+        if (cur === "none") none.classList.add("on");
+        grid.appendChild(none);
+        for (var i = 0; i < SVG_COUNT; i++) {
+          var tl = tile("", "svg", i);
+          if (cur === i) tl.classList.add("on");
+          grid.appendChild(tl);
+        }
+        body.appendChild(grid);
+      }));
+    }
 
     var srcKey = p.fuente === "propia-breve" ? "breve" : (p.fuente === "propia" ? "propia" : "api");
     sc.appendChild(el("p", "src", t(srcKey)));

@@ -44,7 +44,7 @@ window.POSES = [
   "precaucion": [
    "Hernia de disco lumbar, embarazo o problemas de cuello: evítala o hazla con rodillas dobladas."
   ],
-  "img": "img/poses/navasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -137,7 +137,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de cuello, hernia, presión arterial alta o baja, embarazo."
   ],
-  "img": "img/poses/dhanurasana.jpg",
+  "img": "img/poses/dhanurasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -190,7 +190,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello: no gires la cabeza mientras estás en la postura."
   ],
-  "img": null,
+  "img": "img/poses/setu-bandha-sarvangasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -286,7 +286,7 @@ window.POSES = [
   "precaucion": [
    "Presión arterial alta o baja, migraña, lesión lumbar o de cuello."
   ],
-  "img": "img/poses/ustrasana.jpg",
+  "img": "img/poses/ustrasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -331,7 +331,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca: apoya los antebrazos o cierra los puños."
   ],
-  "img": null,
+  "img": "img/poses/marjaryasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -426,7 +426,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, presión arterial baja, dolor de cabeza."
   ],
-  "img": "img/poses/utkatasana.jpg",
+  "img": "img/poses/utkatasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -475,7 +475,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, embarazo avanzado (abre bien las rodillas), diarrea."
   ],
-  "img": null,
+  "img": "img/poses/balasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -568,7 +568,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: baja la rodilla de atrás al suelo (zancada baja)."
   ],
-  "img": null,
+  "img": "img/poses/alanasana.svg",
   "fuente": "yoga-api+propia"
  },
  {
@@ -616,7 +616,7 @@ window.POSES = [
   "precaucion": [
    "Síndrome del túnel carpiano, lesión de muñeca o de hombro, embarazo."
   ],
-  "img": "img/poses/bakasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -725,7 +725,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de hombro, presión arterial alta, últimas semanas de embarazo."
   ],
-  "img": null,
+  "img": "img/poses/adho-mukha-svanasana.svg",
   "fuente": "yoga-api+propia"
  },
  {
@@ -773,7 +773,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo."
   ],
-  "img": "img/poses/garudasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -821,7 +821,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de isquiotibiales o de tobillo."
   ],
-  "img": "img/poses/utthita-hasta-padangusthasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -871,7 +871,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de cuello, presión arterial alta o baja."
   ],
-  "img": "img/poses/utthita-parsvakonasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -921,7 +921,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, cuello o espalda; presión arterial alta; menstruación; embarazo."
   ],
-  "img": null,
+  "img": "img/poses/pincha-mayurasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1025,7 +1025,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o tobillo, migraña, presión arterial baja, diarrea."
   ],
-  "img": "img/poses/ardha-chandrasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -1075,7 +1075,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, cuello o muñeca; presión arterial alta; menstruación; embarazo."
   ],
-  "img": null,
+  "img": "img/poses/adho-mukha-vrksasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1122,7 +1122,7 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: pon un cojín bajo la rótula de atrás."
   ],
-  "img": null,
+  "img": "img/poses/anjaneyasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1216,7 +1216,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo, sacro o lumbar."
   ],
-  "img": "img/poses/eka-pada-rajakapotasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -1260,7 +1260,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano o lesión de muñeca: baja a los antebrazos."
   ],
-  "img": "img/poses/phalakasana.jpg",
+  "img": "img/poses/phalakasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1462,7 +1462,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, hernia de disco, asma, embarazo."
   ],
-  "img": "img/poses/paschimottanasana.jpg",
+  "img": "img/poses/paschimottanasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1556,7 +1556,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de columna, hernia de disco, embarazo (torsión abierta)."
   ],
-  "img": "img/poses/ardha-matsyendrasana.jpg",
+  "img": null,
   "fuente": "yoga-api+propia"
  },
  {
@@ -1607,7 +1607,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de hombro, presión arterial alta, menstruación, embarazo, glaucoma."
   ],
-  "img": null,
+  "img": "img/poses/salamba-sarvangasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1659,7 +1659,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca, codo u hombro."
   ],
-  "img": null,
+  "img": "img/poses/vasisthasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1707,7 +1707,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo (boca abajo no)."
   ],
-  "img": null,
+  "img": "img/poses/salamba-bhujangasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1753,7 +1753,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de isquiotibiales, ingle o psoas. Calienta bien antes."
   ],
-  "img": null,
+  "img": "img/poses/hanumanasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1799,7 +1799,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar."
   ],
-  "img": null,
+  "img": "img/poses/malasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1849,7 +1849,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar (dobla rodillas), presión arterial baja, hernia de disco."
   ],
-  "img": null,
+  "img": "img/poses/uttanasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1945,7 +1945,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de isquiotibiales."
   ],
-  "img": null,
+  "img": "img/poses/upavistha-konasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -1993,7 +1993,7 @@ window.POSES = [
   "precaucion": [
    "Migraña, presión arterial baja, vértigo."
   ],
-  "img": "img/poses/vrksasana.jpg",
+  "img": "img/poses/vrksasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -2046,7 +2046,7 @@ window.POSES = [
   "precaucion": [
    "Presión arterial baja, migraña, diarrea, lesión de cuello (mira al suelo)."
   ],
-  "img": "img/poses/trikonasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -2099,7 +2099,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, túnel carpiano, embarazo."
   ],
-  "img": null,
+  "img": "img/poses/urdhva-mukha-svanasana.svg",
   "fuente": "yoga-api"
  },
  {
@@ -2298,7 +2298,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión lumbar o de hombro, presión arterial alta o baja, migraña, embarazo."
   ],
-  "img": "img/poses/urdhva-dhanurasana.jpg",
+  "img": null,
   "fuente": "yoga-api"
  },
  {
@@ -2388,7 +2388,7 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla o cadera: eleva más el asiento o siéntate en una silla."
   ],
-  "img": null,
+  "img": "img/poses/sukhasana.svg",
   "fuente": "propia"
  },
  {
@@ -2472,7 +2472,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro o de rodilla: trabaja solo la parte baja o solo la alta."
   ],
-  "img": "img/poses/gomukhasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -2515,7 +2515,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla (pon soporte bajo la rodilla doblada)."
   ],
-  "img": "img/poses/janu-sirsasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -2644,7 +2644,7 @@ window.POSES = [
   "precaucion": [
    "Glaucoma, presión arterial alta no controlada, menstruación (opcional), embarazo avanzado."
   ],
-  "img": "img/poses/viparita-karani.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -2687,7 +2687,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar (mantén el torso más alto), presión arterial baja."
   ],
-  "img": null,
+  "img": "img/poses/prasarita-padottanasana.svg",
   "fuente": "propia"
  },
  {
@@ -2815,7 +2815,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo, cirugía abdominal reciente."
   ],
-  "img": "img/poses/salabhasana.jpg",
+  "img": "img/poses/salabhasana.svg",
   "fuente": "propia"
  },
  {
@@ -2857,7 +2857,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de lumbar, migraña, presión arterial alta o baja."
   ],
-  "img": "img/poses/matsyasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -2899,7 +2899,7 @@ window.POSES = [
   "precaucion": [
    "Embarazo (boca abajo no)."
   ],
-  "img": null,
+  "img": "img/poses/makarasana.svg",
   "fuente": "propia"
  },
  {
@@ -3028,7 +3028,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de columna, migraña, presión arterial baja, diarrea, embarazo."
   ],
-  "img": "img/poses/parivrtta-trikonasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3075,7 +3075,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, presión arterial baja, vértigo."
   ],
-  "img": "img/poses/natarajasana.jpg",
+  "img": "img/poses/natarajasana.svg",
   "fuente": "propia"
  },
  {
@@ -3118,7 +3118,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, túnel carpiano, embarazo, cirugía abdominal reciente."
   ],
-  "img": "img/poses/bhujangasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3161,7 +3161,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo: eleva bien el asiento o evita."
   ],
-  "img": "img/poses/virasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3206,7 +3206,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar. No forzar nunca la rodilla."
   ],
-  "img": "img/poses/supta-virasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3246,7 +3246,7 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: siéntate en una silla."
   ],
-  "img": "img/poses/simhasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3289,7 +3289,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de hombro, muñeca o lumbar. Muy común lesionarse por dejar caer los hombros."
   ],
-  "img": "img/poses/chaturanga-dandasana.jpg",
+  "img": "img/poses/chaturanga-dandasana.svg",
   "fuente": "propia"
  },
  {
@@ -3331,7 +3331,7 @@ window.POSES = [
   "precaucion": [
    "Vértigo o presión arterial baja: separa un poco los pies y abre los ojos."
   ],
-  "img": "img/poses/tadasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3375,7 +3375,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello u hombro; presión arterial alta o baja; migraña; embarazo."
   ],
-  "img": "img/poses/kapotasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3419,7 +3419,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello u hombro; embarazo. Requiere calentamiento largo."
   ],
-  "img": "img/poses/raja-kapotasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3462,7 +3462,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla, hernia de disco, embarazo."
   ],
-  "img": "img/poses/parivrtta-utkatasana.jpg",
+  "img": "img/poses/parivrtta-utkatasana.svg",
   "fuente": "propia"
  },
  {
@@ -3505,7 +3505,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de rodilla o de tobillo; hernia de disco; embarazo."
   ],
-  "img": "img/poses/pasasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3548,7 +3548,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
-  "img": "img/poses/bhujapidasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3592,7 +3592,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o muñeca. No forzar el loto."
   ],
-  "img": "img/poses/kukkutasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3638,7 +3638,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión lumbar o de hombro, presión arterial alta, embarazo."
   ],
-  "img": "img/poses/eka-pada-chakrasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3683,7 +3683,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de rodilla u hombro; hernia de disco; presión arterial alta; embarazo."
   ],
-  "img": "img/poses/parivrtta-baddha-parsvakonasana.jpg",
+  "img": null,
   "fuente": "propia"
  },
  {
@@ -3804,7 +3804,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, presión arterial alta, glaucoma, menstruación, embarazo. No para principiantes."
   ],
-  "img": null,
+  "img": "img/poses/salamba-sirsasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -4131,7 +4131,7 @@ window.POSES = [
   "precaucion": [
    "Ciática aguda: no fuerces el estiramiento."
   ],
-  "img": null,
+  "img": "img/poses/supta-padangusthasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -4214,7 +4214,7 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca, hombro o cuello."
   ],
-  "img": null,
+  "img": "img/poses/purvottanasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -4376,7 +4376,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla, presión arterial alta, embarazo."
   ],
-  "img": null,
+  "img": "img/poses/parivrtta-parsvakonasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -4896,7 +4896,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: mantén las manos separadas. Presión arterial alta: no subas la mirada."
   ],
-  "img": null,
+  "img": "img/poses/urdhva-hastasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -4936,7 +4936,7 @@ window.POSES = [
   "precaucion": [
    "Presión arterial baja: sal despacio."
   ],
-  "img": null,
+  "img": "img/poses/utthita-tadasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -5822,7 +5822,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de ingle, isquiotibiales o rodilla. Nunca rebotar."
   ],
-  "img": null,
+  "img": "img/poses/samakonasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -6520,7 +6520,7 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de cuello: reduce la extensión; presión arterial alta."
   ],
-  "img": null,
+  "img": "img/poses/hasta-uttanasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -6558,7 +6558,7 @@ window.POSES = [
   "precaucion": [
    "Molestia lumbar: reduce el rango."
   ],
-  "img": null,
+  "img": "img/poses/tiryaka-tadasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -8121,7 +8121,7 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: separa las manos. Molestia de rodilla en loto: usa postura fácil."
   ],
-  "img": null,
+  "img": "img/poses/parvatasana.svg",
   "fuente": "propia-breve"
  },
  {
@@ -8285,7 +8285,7 @@ window.POSES = [
   "precaucion": [
    "Embarazo: no boca abajo. Molestia de cuello: brazos abajo y cara girada con apoyo."
   ],
-  "img": null,
+  "img": "img/poses/advasana.svg",
   "fuente": "propia-breve"
  },
  {
