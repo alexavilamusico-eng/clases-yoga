@@ -1,0 +1,371 @@
+<title>Tarjeta de postura</title>
+<meta name="description" content="Muestra visual de una flash card de postura de yoga.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Nunito+Sans:wght@400;600;700&display=swap">
+
+<style>
+  :root{
+    --ground:#F1ECF9;
+    --card:#FCFBFF;
+    --card-2:#F4EEFB;
+    --ink:#3E3157;
+    --ink-soft:#6E6288;
+    --line:#E4DAF3;
+    --purple:#7B62B3;
+    --purple-deep:#5A4791;
+    --purple-pale:#C7B6E8;
+    --rose:#E7D2E3;
+    --chip:#EEE7F9;
+    --focus:#8A6FD0;
+    --shadow:24px 32px 60px -28px rgba(74,54,110,.45);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#141021;
+      --card:#201A2E;
+      --card-2:#181322;
+      --ink:#ECE5F8;
+      --ink-soft:#B0A3D0;
+      --line:#332A47;
+      --purple:#B9A4E6;
+      --purple-deep:#CBBAF0;
+      --purple-pale:#6B5A94;
+      --rose:#7A5C77;
+      --chip:#2A2340;
+      --focus:#B9A4E6;
+      --shadow:24px 32px 60px -28px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#141021;
+    --card:#201A2E;
+    --card-2:#181322;
+    --ink:#ECE5F8;
+    --ink-soft:#B0A3D0;
+    --line:#332A47;
+    --purple:#B9A4E6;
+    --purple-deep:#CBBAF0;
+    --purple-pale:#6B5A94;
+    --rose:#7A5C77;
+    --chip:#2A2340;
+    --focus:#B9A4E6;
+    --shadow:24px 32px 60px -28px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Nunito Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+    line-height:1.6;
+    margin:0;
+    padding:48px 20px 72px;
+  }
+  .wrap{max-width:640px;margin:0 auto}
+
+  .eyebrow{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--purple);font-weight:700;margin:0 0 12px;
+  }
+  h1{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:300;font-size:clamp(30px,7vw,44px);
+    line-height:1.12;margin:0 0 12px;text-wrap:balance;letter-spacing:-.01em;
+  }
+  .lede{margin:0 0 32px;color:var(--ink-soft);max-width:52ch}
+
+  .controls{
+    display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;
+    margin-bottom:36px;
+  }
+  .ctl-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-right:2px}
+  .seg{display:inline-flex;background:var(--chip);border-radius:999px;padding:4px;gap:2px}
+  .seg button{
+    border:0;background:transparent;color:var(--ink-soft);
+    font:inherit;font-size:13px;font-weight:700;
+    padding:7px 16px;border-radius:999px;cursor:pointer;
+    transition:background .18s ease,color .18s ease;
+  }
+  .seg button[aria-pressed="true"]{background:var(--card);color:var(--purple-deep);box-shadow:0 1px 3px rgba(74,54,110,.16)}
+  .seg button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+
+  /* ---- card ---- */
+  .card-hint{font-size:13px;color:var(--ink-soft);text-align:center;margin:0 0 14px}
+  .flip{
+    width:min(86vw,340px);aspect-ratio:3/4.15;margin:0 auto 8px;
+    perspective:1400px;
+  }
+  .card{
+    width:100%;height:100%;position:relative;
+    border:0;padding:0;background:none;cursor:pointer;
+    transform-style:preserve-3d;
+    transition:transform .62s cubic-bezier(.55,.08,.2,1);
+    border-radius:30px;
+  }
+  .card:focus-visible{outline:2px solid var(--focus);outline-offset:6px}
+  .flip.is-flipped .card{transform:rotateY(180deg)}
+  .face{
+    position:absolute;inset:0;backface-visibility:hidden;
+    border-radius:30px;background:linear-gradient(180deg,var(--card),var(--card-2));
+    border:1px solid var(--line);box-shadow:var(--shadow);
+    display:flex;flex-direction:column;overflow:hidden;text-align:left;
+  }
+  .face.back{transform:rotateY(180deg)}
+
+  .badge{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    width:34px;height:34px;border-radius:999px;
+    background:var(--card);border:1px solid var(--line);
+    display:grid;place-items:center;font-family:"Fraunces",serif;
+    font-size:15px;color:var(--purple);z-index:2;
+  }
+
+  .art{
+    flex:1;display:grid;place-items:center;padding:26px 22px 8px;
+  }
+  .art svg{width:70%;height:auto;max-height:210px;display:block}
+  .figure{color:var(--purple);stroke-width:18}
+  .blob{display:none}
+
+  .stage[data-style="linea"] .figure{stroke-width:5}
+  .stage[data-style="linea"] .figure circle{fill:none;stroke:currentColor;stroke-width:5}
+
+  .stage[data-style="blob"] .blob{display:block}
+  .stage[data-style="blob"] .figure{color:#FBF9FF;stroke-width:15}
+  .stage[data-style="blob"] .figure circle{fill:#FBF9FF}
+
+  .frontmeta{padding:6px 26px 26px}
+  .san{font-family:"Fraunces",serif;font-style:italic;font-weight:400;color:var(--purple);font-size:15px;margin:0 0 2px}
+  .name{font-family:"Fraunces",serif;font-weight:400;font-size:26px;line-height:1.15;margin:0 0 4px;letter-spacing:-.01em}
+  .lit{font-size:12.5px;color:var(--ink-soft);margin:0 0 14px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{
+    font-size:11px;font-weight:700;letter-spacing:.04em;
+    background:var(--chip);color:var(--purple-deep);
+    padding:4px 10px;border-radius:999px;
+  }
+
+  /* back */
+  .back .scroll{padding:30px 26px 26px;overflow:auto;height:100%}
+  .back h3{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--purple);font-weight:700;margin:0 0 6px;
+  }
+  .back section+section{margin-top:16px}
+  .back ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .back li{font-size:13.5px;padding-left:14px;position:relative;color:var(--ink)}
+  .back li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:999px;background:var(--purple-pale)}
+  .caution li::before{background:var(--rose)}
+
+  [data-lang-hide]{display:none}
+
+  /* ---- note ---- */
+  .note{
+    margin:38px auto 0;max-width:52ch;
+    border-left:2px solid var(--purple-pale);padding:2px 0 2px 18px;
+    color:var(--ink-soft);font-size:14px;
+  }
+  .note b{color:var(--ink);font-weight:700}
+
+  /* ---- mini grid ---- */
+  .grid-title{
+    margin:52px 0 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:700;
+  }
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .mini{
+    background:linear-gradient(180deg,var(--card),var(--card-2));
+    border:1px solid var(--line);border-radius:18px;
+    padding:14px 10px 12px;text-align:center;
+  }
+  .mini svg{width:64%;height:auto;margin:0 auto 6px;display:block;max-height:88px}
+  .mini span{font-family:"Fraunces",serif;font-size:12.5px;color:var(--ink);display:block;line-height:1.25}
+  @media (max-width:420px){.grid{grid-template-columns:repeat(2,1fr)}}
+
+  @media (prefers-reduced-motion:reduce){
+    .card{transition:opacity .2s ease}
+    .flip.is-flipped .card{transform:none}
+    .flip.is-flipped .face.front{opacity:0;pointer-events:none}
+    .face.back{transform:none;opacity:0;pointer-events:none}
+    .flip.is-flipped .face.back{opacity:1;pointer-events:auto}
+  }
+</style>
+
+<div class="wrap stage" id="stage" data-style="silueta" data-lang="es">
+  <p class="eyebrow">Muestra de estilo · Glosario de posturas</p>
+  <h1>Tarjeta de postura</h1>
+  <p class="lede">Una postura real, con frente y reverso. Cambia el estilo de ilustración y el idioma para decidir cómo se verá el glosario completo.</p>
+
+  <div class="controls">
+    <span class="ctl-label">Idioma</span>
+    <div class="seg" role="group" aria-label="Idioma">
+      <button data-lang-set="es" aria-pressed="true">ES + sánscrito</button>
+      <button data-lang-set="en" aria-pressed="false">EN + sánscrito</button>
+    </div>
+    <span class="ctl-label">Ilustración</span>
+    <div class="seg" role="group" aria-label="Estilo de ilustración">
+      <button data-style-set="silueta" aria-pressed="true">Silueta</button>
+      <button data-style-set="linea" aria-pressed="false">Línea</button>
+      <button data-style-set="blob" aria-pressed="false">Sobre gradiente</button>
+    </div>
+  </div>
+
+  <p class="card-hint" id="hint">Toca la tarjeta para ver el reverso</p>
+
+  <div class="flip" id="flip">
+    <span class="badge">△</span>
+    <button class="card" id="card" aria-label="Voltear tarjeta">
+      <!-- FRONT -->
+      <div class="face front">
+        <div class="art">
+          <svg viewBox="0 0 208 224" role="img" aria-label="Silueta de la postura del triángulo">
+            <defs>
+              <radialGradient id="mesh" cx="34%" cy="28%" r="82%">
+                <stop offset="0%" stop-color="#DCCFF0"/>
+                <stop offset="42%" stop-color="#AB92DA"/>
+                <stop offset="72%" stop-color="#9AA1DE"/>
+                <stop offset="100%" stop-color="#7A64B4"/>
+              </radialGradient>
+            </defs>
+            <path class="blob" d="M108 16c42 2 76 27 84 64 8 35-8 68-33 93-24 24-58 33-90 21C33 185 10 152 12 113 15 63 56 14 108 16Z" fill="url(#mesh)"/>
+            <g class="figure" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M32 208 L150 122"/>
+              <path d="M176 208 L150 122"/>
+              <path d="M150 122 L170 88"/>
+              <path d="M167 92 L188 42"/>
+              <path d="M170 92 L178 190"/>
+              <circle cx="174" cy="74" r="14" fill="currentColor" stroke="none"/>
+            </g>
+          </svg>
+        </div>
+        <div class="frontmeta">
+          <p class="san">Utthita Trikonasana</p>
+          <p class="name" data-lang-es>Triángulo extendido</p>
+          <p class="name" data-lang-en data-lang-hide>Extended Triangle Pose</p>
+          <p class="lit" data-lang-es>“postura del ángulo de tres puntas”</p>
+          <p class="lit" data-lang-en data-lang-hide>“extended three-angle pose”</p>
+          <div class="chips" data-lang-es>
+            <span class="chip">De pie</span><span class="chip">Isquiotibiales</span><span class="chip">Flexión lateral</span><span class="chip">Principiante</span>
+          </div>
+          <div class="chips" data-lang-en data-lang-hide>
+            <span class="chip">Standing</span><span class="chip">Hamstrings</span><span class="chip">Side bend</span><span class="chip">Beginner</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BACK -->
+      <div class="face back">
+        <div class="scroll">
+          <div data-lang-es>
+            <section>
+              <h3>Cómo entrar</h3>
+              <ul>
+                <li>Pies separados ~1 m; talón delantero alineado con el arco del pie trasero.</li>
+                <li>Alarga los dos costados, luego inclínate desde la cadera, no desde la cintura.</li>
+                <li>Baja la mano a la espinilla o a un bloque; gira el pecho hacia el techo.</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Beneficios</h3>
+              <ul>
+                <li>Estira isquiotibiales, ingles y columna.</li>
+                <li>Fortalece muslos, rodillas y tobillos.</li>
+                <li>Abre pecho y hombros; estimula la digestión.</li>
+              </ul>
+            </section>
+            <section class="caution">
+              <h3>Precaución</h3>
+              <ul>
+                <li>Presión arterial baja o molestia de cuello: mantén la mirada al suelo.</li>
+              </ul>
+            </section>
+          </div>
+          <div data-lang-en data-lang-hide>
+            <section>
+              <h3>How to enter</h3>
+              <ul>
+                <li>Feet about 1 m apart; front heel in line with the back foot's arch.</li>
+                <li>Lengthen both side bodies, then hinge from the hip, not the waist.</li>
+                <li>Lower the hand to the shin or a block; turn the chest toward the ceiling.</li>
+              </ul>
+            </section>
+            <section>
+              <h3>Benefits</h3>
+              <ul>
+                <li>Stretches hamstrings, groins and spine.</li>
+                <li>Strengthens thighs, knees and ankles.</li>
+                <li>Opens chest and shoulders; aids digestion.</li>
+              </ul>
+            </section>
+            <section class="caution">
+              <h3>Caution</h3>
+              <ul>
+                <li>Low blood pressure or neck strain: keep the gaze down.</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <p class="note" data-lang-es><b>Silueta</b>: una sola figura, mismo trazo en las 200+ posturas — nunca se ve disparejo y si falta una la completo igual. <b>Línea</b> y <b>Sobre gradiente</b> son más suaves y encajan con la estética morada, pero dependen de un set de ilustración con cobertura parcial. Recomiendo <b>Silueta</b> para arrancar y cambiar posturas sueltas por foto de Andrea después.</p>
+  <p class="note" data-lang-en data-lang-hide><b>Silhouette</b>: one figure, one line weight across all 200+ poses — it never looks inconsistent and gaps are easy to fill. <b>Line</b> and <b>On gradient</b> are softer and fit the purple direction, but rely on an illustration set with partial coverage. I'd start with <b>Silhouette</b> and swap individual poses for Andrea's own photos later.</p>
+
+  <p class="grid-title" data-lang-es>Así se vería la galería</p>
+  <p class="grid-title" data-lang-en data-lang-hide>How the gallery would look</p>
+  <div class="grid" id="grid"></div>
+</div>
+
+<script>
+  const stage = document.getElementById('stage');
+  const flip = document.getElementById('flip');
+  const card = document.getElementById('card');
+  const hint = document.getElementById('hint');
+
+  card.addEventListener('click', () => {
+    const f = flip.classList.toggle('is-flipped');
+    hint.textContent = stage.dataset.lang === 'es'
+      ? (f ? 'Toca la tarjeta para volver al frente' : 'Toca la tarjeta para ver el reverso')
+      : (f ? 'Tap the card to see the front' : 'Tap the card to see the back');
+  });
+
+  function setGroup(attr, val){
+    document.querySelectorAll('[data-'+attr+'-set]').forEach(b => {
+      b.setAttribute('aria-pressed', String(b.dataset[attr+'Set'] === val));
+    });
+  }
+
+  document.querySelectorAll('[data-style-set]').forEach(b => {
+    b.addEventListener('click', () => {
+      stage.dataset.style = b.dataset.styleSet;
+      setGroup('style', b.dataset.styleSet);
+    });
+  });
+
+  document.querySelectorAll('[data-lang-set]').forEach(b => {
+    b.addEventListener('click', () => {
+      const lang = b.dataset.langSet;
+      stage.dataset.lang = lang;
+      setGroup('lang', lang);
+      document.querySelectorAll('[data-lang-es]').forEach(el => el.toggleAttribute('data-lang-hide', lang !== 'es'));
+      document.querySelectorAll('[data-lang-en]').forEach(el => el.toggleAttribute('data-lang-hide', lang !== 'en'));
+      hint.textContent = lang === 'es'
+        ? (flip.classList.contains('is-flipped') ? 'Toca la tarjeta para volver al frente' : 'Toca la tarjeta para ver el reverso')
+        : (flip.classList.contains('is-flipped') ? 'Tap the card to see the front' : 'Tap the card to see the back');
+    });
+  });
+
+  // mini grid
+  const poses = [
+    ['Triángulo','Trikonasana'],['Guerrero II','Virabhadrasana II'],['Árbol','Vrksasana'],
+    ['Niño','Balasana'],['Perro boca abajo','Adho Mukha'],['Paloma','Eka Pada']
+  ];
+  const fig = document.querySelector('.figure').outerHTML;
+  document.getElementById('grid').innerHTML = poses.map(p => `
+    <div class="mini">
+      <svg viewBox="0 0 208 224" aria-hidden="true">${fig}</svg>
+      <span>${p[0]}<br><em style="font-family:Fraunces,serif;font-style:italic;color:var(--purple);font-size:11px">${p[1]}</em></span>
+    </div>`).join('');
+</script>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glosario de posturas · Yoga con Andrea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Nunito+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap head-top">
+    <div>
+      <p class="eyebrow">Yoga con Andrea</p>
+      <h1>Glosario de posturas</h1>
+      <p class="count" id="count">…</p>
+    </div>
+    <div class="seg" id="langSeg" role="group" aria-label="Idioma">
+      <button type="button" data-lang="es" aria-pressed="true">ES + sánscrito</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN + sánscrito</button>
+    </div>
+  </div>
+</header>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" autocomplete="off" placeholder="Buscar…" aria-label="Buscar postura">
+    </div>
+    <div class="facets" id="facets"></div>
+  </div>
+</div>
+
+<main>
+  <div class="wrap">
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Ilustraciones de las posturas: <strong>Nina Mel</strong>, profesora de yoga (Wikimedia Commons, licencia CC BY 3.0).
+    Datos base de <strong>yoga-api</strong> (dominio público), traducidos y ampliados para esta app.
+    <a id="creditsLink" role="button" tabindex="0">Ver créditos</a>
+  </div>
+</footer>
+
+<dialog id="credits">
+  <div class="dlg-body">
+    <h2>Créditos y licencias</h2>
+    <p><strong>Ilustraciones de posturas.</strong> Autora de los dibujos: <em>Nina Mel</em> (Yoga Teacher). Alojadas en Wikimedia Commons (subidas por el usuario Kennguru) bajo licencia <strong>Creative Commons Attribution 3.0</strong> (CC BY 3.0). Se usan sin modificar salvo cambio de tamaño. <br>Enlace: <code>commons.wikimedia.org</code> — buscar «Yoga-Asana Nina-Mel».</p>
+    <p><strong>Datos de las posturas.</strong> Nombres en inglés, sánscrito, traducciones y descripciones base tomados de <em>yoga-api</em> (alexcumplido, código MIT; textos de dominio público). Las cues en español, las etiquetas de zona, dinámica y tema, las precauciones y las posturas marcadas «redactada para esta app» son contenido propio del proyecto y deben revisarse con criterio de maestra.</p>
+    <p><strong>Posturas sin ilustración.</strong> Todavía no tienen dibujo en el set de Nina Mel; muestran una tarjeta con el nombre sobre fondo degradado. Se pueden sustituir por foto propia más adelante.</p>
+    <button type="button" class="dlg-close">Cerrar</button>
+  </div>
+</dialog>
+
+<script src="data/meta.js"></script>
+<script src="data/poses.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
