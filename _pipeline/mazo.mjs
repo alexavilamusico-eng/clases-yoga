@@ -484,10 +484,13 @@ export const MAZO = {
     precaucion: ["Cirugía abdominal reciente o hernia."],
     respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
   },
-  // ---------------------------------------------------------------- carta 3 (Crescent Lunge)
-  anjaneyasana: {
+  // ---------------------------------------------------------------- carta 3 "Crescent Lunge"
+  // La carta la llama "Anjaneyasana", pero la ILUSTRACIÓN es una zancada ALTA
+  // (rodilla de atrás levantada, pierna recta) -> va en `alanasana` (zancada alta /
+  // luna creciente), no en `anjaneyasana` (zancada baja, rodilla de atrás en el piso).
+  alanasana: {
     num: 3, nivel: "principiante",
-    entrada:    ["Barbilla paralela al piso", "Pecho al frente", "Hombros abajo y atrás", "Rodilla sobre el tobillo", "Pierna de atrás recta"],
+    entrada:    ["Barbilla paralela al piso", "Pecho al frente", "Hombros abajo y atrás", "Rodilla de adelante sobre el tobillo", "Pierna de atrás recta"],
     entrada_en: ["Chin parallel to the floor", "Chest forward", "Shoulders down and back", "Knee over the ankle", "Leg straight"],
     beneficios:    ["Abre las caderas", "Abre el pecho", "Alarga la columna"],
     beneficios_en: ["Opens the hips", "Opens the chest", "Lengthens the spine"],

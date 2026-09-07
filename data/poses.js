@@ -618,7 +618,7 @@ window.POSES = [
   "nombre_en": "Crescent Lunge",
   "sanscrito": "Ashta Chandrasana",
   "traduccion": "ashta chandra = media luna",
-  "nivel": "intermedio",
+  "nivel": "principiante",
   "tipo": [
    "de pie"
   ],
@@ -639,29 +639,38 @@ window.POSES = [
    "confianza"
   ],
   "entrada": [
-   "Desde perro boca abajo, lleva un pie entre las manos; el talón de atrás sube (zancada sobre la punta).",
-   "Rodilla delantera sobre el tobillo; lleva la pelvis un poco hacia adelante para alargar el psoas de atrás.",
-   "Sube los brazos junto a las orejas; costillas cerradas, mirada al frente."
+   "Barbilla paralela al piso",
+   "Pecho al frente",
+   "Hombros abajo y atrás",
+   "Rodilla de adelante sobre el tobillo",
+   "Pierna de atrás recta"
   ],
-  "entrada_en": "From mountain pose, on the inhalation bring the hands up and interlace the fingers together. Exhale, bend to one side, lengthening the opposite of the rib cage and stretch.",
+  "entrada_en": [
+   "Chin parallel to the floor",
+   "Chest forward",
+   "Shoulders down and back",
+   "Knee over the ankle",
+   "Leg straight"
+  ],
   "beneficios": [
-   "Estira psoas, ingles y cuádriceps de la pierna de atrás.",
-   "Fortalece piernas y glúteos.",
-   "Abre el pecho y trabaja el equilibrio."
+   "Abre las caderas",
+   "Abre el pecho",
+   "Alarga la columna"
   ],
   "beneficios_en": [
-   "Stretches the rib cage, arms and torso",
-   "Tones the oblique muscles"
+   "Opens the hips",
+   "Opens the chest",
+   "Lengthens the spine"
   ],
   "precaucion": [
-   "Lesión de rodilla: baja la rodilla de atrás al suelo (zancada baja)."
+   "Lesión reciente o crónica de rodillas, caderas o espalda."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/alanasana.svg",
-  "fuente": "yoga-api+propia"
+  "liberar": "Baja la rodilla de atrás y desliza la de adelante a la posición de mesa, o lleva el pie de adelante atrás hasta el perro boca abajo. Repite del otro lado.",
+  "liberar_en": "Lower the back knee down and slide the front knee into table pose, or step the front foot back into downward facing dog. Repeat on the other side.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/alanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 13,
@@ -1236,38 +1245,30 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Barbilla paralela al piso",
-   "Pecho al frente",
-   "Hombros abajo y atrás",
-   "Rodilla sobre el tobillo",
-   "Pierna de atrás recta"
+   "Un pie al frente con la rodilla sobre el tobillo; la rodilla de atrás en el suelo, empeine apoyado.",
+   "Lleva la pelvis hacia adelante y abajo para alargar el psoas de la pierna de atrás.",
+   "Sube los brazos o llévalos a la rodilla delantera; pecho abierto, coxis hacia abajo."
   ],
-  "entrada_en": [
-   "Chin parallel to the floor",
-   "Chest forward",
-   "Shoulders down and back",
-   "Knee over the ankle",
-   "Leg straight"
-  ],
+  "entrada_en": "The front knee is bent in a 90-degree angle directly above the ankle and the back knee is resting on the earth with the top of the back foot pressed firmly into the earth. The hips are squared and pressed forward. The inner thighs scissor towards each other. The pelvis is tucked under to protect the low back. The ribcage is lifted. The arms are lifted. The hands can be together or separated and facing each other with the fingers spread wide. The gaze is forward.",
   "beneficios": [
-   "Abre las caderas",
-   "Abre el pecho",
-   "Alarga la columna"
+   "Estira pecho, pulmones, cuello, vientre y psoas.",
+   "Fortalece hombros, brazos y espalda.",
+   "Fortalece y estira muslos, gemelos y tobillos."
   ],
   "beneficios_en": [
-   "Opens the hips",
-   "Opens the chest",
-   "Lengthens the spine"
+   "Stretches the chest, lungs, neck, belly and groin (psoas)",
+   "Strengthens the shoulders, arms and back muscles",
+   "Strengthens and stretches the thighs, calves and ankles"
   ],
   "precaucion": [
-   "Lesión reciente o crónica de rodillas, caderas o espalda."
+   "Molestia de rodilla: pon un cojín bajo la rótula de atrás."
   ],
-  "liberar": "Baja la rodilla de atrás y desliza la de adelante a la posición de mesa, o lleva el pie de adelante atrás hasta el perro boca abajo. Repite del otro lado.",
-  "liberar_en": "Lower the back knee down and slide the front knee into table pose, or step the front foot back into downward facing dog. Repeat on the other side.",
-  "respiracion": "Aguanta de 2 a 6 respiraciones.",
-  "respiracion_en": "Breathe and hold for 2–6 breaths.",
-  "img": "img/mazo/anjaneyasana.jpg",
-  "fuente": "mazo"
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
+  "img": null,
+  "fuente": "yoga-api"
  },
  {
   "id": 24,
