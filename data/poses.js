@@ -25,27 +25,36 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Sentada, lleva el peso justo detrás de los isquiones y alarga la columna hacia arriba.",
-   "Eleva las tibias paralelas al suelo; si la espalda se redondea, quédate con las rodillas dobladas.",
-   "Estira los brazos hacia adelante a la altura de los hombros; pecho abierto, mirada al frente."
+   "Pecho abierto",
+   "Brazos paralelos al piso",
+   "Piernas juntas",
+   "Hombros abajo y atrás"
   ],
-  "entrada_en": "From a seated position the feet are lifted up so that the thighs are angled about 45-50 degrees relative to the earth. The tailbone is lengthened into the earth and the pubis pulls toward the navel. The shoulder blades are spread across the back and the hands reach around the back of the calves, with legs pulled towards the body. The chin is tipped slightly toward the sternum so that the base of the skull lifts lightly away from the back of the neck. Gaze is forward.",
+  "entrada_en": [
+   "Chest open",
+   "Arms parallel to the floor",
+   "Legs together",
+   "Shoulders down and back"
+  ],
   "beneficios": [
-   "Fortalece abdomen, flexores de cadera y columna.",
-   "Estimula riñones, tiroides e intestinos.",
-   "Mejora la digestión y ayuda a soltar el estrés."
+   "Fortalece los abdominales",
+   "Mejora el equilibrio",
+   "Aumenta la confianza"
   ],
   "beneficios_en": [
-   "Strengthens the abdomen, hip flexors, and spine",
-   "Stimulates the kidneys, thyroid and prostate glands, and intestines",
-   "Helps relieve stress",
-   "Improves digestion"
+   "Strengthens the abdominal muscles",
+   "Improves balance",
+   "Improves confidence"
   ],
   "precaucion": [
-   "Hernia de disco lumbar, embarazo o problemas de cuello: evítala o hazla con rodillas dobladas."
+   "Lesión reciente o crónica en abdomen, rodillas, caderas, brazos u hombros."
   ],
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Exhala y dobla las rodillas, bajando los pies al piso.",
+  "liberar_en": "Exhale and bend the knees, lowering the feet back to the floor.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/navasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 2,
@@ -89,6 +98,10 @@ window.POSES = [
   "precaucion": [
    "Molestia lumbar o de cuello: apoya las manos en el suelo detrás de la cadera."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -137,6 +150,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de cuello, hernia, presión arterial alta o baja, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/dhanurasana.svg",
   "fuente": "yoga-api"
  },
@@ -190,6 +207,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello: no gires la cabeza mientras estás en la postura."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/setu-bandha-sarvangasana.svg",
   "fuente": "yoga-api"
  },
@@ -236,6 +257,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de ingle o de rodilla: pon soportes bajo los muslos."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -286,6 +311,10 @@ window.POSES = [
   "precaucion": [
    "Presión arterial alta o baja, migraña, lesión lumbar o de cuello."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -331,6 +360,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca: apoya los antebrazos o cierra los puños."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/marjaryasana.svg",
   "fuente": "yoga-api"
  },
@@ -376,6 +409,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de cuello: mantén la mirada al frente en vez de subir la barbilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -426,6 +463,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, presión arterial baja, dolor de cabeza."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -475,6 +516,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, embarazo avanzado (abre bien las rodillas), diarrea."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/balasana.svg",
   "fuente": "yoga-api"
  },
@@ -520,6 +565,10 @@ window.POSES = [
   "precaucion": [
    "Embarazo: túmbate de lado o con el torso elevado. Lumbalgia: dobla las rodillas o pon un bolster bajo ellas."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api+propia"
  },
@@ -568,6 +617,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: baja la rodilla de atrás al suelo (zancada baja)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/alanasana.svg",
   "fuente": "yoga-api+propia"
  },
@@ -616,6 +669,10 @@ window.POSES = [
   "precaucion": [
    "Síndrome del túnel carpiano, lesión de muñeca o de hombro, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -670,6 +727,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro o de cuello."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -725,6 +786,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de hombro, presión arterial alta, últimas semanas de embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/adho-mukha-svanasana.svg",
   "fuente": "yoga-api+propia"
  },
@@ -773,6 +838,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -821,6 +890,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de isquiotibiales o de tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -871,6 +944,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de cuello, presión arterial alta o baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -921,6 +998,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, cuello o espalda; presión arterial alta; menstruación; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -974,6 +1055,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar (dobla las rodillas), lesión de hombro, presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1025,6 +1110,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o tobillo, migraña, presión arterial baja, diarrea."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1075,6 +1164,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, cuello o muñeca; presión arterial alta; menstruación; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/adho-mukha-vrksasana.svg",
   "fuente": "yoga-api"
  },
@@ -1122,6 +1215,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: pon un cojín bajo la rótula de atrás."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1168,6 +1265,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de cadera; embarazo (hazla de lado)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1216,6 +1317,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo, sacro o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1260,6 +1365,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano o lesión de muñeca: baja a los antebrazos."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/phalakasana.svg",
   "fuente": "yoga-api"
  },
@@ -1310,6 +1419,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, presión arterial alta, menstruación, embarazo, glaucoma."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1359,6 +1472,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de isquiotibiales, presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1409,6 +1526,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de cuello."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1462,6 +1583,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, hernia de disco, asma, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1509,6 +1634,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo: quédate en medio loto o postura fácil (Sukhasana)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -1556,6 +1685,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de columna, hernia de disco, embarazo (torsión abierta)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api+propia"
  },
@@ -1607,6 +1740,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de hombro, presión arterial alta, menstruación, embarazo, glaucoma."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/salamba-sarvangasana.svg",
   "fuente": "yoga-api"
  },
@@ -1659,6 +1796,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca, codo u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/vasisthasana.svg",
   "fuente": "yoga-api"
  },
@@ -1707,6 +1848,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo (boca abajo no)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/salamba-bhujangasana.svg",
   "fuente": "yoga-api"
  },
@@ -1753,6 +1898,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de isquiotibiales, ingle o psoas. Calienta bien antes."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/hanumanasana.svg",
   "fuente": "yoga-api"
  },
@@ -1799,6 +1948,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/malasana.svg",
   "fuente": "yoga-api"
  },
@@ -1849,6 +2002,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar (dobla rodillas), presión arterial baja, hernia de disco."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/uttanasana.svg",
   "fuente": "yoga-api"
  },
@@ -1896,6 +2053,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api+propia"
  },
@@ -1945,6 +2106,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/upavistha-konasana.svg",
   "fuente": "yoga-api"
  },
@@ -1993,6 +2158,10 @@ window.POSES = [
   "precaucion": [
    "Migraña, presión arterial baja, vértigo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/vrksasana.svg",
   "fuente": "yoga-api"
  },
@@ -2046,6 +2215,10 @@ window.POSES = [
   "precaucion": [
    "Presión arterial baja, migraña, diarrea, lesión de cuello (mira al suelo)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -2099,6 +2272,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, túnel carpiano, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -2148,6 +2325,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, cadera u hombro; presión arterial alta; problemas de corazón."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/virabhadrasana-i.svg",
   "fuente": "yoga-api"
  },
@@ -2199,6 +2380,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, cadera o cuello; diarrea; presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -2248,6 +2433,10 @@ window.POSES = [
   "precaucion": [
    "Presión arterial alta, lesión de tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -2298,6 +2487,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión lumbar o de hombro, presión arterial alta o baja, migraña, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "yoga-api"
  },
@@ -2346,6 +2539,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca, hombro, lumbar o cuello."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/camatkarasana.svg",
   "fuente": "yoga-api"
  },
@@ -2388,6 +2585,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla o cadera: eleva más el asiento o siéntate en una silla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/sukhasana.svg",
   "fuente": "propia"
  },
@@ -2430,6 +2631,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2472,6 +2677,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro o de rodilla: trabaja solo la parte baja o solo la alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2515,6 +2724,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla (pon soporte bajo la rodilla doblada)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2559,6 +2772,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de ingle o de rodilla: sube los soportes bajo los muslos. Molestia lumbar o sacra."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2601,6 +2818,10 @@ window.POSES = [
   "precaucion": [
    "Embarazo, lesión de cuello o de rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2644,6 +2865,10 @@ window.POSES = [
   "precaucion": [
    "Glaucoma, presión arterial alta no controlada, menstruación (opcional), embarazo avanzado."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2687,6 +2912,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar (mantén el torso más alto), presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/prasarita-padottanasana.svg",
   "fuente": "propia"
  },
@@ -2727,6 +2956,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar: dobla más las rodillas y sube las manos a bloques altos."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2771,6 +3004,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro o de rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2815,6 +3052,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo, cirugía abdominal reciente."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/salabhasana.svg",
   "fuente": "propia"
  },
@@ -2857,6 +3098,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de lumbar, migraña, presión arterial alta o baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2899,6 +3144,10 @@ window.POSES = [
   "precaucion": [
    "Embarazo (boca abajo no)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/makarasana.svg",
   "fuente": "propia"
  },
@@ -2942,6 +3191,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, ingle o tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -2985,6 +3238,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla (pon un cojín bajo la rodilla apoyada)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3028,6 +3285,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de columna, migraña, presión arterial baja, diarrea, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3075,6 +3336,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, presión arterial baja, vértigo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/natarajasana.svg",
   "fuente": "propia"
  },
@@ -3118,6 +3383,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, túnel carpiano, embarazo, cirugía abdominal reciente."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3161,6 +3430,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo: eleva bien el asiento o evita."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3206,6 +3479,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar. No forzar nunca la rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3246,6 +3523,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: siéntate en una silla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3289,6 +3570,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de hombro, muñeca o lumbar. Muy común lesionarse por dejar caer los hombros."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3331,6 +3616,10 @@ window.POSES = [
   "precaucion": [
    "Vértigo o presión arterial baja: separa un poco los pies y abre los ojos."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3375,6 +3664,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello u hombro; presión arterial alta o baja; migraña; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3419,6 +3712,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello u hombro; embarazo. Requiere calentamiento largo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3462,6 +3759,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla, hernia de disco, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": "img/poses/parivrtta-utkatasana.svg",
   "fuente": "propia"
  },
@@ -3505,6 +3806,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de rodilla o de tobillo; hernia de disco; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3548,6 +3853,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3592,6 +3901,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o muñeca. No forzar el loto."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3638,6 +3951,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión lumbar o de hombro, presión arterial alta, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3683,6 +4000,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de rodilla u hombro; hernia de disco; presión arterial alta; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia"
  },
@@ -3722,6 +4043,10 @@ window.POSES = [
   "precaucion": [
    "Lumbar redondeada: siéntate sobre una manta o dobla las rodillas."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -3762,6 +4087,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: eleva el asiento o usa una silla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -3804,6 +4133,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, presión arterial alta, glaucoma, menstruación, embarazo. No para principiantes."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -3846,6 +4179,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -3888,6 +4225,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca, codo u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -3930,6 +4271,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro, lesión de isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -3969,6 +4314,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, hernia de disco, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4009,6 +4358,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: apoya soportes. Diarrea, dolor de cabeza."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4051,6 +4404,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o sacra reciente."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4091,6 +4448,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de disco; hazla con rodillas dobladas."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4131,6 +4492,10 @@ window.POSES = [
   "precaucion": [
    "Ciática aguda: no fuerces el estiramiento."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4171,6 +4536,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: sujeta detrás de los muslos. Embarazo avanzado."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4214,6 +4583,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca, hombro o cuello."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4255,6 +4628,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4295,6 +4672,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, ingle o isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4334,6 +4715,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de isquiotibiales; molestia de rodilla de atrás (pon cojín)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4376,6 +4761,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla, presión arterial alta, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4418,6 +4807,10 @@ window.POSES = [
   "precaucion": [
    "Presión arterial baja, migraña, lesión lumbar o de tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4457,6 +4850,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla (pierna doblada) o de isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4498,6 +4895,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, cadera o isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4539,6 +4940,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4577,6 +4982,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de ingle. Nunca rebotar; entrar y salir despacio."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4617,6 +5026,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello (no apoyes la cabeza en la mano; usa el brazo estirado)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4656,6 +5069,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca; lesión de rodilla (no fuerces el loto)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4697,6 +5114,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de espalda, presión arterial alta, embarazo, menstruación."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4736,6 +5157,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello: evítala o mantén todo el peso en manos y rodillas."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4777,6 +5202,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de lumbar, hernia, presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4816,6 +5245,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4857,6 +5290,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o de espalda, presión arterial alta, embarazo, menstruación."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4896,6 +5333,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: mantén las manos separadas. Presión arterial alta: no subas la mirada."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4936,6 +5377,10 @@ window.POSES = [
   "precaucion": [
    "Presión arterial baja: sal despacio."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -4977,6 +5422,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro o de cuello: apoya menos peso."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5018,6 +5467,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca: apoya el antebrazo o cierra el puño."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5057,6 +5510,10 @@ window.POSES = [
   "precaucion": [
    "Hernia de disco: gira poco. Embarazo: torsión abierta (hacia la pierna de adelante)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5095,6 +5552,10 @@ window.POSES = [
   "precaucion": [
    "Molestia lumbar: reduce el rango."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5137,6 +5598,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: sube un poco la cadera; alinea rodilla y pie."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5175,6 +5640,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar: dobla las rodillas. Presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5214,6 +5683,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión lumbar, presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5255,6 +5728,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: pon una manta. Lesión de hombro o muñeca."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5296,6 +5773,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de isquiotibiales, presión arterial baja, migraña."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5338,6 +5819,10 @@ window.POSES = [
   "precaucion": [
    "Presión arterial alta, lesión de hombro o de espalda."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5379,6 +5864,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla del lado cruzado: mantén el pie flex y no presiones la rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5421,6 +5910,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: no fuerces el loto. Lesión de hombro: no hagas el bind."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5463,6 +5956,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, muñeca o isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5502,6 +5999,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: quédate con las piernas cruzadas simples."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5542,6 +6043,10 @@ window.POSES = [
   "precaucion": [
    "Dolor de rodilla: usa postura fácil (Sukhasana)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5581,6 +6086,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla o cadera: eleva el asiento."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5620,6 +6129,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de hombro; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5660,6 +6173,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5700,6 +6217,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla del lado doblado (pon soporte)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5742,6 +6263,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de disco o de isquiotibiales. Calienta mucho antes."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5783,6 +6308,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar: quédate con las rodillas dobladas (como en el barco)."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5822,6 +6351,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de ingle, isquiotibiales o rodilla. Nunca rebotar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5863,6 +6396,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5905,6 +6442,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo, cirugía abdominal reciente."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5946,6 +6487,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello (no gires la cabeza), de rodilla o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -5987,6 +6532,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello o de rodilla; presión arterial alta o baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6030,6 +6579,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello u hombro; presión arterial alta; migraña; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6074,6 +6627,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, cuello o lumbar; presión arterial alta. Solo con base muy firme."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6116,6 +6673,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o muñeca, presión arterial alta, glaucoma. Aprender con supervisión."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6156,6 +6717,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca o codo; embarazo; presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6197,6 +6762,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6239,6 +6808,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca, hombro o rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6280,6 +6853,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda o de rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6319,6 +6896,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6360,6 +6941,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6401,6 +6986,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro (no entrelaces; usa un cinturón), de rodilla o presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6440,6 +7029,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6480,6 +7073,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: deja los brazos a los lados."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6520,6 +7117,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de cuello: reduce la extensión; presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6558,6 +7159,10 @@ window.POSES = [
   "precaucion": [
    "Molestia lumbar: reduce el rango."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6597,6 +7202,10 @@ window.POSES = [
   "precaucion": [
    "Hernia de disco o vértigo: hazlo lento y con poco rango."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6636,6 +7245,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar: círculos pequeños."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6676,6 +7289,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla o de tobillo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6718,6 +7335,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: no hagas el bind. Presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6761,6 +7382,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de rodilla o de tobillo; presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6802,6 +7427,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6845,6 +7474,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, cadera o tobillo. Requiere medio loto cómodo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6884,6 +7517,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: usa un cinturón. Presión arterial baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6924,6 +7561,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -6963,6 +7604,10 @@ window.POSES = [
   "precaucion": [
    "Hernia de disco: gira poco. Embarazo: torsión abierta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7004,6 +7649,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: no fuerces el loto. Lesión lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7045,6 +7694,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, hombro o lumbar. Requiere medio loto cómodo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7085,6 +7738,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, hombro o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7126,6 +7783,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo u hombro. No forzar nunca el loto."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7167,6 +7828,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, cadera o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7208,6 +7873,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, tobillo o lumbar. No forzar la rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7248,6 +7917,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, columna, cadera o isquiotibiales. Solo con preparación avanzada."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7290,6 +7963,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, columna o cadera. No intentar sin base sólida en Eka Pada Sirsasana."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7332,6 +8009,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, columna o cadera. Solo con caderas muy abiertas."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7374,6 +8055,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, columna, cadera o isquiotibiales. Calienta mucho antes."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7415,6 +8100,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de cuello, presión arterial alta o baja."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7457,6 +8146,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla, lumbar u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7499,6 +8192,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar, de cuello u hombro; embarazo. Calentamiento largo obligatorio."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7543,6 +8240,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, garganta, lumbar u hombro. Riesgo alto: solo con preparación avanzada y supervisión."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7584,6 +8285,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello: no la hagas. Presión arterial alta, menstruación, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7626,6 +8331,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello o columna, presión arterial alta, glaucoma."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7667,6 +8376,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, rodilla o cadera; presión arterial alta."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7709,6 +8422,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, rodilla o columna; presión arterial alta; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7749,6 +8466,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7790,6 +8511,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7832,6 +8557,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca u hombro."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7874,6 +8603,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca, hombro o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7914,6 +8647,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca o codo; embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7956,6 +8693,10 @@ window.POSES = [
   "precaucion": [
    "Túnel carpiano, lesión de muñeca, hombro, cuello o rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -7999,6 +8740,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro, cuello, muñeca o rodilla. Solo con base muy sólida."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8041,6 +8786,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de muñeca, hombro o isquiotibiales."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8083,6 +8832,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de cuello, cadera, isquiotibiales o rodilla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8123,6 +8876,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de hombro: separa las manos. Molestia de rodilla en loto: usa postura fácil."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8164,6 +8921,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla o ingle: pon soportes bajo los muslos."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8205,6 +8966,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: pon una manta. Presión arterial alta: sube la frente a un bloque."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8247,6 +9012,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla: abre más las piernas o túmbate de lado. Embarazo avanzado: usa apoyo alto."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8287,6 +9056,10 @@ window.POSES = [
   "precaucion": [
    "Embarazo: no boca abajo. Molestia de cuello: brazos abajo y cara girada con apoyo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8330,6 +9103,10 @@ window.POSES = [
   "precaucion": [
    "Embarazo: elige otra postura de descanso. Molestia de rodilla o de hombro: ajusta el apoyo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8372,6 +9149,10 @@ window.POSES = [
   "precaucion": [
    "Molestia de rodilla: eleva bien el asiento o siéntate en una silla."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8415,6 +9196,10 @@ window.POSES = [
   "precaucion": [
    "Molestia lumbar: baja la altura del bloque. Lesión de cuello: no gires la cabeza."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8455,6 +9240,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar o de cuello, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8497,6 +9286,10 @@ window.POSES = [
   "precaucion": [
    "Lesión de rodilla (pon manta), de muñeca o lumbar."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  },
@@ -8538,6 +9331,10 @@ window.POSES = [
   "precaucion": [
    "Lesión lumbar aguda o de cuello, embarazo."
   ],
+  "liberar": "",
+  "liberar_en": "",
+  "respiracion": "",
+  "respiracion_en": "",
   "img": null,
   "fuente": "propia-breve"
  }

@@ -8,6 +8,7 @@ import { dirname, join } from "node:path";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const read = (p) => readFileSync(join(ROOT, p), "utf8");
 const svgDataUri = (abs) => "data:image/svg+xml;base64," + readFileSync(abs).toString("base64");
+const jpgDataUri = (abs) => "data:image/jpeg;base64," + readFileSync(abs).toString("base64");
 
 let posesJs = read("data/poses.js");
 
@@ -15,6 +16,11 @@ let posesJs = read("data/poses.js");
 posesJs = posesJs.replace(/"img\/poses\/([a-z0-9-]+)\.svg"/g, (m, slug) => {
   const p = join(ROOT, "img", "poses", slug + ".svg");
   return existsSync(p) ? `"${svgDataUri(p)}"` : "null";
+});
+// "img/mazo/slug.jpg" -> data URI (ilustración del mazo)
+posesJs = posesJs.replace(/"img\/mazo\/([a-z0-9-]+)\.jpg"/g, (m, slug) => {
+  const p = join(ROOT, "img", "mazo", slug + ".jpg");
+  return existsSync(p) ? `"${jpgDataUri(p)}"` : "null";
 });
 
 // window.SVGREPO_IMG = { 0: "data:...", ... }  (para el selector de dibujo)

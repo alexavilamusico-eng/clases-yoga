@@ -2,12 +2,13 @@
 // y genera data/poses.js  ->  window.POSES = [...]
 //
 // Uso:  node _pipeline/build.mjs
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { createRequire } from "node:module";
 import { curado, beneficiosES } from "./curado.mjs";
 import { SVGREPO } from "./svgrepo-map.mjs";
+import { MAZO } from "./mazo.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -53,10 +54,14 @@ const poses = curado.map((c, i) => {
   if (!Array.isArray(c.entrada) || c.entrada.length < 2) errors.push(`${c.slug}: "entrada" necesita al menos 2 indicaciones`);
 
   const api = c.apiId ? apiRow(c.apiId) : null;
-  const beneficios = c.beneficios || beneficiosES[c.slug] || splitBen(api?.ben) || [];
+  const m = MAZO[c.slug] || null;                 // ficha reconstruida del mazo, si existe
+  if (m && !existsSync(join(ROOT, "img/mazo", c.slug + ".jpg"))) {
+    errors.push(`${c.slug}: en mazo.mjs pero falta img/mazo/${c.slug}.jpg`);
+  }
+  const beneficios = m?.beneficios || c.beneficios || beneficiosES[c.slug] || splitBen(api?.ben) || [];
   if (!beneficios.length) errors.push(`${c.slug}: sin beneficios`);
   // aviso si quedaron beneficios en inglés (heurística)
-  if (!c.beneficios && !beneficiosES[c.slug] && api?.ben) errors.push(`${c.slug}: beneficios sin traducir (falta en beneficiosES)`);
+  if (!m && !c.beneficios && !beneficiosES[c.slug] && api?.ben) errors.push(`${c.slug}: beneficios sin traducir (falta en beneficiosES)`);
   const cleanEn = (s) => (s || "").replace(/\b[\w-]+\.html\b/g, "").replace(/\s{2,}/g, " ").trim();
 
   return {
@@ -71,13 +76,17 @@ const poses = curado.map((c, i) => {
     zona: c.zona || [],
     dinamica: c.dinamica || [],
     tema: c.tema || [],
-    entrada: c.entrada,
-    entrada_en: cleanEn(api?.desc),
+    entrada: m?.entrada || c.entrada,
+    entrada_en: m?.entrada_en || cleanEn(api?.desc),
     beneficios,
-    beneficios_en: splitBen(api?.ben),
-    precaucion: c.precaucion || [],
-    img: (c.slug in SVGREPO) ? `img/poses/${c.slug}.svg` : null,
-    fuente: c.fuente,
+    beneficios_en: m?.beneficios_en || splitBen(api?.ben),
+    precaucion: m?.precaucion || c.precaucion || [],
+    liberar: m?.liberar || "",
+    liberar_en: m?.liberar_en || "",
+    respiracion: m?.respiracion || "",
+    respiracion_en: m?.respiracion_en || "",
+    img: m ? `img/mazo/${c.slug}.jpg` : ((c.slug in SVGREPO) ? `img/poses/${c.slug}.svg` : null),
+    fuente: m ? "mazo" : c.fuente,
   };
 });
 

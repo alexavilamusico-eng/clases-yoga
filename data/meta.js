@@ -1,7 +1,7 @@
 // GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-07
 window.META = {
  "total": 198,
- "con_imagen": 24,
+ "con_imagen": 25,
  "svgCount": 64,
  "vocab": {
   "tipo": [
@@ -111,7 +111,8 @@ window.META = {
   }
  },
  "fuentes": {
-  "yoga-api": 43,
+  "mazo": 1,
+  "yoga-api": 42,
   "yoga-api+propia": 5,
   "propia": 31,
   "propia-breve": 119

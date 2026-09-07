@@ -890,7 +890,7 @@
     } else {
       var fig = el("div", "pl-figure");
       var src = imgForP(s.p);
-      if (src) { var im = el("img"); if (src.indexOf("data:") === 0) im.className = "user-img"; im.src = src; im.alt = ""; fig.appendChild(im); }
+      if (src) { var im = el("img"); if (src.indexOf("data:") === 0) im.className = "user-img"; else if (src.indexOf("img/mazo/") > -1) im.className = "deck-img"; im.src = src; im.alt = ""; fig.appendChild(im); }
       else { fig.classList.add("ph"); fig.appendChild(el("span", "pl-ph-san", s.p.sanscrito)); }
       st.appendChild(fig);
       var txt = el("div", "pl-txt");

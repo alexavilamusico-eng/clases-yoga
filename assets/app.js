@@ -49,6 +49,8 @@
       limpiar: "Quitar filtros", de: "de", posturas: "posturas",
       nivelL: "Nivel", tipoL: "Tipo", zonaL: "Zona del cuerpo", dinL: "Dinámica",
       propia: "Ficha redactada para esta app.", breve: "Ficha breve — por completar.", api: "Datos base: yoga-api.",
+      mazo: "Ilustración y textos: mazo de cartas de yoga (uso personal).",
+      paraSalir: "Para salir", respiracion: "Respiración",
       cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo",
       subirImg: "Subir una foto", cambiarImg: "Cambiar la foto", quitarImg: "Quitar",
       imgError: "No se pudo leer esa imagen. Prueba con un JPG o PNG.",
@@ -60,6 +62,8 @@
       limpiar: "Clear filters", de: "of", posturas: "poses",
       nivelL: "Level", tipoL: "Type", zonaL: "Body zone", dinL: "Dynamic",
       propia: "Entry written for this app.", breve: "Short entry — to be completed.", api: "Base data: yoga-api.",
+      mazo: "Illustration and text: yoga card deck (personal use).",
+      paraSalir: "To release", respiracion: "Breath",
       cambiarDibujo: "Change drawing", sinDibujo: "No drawing",
       subirImg: "Upload a photo", cambiarImg: "Change photo", quitarImg: "Remove",
       imgError: "Couldn't read that image. Try a JPG or PNG.",
@@ -198,7 +202,7 @@
       thumb.classList.remove("ph");
       var src = imgFor(p);
       if (src) {
-        var img = el("img", esFoto(src) ? "user-img" : null);
+        var img = el("img", esFoto(src) ? "user-img" : (src.indexOf("img/mazo/") > -1 ? "deck-img" : null));
         img.src = src; img.alt = name; img.loading = "lazy";
         img.addEventListener("error", function () { thumb.classList.add("ph"); thumb.textContent = ""; thumb.appendChild(phInner(p)); });
         thumb.appendChild(img);
@@ -236,12 +240,13 @@
     sc.appendChild(el("p", "san", p.sanscrito + (p.traduccion ? " · " + p.traduccion : "")));
 
     sc.appendChild(el("h4", null, t("entrada")));
-    if (state.lang === "en" && p.entrada_en) {
-      var pe = el("p", null, p.entrada_en); pe.style.fontSize = "12px"; pe.style.lineHeight = "1.55"; pe.style.margin = "0";
+    var cues = (state.lang === "en" && p.entrada_en && p.entrada_en.length) ? p.entrada_en : p.entrada;
+    if (typeof cues === "string") {
+      var pe = el("p", null, cues); pe.style.fontSize = "12px"; pe.style.lineHeight = "1.55"; pe.style.margin = "0";
       sc.appendChild(pe);
     } else {
       var ul = el("ul");
-      p.entrada.forEach(function (x) { ul.appendChild(el("li", null, x)); });
+      cues.forEach(function (x) { ul.appendChild(el("li", null, x)); });
       sc.appendChild(ul);
     }
 
@@ -253,6 +258,15 @@
         body.appendChild(u);
       }));
     }
+    // "Para salir" y "Respiración" — sólo las posturas del mazo las traen
+    var liberar = (state.lang === "en" && p.liberar_en) ? p.liberar_en : p.liberar;
+    if (liberar) sc.appendChild(details("paraSalir", function (body) {
+      body.appendChild(el("p", "plain-note", liberar));
+    }));
+    var resp = (state.lang === "en" && p.respiracion_en) ? p.respiracion_en : p.respiracion;
+    if (resp) sc.appendChild(details("respiracion", function (body) {
+      body.appendChild(el("p", "plain-note", resp));
+    }));
     if (p.precaucion && p.precaucion.length) {
       sc.appendChild(details("precaucion", function (body) {
         var u = el("ul", "caution");
@@ -344,7 +358,7 @@
       }));
     }
 
-    var srcKey = p.fuente === "propia-breve" ? "breve" : (p.fuente === "propia" ? "propia" : "api");
+    var srcKey = p.fuente === "mazo" ? "mazo" : (p.fuente === "propia-breve" ? "breve" : (p.fuente === "propia" ? "propia" : "api"));
     sc.appendChild(el("p", "src", t(srcKey)));
     back.appendChild(sc);
 

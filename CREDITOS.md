@@ -11,6 +11,17 @@
 Antes se usó el set «Nina-Mel» (Wikimedia Commons, CC BY 3.0). Se reemplazó por el de SVG Repo para que
 todo el glosario tenga un único estilo. El script `_pipeline/fetch-img.mjs` sigue ahí por si se quiere recuperar.
 
+## Ilustraciones y textos del mazo de cartas (posturas marcadas «mazo»)
+- Algunas fichas (`_pipeline/mazo.mjs`) usan la ilustración y el contenido de un **mazo de cartas de yoga
+  impreso, propiedad de la usuaria (Andrea)**, que compró.
+- **Uso:** estrictamente personal y **no comercial** — es el mismo mazo que ella ya usa para dar clase,
+  en otro formato (su cuaderno digital). La app no se vende ni se ofrece como producto.
+- **Qué se tomó:** la ilustración de figura de cada carta (con su texto de indicaciones en inglés, intacto),
+  recortada y enderezada de fotos del mazo. El resto del texto del reverso (nivel, beneficios, «para salir»,
+  contraindicaciones, respiración) se **reescribió a mano** porque en la foto se ve borroso.
+- Procesado de imagen: `_pipeline/crop_card.py` (detecta la carta, corrige perspectiva, limpia).
+- Si el titular de los derechos del mazo lo pide, se retiran estas ilustraciones y quedan los dibujos CC0.
+
 ## Datos de las posturas
 - **yoga-api** — https://github.com/alexcumplido/yoga-api
   - Código bajo licencia MIT. Textos de posturas (nombres EN, sánscrito, traducción, descripción, beneficios) de dominio público.
