@@ -433,6 +433,15 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .md-op.sel{border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple)}
 .md-op:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .md-cancel{align-self:center;border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:13px;padding:8px;cursor:pointer}
+
+/* confirmación de borrado — reemplaza a window.confirm(), que se ignora en móvil */
+.cf-body{max-width:360px}
+.cf-msg{font-size:14px;line-height:1.5;margin:0 0 18px;color:var(--ink)}
+.cf-actions{display:flex;gap:10px;justify-content:flex-end}
+.cf-actions button{font:inherit;font-weight:700;font-size:13px;padding:9px 18px;border-radius:10px;cursor:pointer}
+.cf-no{border:1px solid var(--line-strong);background:var(--card);color:var(--ink)}
+.cf-si{border:1px solid #b9564f;background:#a4453f;color:#fff}
+.cf-no:focus-visible,.cf-si:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
   .b-insert button,.b-insert::before{transition:none}
   .b-insert button:hover,.b-insert button:focus-visible{transform:none}

@@ -245,8 +245,9 @@
       });
       var del = el("button", "mini danger", "Borrar"); del.type = "button";
       del.addEventListener("click", function () {
-        if (!confirm("¿Borrar «" + (c.nombre || "sin nombre") + "»? No se puede deshacer.")) return;
-        saveClases(loadClases().filter(function (x) { return x.id !== c.id; })); renderBanco();
+        pedirConfirmacion("¿Borrar «" + (c.nombre || "sin nombre") + "»? No se puede deshacer.", function () {
+          saveClases(loadClases().filter(function (x) { return x.id !== c.id; })); renderBanco();
+        });
       });
       acc.appendChild(dup); acc.appendChild(del);
       card.appendChild(acc);
@@ -288,6 +289,20 @@
   function flash(msg) {
     var f = $("#builder .b-flash"); f.textContent = msg; f.classList.add("on");
     setTimeout(function () { f.classList.remove("on"); }, 1400);
+  }
+
+  // Confirmación propia. window.confirm() se bloquea/ignora en varios navegadores
+  // de celular y en la app "añadida a la pantalla de inicio", así que los botones
+  // de borrar no hacían nada. Este diálogo sí funciona en todos lados.
+  function pedirConfirmacion(msg, onOk, okLabel) {
+    var dlg = $("#confirmar");
+    if (!dlg || !dlg.showModal) { if (window.confirm(msg)) onOk(); return; }
+    dlg.querySelector(".cf-msg").textContent = msg;
+    var si = dlg.querySelector(".cf-si"), no = dlg.querySelector(".cf-no");
+    si.textContent = okLabel || "Borrar";
+    si.onclick = function () { dlg.close(); onOk(); };
+    no.onclick = function () { dlg.close(); };
+    dlg.showModal();
   }
 
   function valoresSemilla(tipo) {
@@ -497,11 +512,12 @@
       savePlantillas(arr);
       flash("Plantilla guardada" + (etiqueta ? " · " + etiqueta : ""));
     });
-    var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar bloque";
+    var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar sección";
     del.addEventListener("click", function () {
-      if (!confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) return;
-      delete repartoManual[bl.id];
-      c.bloques.splice(bi, 1); repartir(c); renderBuilder();
+      pedirConfirmacion("¿Quitar la sección «" + bl.titulo + "» y sus posturas?", function () {
+        delete repartoManual[bl.id];
+        c.bloques.splice(bi, 1); repartir(c); renderBuilder();
+      });
     });
     // duplicar / plantilla / borrar viven detrás de "···": son de uso raro y
     // tener cinco botones en cada bloque llenaba la pantalla de golpe
@@ -989,7 +1005,7 @@
     var bh = $("#builder .b-head");
     bh.querySelector(".b-nombre").addEventListener("input", function (e) { if (state.editando) { state.editando.nombre = e.target.value; } });
     bh.querySelector(".b-back").addEventListener("click", function () {
-      if (confirm("¿Salir sin guardar los cambios?")) cerrarBuilder();
+      pedirConfirmacion("¿Salir sin guardar los cambios?", cerrarBuilder, "Salir");
     });
     bh.querySelector(".b-save").addEventListener("click", function () { guardar(false); });
     bh.querySelector(".b-save-exit").addEventListener("click", function () { guardar(true); });

@@ -440,6 +440,15 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .md-op.sel{border-color:var(--purple);box-shadow:inset 0 0 0 1px var(--purple)}
 .md-op:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .md-cancel{align-self:center;border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:13px;padding:8px;cursor:pointer}
+
+/* confirmación de borrado — reemplaza a window.confirm(), que se ignora en móvil */
+.cf-body{max-width:360px}
+.cf-msg{font-size:14px;line-height:1.5;margin:0 0 18px;color:var(--ink)}
+.cf-actions{display:flex;gap:10px;justify-content:flex-end}
+.cf-actions button{font:inherit;font-weight:700;font-size:13px;padding:9px 18px;border-radius:10px;cursor:pointer}
+.cf-no{border:1px solid var(--line-strong);background:var(--card);color:var(--ink)}
+.cf-si{border:1px solid #b9564f;background:#a4453f;color:#fff}
+.cf-no:focus-visible,.cf-si:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
   .b-insert button,.b-insert::before{transition:none}
   .b-insert button:hover,.b-insert button:focus-visible{transform:none}
@@ -576,6 +585,16 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
       <span>Cada postura con su cronómetro, como estaba. Puede avanzar sola al terminar.</span>
     </button>
     <button type="button" class="md-cancel">Cancelar</button>
+  </div>
+</dialog>
+
+<dialog id="confirmar">
+  <div class="dlg-body cf-body">
+    <p class="cf-msg"></p>
+    <div class="cf-actions">
+      <button type="button" class="cf-no">Cancelar</button>
+      <button type="button" class="cf-si">Borrar</button>
+    </div>
   </div>
 </dialog>
 
@@ -11118,8 +11137,9 @@ window.POSES = [
       });
       var del = el("button", "mini danger", "Borrar"); del.type = "button";
       del.addEventListener("click", function () {
-        if (!confirm("¿Borrar «" + (c.nombre || "sin nombre") + "»? No se puede deshacer.")) return;
-        saveClases(loadClases().filter(function (x) { return x.id !== c.id; })); renderBanco();
+        pedirConfirmacion("¿Borrar «" + (c.nombre || "sin nombre") + "»? No se puede deshacer.", function () {
+          saveClases(loadClases().filter(function (x) { return x.id !== c.id; })); renderBanco();
+        });
       });
       acc.appendChild(dup); acc.appendChild(del);
       card.appendChild(acc);
@@ -11161,6 +11181,20 @@ window.POSES = [
   function flash(msg) {
     var f = $("#builder .b-flash"); f.textContent = msg; f.classList.add("on");
     setTimeout(function () { f.classList.remove("on"); }, 1400);
+  }
+
+  // Confirmación propia. window.confirm() se bloquea/ignora en varios navegadores
+  // de celular y en la app "añadida a la pantalla de inicio", así que los botones
+  // de borrar no hacían nada. Este diálogo sí funciona en todos lados.
+  function pedirConfirmacion(msg, onOk, okLabel) {
+    var dlg = $("#confirmar");
+    if (!dlg || !dlg.showModal) { if (window.confirm(msg)) onOk(); return; }
+    dlg.querySelector(".cf-msg").textContent = msg;
+    var si = dlg.querySelector(".cf-si"), no = dlg.querySelector(".cf-no");
+    si.textContent = okLabel || "Borrar";
+    si.onclick = function () { dlg.close(); onOk(); };
+    no.onclick = function () { dlg.close(); };
+    dlg.showModal();
   }
 
   function valoresSemilla(tipo) {
@@ -11370,11 +11404,12 @@ window.POSES = [
       savePlantillas(arr);
       flash("Plantilla guardada" + (etiqueta ? " · " + etiqueta : ""));
     });
-    var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar bloque";
+    var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar sección";
     del.addEventListener("click", function () {
-      if (!confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) return;
-      delete repartoManual[bl.id];
-      c.bloques.splice(bi, 1); repartir(c); renderBuilder();
+      pedirConfirmacion("¿Quitar la sección «" + bl.titulo + "» y sus posturas?", function () {
+        delete repartoManual[bl.id];
+        c.bloques.splice(bi, 1); repartir(c); renderBuilder();
+      });
     });
     // duplicar / plantilla / borrar viven detrás de "···": son de uso raro y
     // tener cinco botones en cada bloque llenaba la pantalla de golpe
@@ -11862,7 +11897,7 @@ window.POSES = [
     var bh = $("#builder .b-head");
     bh.querySelector(".b-nombre").addEventListener("input", function (e) { if (state.editando) { state.editando.nombre = e.target.value; } });
     bh.querySelector(".b-back").addEventListener("click", function () {
-      if (confirm("¿Salir sin guardar los cambios?")) cerrarBuilder();
+      pedirConfirmacion("¿Salir sin guardar los cambios?", cerrarBuilder, "Salir");
     });
     bh.querySelector(".b-save").addEventListener("click", function () { guardar(false); });
     bh.querySelector(".b-save-exit").addEventListener("click", function () { guardar(true); });
