@@ -766,6 +766,7 @@
     var ov = LS.get("img." + p.slug, null);
     if (ov === "none") return null;
     if (typeof ov === "number") return (window.SVGREPO_IMG && window.SVGREPO_IMG[ov]) || ("img/svgrepo/" + ov + ".svg");
+    if (typeof ov === "string" && ov.indexOf("data:") === 0) return ov; // foto subida en el glosario
     return p.img || null;
   }
   function segundos(it) {
@@ -889,7 +890,7 @@
     } else {
       var fig = el("div", "pl-figure");
       var src = imgForP(s.p);
-      if (src) { var im = el("img"); im.src = src; im.alt = ""; fig.appendChild(im); }
+      if (src) { var im = el("img"); if (src.indexOf("data:") === 0) im.className = "user-img"; im.src = src; im.alt = ""; fig.appendChild(im); }
       else { fig.classList.add("ph"); fig.appendChild(el("span", "pl-ph-san", s.p.sanscrito)); }
       st.appendChild(fig);
       var txt = el("div", "pl-txt");

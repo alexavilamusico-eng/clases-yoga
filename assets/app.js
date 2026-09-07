@@ -49,7 +49,10 @@
       limpiar: "Quitar filtros", de: "de", posturas: "posturas",
       nivelL: "Nivel", tipoL: "Tipo", zonaL: "Zona del cuerpo", dinL: "Dinámica",
       propia: "Ficha redactada para esta app.", breve: "Ficha breve — por completar.", api: "Datos base: yoga-api.",
-      cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo"
+      cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo",
+      subirImg: "Subir una foto", cambiarImg: "Cambiar la foto", quitarImg: "Quitar",
+      imgError: "No se pudo leer esa imagen. Prueba con un JPG o PNG.",
+      imgGrande: "No hay espacio para esa imagen. Prueba con una más pequeña."
     },
     en: {
       entrada: "How to enter", beneficios: "Benefits", precaucion: "Caution", etiquetas: "Tags", relacionadas: "Related",
@@ -57,7 +60,10 @@
       limpiar: "Clear filters", de: "of", posturas: "poses",
       nivelL: "Level", tipoL: "Type", zonaL: "Body zone", dinL: "Dynamic",
       propia: "Entry written for this app.", breve: "Short entry — to be completed.", api: "Base data: yoga-api.",
-      cambiarDibujo: "Change drawing", sinDibujo: "No drawing"
+      cambiarDibujo: "Change drawing", sinDibujo: "No drawing",
+      subirImg: "Upload a photo", cambiarImg: "Change photo", quitarImg: "Remove",
+      imgError: "Couldn't read that image. Try a JPG or PNG.",
+      imgGrande: "Not enough space for that image. Try a smaller one."
     }
   };
   function t(k) { return (T[state.lang] || T.es)[k]; }
@@ -73,7 +79,32 @@
     var ov = LS.get("img." + p.slug, null);
     if (ov === "none") return null;
     if (typeof ov === "number") return svgUrl(ov);
+    if (typeof ov === "string" && ov.indexOf("data:") === 0) return ov; // foto subida por Andrea
     return p.img || null;
+  }
+  function esFoto(src) { return typeof src === "string" && src.indexOf("data:") === 0; }
+
+  // Reduce la foto a máx 640 px y la aplana sobre blanco: sin esto una foto de
+  // celular (varios MB) no cabe en localStorage.
+  function comprimirImagen(file, cb) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      var im = new Image();
+      im.onload = function () {
+        var max = 640, w = im.naturalWidth || 1, h = im.naturalHeight || 1;
+        if (w > max || h > max) { var r = Math.min(max / w, max / h); w = Math.round(w * r); h = Math.round(h * r); }
+        var cv = el("canvas"); cv.width = w; cv.height = h;
+        var cx = cv.getContext("2d");
+        cx.fillStyle = "#fff"; cx.fillRect(0, 0, w, h);
+        cx.drawImage(im, 0, 0, w, h);
+        var out; try { out = cv.toDataURL("image/jpeg", 0.82); } catch (e) { out = null; }
+        cb(out);
+      };
+      im.onerror = function () { cb(null); };
+      im.src = fr.result;
+    };
+    fr.onerror = function () { cb(null); };
+    fr.readAsDataURL(file);
   }
 
   function nActive() {
@@ -167,7 +198,7 @@
       thumb.classList.remove("ph");
       var src = imgFor(p);
       if (src) {
-        var img = el("img");
+        var img = el("img", esFoto(src) ? "user-img" : null);
         img.src = src; img.alt = name; img.loading = "lazy";
         img.addEventListener("error", function () { thumb.classList.add("ph"); thumb.textContent = ""; thumb.appendChild(phInner(p)); });
         thumb.appendChild(img);
@@ -255,30 +286,61 @@
 
     if (SVG_COUNT) {
       sc.appendChild(details("cambiarDibujo", function (body) {
-        var grid = el("div", "pick");
-        function tile(cls, kind, val) {
-          var b = el("button", "pick-tile" + (cls ? " " + cls : ""));
-          b.type = "button";
-          if (kind === "svg") { var im = el("img"); im.src = svgUrl(val); im.loading = "lazy"; im.alt = ""; b.appendChild(im); }
-          else { b.appendChild(el("span", "pick-none", t("sinDibujo"))); }
-          b.addEventListener("click", function () {
-            LS.set("img." + p.slug, kind === "svg" ? val : "none");
-            paintThumb();
-            grid.querySelectorAll(".pick-tile").forEach(function (x) { x.classList.remove("on"); });
-            b.classList.add("on");
+        function pintarPicker() {
+          body.textContent = "";
+          var cur = LS.get("img." + p.slug, null);
+          var foto = esFoto(cur);
+
+          // --- subir / cambiar / quitar una foto propia ---
+          var up = el("div", "pick-upload");
+          var fi = el("input"); fi.type = "file"; fi.accept = "image/*"; fi.hidden = true;
+          if (foto) { var pv = el("img", "pick-up-prev"); pv.src = cur; pv.alt = ""; up.appendChild(pv); }
+          var btn = el("button", "pick-up-btn", t(foto ? "cambiarImg" : "subirImg"));
+          btn.type = "button";
+          btn.addEventListener("click", function () { fi.click(); });
+          fi.addEventListener("change", function () {
+            var f = fi.files && fi.files[0]; if (!f) return;
+            btn.disabled = true; btn.textContent = "…";
+            comprimirImagen(f, function (uri) {
+              btn.disabled = false;
+              if (!uri) { btn.textContent = t(foto ? "cambiarImg" : "subirImg"); alert(t("imgError")); return; }
+              try { LS.set("img." + p.slug, uri); }
+              catch (e) { btn.textContent = t(foto ? "cambiarImg" : "subirImg"); alert(t("imgGrande")); return; }
+              paintThumb(); pintarPicker();
+            });
           });
-          return b;
+          up.appendChild(btn); up.appendChild(fi);
+          if (foto) {
+            var q = el("button", "pick-up-clear", t("quitarImg")); q.type = "button";
+            q.addEventListener("click", function () { LS.set("img." + p.slug, null); paintThumb(); pintarPicker(); });
+            up.appendChild(q);
+          }
+          body.appendChild(up);
+
+          // --- dibujos de la colección ---
+          var grid = el("div", "pick");
+          function tile(cls, kind, val) {
+            var b = el("button", "pick-tile" + (cls ? " " + cls : ""));
+            b.type = "button";
+            if (kind === "svg") { var im = el("img"); im.src = svgUrl(val); im.loading = "lazy"; im.alt = ""; b.appendChild(im); }
+            else { b.appendChild(el("span", "pick-none", t("sinDibujo"))); }
+            b.addEventListener("click", function () {
+              LS.set("img." + p.slug, kind === "svg" ? val : "none");
+              paintThumb(); pintarPicker();
+            });
+            return b;
+          }
+          var none = tile("wide", "none");
+          if (cur === "none") none.classList.add("on");
+          grid.appendChild(none);
+          for (var i = 0; i < SVG_COUNT; i++) {
+            var tl = tile("", "svg", i);
+            if (cur === i) tl.classList.add("on");
+            grid.appendChild(tl);
+          }
+          body.appendChild(grid);
         }
-        var cur = LS.get("img." + p.slug, null);
-        var none = tile("wide", "none");
-        if (cur === "none") none.classList.add("on");
-        grid.appendChild(none);
-        for (var i = 0; i < SVG_COUNT; i++) {
-          var tl = tile("", "svg", i);
-          if (cur === i) tl.classList.add("on");
-          grid.appendChild(tl);
-        }
-        body.appendChild(grid);
+        pintarPicker();
       }));
     }
 

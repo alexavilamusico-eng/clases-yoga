@@ -36,6 +36,9 @@ Referencia de producto: Tummee.
 - Fase A: glosario con 198 posturas. 24 con dibujo por defecto (SVG Repo, 13 verificados por
   emparejamiento de paths contra yoga-api); el resto placeholder.
   Selector "Cambiar dibujo" en cada tarjeta (64 dibujos disponibles, elección en localStorage).
+  También "Subir una foto": la imagen se reduce a 640 px sobre canvas y se guarda como data-URI
+  en `glosario.img.<slug>` (mismo override que los dibujos). Se pinta con `.user-img` para
+  quitarle el `mix-blend-mode:multiply` que oscurece las ilustraciones de línea.
   Nombres verificados contra Wikipedia (`node _pipeline/verify-names.mjs`): 0 inventados.
 - Fase B: constructor de clases + banco (`assets/clases.js`). Pestañas Glosario / Clases.
   - Clase = { nombre, estilo, objetivo(min), semilla{tipo,valor}, bloques[{titulo,objetivo(min),items[]}], notas, fechas[] }.
