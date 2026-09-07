@@ -18,6 +18,8 @@
 
   var CIERRE = "Cierre · Savasana";
   var BLOQUES_DEF = ["Llegada · centramiento", "Calentamiento", "Desarrollo", "Enfriamiento", CIERRE];
+  // peso relativo de cada sección para repartir la duración de la clase (60 min → 6/12/24/12/6)
+  var PESOS_DEF = [1, 2, 4, 2, 1];
   var ESTILOS = ["", "Hatha", "Vinyasa", "Hatha-Vinyasa", "Ashtanga", "Yin", "Restaurativo", "Suave / terapéutico"];
   var SEMILLA_TIPOS = { "": "—", tema: "Tema", zona: "Parte del cuerpo", dinamica: "Dinámica de movimiento" };
 
@@ -36,7 +38,7 @@
     if (!Array.isArray(c.bloques)) c.bloques = [];
     c.bloques = c.bloques.filter(Boolean).map(function (b) {
       return { id: b.id || uid("b"), titulo: typeof b.titulo === "string" ? b.titulo : "Bloque",
-        objetivo: +b.objetivo || 0,
+        objetivo: +b.objetivo || 0, peso: +b.peso || 1,
         items: Array.isArray(b.items) ? b.items.filter(Boolean) : [] };
     });
     c.notas = typeof c.notas === "string" ? c.notas : "";
@@ -57,11 +59,11 @@
       semilla: { tipo: "", valor: "" },
       // el cierre ya viene con Savasana puesta: ese bloque siempre es Savasana,
       // no tiene caso que Andrea la agregue a mano en cada clase.
-      bloques: BLOQUES_DEF.map(function (t) {
+      bloques: BLOQUES_DEF.map(function (t, i) {
         var items = t === CIERRE && bySlug["savasana"]
           ? [{ tipo: "postura", slug: "savasana", lado: "", dur: 5, durUnit: "min", nota: "" }]
           : [];
-        return { id: uid("b"), titulo: t, objetivo: 0, items: items };
+        return { id: uid("b"), titulo: t, objetivo: 0, peso: PESOS_DEF[i] || 1, items: items };
       }),
       notas: "", fechas: [], creada: nowISO(), modificada: nowISO()
     };
@@ -188,6 +190,9 @@
 
   /* ---------- estado de vista ---------- */
   var state = { editando: null }; // clase en edición (copia)
+  // secciones cuya duración Andrea fijó a mano en esta sesión de edición:
+  // esas no se tocan al repartir; las demás se ajustan solas.
+  var repartoManual = {};
 
   function go(view) {
     $("#view-glosario").hidden = view !== "glosario";
@@ -252,6 +257,11 @@
   /* ---------- builder ---------- */
   function abrirBuilder(clase) {
     state.editando = clase;
+    repartoManual = {};
+    // si las secciones ya suman (más o menos) la duración de la clase, se respetan
+    // tal cual; si no (clase nueva o desfasada), se reparten por peso.
+    var suma = clase.bloques.reduce(function (a, b) { return a + (+b.objetivo || 0); }, 0);
+    if (clase.objetivo && Math.abs(suma - clase.objetivo) > 1) repartir(clase);
     var b = $("#builder");
     b.hidden = false;
     document.body.style.overflow = "hidden";
@@ -305,9 +315,11 @@
     setup.appendChild(field("Semilla de la clase", wrapTwo(semTipo, semVal)));
     setup.appendChild(field("Estilo", selectEl(ESTILOS, c.estilo, function (v) { c.estilo = v; })));
     var objIn = el("input", "b-num"); objIn.type = "number"; objIn.min = "10"; objIn.step = "5"; objIn.value = c.objetivo;
-    // repinta solo el total: re-renderizar aquí hacía perder el foco al escribir
-    objIn.addEventListener("input", function () { c.objetivo = +objIn.value || 0; pintaCabecera(); });
-    setup.appendChild(field("Duración objetivo (min)", objIn));
+    // al cambiar la duración de la clase, las secciones no fijadas se reajustan solas
+    objIn.addEventListener("input", function () { c.objetivo = +objIn.value || 0; repartir(c); refrescarTiemposSecciones(); });
+    var fObj = field("Duración objetivo (min)", objIn);
+    fObj.appendChild(el("span", "b-hint", "Las secciones se reparten solas. Si escribes el tiempo de una, las demás se ajustan."));
+    setup.appendChild(fObj);
     root.appendChild(setup);
 
     // bloques, con un insertador discreto en cada hueco entre secciones
@@ -323,9 +335,16 @@
     blkBar.appendChild(addBl);
     var plantillas = loadPlantillas();
     if (plantillas.length) {
+      // agrupadas por etiqueta para que las de "pecho", "caderas"… queden juntas
+      plantillas.sort(function (a, b) {
+        return (a.etiqueta || "￿").localeCompare(b.etiqueta || "￿") || (a.nombre || "").localeCompare(b.nombre || "");
+      });
       var sel = el("select", "b-select b-tplsel");
-      sel.appendChild(el("option", null, "Insertar plantilla…")).value = "";
-      plantillas.forEach(function (t, i) { var o = el("option", null, t.nombre); o.value = i; sel.appendChild(o); });
+      sel.appendChild(el("option", null, "Insertar sección guardada…")).value = "";
+      plantillas.forEach(function (t, i) {
+        var o = el("option", null, t.nombre + (t.etiqueta ? "  ·  " + t.etiqueta : ""));
+        o.value = i; sel.appendChild(o);
+      });
       sel.addEventListener("change", function () {
         if (sel.value === "") return;
         nuevoBloqueEn(c, c.bloques.length, plantillas[+sel.value]);
@@ -360,15 +379,51 @@
     var c = state.editando; if (!c) return;
     var totEl = $("#builder .b-total"); if (!totEl) return;
     var tot = minClase(c), obj = +c.objetivo || 0;
+    var sumaSec = c.bloques.reduce(function (a, b) { return a + (+b.objetivo || 0); }, 0);
     totEl.textContent = "~" + tot + " / " + obj + " min  ·  " + txtPosturas(c);
-    totEl.className = "b-total" + (obj && Math.abs(tot - obj) > obj * 0.15 ? " off" : "");
+    var desfase = obj && (Math.abs(tot - obj) > obj * 0.15 || Math.abs(sumaSec - obj) > 2);
+    totEl.className = "b-total" + (desfase ? " off" : "");
+  }
+
+  // Reparte la duración de la clase entre las secciones que Andrea NO fijó a mano.
+  // Las fijadas se respetan; el resto se divide por peso (o por su valor actual).
+  function repartir(c) {
+    var total = +c.objetivo || 0;
+    if (!total || !c.bloques.length) return;
+    var libres = c.bloques.filter(function (b) { return !repartoManual[b.id]; });
+    if (!libres.length) return; // todo fijado a mano: no tocar nada
+    var usado = c.bloques.reduce(function (a, b) { return a + (repartoManual[b.id] ? (+b.objetivo || 0) : 0); }, 0);
+    var resto = Math.max(0, total - usado);
+    var pesos = libres.map(function (b) { return (+b.objetivo || 0) > 0 ? +b.objetivo : (+b.peso || 1); });
+    var suma = pesos.reduce(function (a, x) { return a + x; }, 0) || 1;
+    var acum = 0;
+    libres.forEach(function (b, k) {
+      if (k === libres.length - 1) b.objetivo = Math.max(0, resto - acum);
+      else { var v = Math.round(resto * pesos[k] / suma); b.objetivo = v; acum += v; }
+    });
+  }
+
+  // vuelca los objetivos del modelo a los inputs de sección sin re-render
+  // (salta el input que el usuario está escribiendo para no pisarle el cursor)
+  function refrescarTiemposSecciones(excepto) {
+    var c = state.editando; if (!c) return;
+    var boxes = document.querySelectorAll("#builder .b-bloque");
+    for (var i = 0; i < boxes.length; i++) {
+      var inp = boxes[i].querySelector(".b-bloque-obj"), bl = c.bloques[i];
+      if (inp && inp !== excepto && bl) inp.value = bl.objetivo ? bl.objetivo : "";
+      if (boxes[i]._pintaMin) boxes[i]._pintaMin();
+    }
+    pintaCabecera();
   }
 
   function nuevoBloqueEn(c, i, plantilla) {
     var bl = plantilla
-      ? { id: uid("b"), titulo: plantilla.titulo, objetivo: +plantilla.objetivo || 0, items: JSON.parse(JSON.stringify(plantilla.items)) }
-      : { id: uid("b"), titulo: "Nueva sección", objetivo: 0, items: [] };
+      ? { id: uid("b"), titulo: plantilla.titulo, objetivo: +plantilla.objetivo || 0, peso: 1, items: JSON.parse(JSON.stringify(plantilla.items)) }
+      : { id: uid("b"), titulo: "Nueva sección", objetivo: 0, peso: 1, items: [] };
     c.bloques.splice(i, 0, bl);
+    // si la plantilla trae una duración guardada, se respeta; si no, entra al reparto
+    if (plantilla && (+plantilla.objetivo || 0) > 0) repartoManual[bl.id] = true;
+    repartir(c);
     renderBuilder();
     // deja el nombre listo para escribir
     var cajas = document.querySelectorAll("#builder .b-bloque-ti");
@@ -411,7 +466,12 @@
       mins.textContent = "~" + real;
       tiempo.className = "b-bloque-time" + (o && Math.abs(real - o) > Math.max(2, o * 0.2) ? " off" : "");
     }
-    objIn.addEventListener("input", function () { bl.objetivo = +objIn.value || 0; pintaMin(); });
+    objIn.addEventListener("input", function () {
+      bl.objetivo = +objIn.value || 0;
+      repartoManual[bl.id] = true;   // fijada a mano: ya no se reparte sola
+      repartir(c);                    // el resto del tiempo se reparte entre las demás
+      refrescarTiemposSecciones(objIn);
+    });
     tiempo.appendChild(mins);
     tiempo.appendChild(el("span", "b-bloque-sep", "/"));
     tiempo.appendChild(objIn);
@@ -423,16 +483,26 @@
     var up = el("button", null, "↑"); up.type = "button"; up.title = "Subir"; up.addEventListener("click", function () { swap(c.bloques, bi, bi - 1); renderBuilder(); });
     var dn = el("button", null, "↓"); dn.type = "button"; dn.title = "Bajar"; dn.addEventListener("click", function () { swap(c.bloques, bi, bi + 1); renderBuilder(); });
     var dup = el("button", null, "⎘"); dup.type = "button"; dup.title = "Duplicar bloque";
-    dup.addEventListener("click", function () { c.bloques.splice(bi + 1, 0, { id: uid("b"), titulo: bl.titulo + " (copia)", objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) }); renderBuilder(); });
-    var tpl = el("button", null, "★"); tpl.type = "button"; tpl.title = "Guardar como plantilla";
+    dup.addEventListener("click", function () {
+      c.bloques.splice(bi + 1, 0, { id: uid("b"), titulo: bl.titulo + " (copia)", objetivo: bl.objetivo || 0, peso: bl.peso || 1, items: JSON.parse(JSON.stringify(bl.items)) });
+      repartir(c); renderBuilder();
+    });
+    var tpl = el("button", null, "★"); tpl.type = "button"; tpl.title = "Guardar sección como plantilla";
     tpl.addEventListener("click", function () {
       var nombre = prompt("Nombre de la plantilla:", bl.titulo);
       if (!nombre) return;
-      var arr = loadPlantillas(); arr.push({ nombre: nombre, titulo: bl.titulo, objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) }); savePlantillas(arr);
-      flash("Plantilla guardada");
+      var etiqueta = (prompt("Etiqueta (opcional) — ¿para qué sirve? ej: pecho, caderas, suave", "") || "").trim();
+      var arr = loadPlantillas();
+      arr.push({ nombre: nombre.trim(), etiqueta: etiqueta, titulo: bl.titulo, objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) });
+      savePlantillas(arr);
+      flash("Plantilla guardada" + (etiqueta ? " · " + etiqueta : ""));
     });
     var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar bloque";
-    del.addEventListener("click", function () { if (confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) { c.bloques.splice(bi, 1); renderBuilder(); } });
+    del.addEventListener("click", function () {
+      if (!confirm("¿Quitar el bloque «" + bl.titulo + "» y sus posturas?")) return;
+      delete repartoManual[bl.id];
+      c.bloques.splice(bi, 1); repartir(c); renderBuilder();
+    });
     // duplicar / plantilla / borrar viven detrás de "···": son de uso raro y
     // tener cinco botones en cada bloque llenaba la pantalla de golpe
     var mas = el("button", "b-mas", "···"); mas.type = "button"; mas.title = "Más opciones";
@@ -535,6 +605,19 @@
       nota.addEventListener("input", function () { it.nota = nota.value; });
       det.appendChild(nota);
     }
+    // duplicar: para hacer el otro lado sin volver a buscar la postura.
+    // si ya tenía un lado, la copia entra con el contrario.
+    var dupIt = el("button", "b-dupit", "⎘ Duplicar");
+    dupIt.type = "button";
+    dupIt.title = "Duplicar (para el otro lado)";
+    dupIt.addEventListener("click", function () {
+      var copia = JSON.parse(JSON.stringify(it));
+      if (copia.lado === "izq") copia.lado = "der";
+      else if (copia.lado === "der") copia.lado = "izq";
+      bl.items.splice(ii + 1, 0, copia);
+      renderBuilder();
+    });
+    det.appendChild(dupIt);
     det.appendChild(moveBtns(
       function () { swap(bl.items, ii, ii - 1); renderBuilder(); },
       function () { swap(bl.items, ii, ii + 1); renderBuilder(); },
@@ -677,7 +760,7 @@
 
   /* ---------- modo clase (slideshow con timer) ---------- */
   var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null,
-    modo: LS.get("plModo", "calma"), reloj: null, ultimoTap: 0 };
+    modo: LS.get("plModo", "calma"), reloj: null, ultimoTap: 0, avisado: {}, avisoT: null };
 
   function imgForP(p) {
     var ov = LS.get("img." + p.slug, null);
@@ -692,22 +775,29 @@
   }
   function construirPasos(c) {
     var pasos = [];
-    c.bloques.forEach(function (bl) {
+    c.bloques.forEach(function (bl, blIdx) {
       var ob = +bl.objetivo || 0;
       bl.items.forEach(function (it) {
         if (it.tipo === "texto") {
-          if ((it.texto || "").trim()) pasos.push({ tipo: "texto", texto: it.texto, bloque: bl.titulo, bloqueObj: ob, seg: segundos(it) });
+          if ((it.texto || "").trim()) pasos.push({ tipo: "texto", texto: it.texto, bloque: bl.titulo, bi: blIdx, bloqueObj: ob, seg: segundos(it) });
           return;
         }
         var p = bySlug[it.slug]; if (!p) return;
         if (it.lado === "ambos") {
-          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bloqueObj: ob, lado: "Lado izquierdo", nota: it.nota, seg: segundos(it) });
-          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bloqueObj: ob, lado: "Lado derecho", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bi: blIdx, bloqueObj: ob, lado: "Lado izquierdo", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bi: blIdx, bloqueObj: ob, lado: "Lado derecho", nota: it.nota, seg: segundos(it) });
         } else {
-          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bloqueObj: ob, lado: it.lado === "izq" ? "Lado izquierdo" : it.lado === "der" ? "Lado derecho" : "", nota: it.nota, seg: segundos(it) });
+          pasos.push({ tipo: "postura", p: p, bloque: bl.titulo, bi: blIdx, bloqueObj: ob, lado: it.lado === "izq" ? "Lado izquierdo" : it.lado === "der" ? "Lado derecho" : "", nota: it.nota, seg: segundos(it) });
         }
       });
     });
+    // segundos que faltan hasta el fin de la sección, contados desde el inicio de cada paso
+    var acc = 0, cur = null;
+    for (var k = pasos.length - 1; k >= 0; k--) {
+      if (pasos[k].bi !== cur) { cur = pasos[k].bi; acc = 0; }
+      acc += pasos[k].seg || 0;
+      pasos[k].segSeccion = acc;
+    }
     return pasos;
   }
   // Antes de dar la clase se elige el modo. Se recuerda el último elegido.
@@ -728,9 +818,10 @@
     if (!PL.pasos.length) { alert("Esta clase todavía no tiene posturas ni textos."); return; }
     PL.modo = modo === "tiempos" ? "tiempos" : "calma";
     LS.set("plModo", PL.modo);
-    PL.i = 0; PL.playing = false; PL.ultimoTap = 0;
+    PL.i = 0; PL.playing = false; PL.ultimoTap = 0; PL.avisado = {};
     var pl = $("#player");
     pl.classList.toggle("modo-calma", PL.modo === "calma");
+    var av = pl.querySelector(".pl-aviso"); if (av) { av.hidden = true; av.classList.remove("on"); }
     pl.hidden = false; document.body.style.overflow = "hidden";
     pl.querySelector(".pl-auto-chk").checked = PL.auto;
     if (PL.modo === "calma") { pintaReloj(); PL.reloj = setInterval(pintaReloj, 15000); }
@@ -765,7 +856,29 @@
     PL.restante = PL.pasos[PL.i].seg || 0;
     renderPaso();
     actualizarTimer();
+    chequearAvisoSeccion();
     if (PL.playing) arrancar();
+  }
+
+  // modo tiempos: avisa una vez cuando queda ~1 min para que termine la sección
+  function chequearAvisoSeccion() {
+    if (PL.modo !== "tiempos") return;
+    var s = PL.pasos[PL.i]; if (!s) return;
+    var restSec = PL.restante + ((s.segSeccion || 0) - (s.seg || 0));
+    if (restSec > 0 && restSec <= 60 && !PL.avisado[s.bi]) {
+      PL.avisado[s.bi] = true;
+      mostrarAviso("Queda ~1 min de " + s.bloque);
+    }
+  }
+  function mostrarAviso(txt) {
+    var a = $("#player .pl-aviso"); if (!a) return;
+    a.textContent = txt; a.hidden = false;
+    requestAnimationFrame(function () { a.classList.add("on"); });
+    clearTimeout(PL.avisoT);
+    PL.avisoT = setTimeout(function () {
+      a.classList.remove("on");
+      setTimeout(function () { a.hidden = true; }, 400);
+    }, 6000);
   }
   function renderPaso() {
     var s = PL.pasos[PL.i], st = $("#player .pl-stage");
@@ -791,6 +904,16 @@
       st.appendChild(txt);
     }
     if (PL.modo !== "calma") { var t = el("div", "pl-time"); t.id = "plTime"; st.appendChild(t); }
+    // la que sigue, para ir preparándola (fija encima de los controles, solo modo tiempos)
+    var sg = $("#player .pl-sigue");
+    if (sg) {
+      sg.hidden = PL.modo === "calma";
+      var sig = PL.pasos[PL.i + 1];
+      var quien = !sig ? "fin de la clase"
+        : sig.tipo === "texto" ? "lectura / nota"
+        : sig.p.nombre + (sig.lado ? " · " + sig.lado : "");
+      sg.textContent = "Sigue: " + quien;
+    }
     var fin = PL.i === PL.pasos.length - 1;
     $("#player .pl-pos").textContent = s.bloque + (s.bloqueObj ? "  ·  " + s.bloqueObj + " min" : "") +
       "  ·  " + (PL.i + 1) + " / " + PL.pasos.length + (fin && PL.modo === "calma" ? "  ·  última" : "");
@@ -809,6 +932,7 @@
   function tick() {
     if (PL.restante > 0) PL.restante--;
     actualizarTimer();
+    chequearAvisoSeccion();
     if (PL.restante <= 0) {
       clearInterval(PL.timer);
       if (PL.auto && PL.i < PL.pasos.length - 1) setTimeout(function () { if (PL.playing) siguiente(); }, 1000);

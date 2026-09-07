@@ -44,6 +44,13 @@ Referencia de producto: Tummee.
   - "Sugerir" por bloque: puntúa POSES por la semilla + rol del bloque. "Ver plan" abre ventana imprimible.
   - Reordenar: arrastre desde el grip (escritorio) + flechas ↑↓ (el arrastre HTML5 no va en móvil).
   - El bloque "Cierre · Savasana" nace con Savasana ya puesta.
+  - Cada bloque tiene `peso`. La duración de la clase se reparte sola entre las secciones
+    (60 min → 6/12/24/12/6). Si Andrea escribe el tiempo de una sección, esa se fija
+    (`repartoManual` en memoria, no se guarda) y las demás se reajustan. `repartir()` +
+    `refrescarTiemposSecciones()`.
+  - Plantillas de sección: `localStorage['glosario.plantillas']`, ahora con `etiqueta`
+    (ej. "pecho"). El desplegable las agrupa por etiqueta.
+  - Postura: botón "Duplicar" en el detalle — copia la fila y, si tenía lado, la pone al contrario.
 
 ## Accesibilidad — no negociable
 Andrea tiene autismo: **demasiada información en pantalla la abruma**. Todo lo secundario va plegado.
@@ -56,7 +63,9 @@ Al agregar algo al constructor, la pregunta es "¿esto tiene que verse siempre?"
 - **Tranquilo** (por defecto): sin cronómetro, sin barra de avance. La pantalla entera avanza al tocarla;
   el 22% izquierdo regresa. Dos taps en <420 ms cuentan como uno (doble tap accidental). Muestra la
   hora del día, no una cuenta atrás. Es el que usa dando clase con gente enfrente.
-- **Con tiempos**: cronómetro por postura y avance automático opcional.
+- **Con tiempos**: cronómetro por postura y avance automático opcional. Muestra la postura
+  que sigue (franja fija sobre los controles) y avisa "queda ~1 min" cuando falta menos de
+  60 s para que termine la sección (una vez por sección).
 
 - Pendiente: PDF nativo, más precisión en el mapa de dibujos, revisar las ~120 fichas breves,
   sincronizar entre dispositivos (hoy solo respaldo manual por portapapeles).

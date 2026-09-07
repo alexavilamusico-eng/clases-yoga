@@ -302,6 +302,10 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-item-notachip{flex:none;max-width:40%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
   font-size:11.5px;color:var(--ink-soft);font-style:italic}
 .b-item-det{flex-basis:100%;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0 2px}
+.b-dupit{border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);font:inherit;font-size:12px;font-weight:700;border-radius:8px;padding:6px 10px;cursor:pointer}
+.b-dupit:hover{border-color:var(--purple);color:var(--purple-deep)}
+.b-dupit:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.b-hint{display:block;margin:6px 2px 0;font-size:11px;line-height:1.4;color:var(--ink-soft)}
 .b-mas{width:26px;height:26px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
   border-radius:7px;cursor:pointer;font:inherit;font-size:12px;line-height:1}
 .b-extra{display:inline-flex;gap:2px}
@@ -377,6 +381,17 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .pl-progress{height:4px;background:var(--line)}
 .pl-progress i{display:block;height:100%;background:var(--purple);width:0;transition:width .9s linear}
 
+/* la postura que sigue: franja fija encima de los controles (solo modo con tiempos) */
+.pl-sigue{padding:8px 20px;text-align:center;font-size:13px;color:var(--ink-soft);
+  border-top:1px solid var(--line);background:var(--card-2)}
+#player.modo-calma .pl-sigue{display:none}
+/* aviso flotante: "queda ~1 min de [sección]" */
+.pl-aviso{position:absolute;top:14px;left:50%;transform:translate(-50%,-10px);
+  background:#f5e4c6;color:#7a4a12;border:1px solid #e5c690;border-radius:999px;
+  padding:8px 16px;font-size:13px;font-weight:700;box-shadow:0 8px 22px rgba(0,0,0,.14);
+  opacity:0;transition:opacity .35s,transform .35s;pointer-events:none;z-index:5}
+.pl-aviso.on{opacity:1;transform:translate(-50%,0)}
+
 /* ---- modo tranquilo: sin reloj de cuenta atrás; la pantalla entera avanza ---- */
 .pl-atras,.pl-reloj{display:none}
 #player.modo-calma .pl-ctrls,#player.modo-calma .pl-auto,#player.modo-calma .pl-progress{display:none}
@@ -405,7 +420,9 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .md-cancel{align-self:center;border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:13px;padding:8px;cursor:pointer}
 @media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
   .b-insert button,.b-insert::before{transition:none}
-  .b-insert button:hover,.b-insert button:focus-visible{transform:none}}
+  .b-insert button:hover,.b-insert button:focus-visible{transform:none}
+  .pl-aviso{transition:opacity .2s}
+  .pl-aviso,.pl-aviso.on{transform:translate(-50%,0)}}
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
