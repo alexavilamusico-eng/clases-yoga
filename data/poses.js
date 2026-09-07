@@ -184,35 +184,38 @@ window.POSES = [
    "energía"
   ],
   "entrada": [
-   "Boca arriba, pies al ancho de la cadera y cerca de los glúteos, paralelos.",
-   "Empuja los pies contra el suelo y sube la pelvis; muslos paralelos entre sí.",
-   "Entrelaza los dedos bajo la espalda y lleva los hombros uno hacia el otro; nuca larga en el suelo."
+   "Sube las caderas",
+   "Rodillas juntas",
+   "Columna despegada del piso",
+   "Brazos a los costados del cuerpo",
+   "Presiona los pies contra el piso"
   ],
-  "entrada_en": "From a supine position, on your back, the hips are pressed up with the heels of the feet rooted into the earth close to the sits bones. The toes are actively lifted and the pelvis tucked. The thighs are parallel to the earth and the fingers are interlaced under the body with the ribcage lifted and the heart open. The back of the neck rests on the earth. The gaze is to the sky.",
+  "entrada_en": [
+   "Lift the hips up",
+   "Knees together",
+   "Spine off the floor",
+   "Arms alongside the body",
+   "Press feet into the floor"
+  ],
   "beneficios": [
-   "Estira pecho, cuello y columna.",
-   "Estimula órganos abdominales, pulmones y tiroides.",
-   "Reduce ansiedad, fatiga y dolor de espalda; alivia molestias menstruales con apoyo."
+   "Fortalece la columna",
+   "Trabaja el core",
+   "Da energía al cuerpo"
   ],
   "beneficios_en": [
-   "Stretches the chest, neck, and spine",
-   "Stimulates abdominal organs, lungs, and thyroids",
-   "Rejuvenates tired legs",
-   "Improves digestion",
-   "Helps relieve the symptoms of menopause",
-   "Relieves menstrual discomfort when done supported",
-   "Reduces anxiety, fatigue, backache, headache, and insomnia",
-   "Therapeutic for asthma, high blood pressure, osteoporosis, and sinusitis"
+   "Strengthens the spine",
+   "Builds the core",
+   "Energizes the body"
   ],
   "precaucion": [
-   "Lesión de cuello: no gires la cabeza mientras estás en la postura."
+   "Lesión reciente o crónica de rodillas, hombros o espalda."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/setu-bandha-sarvangasana.svg",
-  "fuente": "yoga-api"
+  "liberar": "Exhala y baja la columna al piso vértebra por vértebra.",
+  "liberar_en": "Exhale and slowly roll the spine back to the floor.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/setu-bandha-sarvangasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 5,
@@ -239,30 +242,38 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "Sentada, junta las plantas de los pies y deja caer las rodillas a los lados.",
-   "Acerca los talones a las ingles lo que permita la cadera; isquiones firmes en el suelo.",
-   "Alarga la columna hacia arriba; si quieres más, inclínate desde la cadera sin redondear."
+   "Hombros abajo y atrás",
+   "Presiona las caderas hacia el piso",
+   "Rodillas abiertas hacia los lados",
+   "Plantas de los pies juntas",
+   "Mantén el pecho abierto"
   ],
-  "entrada_en": "In sitting position, bend both knees and drop the knees to each side, opening the hips. Bring the soles of the feet together and bring the heels as close to the groin as possible, keeping the knees close to the ground. The hands may reach down and grasp and maneuver the feet so that the soles are facing upwards and the heels and little toes are connected. The shoulders should be pulled back and no rounding of the spine.",
+  "entrada_en": [
+   "Drop shoulders down and back",
+   "Press the hips down",
+   "Knees bent out to the sides",
+   "Bottoms of feet together",
+   "Keep the chest open"
+  ],
   "beneficios": [
-   "Abre caderas e ingles.",
-   "Estira hombros, caja torácica y espalda.",
-   "Estimula órganos abdominales, pulmones y corazón."
+   "Abre las caderas",
+   "Alarga la columna",
+   "Estimula el sistema respiratorio"
   ],
   "beneficios_en": [
-   "Opens the hips and groins",
-   "Stretches the shoulders, rib cage and back",
-   "Stimulates the abdominal organs, lungs and heart"
+   "Opens the hips",
+   "Lengthens the spine",
+   "Stimulates the respiratory system"
   ],
   "precaucion": [
-   "Lesión de ingle o de rodilla: pon soportes bajo los muslos."
+   "Lesión reciente o crónica de rodilla o cadera, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Siéntate despacio y estira las piernas.",
+  "liberar_en": "Slowly sit up straight and stretch your legs.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/baddha-konasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 6,
@@ -271,7 +282,7 @@ window.POSES = [
   "nombre_en": "Camel",
   "sanscrito": "Ustrasana",
   "traduccion": "ustra = camello",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "arrodillada"
   ],
@@ -291,32 +302,36 @@ window.POSES = [
    "confianza"
   ],
   "entrada": [
-   "De rodillas, al ancho de la cadera, tibias y empeines firmes en el suelo.",
-   "Lleva la pelvis ligeramente adelante y sube las costillas antes de arquear.",
-   "Manos a los talones o a bloques; abre el pecho al techo, cuello largo (no lo dejes caer de golpe)."
+   "Eleva el pecho",
+   "Sostén el peso con los brazos mientras te arqueas hacia atrás",
+   "Lleva las caderas hacia adelante",
+   "Baja una mano al talón a la vez"
   ],
-  "entrada_en": "From a kneeling position the knees are hip width apart and the thighs are perpendicular to the earth. The inner thighs are narrowed and rotated slightly inward with the buttocks engaged but not hardened. The tailbone is tucked under but the hips do not puff forward. The shins and tops of the feet are pressed firmly into the earth. The ribcage is open, along with the heart center, but the lower front ribs do not protrude sharply towards the sky. The lower back lifts the ribs away from the pelvis to keep the lower spine as long as possible. The base of the palms are pressed firmly against the soles (or heels) of the feet and the fingers are pointed toward the toes. The arms are extended straight and are turned slightly outward at the shoulder joint so the elbow creases face forward without squeezing the shoulder blades together. The neck is in a relatively neutral position, neither flexed nor extended, or (for the advanced practitioners only) the head drops back. Be careful not to strain your neck and harden your throat. The gaze is either towards the sky or towards the earth, depending upon your flexibility.",
+  "entrada_en": [
+   "Lift the chest",
+   "Support your weight with the arms as you bend backwards",
+   "Press hips forward",
+   "Reach one hand down to the heel at a time"
+  ],
   "beneficios": [
-   "Estira todo el frente del cuerpo: tobillos, muslos, ingles, abdomen, pecho y garganta.",
-   "Estira el psoas y fortalece la espalda.",
-   "Mejora la postura y estimula los órganos del abdomen y el cuello."
+   "Abre el pecho",
+   "Estimula la digestión",
+   "Estimula el sistema respiratorio"
   ],
   "beneficios_en": [
-   "Stretches the entire front of the body, the ankles, thighs and groins, abdomen and chest, and throat",
-   "Stretches the deep hip flexors (psoas)",
-   "Strengthens back muscles",
-   "Improves posture",
-   "Stimulates the organs of the abdomen and neck"
+   "Opens the chest",
+   "Stimulates digestion",
+   "Stimulates the respiratory system"
   ],
   "precaucion": [
-   "Presión arterial alta o baja, migraña, lesión lumbar o de cuello."
+   "Hernia o cirugía abdominal reciente; lesión reciente o crónica de rodilla, hombro, cuello o espalda, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Lleva una mano a la vez al sacro. Con ambas manos en el sacro, inhala subiendo despacio, dejando que la cabeza y el cuello suban al final.",
+  "liberar_en": "Slowly bring one hand at a time back to the sacrum. With both hands on the sacrum, slowly inhale up, letting the head and the neck be the last to come vertical.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/ustrasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 7,
@@ -343,29 +358,34 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "En cuadrupedia, muñecas bajo los hombros y rodillas bajo la cadera.",
-   "Al exhalar, redondea la columna hacia el techo y separa los omóplatos.",
-   "Deja caer la coronilla; la mirada hacia el ombligo. Se alterna con la vaca al ritmo de la respiración."
+   "Presiona contra las palmas",
+   "Redondea la columna",
+   "Deja caer la cabeza"
   ],
-  "entrada_en": "From box neutral shift some weight to the palms. The wrists, elbows and shoulders are in one line. The abdomen is pulled in and up with the spine arched in a strong Cobra spine. The crown of the head is towards the earth and the neck is relaxed. The gaze is between the arms towards the belly.",
+  "entrada_en": [
+   "Press into the palms",
+   "Round the spine",
+   "Let the head drop"
+  ],
   "beneficios": [
-   "Descarga columna y cuello.",
-   "Da energía al cuerpo.",
-   "Moviliza la espalda al ritmo de la respiración."
+   "Estira la parte media y alta de la espalda",
+   "Estira los hombros",
+   "Moviliza la columna"
   ],
   "beneficios_en": [
-   "Relieves the spine and neck",
-   "Energizes the body"
+   "Stretches the middle upper back",
+   "Stretches the shoulders",
+   "Mobilizes the spine"
   ],
   "precaucion": [
-   "Lesión de muñeca: apoya los antebrazos o cierra los puños."
+   "Lesión reciente o crónica de muñecas, espalda o cuello."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/marjaryasana.svg",
-  "fuente": "yoga-api"
+  "liberar": "Inhala y aplana la espalda volviendo a la posición de mesa.",
+  "liberar_en": "Inhale and flatten the back moving into table pose.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/marjaryasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 8,
@@ -423,7 +443,7 @@ window.POSES = [
   "nombre_en": "Chair",
   "sanscrito": "Utkatasana",
   "traduccion": "utkata = feroz, intensa",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "de pie"
   ],
@@ -443,32 +463,42 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "Pies juntos o al ancho de la cadera; el peso en los talones.",
-   "Dobla las rodillas y lleva los isquiones atrás como para sentarte; costillas sin abrirse.",
-   "Sube los brazos junto a las orejas; nuca larga, mirada al frente."
+   "Brazos al frente y paralelos",
+   "Hombros abajo y atrás",
+   "Mira un punto fijo en la pared o el piso",
+   "Caderas abajo y atrás",
+   "Dobla las rodillas",
+   "Baja como en cuclillas",
+   "Peso en los talones"
   ],
-  "entrada_en": "From a standing position, the feet are together and rooted into the earth with toes actively lifted. The knees are bent and the weight of the body is on the heels of the feet. The pelvis is tucked in and the ribcage is lifted. The neck is a natural extension of the spine. The arms are lifted up toward the sky with the elbows straight and the biceps by the ears. The hands can be together or separated and facing each other with the fingers spread wide. The gaze is forward.",
+  "entrada_en": [
+   "Arms forward and parallel",
+   "Shoulders down and back",
+   "Stare at a point on the wall or floor",
+   "Hips down and back",
+   "Bend the knees",
+   "Squat down",
+   "Weight to the heels"
+  ],
   "beneficios": [
-   "Fortalece tobillos, muslos, gemelos y columna.",
-   "Estira hombros y pecho.",
-   "Estimula abdomen, diafragma y corazón; da energía."
+   "Fortalece el tren inferior",
+   "Estira la parte alta de la espalda",
+   "Da energía a todo el cuerpo"
   ],
   "beneficios_en": [
-   "Strengthens the ankles, thighs, calves, and spine",
-   "Stretches shoulders and chest",
-   "Stimulates the abdominal organs, diaphragm, and heart",
-   "Reduces flat feet",
-   "Energizes the entire body"
+   "Strengthens the lower body",
+   "Stretches the upper back",
+   "Energizes the whole body"
   ],
   "precaucion": [
-   "Lesión de rodilla, presión arterial baja, dolor de cabeza."
+   "Lesión reciente o crónica de caderas, rodillas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Inhala y presiona los pies para estirar las piernas. Sube los brazos al techo. Exhala y baja los brazos.",
+  "liberar_en": "Inhale and press down into the feet, straightening the legs. Raise the arms up toward the ceiling. Exhale and bring the arms down.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/utkatasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 10,
@@ -498,30 +528,34 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "De rodillas, junta los dedos gordos de los pies y abre las rodillas al ancho que necesites.",
-   "Lleva los glúteos hacia los talones y la frente al suelo o a un bloque.",
-   "Brazos estirados adelante o a los lados del cuerpo; respiración hacia la espalda."
+   "Baja las caderas hacia los talones",
+   "Frente en el piso",
+   "Palmas en el piso"
   ],
-  "entrada_en": "From a kneeling position, the toes and knees are together with most of the weight of the body resting on the heels of the feet. The arms are extended back resting alongside the legs. The forehead rests softly onto the earth. The gaze is down and inward.",
+  "entrada_en": [
+   "Lower the hips to the heels",
+   "Forehead to the floor",
+   "Palms on the floor"
+  ],
   "beneficios": [
-   "Estira suavemente caderas, muslos y tobillos.",
-   "Calma la mente y alivia estrés y fatiga.",
-   "Descarga espalda y cuello con la frente apoyada."
+   "Calma cuerpo, mente y espíritu",
+   "Estira la zona lumbar",
+   "Estimula la digestión"
   ],
   "beneficios_en": [
-   "Gently stretches the hips, thighs, and ankles",
-   "Calms the brain and helps relieve stress and fatigue",
-   "Relieves back and neck pain when done with head and torso supported"
+   "Calms body, mind, and spirit",
+   "Stretches lower back",
+   "Stimulates digestion"
   ],
   "precaucion": [
-   "Lesión de rodilla, embarazo avanzado (abre bien las rodillas), diarrea."
+   "Lesión reciente o crónica de rodilla o cadera, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/balasana.svg",
-  "fuente": "yoga-api"
+  "liberar": "Coloca las palmas bajo los hombros e inhala despacio hasta sentarte.",
+  "liberar_en": "Place palms under the shoulders and slowly inhale up to a seated position.",
+  "respiracion": "Aguanta de 4 a 12 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–12 breaths.",
+  "img": "img/mazo/balasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 11,
@@ -546,31 +580,36 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Boca arriba, piernas separadas al ancho del tapete, pies cayendo hacia afuera.",
-   "Brazos ligeramente separados del cuerpo, palmas hacia arriba, hombros apoyados.",
-   "Cierra los ojos y suelta el peso del cuerpo; respiración natural. 5–10 min al cierre de la clase."
+   "Deja que todo el cuerpo se afloje y pese",
+   "Piernas caídas hacia afuera",
+   "Brazos caídos hacia afuera",
+   "Entra en un estado de relajación total"
   ],
-  "entrada_en": "The body rests on the earth in a supine position with the arms resting by the side body. The palms are relaxed and open toward the sky. The shoulder blades are pulled back, down and rolled under comfortably, resting evenly on the earth. The legs are extended down and splayed open. The heels are in and the toes flop out. The eyes are closed. Everything is relaxed. The gaze is inward.",
+  "entrada_en": [
+   "Allow your whole body to become relaxed and heavy",
+   "Legs drop open",
+   "Arms drop open",
+   "Let your body move deeper into a state of total relaxation"
+  ],
   "beneficios": [
-   "Calma el sistema nervioso y baja la activación del estrés.",
-   "Reduce fatiga, dolor de cabeza e insomnio.",
-   "Integra el trabajo de toda la práctica."
+   "Rejuvenece el cuerpo",
+   "Rejuvenece la mente y el espíritu",
+   "Reduce el estrés"
   ],
   "beneficios_en": [
-   "Calms the brain and helps relieve stress and mild depression",
-   "Relaxes the body",
-   "Reduces headache, fatigue, and insomnia",
-   "Helps to lower blood pressure"
+   "Rejuvenates the body",
+   "Rejuvenates mind and spirit",
+   "Reduces stress"
   ],
   "precaucion": [
-   "Embarazo: túmbate de lado o con el torso elevado. Lumbalgia: dobla las rodillas o pon un bolster bajo ellas."
+   "Ninguna."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api+propia"
+  "liberar": "Profundiza la respiración, mueve dedos de manos y pies, lleva los brazos por encima de la cabeza y estira todo el cuerpo. Exhala, lleva las rodillas al pecho y gira a un lado en posición fetal.",
+  "liberar_en": "Slowly deepen the breath, wiggle the fingers and toes, reach the arms over your head and stretch the entire body. Exhale, bend the knees into the chest and roll over to one side into a fetal position.",
+  "respiracion": "Quédate en Savasana de 5 a 15 minutos.",
+  "respiracion_en": "Stay in Savasana for 5 to 15 minutes.",
+  "img": "img/mazo/savasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 12,
@@ -701,38 +740,40 @@ window.POSES = [
    "energía"
   ],
   "entrada": [
-   "Desde cuadrupedia, apoya los antebrazos paralelos, codos al ancho de los hombros.",
-   "Estira las piernas y lleva los isquiones hacia arriba y atrás, como en perro boca abajo.",
-   "Empuja el suelo con los antebrazos; orejas lejos de los hombros, mirada a los pies."
+   "Sube las caderas hacia el techo",
+   "Piernas rectas",
+   "Talones hacia el piso",
+   "Mete los dedos de los pies",
+   "Separa bien los dedos de las manos",
+   "Antebrazos en el piso"
   ],
-  "entrada_en": "From Downward-Facing Dog, the forearms are planted onto the earth with the elbows narrow and the palms down in a Sphinx position. The pelvis is tucked. The ribcage lifted. The feet are rooted and the legs are straight with the tailbone in dog tilt. The gaze is down and slightly forward.",
+  "entrada_en": [
+   "Lift the hips up towards the ceiling",
+   "Legs are straight",
+   "Heels into the floor",
+   "Tuck the toes under",
+   "Spread the fingers wide apart",
+   "Forearms to the floor"
+  ],
   "beneficios": [
-   "Calma la mente y alivia el estrés leve.",
-   "Estira hombros, isquiotibiales, gemelos y manos.",
-   "Fortalece brazos y piernas; ayuda a prevenir la osteoporosis."
+   "Abre los hombros",
+   "Alarga la columna",
+   "Estimula el sistema nervioso"
   ],
   "beneficios_en": [
-   "Calms the brain and helps relieve stress and mild depression",
-   "Energizes the body",
-   "Stretches the shoulders, hamstrings, calves, arches, and hands",
-   "Strengthens the arms and legs",
-   "Helps relieve the symptoms of menopause",
-   "Relieves menstrual discomfort when done with the head supported",
-   "Helps prevent osteoporosis",
-   "Improves digestion",
-   "Relieves headache, insomnia, back pain, and fatigue",
-   "Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis",
-   "Warms up the ankles and the toes"
+   "Opens the shoulders",
+   "Lengthens the spine",
+   "Stimulates the nervous system"
   ],
   "precaucion": [
-   "Lesión de hombro o de cuello."
+   "Lesión reciente o crónica de brazo, espalda u hombro, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Dobla las rodillas y baja las caderas a la posición de mesa, o baja hasta la postura del niño.",
+  "liberar_en": "Bend the knees and lower the hips back to table pose, or go all the way down to child's pose.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/ardha-pincha-mayurasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 15,
@@ -741,7 +782,7 @@ window.POSES = [
   "nombre_en": "Downward-Facing Dog",
   "sanscrito": "Adho Mukha Svanasana",
   "traduccion": "adho = abajo, mukha = cara, svana = perro",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "invertida",
    "de pie"
@@ -761,37 +802,38 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "Desde cuadrupedia, manos un palmo delante de los hombros, dedos abiertos.",
-   "Lleva los isquiones arriba y atrás formando una V invertida; piernas activas, rodillas pueden ir dobladas.",
-   "Empuja el suelo con las manos, orejas lejos de los hombros; talones hacia el suelo sin forzar."
+   "Caderas hacia el techo",
+   "Lleva el pecho hacia los muslos",
+   "Piernas rectas",
+   "Dedos de los pies al frente",
+   "Separa bien los dedos de las manos"
   ],
-  "entrada_en": "From the legs are straight with the sits bones tilted up and reaching for the sky. The feet are flat with the heels firmly rooted. One palm is flat with the knuckles evenly pressed into the earth. The other hand reaches under the body and grasps the opposite ankle. The spine is long and the heart is open toward the sky. The neck is loose and the crown of the head is relaxed toward the earth. The gaze is toward the center.",
+  "entrada_en": [
+   "Hips up towards the ceiling",
+   "Press the back reaching the chest toward the thighs",
+   "Legs are straight",
+   "Toes facing forward",
+   "Spread fingers wide apart"
+  ],
   "beneficios": [
-   "Estira isquiotibiales, gemelos, hombros y manos.",
-   "Fortalece brazos y piernas.",
-   "Calma la mente y da energía a la vez; alivia dolor de espalda y fatiga."
+   "Estira la espalda",
+   "Abre el pecho",
+   "Estimula el sistema nervioso"
   ],
   "beneficios_en": [
-   "Calms the brain and helps relieve stress and mild depression",
-   "Energizes the body",
-   "Stretches the shoulders, neck, hamstrings, calves, arches, and hands",
-   "Strengthens the arms and legs",
-   "Helps relieve the symptoms of menopause",
-   "Relieves menstrual discomfort when done with the head supported",
-   "Helps prevent osteoporosis",
-   "Improves digestion",
-   "Relieves headache, insomnia, back pain, and fatigue",
-   "Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis"
+   "Stretches the back",
+   "Opens the chest",
+   "Stimulates the nervous system"
   ],
   "precaucion": [
-   "Túnel carpiano, lesión de hombro, presión arterial alta, últimas semanas de embarazo."
+   "Lesión reciente o crónica de espalda, caderas, brazos u hombros; presión arterial alta no controlada."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/adho-mukha-svanasana.svg",
-  "fuente": "yoga-api+propia"
+  "liberar": "Dobla las rodillas y baja las caderas a la posición de mesa, o baja hasta la postura del niño.",
+  "liberar_en": "Bend the knees and lower the hips back to table position, or go all the way down to child's pose.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/adho-mukha-svanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 16,
@@ -1012,7 +1054,7 @@ window.POSES = [
   "nombre_en": "Forward Bend with Shoulder Opener",
   "sanscrito": "Uttanasana (variación)",
   "traduccion": "uttana = estiramiento intenso",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "de pie"
   ],
@@ -1030,37 +1072,34 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "De pie, entrelaza los dedos detrás de la espalda y estira los brazos.",
-   "Inclínate desde la cadera con la columna larga; rodillas un poco dobladas si los isquios están tensos.",
-   "Deja caer los brazos por encima de la cabeza hacia el suelo; nuca y cuello sueltos."
+   "Brazos arriba",
+   "Eleva el pecho",
+   "Deja colgar la cabeza relajada"
   ],
-  "entrada_en": "From a standing position, the body is folded over at the crease of the hip with the spine long. The neck is relaxed and the crown of the head is towards the earth. The feet are rooted into the earth. The toes are actively lifted. The spine is straight. The ribcage is lifted. The chest and the thighs are connected. The sacrum lifts up toward the sky in dog tilt. The fingers are interlaced behind the body and the palms are together. The arms and elbows are straight. The shoulder blades rotate towards each other as the hands move forward (away from the lower back). The gaze is down and inward.",
+  "entrada_en": [
+   "Arms up",
+   "Lift the chest",
+   "Let the head hang relaxed from the body"
+  ],
   "beneficios": [
-   "Calma la mente y alivia el estrés.",
-   "Estira isquiotibiales, gemelos y caderas.",
-   "Abre los hombros y estimula hígado y riñones."
+   "Estira la parte alta de la espalda",
+   "Estira las piernas",
+   "Abre los hombros"
   ],
   "beneficios_en": [
-   "Calms the brain and helps relieve stress and mild depression",
-   "Stimulates the liver and kidneys",
-   "Stretches the hamstrings, calves, and hips",
-   "Strengthens the thighs and knees",
-   "Improves digestion",
-   "Helps relieve the symptoms of menopause",
-   "Reduces fatigue and anxiety",
-   "Relieves headache and insomnia",
-   "Relieves headache and insomnia",
+   "Stretches the upper back",
+   "Stretches the legs",
    "Opens the shoulders"
   ],
   "precaucion": [
-   "Lesión lumbar (dobla las rodillas), lesión de hombro, presión arterial baja."
+   "Presión arterial alta no controlada; lesión reciente o crónica de piernas, espalda, cuello u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Con los omóplatos juntos, inhala subiendo, respirando hondo hacia el vientre y el pecho. Exhala y suelta los brazos.",
+  "liberar_en": "Keep the shoulder blades squeezed together as you inhale back, taking a deep breath into the belly and chest. Exhale and release the arms.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/uttanasana-hombros.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 21,
@@ -1197,30 +1236,38 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Un pie al frente con la rodilla sobre el tobillo; la rodilla de atrás en el suelo, empeine apoyado.",
-   "Lleva la pelvis hacia adelante y abajo para alargar el psoas de la pierna de atrás.",
-   "Sube los brazos o llévalos a la rodilla delantera; pecho abierto, coxis hacia abajo."
+   "Barbilla paralela al piso",
+   "Pecho al frente",
+   "Hombros abajo y atrás",
+   "Rodilla sobre el tobillo",
+   "Pierna de atrás recta"
   ],
-  "entrada_en": "The front knee is bent in a 90-degree angle directly above the ankle and the back knee is resting on the earth with the top of the back foot pressed firmly into the earth. The hips are squared and pressed forward. The inner thighs scissor towards each other. The pelvis is tucked under to protect the low back. The ribcage is lifted. The arms are lifted. The hands can be together or separated and facing each other with the fingers spread wide. The gaze is forward.",
+  "entrada_en": [
+   "Chin parallel to the floor",
+   "Chest forward",
+   "Shoulders down and back",
+   "Knee over the ankle",
+   "Leg straight"
+  ],
   "beneficios": [
-   "Estira pecho, pulmones, cuello, vientre y psoas.",
-   "Fortalece hombros, brazos y espalda.",
-   "Fortalece y estira muslos, gemelos y tobillos."
+   "Abre las caderas",
+   "Abre el pecho",
+   "Alarga la columna"
   ],
   "beneficios_en": [
-   "Stretches the chest, lungs, neck, belly and groin (psoas)",
-   "Strengthens the shoulders, arms and back muscles",
-   "Strengthens and stretches the thighs, calves and ankles"
+   "Opens the hips",
+   "Opens the chest",
+   "Lengthens the spine"
   ],
   "precaucion": [
-   "Molestia de rodilla: pon un cojín bajo la rótula de atrás."
+   "Lesión reciente o crónica de rodillas, caderas o espalda."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Baja la rodilla de atrás y desliza la de adelante a la posición de mesa, o lleva el pie de adelante atrás hasta el perro boca abajo. Repite del otro lado.",
+  "liberar_en": "Lower the back knee down and slide the front knee into table pose, or step the front foot back into downward facing dog. Repeat on the other side.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/anjaneyasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 24,
@@ -1331,7 +1378,7 @@ window.POSES = [
   "nombre_en": "Plank",
   "sanscrito": "Phalakasana",
   "traduccion": "phalaka = tabla",
-  "nivel": "principiante",
+  "nivel": "avanzado",
   "tipo": [
    "equilibrio de brazos"
   ],
@@ -1348,29 +1395,36 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Muñecas bajo los hombros, cuerpo en una línea de la coronilla a los talones.",
-   "Empuja el suelo separando los omóplatos; abdomen adentro, coxis hacia los talones.",
-   "Nuca larga, mirada un palmo por delante de las manos."
+   "Caderas, piernas y torso en una sola línea",
+   "Brazos rectos",
+   "Presiona los talones hacia atrás",
+   "Separa bien los dedos de las manos"
   ],
-  "entrada_en": "The body is parallel to the earth. The weight of the body is supported by straight arms and active toes. The abdomen is pulled up towards the spine and the pelvis is tucked in. The neck is a natural extension of the spine and the chin is slightly tucked. The palms are flat and the elbows are close to the side body. The joints are stacked with the wrists, elbows and shoulders in a straight line perpendicular to the earth. The gaze follows the spine and the eyes are focused down.",
+  "entrada_en": [
+   "Hips, legs, and torso are one straight line",
+   "Arms straight",
+   "Press the heels back",
+   "Spread fingers wide apart"
+  ],
   "beneficios": [
-   "Fortalece brazos, muñecas y columna.",
-   "Tonifica el abdomen.",
-   "Estabiliza todo el cuerpo como base del vinyasa."
+   "Fortalece el core",
+   "Alarga la columna",
+   "Estira la zona lumbar"
   ],
   "beneficios_en": [
-   "Strengthens the arms, wrists, and spine",
-   "Tones the abdomen"
+   "Strengthens the core body",
+   "Lengthens the spine",
+   "Stretches the lower back"
   ],
   "precaucion": [
-   "Túnel carpiano o lesión de muñeca: baja a los antebrazos."
+   "Lesión reciente o crónica de brazos, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/phalakasana.svg",
-  "fuente": "yoga-api"
+  "liberar": "Baja las rodillas al piso hasta la postura del niño, o dobla los codos y baja a chaturanga.",
+  "liberar_en": "Bend the knees to the floor into child's pose, or bend the elbows and lower down into chaturanga.",
+  "respiracion": "Aguanta de 1 a 4 respiraciones.",
+  "respiracion_en": "Breathe and hold for 1–4 breaths.",
+  "img": "img/mazo/phalakasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 27,
@@ -1379,7 +1433,7 @@ window.POSES = [
   "nombre_en": "Plow",
   "sanscrito": "Halasana",
   "traduccion": "hala = arado",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "invertida"
   ],
@@ -1398,33 +1452,34 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Desde tumbada, lleva las piernas por encima de la cabeza hasta que los pies toquen el suelo detrás.",
-   "Sostén la espalda con las manos o entrelaza los dedos en el suelo; torso perpendicular al piso.",
-   "Nuca larga, sin girar la cabeza en ningún momento. Mirada al pecho."
+   "Impulsa y mece las piernas arriba y atrás",
+   "Rodillas hacia la frente",
+   "Lleva los pies al piso"
   ],
-  "entrada_en": "From a supine position, the upper back rests on the earth with the hips and legs revolved back over the torso above and beyond the head towards the earth. The torso is perpendicular to the earth. The legs are fully extended with no bend at the knees as the toes reach for the earth. The hands are either supporting the lower back or extended behind the back on the earth with extended elbows and fingers interlaced (as flexibility allows), opening the shoulders. The neck is straight. The chin tucked. Do not look to the side as this may injure the neck. The is gaze inward.",
+  "entrada_en": [
+   "Kick and rock the legs up and back",
+   "Knees to the forehead",
+   "Reach toes to the floor"
+  ],
   "beneficios": [
-   "Calma la mente.",
-   "Estimula órganos abdominales y tiroides.",
-   "Estira hombros y columna; reduce estrés y fatiga."
+   "Mejora la circulación",
+   "Estimula el sistema inmune",
+   "Libera tensión en los hombros"
   ],
   "beneficios_en": [
-   "Calms the brain",
-   "Stimulates the abdominal organs and the thyroid glands",
-   "Stretches the shoulders and spine",
-   "Helps relieve the symptoms of menopause",
-   "Reduces stress and fatigue",
-   "Therapeutic for backache, headache, infertility, insomnia, and sinusitis"
+   "Improves circulation",
+   "Stimulates the immune system",
+   "Releases stress in the shoulders"
   ],
   "precaucion": [
-   "Lesión de cuello, presión arterial alta, menstruación, embarazo, glaucoma."
+   "Lesión reciente o crónica de hombro, cuello o espalda, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Dobla las rodillas hacia la cabeza. Con cuidado y despacio, baja la columna al piso vértebra por vértebra.",
+  "liberar_en": "Bend the knees back to the head. Carefully and slowly, roll the spine back onto the floor.",
+  "respiracion": "Aguanta de 4 a 10 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–10 breaths.",
+  "img": "img/mazo/halasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 28,
@@ -1451,33 +1506,38 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Un pie al frente y otro atrás (zancada corta), las dos caderas apuntando al frente.",
-   "Inclínate desde la cadera con la columna larga; manos al suelo o a bloques a los lados del pie.",
-   "Lleva el peso a la pierna de atrás; acerca el vientre al muslo sin redondear."
+   "Piernas estiradas",
+   "Redondea la columna",
+   "Dedos de los pies al frente",
+   "Lleva la frente hacia la rodilla",
+   "Pie de atrás plano en el piso"
   ],
-  "entrada_en": "From a standing position with one leg forward and one back lean the torso forward at the crease of the hip joint. Stop when the torso is parallel to the floor. Press the fingertips or flat palms to the floor on either side of the front foot, maintaining a straight elongated spine. If it isn’t possible to touch the floor, or to maintain a straight spine, support the hands on a pair of blocks. Press the thighs back and lengthen the torso forward, lifting up through the top of the sternum. Then, as flexibility allows, bring the front torso closer to the top of the thigh without rounding the spine. Eventually the long front torso will rest down on the thigh. The gaze is down.",
+  "entrada_en": [
+   "Legs straightened",
+   "Round the spine",
+   "Toes facing forward",
+   "Press the forehead towards the knee",
+   "Back foot flat on the floor"
+  ],
   "beneficios": [
-   "Calma la mente.",
-   "Estira columna, hombros, caderas e isquiotibiales.",
-   "Fortalece las piernas y mejora la postura y el equilibrio."
+   "Estira la espalda",
+   "Mejora el equilibrio",
+   "Mejora la circulación"
   ],
   "beneficios_en": [
-   "Calms the brain",
-   "Stretches the spine, the shoulders, the hips and the hamstrings",
-   "Strengthens the legs",
-   "Stimulates the abdominal organs",
-   "Improves posture and sense of balance",
-   "Improves digestion"
+   "Stretches the back",
+   "Improves balance",
+   "Improves circulation"
   ],
   "precaucion": [
-   "Lesión lumbar o de isquiotibiales, presión arterial alta."
+   "Lesión reciente o crónica de caderas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Lleva el pie de atrás hacia atrás y dobla la rodilla de adelante en zancada, o inhala subiendo los brazos con las dos piernas rectas. Repite del otro lado.",
+  "liberar_en": "Step the back foot back and bend the front knee into a lunge, or inhale and bring the arms out and up with both legs straight. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/parsvottanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 29,
@@ -1559,36 +1619,32 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Sentada con las piernas al frente; si la lumbar se redondea, siéntate sobre una manta o dobla las rodillas.",
-   "Alarga la columna hacia arriba y luego inclínate desde la cadera, no desde la cintura.",
-   "Toma las tibias, los pies o un cinturón; el pecho busca los muslos, la nuca larga."
+   "Baja el torso hacia las piernas",
+   "Lleva las manos hacia los pies"
   ],
-  "entrada_en": "From a seated position with the sits bones rooted into the earth the legs extend forward to the degree that the chest and thighs can stay connected. The fingers wrap around the toes. The upper torso folds forward at the crease of the hips with the spine long. The gaze is forward.",
+  "entrada_en": [
+   "Lower the torso towards the legs",
+   "Reach hands to the toes"
+  ],
   "beneficios": [
-   "Calma la mente y alivia el estrés leve.",
-   "Estira columna, hombros e isquiotibiales.",
-   "Estimula hígado y riñones; mejora la digestión."
+   "Estira la espalda",
+   "Calma el sistema nervioso",
+   "Estimula el sistema urinario"
   ],
   "beneficios_en": [
-   "Calms the brain and helps relieve stress and mild depression",
-   "Stretches the spine, shoulders and hamstrings",
-   "Stimulates the liver, kidneys, ovaries and uterus",
-   "Improves digestion",
-   "Helps relieve the symptoms of menopause and menstrual discomfort",
-   "Soothes headache and anxiety",
-   "Reduces fatigue",
-   "Therapeutic for high blood pressure, infertility, insomnia and sinusitis",
-   "Traditional texts say that Paschimottanasana increases appetite, reduces obesity and cures diseases"
+   "Stretches the back",
+   "Calms the nervous system",
+   "Stimulates the urinary system"
   ],
   "precaucion": [
-   "Lesión lumbar, hernia de disco, asma, embarazo."
+   "Lesión reciente o crónica de espalda, caderas o isquiotibiales."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Sube por la columna vértebra por vértebra hasta la postura del bastón. Inhala llevando los brazos por encima de la cabeza y sube el torso.",
+  "liberar_en": "Slowly roll up the spine back into staff pose. Inhale and bring arms back over your head as you lift the torso back.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/paschimottanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 31,
@@ -1667,30 +1723,36 @@ window.POSES = [
    "energía"
   ],
   "entrada": [
-   "Sentada, dobla una rodilla con el pie por fuera del muslo contrario; la otra pierna doblada, pie cerca del glúteo.",
-   "Inhala y alarga la columna; exhala y gira hacia la rodilla de arriba desde la base de la columna.",
-   "El codo hace palanca por fuera de la rodilla; el otro brazo apoya detrás. Mirada por encima del hombro."
+   "Empuja los hombros abajo",
+   "Pie plano en el piso",
+   "Presiona hacia las caderas",
+   "Toda la columna larga y erguida"
   ],
-  "entrada_en": "Begin in a seated position. Bend one knee so the sole of your foot is close to the opposite inner thigh. Bend your opposite knee in, foot on the floor, heel to the outside of your bent thigh. Extend your arm (same side of your Lotus leg) high into the sky and begin to twist it to the outside of your bent knee. Use your opposite hand as leverage to twist deeper. Hook your elbow to the outside of your thigh and gaze over your back shoulder. If you want to extend your twist deeper, wrap your arm around the shin of your bent knee and sweep your opposite arm around to meet it. Catch opposite fingertips or the wrist. Keep a long spine.",
+  "entrada_en": [
+   "Push shoulders down",
+   "Foot flat on the floor",
+   "Press down to the hips",
+   "Back and whole spine flat to the floor"
+  ],
   "beneficios": [
-   "Moviliza la columna y estira glúteos y hombros.",
-   "Masajea los órganos abdominales y favorece la digestión.",
-   "Alterna compresión y espacio a ambos lados de la espalda."
+   "Estimula el sistema nervioso",
+   "Realinea la columna",
+   "Estimula el sistema digestivo"
   ],
   "beneficios_en": [
-   "Stretches the shoulders, the chest, the thighs, the groins, and the abdomen",
-   "Strengthens the legs and the ankles",
-   "Improves balance"
+   "Stimulates the nervous system",
+   "Realigns the spine",
+   "Stimulates the digestive system"
   ],
   "precaucion": [
-   "Lesión lumbar o de columna, hernia de disco, embarazo (torsión abierta)."
+   "Lesión reciente o crónica de cadera, espalda u hombro, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api+propia"
+  "liberar": "Inhala y sube la mano de atrás. Exhala deshaciendo la torsión y mirando al frente. Repite del otro lado.",
+  "liberar_en": "Inhale and bring the hand up. Exhale, untwisting the body and facing the front. Repeat on the other side.",
+  "respiracion": "Aguanta de 4 a 7 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–7 breaths.",
+  "img": "img/mazo/ardha-matsyendrasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 33,
@@ -1699,7 +1761,7 @@ window.POSES = [
   "nombre_en": "Shoulder Stand",
   "sanscrito": "Salamba Sarvangasana",
   "traduccion": "salamba = con apoyo, sarvanga = todo el cuerpo",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "invertida"
   ],
@@ -1717,35 +1779,36 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Desde tumbada, con mantas bajo los hombros, sube las piernas y lleva las manos a la espalda.",
-   "Acerca los codos entre sí y sube el torso hacia la vertical; peso en los hombros, no en el cuello.",
-   "Nuca larga, sin girar la cabeza. Baja vértebra a vértebra para salir."
+   "Impulsa y mece las piernas arriba",
+   "Manos bajo las caderas",
+   "Poco o nada de peso en cabeza y cuello",
+   "Sostén el peso del cuerpo con los brazos y los hombros"
   ],
-  "entrada_en": "From a supine position, the upper back is resting on the earth with the hips straight up towards the sky. The torso is perpendicular to the earth. The legs are fully extended and the toes are active. The hands are either supporting the lower back or extended up by the side body in matchstick. The neck is flat on the earth and the chin is tucked in. The gaze is inward.",
+  "entrada_en": [
+   "Kick and rock legs up",
+   "Hands under the hips",
+   "Little or no weight in the head and neck",
+   "Support the weight of the body with the arms and the shoulders"
+  ],
   "beneficios": [
-   "Calma la mente y alivia el estrés leve.",
-   "Estimula tiroides y órganos abdominales.",
-   "Estira hombros y cuello; tonifica piernas y glúteos."
+   "Estimula la tiroides",
+   "Activa el sistema inmune",
+   "Mejora la circulación"
   ],
   "beneficios_en": [
-   "Calms the brain and helps relieve stress and mild depression",
-   "Stimulates the thyroid and prostate glands and abdominal organs",
-   "Stretches the shoulders and neck",
-   "Tones the legs and buttocks",
-   "Improves digestion",
-   "Helps relieve the symptoms of menopause",
-   "Reduces fatigue and alleviates insomnia",
-   "Therapeutic for asthma, infertility, and sinusitis"
+   "Stimulates the thyroid",
+   "Activates the immune system",
+   "Improves circulation"
   ],
   "precaucion": [
-   "Lesión de cuello o de hombro, presión arterial alta, menstruación, embarazo, glaucoma."
+   "Lesión reciente o crónica de hombro, cuello o espalda; presión arterial alta no controlada, menstruación y embarazo."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/salamba-sarvangasana.svg",
-  "fuente": "yoga-api"
+  "liberar": "Dobla las rodillas. Con cuidado y despacio, baja la columna al piso vértebra por vértebra.",
+  "liberar_en": "Bend the knees. Carefully and slowly, roll the spine back onto the floor.",
+  "respiracion": "Aguanta de 4 a 10 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–10 breaths.",
+  "img": "img/mazo/salamba-sarvangasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 34,
@@ -2120,7 +2183,7 @@ window.POSES = [
   "nombre_en": "Tree",
   "sanscrito": "Vrksasana",
   "traduccion": "vrksa = árbol",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "de pie",
    "equilibrio"
@@ -2140,30 +2203,40 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "De pie, lleva la planta de un pie a la pantorrilla o al muslo interno (nunca sobre la rodilla).",
-   "Empuja el pie contra la pierna y la pierna contra el pie; abre la rodilla hacia el lado.",
-   "Manos al pecho o arriba; mira a un punto fijo. Repite del otro lado."
+   "Brazos por encima de la cabeza",
+   "Palmas juntas",
+   "Gira la rodilla hacia la pared",
+   "Apoya el talón contra la pierna",
+   "Todo el peso en la pierna de apoyo",
+   "Presiona el pie contra el piso"
   ],
-  "entrada_en": "From a standing position, one foot is rooted into the earth with the opposite heel rooted into the inner thigh with the toes pointing towards the earth. The pelvis and the chin are tucked in. The arms are lifted above the head with the palms together in prayer position. The gaze is forward.",
+  "entrada_en": [
+   "Arms over the head",
+   "Palms together",
+   "Turn the knee towards the wall",
+   "Rest the heel against the leg",
+   "All the weight into the leg",
+   "Press foot into the floor"
+  ],
   "beneficios": [
-   "Fortalece piernas, tobillos y pies.",
-   "Mejora la flexibilidad de caderas y rodillas.",
-   "Mejora el equilibrio y la concentración."
+   "Mejora la concentración",
+   "Mejora el equilibrio",
+   "Fortalece los tobillos"
   ],
   "beneficios_en": [
-   "Strengthens the legs, ankles, and feet",
-   "Improves flexibility in the hips and knees",
-   "Improves balance"
+   "Improves concentration",
+   "Improves balance",
+   "Strengthens ankles"
   ],
   "precaucion": [
-   "Migraña, presión arterial baja, vértigo."
+   "Lesión reciente o crónica de rodilla o cadera."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/vrksasana.svg",
-  "fuente": "yoga-api"
+  "liberar": "Exhala y baja los brazos. Luego suelta la pierna y vuelve a la postura de la montaña. Repite del otro lado.",
+  "liberar_en": "Exhale and bring the arms down. Then, release the leg back into mountain pose. Repeat on the other side.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/vrksasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 42,
@@ -2172,7 +2245,7 @@ window.POSES = [
   "nombre_en": "Triangle",
   "sanscrito": "Utthita Trikonasana",
   "traduccion": "utthita = extendido, trikona = triángulo",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "de pie"
   ],
@@ -2192,35 +2265,38 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "Pies separados ~1 m; talón delantero alineado con el arco del pie trasero.",
-   "Alarga los dos costados y luego inclínate desde la cadera, no desde la cintura.",
-   "Mano abajo a la espinilla o a un bloque; abre el pecho al techo, brazos en una línea."
+   "Brazos en una sola línea con los hombros",
+   "Caderas hacia afuera",
+   "Gira los dedos del pie hacia la pared",
+   "Sube las rótulas",
+   "Dedos del pie ligeramente hacia adentro"
   ],
-  "entrada_en": "From a standing position, the legs are straight and separated into a wide stance. The feet are aligned and flat on the earth with the back foot in a 60-degree angle towards the front. The inner thighs are rotated externally away from each other. The pelvis is tucked and the ribcage is lifted. One arm extends up towards the sky as the other reaches down to the earth. Both arms are aligned with the shoulders in a straight line. The fingers reach out as the shoulder blades squeeze together. The gaze is toward the front.",
+  "entrada_en": [
+   "Arms into one straight line with shoulders",
+   "Hips out",
+   "Turn the toes to the wall",
+   "Pull up the knee caps",
+   "Toes slightly inwards"
+  ],
   "beneficios": [
-   "Estira y fortalece muslos, rodillas y tobillos.",
-   "Estira caderas, ingle, isquiotibiales, gemelos, hombros, pecho y columna.",
-   "Estimula los órganos abdominales y ayuda a soltar el estrés."
+   "Fortalece el core",
+   "Abre las caderas",
+   "Estira las piernas"
   ],
   "beneficios_en": [
-   "Stretches and strengthens the thighs, knees, and ankles",
-   "Stretches the hips, groin, hamstrings, calves, shoulders, chest, and spine",
-   "Stimulates the abdominal organs",
-   "Helps relieve stress",
-   "Improves digestion",
-   "Helps relieve the symptoms of menopause",
-   "Relieves backache, especially through second trimester of pregnancy",
-   "Therapeutic for anxiety, flat feet, infertility, neck pain, osteoporosis, and sciatica"
+   "Strengthens the core body",
+   "Opens the hips",
+   "Stretches the legs"
   ],
   "precaucion": [
-   "Presión arterial baja, migraña, diarrea, lesión de cuello (mira al suelo)."
+   "Lesión reciente o crónica de caderas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Inhala y lleva la mano de arriba hacia el techo mientras presionas los pies para subir a la estrella de cinco puntas. Repite del otro lado.",
+  "liberar_en": "Inhale and reach the raised hand up towards the ceiling as you press down into the feet using the whole body to lift back into five pointed star. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/trikonasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 43,
@@ -2307,30 +2383,38 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "Zancada larga; el pie de atrás a ~45–60°, talón en el suelo, las dos caderas al frente.",
-   "Rodilla delantera sobre el tobillo; coxis hacia abajo para no cargar la lumbar.",
-   "Brazos arriba junto a las orejas; costillas cerradas, mirada al frente."
+   "Brazos arriba en forma de H",
+   "Relaja los hombros hacia abajo",
+   "Eleva el pecho",
+   "Cuadra caderas y hombros hacia la pared del frente",
+   "La rodilla justo sobre el tobillo"
   ],
-  "entrada_en": "From a standing position, the legs are in a wide stance with the feet aligned and flat on the earth. The back foot is in a 60-degree angle towards the front. The hips are squared. The inner thighs are rotated towards each other. The front knee is bent in a 90-degree angle directly above the ankle. The arms extend up to the sky with the biceps by the ears. The hands can be together or separated and facing each other with the fingers spread wide. The ribcage is lifted and the pelvis tucked. The gaze is forward.",
+  "entrada_en": [
+   "Arms over the head in H position",
+   "Relax the shoulders down",
+   "Chest lift",
+   "Square the hips and the shoulders to the front wall",
+   "Knee is directly over the ankle"
+  ],
   "beneficios": [
-   "Estira pecho, pulmones, hombros, cuello, vientre y psoas.",
-   "Fortalece hombros, brazos y espalda.",
-   "Fortalece y estira muslos, gemelos y tobillos."
+   "Abre el pecho",
+   "Abre las caderas",
+   "Fortalece las piernas"
   ],
   "beneficios_en": [
-   "Stretches the chest, lungs, shoulders, neck, belly and groin (psoas)",
-   "Strengthens the shoulders, arms and back muscles",
-   "Strengthens and stretches the thighs, calves and ankles"
+   "Opens the chest",
+   "Opens the hips",
+   "Strengthens the legs"
   ],
   "precaucion": [
-   "Lesión de rodilla, cadera u hombro; presión arterial alta; problemas de corazón."
+   "Lesión reciente o crónica de caderas, rodillas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/virabhadrasana-i.svg",
-  "fuente": "yoga-api"
+  "liberar": "Exhala y baja las manos al piso. Repite del otro lado.",
+  "liberar_en": "Exhale and lower the hands down to the floor. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/virabhadrasana-i.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 45,
@@ -2339,7 +2423,7 @@ window.POSES = [
   "nombre_en": "Warrior II",
   "sanscrito": "Virabhadrasana II",
   "traduccion": "Virabhadra = guerrero mítico",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "de pie"
   ],
@@ -2359,33 +2443,38 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "Zancada amplia; pie delantero al frente, pie de atrás paralelo al borde corto, arcos alineados.",
-   "Dobla la rodilla delantera hacia 90° sobre el tobillo; empuja la rodilla hacia el meñique.",
-   "Brazos a los lados a la altura de los hombros; torso centrado, mirada sobre la mano delantera."
+   "Hombros abajo",
+   "Caderas hacia el frente",
+   "Dobla la rodilla justo sobre el tobillo",
+   "Presiona los pies contra el piso",
+   "Dedos del pie hacia la pared"
   ],
-  "entrada_en": "From a standing position, the legs are separated into a wide stance. The front knee is bent in a 90-degree angle directly above the ankle. The back leg is extended and straight with the outside edge of the back foot gripping the earth in a 60-degree angle towards the front. The inner thighs are externally rotated away from each other. The pelvis is tucked. The ribcage is lifted. The arms are extended out to the sides and are aligned with the shoulders in a straight line with the fingers reaching out as the shoulder blades squeeze together. The gaze is toward the front fingers.",
+  "entrada_en": [
+   "Shoulders down",
+   "Hips towards the front",
+   "Bend the knee directly over the ankle",
+   "Press into the feet",
+   "Toes to the wall"
+  ],
   "beneficios": [
-   "Fortalece y estira piernas y tobillos.",
-   "Estira ingle, pecho, pulmones y hombros.",
-   "Estimula órganos abdominales y aumenta la resistencia."
+   "Libera y fortalece las piernas",
+   "Abre el pecho",
+   "Abre las caderas"
   ],
   "beneficios_en": [
-   "Strengthens and stretches the legs and ankles",
-   "Stretches the groin, chest, lungs, and shoulders",
-   "Stimulates abdominal organs",
-   "Increases stamina",
-   "Relieves backaches, especially through second trimester of pregnancy",
-   "Therapeutic for carpal tunnel syndrome, flat feet, infertility, osteoporosis, and sciatica"
+   "Releases and strengthens the legs",
+   "Opens the chest",
+   "Opens the hips"
   ],
   "precaucion": [
-   "Lesión de rodilla, cadera o cuello; diarrea; presión arterial alta."
+   "Lesión reciente o crónica de caderas, rodillas u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Estira las piernas y gira los pies al frente, volviendo a la estrella de cinco puntas. Repite del otro lado.",
+  "liberar_en": "Straighten the legs and turn the feet forward coming back into five pointed star. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/virabhadrasana-ii.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 46,
@@ -2414,31 +2503,38 @@ window.POSES = [
    "confianza"
   ],
   "entrada": [
-   "Desde zancada corta, lleva el peso al pie delantero e inclina el torso hacia adelante.",
-   "Eleva la pierna de atrás hasta la horizontal; cadera nivelada (no se abre al lado).",
-   "Brazos hacia atrás, junto al cuerpo o al frente; cuerpo en una línea del talón a la coronilla."
+   "Forma una sola línea recta",
+   "Brazos por encima de la cabeza",
+   "Todo el peso en esta pierna",
+   "Torso hacia el piso",
+   "Mira al piso y fija la vista en un punto para el equilibrio"
   ],
-  "entrada_en": "From a standing position, one leg is rooted and perpendicular to the earth while the other leg is raised, extended back and parallel to the earth. The head of the thighbone of the standing leg presses back towards the heel and is actively rooted into the earth. The arms and the extended leg lengthen in opposing directions with Bandhas engaged. The hips are squared and the tailbone presses firmly into the pelvis. The arms, torso, and extended raised leg should be positioned relatively parallel to the floor. The gaze is forward or down.",
+  "entrada_en": [
+   "Make one straight line",
+   "Arms over your head",
+   "Shift all the weight onto this leg",
+   "Torso down towards the floor",
+   "Look down at the floor and stare at a point for balance"
+  ],
   "beneficios": [
-   "Fortalece tobillos y piernas.",
-   "Fortalece hombros y espalda; tonifica el abdomen.",
-   "Mejora el equilibrio y la postura."
+   "Mejora el equilibrio",
+   "Mejora la concentración",
+   "Tonifica todo el cuerpo"
   ],
   "beneficios_en": [
-   "Strengthens the ankles and legs",
-   "Strengthens the shoulders and muscles of the back",
-   "Tones the abdomen",
-   "Improves balance and posture"
+   "Improves balance",
+   "Improves concentration",
+   "Tones the whole body"
   ],
   "precaucion": [
-   "Presión arterial alta, lesión de tobillo."
+   "Lesión reciente o crónica de piernas, caderas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "yoga-api"
+  "liberar": "Inhala subiendo los brazos y baja la pierna al piso. Junta los pies y vuelve a la postura de la montaña. Repite del otro lado.",
+  "liberar_en": "Inhale and bring arms up and lower the leg back onto the floor. Bring both feet together back into mountain pose. Repeat on the other side.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/virabhadrasana-iii.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 47,
@@ -2571,26 +2667,40 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Sentada con las piernas cruzadas por las espinillas; siéntate sobre una manta para elevar la cadera.",
-   "Rodillas por debajo de la altura de la cadera; isquiones firmes y parejos.",
-   "Columna larga sin rigidez, hombros sueltos, manos en los muslos. Alterna el cruce."
+   "Lleva la coronilla arriba para alargar la columna",
+   "Hombros abajo y atrás",
+   "Manos sobre las rodillas",
+   "Huesos de la cadera hacia el piso",
+   "Pies bajo las rodillas",
+   "Glúteos en el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Raise the crown of the head up to lengthen the spine",
+   "Drop shoulders down and back",
+   "Rest hands on the knees",
+   "Hip bones down into the floor",
+   "Feet below the knees",
+   "Buttocks on the floor"
+  ],
   "beneficios": [
-   "Base cómoda para respiración y meditación.",
-   "Abre suavemente las caderas y alarga la columna.",
-   "Calma el sistema nervioso."
+   "Abre las caderas",
+   "Alarga la columna",
+   "Favorece la calma interior"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Opens the hips",
+   "Lengthens the spine",
+   "Promotes inner calm"
+  ],
   "precaucion": [
-   "Molestia de rodilla o cadera: eleva más el asiento o siéntate en una silla."
+   "Lesión reciente o crónica de rodilla o cadera, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/sukhasana.svg",
-  "fuente": "propia"
+  "liberar": "Estira las piernas.",
+  "liberar_en": "Stretch your legs.",
+  "respiracion": "Respira hondo por la nariz, llevando el aire al vientre.",
+  "respiracion_en": "Breathe deeply through the nose down into the belly.",
+  "img": "img/mazo/sukhasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 50,
@@ -2645,7 +2755,7 @@ window.POSES = [
   "nombre_en": "Cow Face Pose",
   "sanscrito": "Gomukhasana",
   "traduccion": "go = vaca, mukha = cara",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "sentada"
   ],
@@ -2663,26 +2773,36 @@ window.POSES = [
    "expansión"
   ],
   "entrada": [
-   "Sentada, cruza una rodilla sobre la otra apilándolas al centro; pies junto a cada cadera.",
-   "Siéntate sobre una manta si la cadera lo pide; isquiones parejos.",
-   "Sube un brazo y dóblalo detrás de la cabeza, el otro sube por la espalda; engancha los dedos o usa un cinturón."
+   "Lleva una mano por detrás de la espalda para tomar los dedos de la otra",
+   "Cruza una pierna sobre la otra",
+   "Acerca los brazos entre sí",
+   "Caderas hacia el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Reach one hand around the back to grasp the other fingers",
+   "Cross the leg in front of the other leg",
+   "Pull the arms towards each other",
+   "Hips down to the floor"
+  ],
   "beneficios": [
-   "Abre caderas, glúteos y parte externa del muslo.",
-   "Estira hombros, tríceps y pecho.",
-   "Contrarresta la postura de estar mucho tiempo sentada."
+   "Abre las caderas",
+   "Estimula la digestión",
+   "Estimula el sistema reproductor"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Opens the hips",
+   "Stimulates digestion",
+   "Stimulates the reproductive system"
+  ],
   "precaucion": [
-   "Lesión de hombro o de rodilla: trabaja solo la parte baja o solo la alta."
+   "Lesión reciente o crónica de rodilla o cadera, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Suelta los brazos y descruza despacio las piernas. Repite del otro lado.",
+  "liberar_en": "Release the arms and slowly uncross the legs. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/gomukhasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 52,
@@ -2758,26 +2878,34 @@ window.POSES = [
    "corazón"
   ],
   "entrada": [
-   "Boca arriba (mejor sobre un bolster a lo largo de la columna), junta las plantas de los pies.",
-   "Deja caer las rodillas a los lados; pon bloques o cojines bajo los muslos para soltar del todo.",
-   "Brazos a los lados, palmas arriba; quédate 3–10 min respirando lento."
+   "Talones cerca de las caderas",
+   "Plantas de los pies juntas",
+   "Brazos apoyados en el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Heels close to the hips",
+   "Bottoms of the feet together",
+   "Arms along the floor"
+  ],
   "beneficios": [
-   "Abre caderas e ingles sin esfuerzo.",
-   "Relaja el pecho y el vientre; buena para regla y menopausia.",
-   "Activa la respuesta de calma del sistema nervioso."
+   "Abre las caderas",
+   "Abre los hombros",
+   "Favorece la relajación"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Opens the hips",
+   "Opens the shoulders",
+   "Encourages relaxation"
+  ],
   "precaucion": [
-   "Lesión de ingle o de rodilla: sube los soportes bajo los muslos. Molestia lumbar o sacra."
+   "Lesión reciente o crónica de rodilla o cadera, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Exhala y suelta con suavidad los brazos y las piernas.",
+  "liberar_en": "Exhale and gently release the arms and legs.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/supta-baddha-konasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 54,
@@ -2804,26 +2932,36 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "Boca arriba, lleva las rodillas al pecho y toma los bordes externos de los pies (o las corvas).",
-   "Abre las rodillas hacia las axilas; tibias perpendiculares al suelo, tobillos sobre las rodillas.",
-   "Sacro y nuca en el suelo; puedes mecerte suave lado a lado."
+   "Presiona los talones hacia arriba y tira con los brazos",
+   "Brazos por dentro de las rodillas",
+   "Cabeza en el piso",
+   "Las dos rodillas hacia el pecho"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Press heels up and pull back with the arms",
+   "Arms through the insides of the knees",
+   "Head on the floor",
+   "Both knees into your chest"
+  ],
   "beneficios": [
-   "Suelta caderas, ingles y zona lumbar.",
-   "Estira suavemente los isquiotibiales.",
-   "Calma y descarga tensión tras posturas intensas."
+   "Libera la zona lumbar",
+   "Alarga la columna",
+   "Abre las caderas"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Releases the lower back",
+   "Lengthens the spine",
+   "Opens the hips"
+  ],
   "precaucion": [
-   "Embarazo, lesión de cuello o de rodilla."
+   "Lesión reciente o crónica de rodilla o cadera, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Exhala y suelta los brazos y las piernas al piso.",
+  "liberar_en": "Exhale and release the arms and legs to the floor.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/ananda-balasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 55,
@@ -2879,7 +3017,7 @@ window.POSES = [
   "nombre_en": "Wide-Legged Forward Fold",
   "sanscrito": "Prasarita Padottanasana",
   "traduccion": "prasarita = extendido, pada = pie, uttana = estiramiento intenso",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "de pie"
   ],
@@ -2898,26 +3036,34 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Pies paralelos, separados ~1,2 m, bordes externos hacia adelante.",
-   "Manos a la cadera, alarga la columna y baja desde la cadera con la espalda larga.",
-   "Manos al suelo o a bloques bajo los hombros; corona hacia el suelo, peso ligeramente adelante."
+   "Empuja las caderas hacia el techo",
+   "Dobla los codos hacia la pared de atrás",
+   "Palmas al piso bajo los hombros"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Push hips towards the ceiling",
+   "Bend the elbows towards the back wall",
+   "Palms to the floor under the shoulders"
+  ],
   "beneficios": [
-   "Estira isquiotibiales y parte interna de las piernas.",
-   "Alarga y descarga la columna; efecto calmante (cabeza abajo).",
-   "Fortalece pies y tobillos."
+   "Alarga la columna",
+   "Estira la parte de atrás de las piernas",
+   "Estira los músculos de la espalda"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Lengthens the spinal column",
+   "Stretches the back of the legs",
+   "Stretches the back muscles"
+  ],
   "precaucion": [
-   "Lesión lumbar (mantén el torso más alto), presión arterial baja."
+   "Lesión reciente o crónica de piernas, caderas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/prasarita-padottanasana.svg",
-  "fuente": "propia"
+  "liberar": "Lleva los brazos a los lados e inhala subiendo a la estrella de cinco puntas.",
+  "liberar_en": "Reach the arms out to the sides and inhale back up into five pointed star.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/prasarita-padottanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 57,
@@ -2926,7 +3072,7 @@ window.POSES = [
   "nombre_en": "Half Standing Forward Bend",
   "sanscrito": "Ardha Uttanasana",
   "traduccion": "ardha = media, uttana = estiramiento intenso",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "de pie"
   ],
@@ -2942,26 +3088,38 @@ window.POSES = [
    "foco"
   ],
   "entrada": [
-   "Desde pinza de pie, lleva las manos a las espinillas o a bloques.",
-   "Estira la columna hasta que la espalda quede plana y el pecho se alargue hacia adelante.",
-   "Nuca en línea con la columna, mirada al suelo. Transición clave en los saludos al sol."
+   "Espalda plana",
+   "Piernas rectas",
+   "Abre el pecho",
+   "Mira al frente",
+   "Manos en el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Back flat",
+   "Legs straight",
+   "Open the chest",
+   "Look forward",
+   "Hands on the floor"
+  ],
   "beneficios": [
-   "Enseña a alargar la columna en las flexiones hacia adelante.",
-   "Activa la espalda y los isquiotibiales.",
-   "Prepara y descomprime entre posturas de pie."
+   "Alarga la columna",
+   "Estira la parte de atrás de las piernas",
+   "Estira los músculos de la espalda"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Lengthens the spinal column",
+   "Stretches the back of the legs",
+   "Stretches the back muscles"
+  ],
   "precaucion": [
-   "Lesión lumbar: dobla más las rodillas y sube las manos a bloques altos."
+   "Lesión reciente o crónica de brazos, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Dobla las rodillas con la espalda recta. Inhala llevando los brazos a los lados y sube el torso hasta la postura de la montaña.",
+  "liberar_en": "Bend the knees, keeping the back straight. Inhale and bring the arms out to the sides. Inhale and bring the arms and torso up back into mountain pose.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/ardha-uttanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 58,
@@ -3018,7 +3176,7 @@ window.POSES = [
   "nombre_en": "Locust Pose",
   "sanscrito": "Salabhasana",
   "traduccion": "salabha = saltamontes",
-  "nivel": "principiante",
+  "nivel": "avanzado",
   "tipo": [
    "prona"
   ],
@@ -3038,26 +3196,38 @@ window.POSES = [
    "confianza"
   ],
   "entrada": [
-   "Boca abajo, brazos a los lados del cuerpo, palmas abajo, frente en el suelo.",
-   "Al inhalar, despega pecho, brazos y piernas; alarga en vez de subir mucho.",
-   "Cuello largo en línea con la columna; empeines activos hacia atrás."
+   "Piernas juntas",
+   "Mantén la pierna en línea con la columna",
+   "Lleva el pecho al frente",
+   "Brazos a los costados del cuerpo",
+   "Presiona el pubis contra el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Legs together",
+   "Keep the leg in line with the spine",
+   "Press chest forward",
+   "Arms alongside the body",
+   "Press the pubic bone into the floor"
+  ],
   "beneficios": [
-   "Fortalece toda la cadena posterior: lumbar, glúteos e isquiotibiales.",
-   "Mejora la postura y contrarresta el encorvamiento.",
-   "Buena preparación para extensiones más profundas."
+   "Fortalece las piernas",
+   "Abre el pecho",
+   "Estira la zona lumbar"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Strengthens the legs",
+   "Opens the chest",
+   "Stretches the low back"
+  ],
   "precaucion": [
-   "Lesión lumbar aguda, embarazo, cirugía abdominal reciente."
+   "Lesión reciente o crónica de espalda, brazos u hombros; embarazo, menstruación o cirugía abdominal reciente."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": "img/poses/salabhasana.svg",
-  "fuente": "propia"
+  "liberar": "Exhala y baja despacio pecho, cabeza, brazos y piernas al piso. Gira la cabeza a un lado, brazos a los costados, y descansa. Mece las caderas de lado a lado para soltar tensión en la zona lumbar.",
+  "liberar_en": "Exhale and slowly lower the chest, head, arms and legs to the floor. Turn the head to one side, slide the arms alongside your body, and rest. Rock the hips from side to side to release any tension in the lower back.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/salabhasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 60,
@@ -3084,26 +3254,36 @@ window.POSES = [
    "corazón"
   ],
   "entrada": [
-   "Boca arriba, manos bajo los glúteos, palmas al suelo, codos hacia adentro.",
-   "Apoya en los antebrazos y sube el pecho; lleva la coronilla suavemente al suelo con poco peso.",
-   "Piernas activas; el peso vive en los antebrazos y la pelvis, no en la cabeza. Contrapostura de la vela."
+   "Sube el pecho",
+   "Palmas hacia abajo por debajo de los muslos",
+   "Codos ligeramente doblados",
+   "Poco o nada de peso sobre la cabeza"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Lift chest up",
+   "Palms down underneath thighs",
+   "Elbows slightly bent",
+   "Little or no weight should be on the head"
+  ],
   "beneficios": [
-   "Abre pecho, garganta y flexores de la cadera.",
-   "Contrarresta la flexión de hombros de la vida diaria.",
-   "Estimula la respiración amplia."
+   "Abre el pecho",
+   "Estimula el sistema nervioso",
+   "Da flexibilidad a la columna"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Opens the chest",
+   "Stimulates the nervous system",
+   "Improves flexibility of the spine"
+  ],
   "precaucion": [
-   "Lesión de cuello o de lumbar, migraña, presión arterial alta o baja."
+   "Lesión reciente o crónica de brazo, hombro, cuello o espalda, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Quita todo el peso de la cabeza y baja con cuidado la nuca. Saca las manos de debajo de las piernas.",
+  "liberar_en": "Slowly remove all of the weight off of the head and gently lower the back of the head. Remove the hands from under the legs.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/matsyasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 61,
@@ -3205,7 +3385,7 @@ window.POSES = [
   "nombre_en": "Gate Pose",
   "sanscrito": "Parighasana",
   "traduccion": "parigha = barra que cierra una puerta",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "arrodillada"
   ],
@@ -3224,26 +3404,40 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "De rodillas, estira una pierna al lado con la planta o el canto del pie en el suelo.",
-   "Sube el brazo del lado de la rodilla apoyada; la otra mano baja por la pierna estirada.",
-   "Alarga el costado de arriba y gira ligeramente el pecho al techo. Repite del otro lado."
+   "Brazo pasando por encima de la oreja",
+   "Barbilla despegada del pecho",
+   "Mantén el pecho abierto",
+   "La otra mano apoyada palma abajo sobre la pierna",
+   "Pie plano en el piso",
+   "Pierna estirada"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Arm sweeping over the ear",
+   "Keep the chin off the chest",
+   "Keep the chest open",
+   "Hand resting palm down on the leg",
+   "Foot flat on the floor",
+   "Leg straight"
+  ],
   "beneficios": [
-   "Estira los costados, entre las costillas y los oblicuos.",
-   "Abre isquiotibiales e ingle de la pierna estirada.",
-   "Mejora la respiración lateral."
+   "Da flexibilidad a la columna",
+   "Trabaja el core",
+   "Estimula la digestión"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Increases flexibility of the spine",
+   "Builds core strength",
+   "Stimulates digestion"
+  ],
   "precaucion": [
-   "Lesión de rodilla (pon un cojín bajo la rodilla apoyada)."
+   "Lesión reciente o crónica de rodilla, cadera u hombro, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Inhala y sube el brazo, llevando la rodilla hacia el centro. Repite del otro lado.",
+  "liberar_en": "Inhale and bring the arm up, and bring the knee back to center. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–8 breaths.",
+  "img": "img/mazo/parighasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 64,
@@ -3350,7 +3544,7 @@ window.POSES = [
   "nombre_en": "Cobra Pose",
   "sanscrito": "Bhujangasana",
   "traduccion": "bhujanga = serpiente",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "prona"
   ],
@@ -3369,26 +3563,36 @@ window.POSES = [
    "corazón"
   ],
   "entrada": [
-   "Boca abajo, manos bajo los hombros, codos pegados al cuerpo, empeines apoyados.",
-   "Empuja poco con las manos y usa la espalda para subir el pecho; hombros lejos de las orejas.",
-   "Pubis en el suelo, glúteos suaves; la altura la marca la lumbar sin dolor."
+   "Aprieta muslos y glúteos",
+   "Piernas juntas",
+   "Presiona el pubis contra el piso",
+   "Palmas planas en el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Squeeze the thighs and buttocks",
+   "Legs together",
+   "Press the pubic bone down into the floor",
+   "Palms flat on the floor"
+  ],
   "beneficios": [
-   "Fortalece y moviliza la columna.",
-   "Abre pecho y hombros; mejora la respiración.",
-   "Contrarresta horas de estar encorvada."
+   "Abre el pecho",
+   "Fortalece el core",
+   "Alinea la columna"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Opens the chest",
+   "Strengthens the core",
+   "Aligns the spine"
+  ],
   "precaucion": [
-   "Lesión lumbar aguda, túnel carpiano, embarazo, cirugía abdominal reciente."
+   "Lesión reciente o crónica de espalda, brazos u hombros; embarazo o cirugía abdominal reciente."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Exhala y baja despacio pecho y cabeza al piso. Gira la cabeza a un lado y descansa. Mece las caderas de lado a lado para soltar tensión en la zona lumbar.",
+  "liberar_en": "Exhale and slowly lower the chest and head to the floor. Turn the head to one side and rest. Rock the hips from side to side to release any tension on the lower back.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/bhujangasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 67,
@@ -3397,7 +3601,7 @@ window.POSES = [
   "nombre_en": "Hero Pose",
   "sanscrito": "Virasana",
   "traduccion": "vira = héroe",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "arrodillada"
   ],
@@ -3416,26 +3620,42 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "De rodillas, separa los pies un poco más que la cadera y siéntate entre los talones.",
-   "Si los glúteos no llegan al suelo sin molestia, siéntate sobre un bloque o cojín.",
-   "Empeines apoyados y rectos; columna larga, manos en los muslos."
+   "Lleva la coronilla arriba",
+   "Relaja la cara",
+   "Hombros abajo y atrás",
+   "Pecho hacia el frente de la sala",
+   "Palmas hacia abajo",
+   "Siéntate sobre los talones",
+   "Rodillas en el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Move the crown of the head up",
+   "Relax the face",
+   "Shoulders down and back",
+   "Chest towards the front of the room",
+   "Palms facing down",
+   "Sit back on your heels",
+   "Knees to the floor"
+  ],
   "beneficios": [
-   "Estira cuádriceps, rodillas y empeines.",
-   "Asiento alternativo para respiración y meditación.",
-   "Favorece la digestión."
+   "Estira los cuádriceps",
+   "Alarga la columna",
+   "Favorece la calma interior"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Stretches the quadriceps",
+   "Lengthens the spine",
+   "Promotes inner calm"
+  ],
   "precaucion": [
-   "Lesión de rodilla o de tobillo: eleva bien el asiento o evita."
+   "Lesión reciente o crónica de rodilla, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Quédate el tiempo que te resulte cómodo.",
+  "liberar_en": "Hold as long as comfortable.",
+  "respiracion": "Respira hondo por la nariz, llevando el aire al vientre.",
+  "respiracion_en": "Breathe deeply through the nose down into the belly.",
+  "img": "img/mazo/virasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 68,
@@ -3537,7 +3757,7 @@ window.POSES = [
   "nombre_en": "Four-Limbed Staff Pose",
   "sanscrito": "Chaturanga Dandasana",
   "traduccion": "chatur = cuatro, anga = miembro, danda = bastón",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "equilibrio de brazos"
   ],
@@ -3556,26 +3776,38 @@ window.POSES = [
    "transición"
   ],
   "entrada": [
-   "Desde plancha, lleva el peso un poco adelante sobre las puntas de los pies.",
-   "Baja hasta que los codos formen 90°, pegados al cuerpo; hombros a la altura de los codos, no más abajo.",
-   "Cuerpo en una línea firme; si cuesta, baja las rodillas al suelo."
+   "Posición de lagartija",
+   "Presiona los talones hacia atrás",
+   "Caderas, piernas y torso en una sola línea",
+   "Codos doblados a 90 grados",
+   "Separa bien los dedos de las manos"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Push-up position",
+   "Press the heels back",
+   "Legs, hips, and torso are one straight line",
+   "90 degree bend",
+   "Fingers wide apart"
+  ],
   "beneficios": [
-   "Fortalece hombros, brazos y core.",
-   "Transición clave del vinyasa entre plancha y perro boca arriba.",
-   "Enseña alineación de hombro que protege la articulación."
+   "Alarga la columna",
+   "Fortalece el core",
+   "Estira los músculos lumbares"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Lengthens the spine",
+   "Strengthens the core",
+   "Stretches the low back muscles"
+  ],
   "precaucion": [
-   "Túnel carpiano, lesión de hombro, muñeca o lumbar. Muy común lesionarse por dejar caer los hombros."
+   "Lesión reciente o crónica de brazos, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Inhala subiendo a la plancha, o exhala bajando hasta el piso.",
+  "liberar_en": "Inhale up to plank pose or exhale all the way down to the floor.",
+  "respiracion": "Aguanta de 1 a 4 respiraciones.",
+  "respiracion_en": "Breathe and hold for 1–4 breaths.",
+  "img": "img/mazo/chaturanga-dandasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 71,
@@ -3602,26 +3834,34 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "Pies juntos o al ancho de la cadera; reparte el peso entre los cuatro puntos de cada planta.",
-   "Rótulas activas sin bloquear, coxis hacia abajo, corona hacia el techo.",
-   "Hombros atrás y abajo, brazos a los lados con las palmas al frente. Base de todas las posturas de pie."
+   "Lleva la coronilla arriba, paralela al techo",
+   "Caderas alineadas sobre los tobillos",
+   "Pies juntos"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Lift the crown of the head up parallel to the ceiling",
+   "Hips aligned over the ankles",
+   "Feet together"
+  ],
   "beneficios": [
-   "Enseña la alineación neutra de toda la práctica.",
-   "Mejora la postura y la conciencia del cuerpo.",
-   "Aterriza la atención antes de moverse."
+   "Mejora la postura",
+   "Mejora la estabilidad",
+   "Aumenta la confianza"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Improves posture",
+   "Improves stability",
+   "Improves confidence"
+  ],
   "precaucion": [
-   "Vértigo o presión arterial baja: separa un poco los pies y abre los ojos."
+   "Lesión reciente o crónica de hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia"
+  "liberar": "Exhala y baja los brazos a los costados, o junta las palmas frente al pecho.",
+  "liberar_en": "Exhale and bring arms down to your sides or bring the palms together in front of your chest.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/tadasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 72,
@@ -4392,24 +4632,36 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Boca arriba, lleva una rodilla al pecho y cruza esa pierna hacia el lado contrario.",
-   "Abre el brazo del mismo lado en cruz; hombros en el suelo, mirada hacia esa mano. Repite del otro lado."
+   "Mira las yemas de los dedos de la mano derecha",
+   "Coloca el pie sobre la rodilla",
+   "Hombros planos en el piso",
+   "Deja que la gravedad lleve la rodilla abajo"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Look at right-hand finger tips",
+   "Place the foot on the knee",
+   "Shoulders flat to the floor",
+   "Let gravity pull the knee down"
+  ],
   "beneficios": [
-   "Descarga la columna y la zona lumbar al final de la clase.",
-   "Calma el sistema nervioso."
+   "Realinea la columna",
+   "Hidrata los discos",
+   "Estira los músculos de la espalda"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Realigns the spine",
+   "Hydrates the spinal disks",
+   "Stretches the back muscles"
+  ],
   "precaucion": [
-   "Lesión lumbar o sacra reciente."
+   "Lesión reciente o crónica de espalda, caderas u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Inhala y regresa las caderas al piso, exhala llevando la pierna de vuelta al piso. Repite del otro lado.",
+  "liberar_en": "Inhale and roll the hips back to the floor, and exhale while bringing the leg back down to the floor. Repeat on the other side.",
+  "respiracion": "Aguanta de 6 a 10 respiraciones.",
+  "respiracion_en": "Breathe and hold for 6–10 breaths.",
+  "img": "img/mazo/supta-matsyendrasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 89,
@@ -4506,7 +4758,7 @@ window.POSES = [
   "nombre_en": "Knees-to-Chest",
   "sanscrito": "Apanasana",
   "traduccion": "apana = energía descendente",
-  "nivel": "principiante",
+  "nivel": "intermedio",
   "tipo": [
    "supina",
    "restaurativa"
@@ -4524,24 +4776,34 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Boca arriba, abraza las dos rodillas hacia el pecho.",
-   "Hombros y sacro en el suelo; puedes mecerte suave o hacer círculos. Descarga entre posturas."
+   "Rodilla hacia el pecho",
+   "Presiona hombros y espalda contra el piso",
+   "Barbilla hacia el pecho"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Knee towards the chest",
+   "Press shoulders and back down into the floor",
+   "Chin into the chest"
+  ],
   "beneficios": [
-   "Alivia y descarga la zona lumbar.",
-   "Ayuda a la digestión y a soltar tensión."
+   "Alarga la columna",
+   "Estira la zona lumbar",
+   "Estimula la digestión"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Lengthens the spine",
+   "Stretches the lower back",
+   "Stimulates digestion"
+  ],
   "precaucion": [
-   "Lesión de rodilla: sujeta detrás de los muslos. Embarazo avanzado."
+   "Cirugía abdominal reciente o hernia."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Exhala y suelta los brazos y la pierna al piso.",
+  "liberar_en": "Exhale and release the arms and leg to the floor.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/apanasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 92,
@@ -4970,24 +5232,38 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "En cuadrupedia, abre las rodillas al ancho que permita la cadera, tobillos alineados con las rodillas.",
-   "Baja a los antebrazos y lleva la cadera atrás lentamente; sal con la misma calma."
+   "Caderas hacia atrás",
+   "Tobillos detrás de las rodillas",
+   "Palmas juntas",
+   "Siéntate sobre los talones",
+   "Codos y antebrazos en el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Hips towards the back",
+   "Ankles behind the knees",
+   "Palms press together",
+   "Sit back on your heels",
+   "Elbows and forearms on the floor"
+  ],
   "beneficios": [
-   "Apertura intensa de la cara interna de la cadera y la ingle.",
-   "Libera tensión de la pelvis."
+   "Abre la cara interna de los muslos",
+   "Estira la ingle",
+   "Abre las caderas"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Opens the insides of the thighs",
+   "Stretches the groin",
+   "Opens the hips"
+  ],
   "precaucion": [
-   "Lesión de rodilla o de ingle. Nunca rebotar; entrar y salir despacio."
+   "Lesión reciente o crónica de rodillas, caderas o piernas."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Mece las caderas hacia adelante y lleva las palmas bajo los hombros para subir a la posición de mesa, o camina los brazos hacia adelante bajando el cuerpo al piso.",
+  "liberar_en": "Rock the hips forward and either bring the palms under the shoulders and press back up into table pose, or walk the arms forward lowering the hips and whole body flat on the floor.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/mandukasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 102,
@@ -5145,24 +5421,34 @@ window.POSES = [
    "soltar"
   ],
   "entrada": [
-   "Desde la postura del niño, toma los talones con las manos y lleva la coronilla cerca de las rodillas.",
-   "Sube un poco la cadera para redondear la columna; muy poco peso en la cabeza."
+   "Sube las caderas hacia el techo",
+   "Sujeta los talones",
+   "Lleva la frente hacia las rodillas"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Lift the hips towards the ceiling",
+   "Hold onto the heels",
+   "Pull the forehead in towards the knees"
+  ],
   "beneficios": [
-   "Estira toda la columna y la parte de atrás del cuello.",
-   "Contrapostura suave de las extensiones."
+   "Estira la espalda",
+   "Alarga la columna",
+   "Estimula el sistema inmune"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Stretches the back",
+   "Lengthens the spine",
+   "Stimulates the immune system"
+  ],
   "precaucion": [
-   "Lesión de cuello: evítala o mantén todo el peso en manos y rodillas."
+   "Lesión reciente o crónica de rodillas, cuello, columna u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Exhala despacio y baja las caderas a los talones, deslizando la frente al piso hasta la postura del niño.",
+  "liberar_en": "Slowly exhale and lower the hips to the heels and slide the forehead back to the floor into child's pose.",
+  "respiracion": "Aguanta de 4 a 8 respiraciones.",
+  "respiracion_en": "Breathe and hold for 4–8 breaths.",
+  "img": "img/mazo/sasangasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 106,
@@ -5321,24 +5607,36 @@ window.POSES = [
    "energía"
   ],
   "entrada": [
-   "Desde la montaña, sube los brazos junto a las orejas, palmas enfrentadas o juntas.",
-   "Crece por los costados y la coronilla; costillas cerradas, mirada al frente o a las manos. Primer movimiento del saludo al sol."
+   "Brazos arriba",
+   "Hombros arriba y abajo",
+   "Piernas y glúteos activos",
+   "Presiona los pies contra el piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Arms up",
+   "Shoulders up and down",
+   "Keep legs and buttocks engaged",
+   "Press feet into the floor"
+  ],
   "beneficios": [
-   "Alarga toda la columna y el costado.",
-   "Despierta el cuerpo al inicio de la práctica."
+   "Mejora la circulación",
+   "Mejora la concentración",
+   "Fortalece el core"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Improves circulation",
+   "Improves concentration",
+   "Improves core body strength"
+  ],
   "precaucion": [
-   "Lesión de hombro: mantén las manos separadas. Presión arterial alta: no subas la mirada."
+   "Lesión reciente o crónica de hombros o espalda."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Inhala y presiona los pies mientras bajas los brazos.",
+  "liberar_en": "Inhale and press into the feet as you put the arms back down.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/urdhva-hastasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 110,
@@ -5455,24 +5753,36 @@ window.POSES = [
    "enraizar"
   ],
   "entrada": [
-   "En cuadrupedia, estira un brazo al frente y la pierna contraria atrás, ambos a la altura del torso.",
-   "Cadera y hombros nivelados, ombligo adentro; cambia de lado con control."
+   "Lleva la coronilla arriba, paralela al techo",
+   "Manos y rodillas en posición de mesa",
+   "Una pierna paralela al piso",
+   "El brazo contrario paralelo al piso"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Lift the crown of the head up parallel to the ceiling",
+   "Hands and knees in table pose",
+   "Leg parallel to the floor",
+   "Arm parallel to the floor"
+  ],
   "beneficios": [
-   "Fortalece el core y los estabilizadores de la columna.",
-   "Entrena coordinación y equilibrio."
+   "Mejora la memoria",
+   "Mejora el equilibrio",
+   "Fortalece la columna"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Improves memory",
+   "Improves balance",
+   "Strengthens the spine"
+  ],
   "precaucion": [
-   "Lesión de muñeca: apoya el antebrazo o cierra el puño."
+   "Lesión reciente o crónica de muñeca, hombro o columna, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Exhala y baja el brazo, luego baja la rodilla, volviendo a la posición de mesa. Repite del otro lado.",
+  "liberar_en": "Slowly exhale and bring the right arm down, and then lower the knee down, back into table position. Repeat on the other side.",
+  "respiracion": "Aguanta de 3 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 3–6 breaths.",
+  "img": "img/mazo/chakravakasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 113,
@@ -5970,7 +6280,7 @@ window.POSES = [
   "nombre_en": "Fire Log / Double Pigeon",
   "sanscrito": "Agnistambhasana",
   "traduccion": "agni = fuego, stambha = leño",
-  "nivel": "intermedio",
+  "nivel": "avanzado",
   "tipo": [
    "sentada"
   ],
@@ -5987,24 +6297,38 @@ window.POSES = [
    "calma"
   ],
   "entrada": [
-   "Sentada, apila una espinilla sobre la otra, tobillos sobre las rodillas, pies flex.",
-   "Siéntate sobre una manta; si la rodilla de arriba queda muy alta, pon un soporte debajo. Inclínate al frente para profundizar."
+   "Cabeza arriba",
+   "Hombros atrás y abajo",
+   "Presiona las caderas hacia el piso",
+   "Deja que las rodillas bajen hacia el piso para abrir la cadera",
+   "Pie o tobillo sobre la rodilla contraria"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Head up",
+   "Drop the shoulders back and down",
+   "Press the hips down",
+   "Allow the knees to relax down towards the floor to open hips",
+   "Foot or ankle on top of the knee"
+  ],
   "beneficios": [
-   "Apertura intensa de glúteos y rotadores externos de la cadera.",
-   "Contrarresta horas de silla."
+   "Estira los muslos",
+   "Estimula los órganos abdominales",
+   "Abre las caderas"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Stretches the thighs",
+   "Stimulates the abdominal organs",
+   "Opens the hips"
+  ],
   "precaucion": [
-   "Lesión de rodilla: quédate con las piernas cruzadas simples."
+   "Lesión reciente o crónica de rodilla o zona lumbar, o inflamación."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Inhala despacio, descruza las piernas y estíralas a lo largo del piso. Repite del otro lado.",
+  "liberar_en": "Slowly inhale, uncross your legs, and extend both legs along the floor. Repeat on the other side.",
+  "respiracion": "Aguanta de 2 a 6 respiraciones.",
+  "respiracion_en": "Breathe and hold for 2–6 breaths.",
+  "img": "img/mazo/agnistambhasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 125,
@@ -6841,24 +7165,38 @@ window.POSES = [
    "expansión"
   ],
   "entrada": [
-   "En cuadrupedia, estira una pierna atrás y arriba, doblando la rodilla y llevando el pie hacia la cabeza.",
-   "Curva suave en la columna, mirada al frente; el pie 'busca' la coronilla. Repite del otro lado."
+   "Manos en posición de mesa",
+   "Inhala llevando la rodilla a la frente",
+   "Mira arriba",
+   "Arquea la columna",
+   "Exhala subiendo el pie hacia el techo"
   ],
-  "entrada_en": "",
+  "entrada_en": [
+   "Hands in table pose",
+   "Inhale and bring the knee to the forehead",
+   "Look up",
+   "Arch the spine",
+   "Exhale and bring the foot up towards the ceiling"
+  ],
   "beneficios": [
-   "Moviliza la columna en extensión y estira el psoas.",
-   "Activa glúteos y espalda."
+   "Estimula el sistema nervioso",
+   "Fortalece el core",
+   "Estira los músculos de la espalda"
   ],
-  "beneficios_en": [],
+  "beneficios_en": [
+   "Stimulates the nervous system",
+   "Strengthens the core body",
+   "Stretches the back muscles"
+  ],
   "precaucion": [
-   "Lesión lumbar aguda o de rodilla."
+   "Lesión reciente o crónica de muñecas, rodillas, espalda u hombros."
   ],
-  "liberar": "",
-  "liberar_en": "",
-  "respiracion": "",
-  "respiracion_en": "",
-  "img": null,
-  "fuente": "propia-breve"
+  "liberar": "Exhala y baja la rodilla al piso, volviendo a la posición de mesa. Repite del otro lado.",
+  "liberar_en": "Exhale and bring the knee back down to the floor into table pose. Repeat on the other side.",
+  "respiracion": "Inhala llevando la rodilla a la frente y exhala subiendo el pie, de 4 a 8 veces.",
+  "respiracion_en": "Inhale and bring the knee to the forehead and exhale while bringing the foot up, 4–8 times.",
+  "img": "img/mazo/vyaghrasana.jpg",
+  "fuente": "mazo"
  },
  {
   "id": 144,

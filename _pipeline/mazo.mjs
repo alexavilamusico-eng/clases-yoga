@@ -1,16 +1,23 @@
 // Digitalización del mazo de cartas de yoga de Andrea (uso personal — ver CREDITOS.md).
 // Una entrada por carta, con la clave = slug de la postura en el glosario.
 // build.mjs, si encuentra MAZO[slug]:
-//   - reemplaza entrada / entrada_en / beneficios / beneficios_en / precaucion
+//   - reemplaza nivel / entrada / entrada_en / beneficios / beneficios_en / precaucion
 //   - añade liberar / liberar_en ("para salir") y respiracion / respiracion_en
 //   - usa img/mazo/<slug>.jpg como ilustración (falla el build si el archivo no existe)
 //
-// Texto reconstruido a mano del reverso de cada carta (en la foto se ve borroso);
-// el texto EN de la ILUSTRACIÓN queda tal cual dentro de la imagen.
+// El texto EN de la ILUSTRACIÓN queda dentro de la imagen tal cual (con licencia del mazo).
+// El texto del reverso se reescribió a mano de fotos del mazo (en la foto se ve borroso).
+// `num` = número de la carta en el mazo.
+// Nota: la carta 1 "Prayer / Pranamasana" no se incluyó (no tiene equivalente propio en el
+// glosario; es Tadasana con las manos al pecho).
+
+const RESP_HOLD = (a, b) => ({ es: `Aguanta de ${a} a ${b} respiraciones.`, en: `Breathe and hold for ${a}–${b} breaths.` });
+const RESP_BELLY = { es: "Respira hondo por la nariz, llevando el aire al vientre.", en: "Breathe deeply through the nose down into the belly." };
 
 export const MAZO = {
+  // ---------------------------------------------------------------- carta 31
   navasana: {
-    num: 31,
+    num: 31, nivel: "intermedio",
     entrada:    ["Pecho abierto", "Brazos paralelos al piso", "Piernas juntas", "Hombros abajo y atrás"],
     entrada_en: ["Chest open", "Arms parallel to the floor", "Legs together", "Shoulders down and back"],
     beneficios:    ["Fortalece los abdominales", "Mejora el equilibrio", "Aumenta la confianza"],
@@ -18,7 +25,523 @@ export const MAZO = {
     liberar:    "Exhala y dobla las rodillas, bajando los pies al piso.",
     liberar_en: "Exhale and bend the knees, lowering the feet back to the floor.",
     precaucion: ["Lesión reciente o crónica en abdomen, rodillas, caderas, brazos u hombros."],
-    respiracion:    "Aguanta de 2 a 6 respiraciones.",
-    respiracion_en: "Breathe and hold for 2–6 breaths.",
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 10
+  sukhasana: {
+    num: 10, nivel: "principiante",
+    entrada:    ["Lleva la coronilla arriba para alargar la columna", "Hombros abajo y atrás", "Manos sobre las rodillas", "Huesos de la cadera hacia el piso", "Pies bajo las rodillas", "Glúteos en el piso"],
+    entrada_en: ["Raise the crown of the head up to lengthen the spine", "Drop shoulders down and back", "Rest hands on the knees", "Hip bones down into the floor", "Feet below the knees", "Buttocks on the floor"],
+    beneficios:    ["Abre las caderas", "Alarga la columna", "Favorece la calma interior"],
+    beneficios_en: ["Opens the hips", "Lengthens the spine", "Promotes inner calm"],
+    liberar:    "Estira las piernas.",
+    liberar_en: "Stretch your legs.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera, o inflamación."],
+    respiracion: RESP_BELLY.es, respiracion_en: RESP_BELLY.en,
+  },
+  // ---------------------------------------------------------------- carta 43
+  agnistambhasana: {
+    num: 43, nivel: "avanzado",
+    entrada:    ["Cabeza arriba", "Hombros atrás y abajo", "Presiona las caderas hacia el piso", "Deja que las rodillas bajen hacia el piso para abrir la cadera", "Pie o tobillo sobre la rodilla contraria"],
+    entrada_en: ["Head up", "Drop the shoulders back and down", "Press the hips down", "Allow the knees to relax down towards the floor to open hips", "Foot or ankle on top of the knee"],
+    beneficios:    ["Estira los muslos", "Estimula los órganos abdominales", "Abre las caderas"],
+    beneficios_en: ["Stretches the thighs", "Stimulates the abdominal organs", "Opens the hips"],
+    liberar:    "Inhala despacio, descruza las piernas y estíralas a lo largo del piso. Repite del otro lado.",
+    liberar_en: "Slowly inhale, uncross your legs, and extend both legs along the floor. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de rodilla o zona lumbar, o inflamación."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 9
+  chakravakasana: {
+    num: 9, nivel: "principiante",
+    entrada:    ["Lleva la coronilla arriba, paralela al techo", "Manos y rodillas en posición de mesa", "Una pierna paralela al piso", "El brazo contrario paralelo al piso"],
+    entrada_en: ["Lift the crown of the head up parallel to the ceiling", "Hands and knees in table pose", "Leg parallel to the floor", "Arm parallel to the floor"],
+    beneficios:    ["Mejora la memoria", "Mejora el equilibrio", "Fortalece la columna"],
+    beneficios_en: ["Improves memory", "Improves balance", "Strengthens the spine"],
+    liberar:    "Exhala y baja el brazo, luego baja la rodilla, volviendo a la posición de mesa. Repite del otro lado.",
+    liberar_en: "Slowly exhale and bring the right arm down, and then lower the knee down, back into table position. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de muñeca, hombro o columna, o inflamación."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 8
+  tadasana: {
+    num: 8, nivel: "principiante",
+    entrada:    ["Lleva la coronilla arriba, paralela al techo", "Caderas alineadas sobre los tobillos", "Pies juntos"],
+    entrada_en: ["Lift the crown of the head up parallel to the ceiling", "Hips aligned over the ankles", "Feet together"],
+    beneficios:    ["Mejora la postura", "Mejora la estabilidad", "Aumenta la confianza"],
+    beneficios_en: ["Improves posture", "Improves stability", "Improves confidence"],
+    liberar:    "Exhala y baja los brazos a los costados, o junta las palmas frente al pecho.",
+    liberar_en: "Exhale and bring arms down to your sides or bring the palms together in front of your chest.",
+    precaucion: ["Lesión reciente o crónica de hombros."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 33
+  "ardha-matsyendrasana": {
+    num: 33, nivel: "intermedio",
+    entrada:    ["Empuja los hombros abajo", "Pie plano en el piso", "Presiona hacia las caderas", "Toda la columna larga y erguida"],
+    entrada_en: ["Push shoulders down", "Foot flat on the floor", "Press down to the hips", "Back and whole spine flat to the floor"],
+    beneficios:    ["Estimula el sistema nervioso", "Realinea la columna", "Estimula el sistema digestivo"],
+    beneficios_en: ["Stimulates the nervous system", "Realigns the spine", "Stimulates the digestive system"],
+    liberar:    "Inhala y sube la mano de atrás. Exhala deshaciendo la torsión y mirando al frente. Repite del otro lado.",
+    liberar_en: "Inhale and bring the hand up. Exhale, untwisting the body and facing the front. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de cadera, espalda u hombro, o inflamación."],
+    respiracion: RESP_HOLD(4, 7).es, respiracion_en: RESP_HOLD(4, 7).en,
+  },
+  // ---------------------------------------------------------------- carta 32
+  virasana: {
+    num: 32, nivel: "intermedio",
+    entrada:    ["Lleva la coronilla arriba", "Relaja la cara", "Hombros abajo y atrás", "Pecho hacia el frente de la sala", "Palmas hacia abajo", "Siéntate sobre los talones", "Rodillas en el piso"],
+    entrada_en: ["Move the crown of the head up", "Relax the face", "Shoulders down and back", "Chest towards the front of the room", "Palms facing down", "Sit back on your heels", "Knees to the floor"],
+    beneficios:    ["Estira los cuádriceps", "Alarga la columna", "Favorece la calma interior"],
+    beneficios_en: ["Stretches the quadriceps", "Lengthens the spine", "Promotes inner calm"],
+    liberar:    "Quédate el tiempo que te resulte cómodo.",
+    liberar_en: "Hold as long as comfortable.",
+    precaucion: ["Lesión reciente o crónica de rodilla, o inflamación."],
+    respiracion: RESP_BELLY.es, respiracion_en: RESP_BELLY.en,
+  },
+  // ---------------------------------------------------------------- carta 30
+  "ardha-pincha-mayurasana": {
+    num: 30, nivel: "intermedio",
+    entrada:    ["Sube las caderas hacia el techo", "Piernas rectas", "Talones hacia el piso", "Mete los dedos de los pies", "Separa bien los dedos de las manos", "Antebrazos en el piso"],
+    entrada_en: ["Lift the hips up towards the ceiling", "Legs are straight", "Heels into the floor", "Tuck the toes under", "Spread the fingers wide apart", "Forearms to the floor"],
+    beneficios:    ["Abre los hombros", "Alarga la columna", "Estimula el sistema nervioso"],
+    beneficios_en: ["Opens the shoulders", "Lengthens the spine", "Stimulates the nervous system"],
+    liberar:    "Dobla las rodillas y baja las caderas a la posición de mesa, o baja hasta la postura del niño.",
+    liberar_en: "Bend the knees and lower the hips back to table pose, or go all the way down to child's pose.",
+    precaucion: ["Lesión reciente o crónica de brazo, espalda u hombro, o inflamación."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 29
+  utkatasana: {
+    num: 29, nivel: "intermedio",
+    entrada:    ["Brazos al frente y paralelos", "Hombros abajo y atrás", "Mira un punto fijo en la pared o el piso", "Caderas abajo y atrás", "Dobla las rodillas", "Baja como en cuclillas", "Peso en los talones"],
+    entrada_en: ["Arms forward and parallel", "Shoulders down and back", "Stare at a point on the wall or floor", "Hips down and back", "Bend the knees", "Squat down", "Weight to the heels"],
+    beneficios:    ["Fortalece el tren inferior", "Estira la parte alta de la espalda", "Da energía a todo el cuerpo"],
+    beneficios_en: ["Strengthens the lower body", "Stretches the upper back", "Energizes the whole body"],
+    liberar:    "Inhala y presiona los pies para estirar las piernas. Sube los brazos al techo. Exhala y baja los brazos.",
+    liberar_en: "Inhale and press down into the feet, straightening the legs. Raise the arms up toward the ceiling. Exhale and bring the arms down.",
+    precaucion: ["Lesión reciente o crónica de caderas, rodillas, espalda u hombros."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 28
+  "ardha-uttanasana": {
+    num: 28, nivel: "intermedio",
+    entrada:    ["Espalda plana", "Piernas rectas", "Abre el pecho", "Mira al frente", "Manos en el piso"],
+    entrada_en: ["Back flat", "Legs straight", "Open the chest", "Look forward", "Hands on the floor"],
+    beneficios:    ["Alarga la columna", "Estira la parte de atrás de las piernas", "Estira los músculos de la espalda"],
+    beneficios_en: ["Lengthens the spinal column", "Stretches the back of the legs", "Stretches the back muscles"],
+    liberar:    "Dobla las rodillas con la espalda recta. Inhala llevando los brazos a los lados y sube el torso hasta la postura de la montaña.",
+    liberar_en: "Bend the knees, keeping the back straight. Inhale and bring the arms out to the sides. Inhale and bring the arms and torso up back into mountain pose.",
+    precaucion: ["Lesión reciente o crónica de brazos, espalda u hombros."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 7
+  balasana: {
+    num: 7, nivel: "principiante",
+    entrada:    ["Baja las caderas hacia los talones", "Frente en el piso", "Palmas en el piso"],
+    entrada_en: ["Lower the hips to the heels", "Forehead to the floor", "Palms on the floor"],
+    beneficios:    ["Calma cuerpo, mente y espíritu", "Estira la zona lumbar", "Estimula la digestión"],
+    beneficios_en: ["Calms body, mind, and spirit", "Stretches lower back", "Stimulates digestion"],
+    liberar:    "Coloca las palmas bajo los hombros e inhala despacio hasta sentarte.",
+    liberar_en: "Place palms under the shoulders and slowly inhale up to a seated position.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera, o inflamación."],
+    respiracion: RESP_HOLD(4, 12).es, respiracion_en: RESP_HOLD(4, 12).en,
+  },
+  // ---------------------------------------------------------------- carta 6
+  "setu-bandha-sarvangasana": {
+    num: 6, nivel: "principiante",
+    entrada:    ["Sube las caderas", "Rodillas juntas", "Columna despegada del piso", "Brazos a los costados del cuerpo", "Presiona los pies contra el piso"],
+    entrada_en: ["Lift the hips up", "Knees together", "Spine off the floor", "Arms alongside the body", "Press feet into the floor"],
+    beneficios:    ["Fortalece la columna", "Trabaja el core", "Da energía al cuerpo"],
+    beneficios_en: ["Strengthens the spine", "Builds the core", "Energizes the body"],
+    liberar:    "Exhala y baja la columna al piso vértebra por vértebra.",
+    liberar_en: "Exhale and slowly roll the spine back to the floor.",
+    precaucion: ["Lesión reciente o crónica de rodillas, hombros o espalda."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 21
+  parsvottanasana: {
+    num: 21, nivel: "intermedio",
+    entrada:    ["Piernas estiradas", "Redondea la columna", "Dedos de los pies al frente", "Lleva la frente hacia la rodilla", "Pie de atrás plano en el piso"],
+    entrada_en: ["Legs straightened", "Round the spine", "Toes facing forward", "Press the forehead towards the knee", "Back foot flat on the floor"],
+    beneficios:    ["Estira la espalda", "Mejora el equilibrio", "Mejora la circulación"],
+    beneficios_en: ["Stretches the back", "Improves balance", "Improves circulation"],
+    liberar:    "Lleva el pie de atrás hacia atrás y dobla la rodilla de adelante en zancada, o inhala subiendo los brazos con las dos piernas rectas. Repite del otro lado.",
+    liberar_en: "Step the back foot back and bend the front knee into a lunge, or inhale and bring the arms out and up with both legs straight. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de caderas, espalda u hombros."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 20
+  vrksasana: {
+    num: 20, nivel: "intermedio",
+    entrada:    ["Brazos por encima de la cabeza", "Palmas juntas", "Gira la rodilla hacia la pared", "Apoya el talón contra la pierna", "Todo el peso en la pierna de apoyo", "Presiona el pie contra el piso"],
+    entrada_en: ["Arms over the head", "Palms together", "Turn the knee towards the wall", "Rest the heel against the leg", "All the weight into the leg", "Press foot into the floor"],
+    beneficios:    ["Mejora la concentración", "Mejora el equilibrio", "Fortalece los tobillos"],
+    beneficios_en: ["Improves concentration", "Improves balance", "Strengthens ankles"],
+    liberar:    "Exhala y baja los brazos. Luego suelta la pierna y vuelve a la postura de la montaña. Repite del otro lado.",
+    liberar_en: "Exhale and bring the arms down. Then, release the leg back into mountain pose. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 19
+  "virabhadrasana-iii": {
+    num: 19, nivel: "intermedio",
+    entrada:    ["Forma una sola línea recta", "Brazos por encima de la cabeza", "Todo el peso en esta pierna", "Torso hacia el piso", "Mira al piso y fija la vista en un punto para el equilibrio"],
+    entrada_en: ["Make one straight line", "Arms over your head", "Shift all the weight onto this leg", "Torso down towards the floor", "Look down at the floor and stare at a point for balance"],
+    beneficios:    ["Mejora el equilibrio", "Mejora la concentración", "Tonifica todo el cuerpo"],
+    beneficios_en: ["Improves balance", "Improves concentration", "Tones the whole body"],
+    liberar:    "Inhala subiendo los brazos y baja la pierna al piso. Junta los pies y vuelve a la postura de la montaña. Repite del otro lado.",
+    liberar_en: "Inhale and bring arms up and lower the leg back onto the floor. Bring both feet together back into mountain pose. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de piernas, caderas, espalda u hombros."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 18
+  "virabhadrasana-ii": {
+    num: 18, nivel: "intermedio",
+    entrada:    ["Hombros abajo", "Caderas hacia el frente", "Dobla la rodilla justo sobre el tobillo", "Presiona los pies contra el piso", "Dedos del pie hacia la pared"],
+    entrada_en: ["Shoulders down", "Hips towards the front", "Bend the knee directly over the ankle", "Press into the feet", "Toes to the wall"],
+    beneficios:    ["Libera y fortalece las piernas", "Abre el pecho", "Abre las caderas"],
+    beneficios_en: ["Releases and strengthens the legs", "Opens the chest", "Opens the hips"],
+    liberar:    "Estira las piernas y gira los pies al frente, volviendo a la estrella de cinco puntas. Repite del otro lado.",
+    liberar_en: "Straighten the legs and turn the feet forward coming back into five pointed star. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de caderas, rodillas u hombros."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 17
+  "virabhadrasana-i": {
+    num: 17, nivel: "principiante",
+    entrada:    ["Brazos arriba en forma de H", "Relaja los hombros hacia abajo", "Eleva el pecho", "Cuadra caderas y hombros hacia la pared del frente", "La rodilla justo sobre el tobillo"],
+    entrada_en: ["Arms over the head in H position", "Relax the shoulders down", "Chest lift", "Square the hips and the shoulders to the front wall", "Knee is directly over the ankle"],
+    beneficios:    ["Abre el pecho", "Abre las caderas", "Fortalece las piernas"],
+    beneficios_en: ["Opens the chest", "Opens the hips", "Strengthens the legs"],
+    liberar:    "Exhala y baja las manos al piso. Repite del otro lado.",
+    liberar_en: "Exhale and lower the hands down to the floor. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de caderas, rodillas, espalda u hombros."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 16
+  "supta-baddha-konasana": {
+    num: 16, nivel: "principiante",
+    entrada:    ["Talones cerca de las caderas", "Plantas de los pies juntas", "Brazos apoyados en el piso"],
+    entrada_en: ["Heels close to the hips", "Bottoms of the feet together", "Arms along the floor"],
+    beneficios:    ["Abre las caderas", "Abre los hombros", "Favorece la relajación"],
+    beneficios_en: ["Opens the hips", "Opens the shoulders", "Encourages relaxation"],
+    liberar:    "Exhala y suelta con suavidad los brazos y las piernas.",
+    liberar_en: "Exhale and gently release the arms and legs.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera, o inflamación."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 15
+  marjaryasana: {
+    num: 15, nivel: "principiante",
+    entrada:    ["Presiona contra las palmas", "Redondea la columna", "Deja caer la cabeza"],
+    entrada_en: ["Press into the palms", "Round the spine", "Let the head drop"],
+    beneficios:    ["Estira la parte media y alta de la espalda", "Estira los hombros", "Moviliza la columna"],
+    beneficios_en: ["Stretches the middle upper back", "Stretches the shoulders", "Mobilizes the spine"],
+    liberar:    "Inhala y aplana la espalda volviendo a la posición de mesa.",
+    liberar_en: "Inhale and flatten the back moving into table pose.",
+    precaucion: ["Lesión reciente o crónica de muñecas, espalda o cuello."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 14
+  "ananda-balasana": {
+    num: 14, nivel: "principiante",
+    entrada:    ["Presiona los talones hacia arriba y tira con los brazos", "Brazos por dentro de las rodillas", "Cabeza en el piso", "Las dos rodillas hacia el pecho"],
+    entrada_en: ["Press heels up and pull back with the arms", "Arms through the insides of the knees", "Head on the floor", "Both knees into your chest"],
+    beneficios:    ["Libera la zona lumbar", "Alarga la columna", "Abre las caderas"],
+    beneficios_en: ["Releases the lower back", "Lengthens the spine", "Opens the hips"],
+    liberar:    "Exhala y suelta los brazos y las piernas al piso.",
+    liberar_en: "Exhale and release the arms and legs to the floor.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera, o inflamación."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 27
+  sasangasana: {
+    num: 27, nivel: "intermedio",
+    entrada:    ["Sube las caderas hacia el techo", "Sujeta los talones", "Lleva la frente hacia las rodillas"],
+    entrada_en: ["Lift the hips towards the ceiling", "Hold onto the heels", "Pull the forehead in towards the knees"],
+    beneficios:    ["Estira la espalda", "Alarga la columna", "Estimula el sistema inmune"],
+    beneficios_en: ["Stretches the back", "Lengthens the spine", "Stimulates the immune system"],
+    liberar:    "Exhala despacio y baja las caderas a los talones, deslizando la frente al piso hasta la postura del niño.",
+    liberar_en: "Slowly exhale and lower the hips to the heels and slide the forehead back to the floor into child's pose.",
+    precaucion: ["Lesión reciente o crónica de rodillas, cuello, columna u hombros."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 26
+  trikonasana: {
+    num: 26, nivel: "intermedio",
+    entrada:    ["Brazos en una sola línea con los hombros", "Caderas hacia afuera", "Gira los dedos del pie hacia la pared", "Sube las rótulas", "Dedos del pie ligeramente hacia adentro"],
+    entrada_en: ["Arms into one straight line with shoulders", "Hips out", "Turn the toes to the wall", "Pull up the knee caps", "Toes slightly inwards"],
+    beneficios:    ["Fortalece el core", "Abre las caderas", "Estira las piernas"],
+    beneficios_en: ["Strengthens the core body", "Opens the hips", "Stretches the legs"],
+    liberar:    "Inhala y lleva la mano de arriba hacia el techo mientras presionas los pies para subir a la estrella de cinco puntas. Repite del otro lado.",
+    liberar_en: "Inhale and reach the raised hand up towards the ceiling as you press down into the feet using the whole body to lift back into five pointed star. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de caderas, espalda u hombros."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 12 (Corpse)
+  savasana: {
+    num: 12, nivel: "principiante",
+    entrada:    ["Deja que todo el cuerpo se afloje y pese", "Piernas caídas hacia afuera", "Brazos caídos hacia afuera", "Entra en un estado de relajación total"],
+    entrada_en: ["Allow your whole body to become relaxed and heavy", "Legs drop open", "Arms drop open", "Let your body move deeper into a state of total relaxation"],
+    beneficios:    ["Rejuvenece el cuerpo", "Rejuvenece la mente y el espíritu", "Reduce el estrés"],
+    beneficios_en: ["Rejuvenates the body", "Rejuvenates mind and spirit", "Reduces stress"],
+    liberar:    "Profundiza la respiración, mueve dedos de manos y pies, lleva los brazos por encima de la cabeza y estira todo el cuerpo. Exhala, lleva las rodillas al pecho y gira a un lado en posición fetal.",
+    liberar_en: "Slowly deepen the breath, wiggle the fingers and toes, reach the arms over your head and stretch the entire body. Exhale, bend the knees into the chest and roll over to one side into a fetal position.",
+    precaucion: ["Ninguna."],
+    respiracion: "Quédate en Savasana de 5 a 15 minutos.", respiracion_en: "Stay in Savasana for 5 to 15 minutes.",
+  },
+  // ---------------------------------------------------------------- carta 13 (Bound Angle)
+  "baddha-konasana": {
+    num: 13, nivel: "principiante",
+    entrada:    ["Hombros abajo y atrás", "Presiona las caderas hacia el piso", "Rodillas abiertas hacia los lados", "Plantas de los pies juntas", "Mantén el pecho abierto"],
+    entrada_en: ["Drop shoulders down and back", "Press the hips down", "Knees bent out to the sides", "Bottoms of feet together", "Keep the chest open"],
+    beneficios:    ["Abre las caderas", "Alarga la columna", "Estimula el sistema respiratorio"],
+    beneficios_en: ["Opens the hips", "Lengthens the spine", "Stimulates the respiratory system"],
+    liberar:    "Siéntate despacio y estira las piernas.",
+    liberar_en: "Slowly sit up straight and stretch your legs.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera, o inflamación."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 11
+  paschimottanasana: {
+    num: 11, nivel: "principiante",
+    entrada:    ["Baja el torso hacia las piernas", "Lleva las manos hacia los pies"],
+    entrada_en: ["Lower the torso towards the legs", "Reach hands to the toes"],
+    beneficios:    ["Estira la espalda", "Calma el sistema nervioso", "Estimula el sistema urinario"],
+    beneficios_en: ["Stretches the back", "Calms the nervous system", "Stimulates the urinary system"],
+    liberar:    "Sube por la columna vértebra por vértebra hasta la postura del bastón. Inhala llevando los brazos por encima de la cabeza y sube el torso.",
+    liberar_en: "Slowly roll up the spine back into staff pose. Inhale and bring arms back over your head as you lift the torso back.",
+    precaucion: ["Lesión reciente o crónica de espalda, caderas o isquiotibiales."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 42
+  "uttanasana-hombros": {
+    num: 42, nivel: "avanzado",
+    entrada:    ["Brazos arriba", "Eleva el pecho", "Deja colgar la cabeza relajada"],
+    entrada_en: ["Arms up", "Lift the chest", "Let the head hang relaxed from the body"],
+    beneficios:    ["Estira la parte alta de la espalda", "Estira las piernas", "Abre los hombros"],
+    beneficios_en: ["Stretches the upper back", "Stretches the legs", "Opens the shoulders"],
+    liberar:    "Con los omóplatos juntos, inhala subiendo, respirando hondo hacia el vientre y el pecho. Exhala y suelta los brazos.",
+    liberar_en: "Keep the shoulder blades squeezed together as you inhale back, taking a deep breath into the belly and chest. Exhale and release the arms.",
+    precaucion: ["Presión arterial alta no controlada; lesión reciente o crónica de piernas, espalda, cuello u hombros."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 25
+  "prasarita-padottanasana": {
+    num: 25, nivel: "intermedio",
+    entrada:    ["Empuja las caderas hacia el techo", "Dobla los codos hacia la pared de atrás", "Palmas al piso bajo los hombros"],
+    entrada_en: ["Push hips towards the ceiling", "Bend the elbows towards the back wall", "Palms to the floor under the shoulders"],
+    beneficios:    ["Alarga la columna", "Estira la parte de atrás de las piernas", "Estira los músculos de la espalda"],
+    beneficios_en: ["Lengthens the spinal column", "Stretches the back of the legs", "Stretches the back muscles"],
+    liberar:    "Lleva los brazos a los lados e inhala subiendo a la estrella de cinco puntas.",
+    liberar_en: "Reach the arms out to the sides and inhale back up into five pointed star.",
+    precaucion: ["Lesión reciente o crónica de piernas, caderas, espalda u hombros."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 24
+  "adho-mukha-svanasana": {
+    num: 24, nivel: "intermedio",
+    entrada:    ["Caderas hacia el techo", "Lleva el pecho hacia los muslos", "Piernas rectas", "Dedos de los pies al frente", "Separa bien los dedos de las manos"],
+    entrada_en: ["Hips up towards the ceiling", "Press the back reaching the chest toward the thighs", "Legs are straight", "Toes facing forward", "Spread fingers wide apart"],
+    beneficios:    ["Estira la espalda", "Abre el pecho", "Estimula el sistema nervioso"],
+    beneficios_en: ["Stretches the back", "Opens the chest", "Stimulates the nervous system"],
+    liberar:    "Dobla las rodillas y baja las caderas a la posición de mesa, o baja hasta la postura del niño.",
+    liberar_en: "Bend the knees and lower the hips back to table position, or go all the way down to child's pose.",
+    precaucion: ["Lesión reciente o crónica de espalda, caderas, brazos u hombros; presión arterial alta no controlada."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 41 (Plank / Kumbhakasana)
+  phalakasana: {
+    num: 41, nivel: "avanzado",
+    entrada:    ["Caderas, piernas y torso en una sola línea", "Brazos rectos", "Presiona los talones hacia atrás", "Separa bien los dedos de las manos"],
+    entrada_en: ["Hips, legs, and torso are one straight line", "Arms straight", "Press the heels back", "Spread fingers wide apart"],
+    beneficios:    ["Fortalece el core", "Alarga la columna", "Estira la zona lumbar"],
+    beneficios_en: ["Strengthens the core body", "Lengthens the spine", "Stretches the lower back"],
+    liberar:    "Baja las rodillas al piso hasta la postura del niño, o dobla los codos y baja a chaturanga.",
+    liberar_en: "Bend the knees to the floor into child's pose, or bend the elbows and lower down into chaturanga.",
+    precaucion: ["Lesión reciente o crónica de brazos, espalda u hombros."],
+    respiracion: RESP_HOLD(1, 4).es, respiracion_en: RESP_HOLD(1, 4).en,
+  },
+  // ---------------------------------------------------------------- carta 23
+  matsyasana: {
+    num: 23, nivel: "intermedio",
+    entrada:    ["Sube el pecho", "Palmas hacia abajo por debajo de los muslos", "Codos ligeramente doblados", "Poco o nada de peso sobre la cabeza"],
+    entrada_en: ["Lift chest up", "Palms down underneath thighs", "Elbows slightly bent", "Little or no weight should be on the head"],
+    beneficios:    ["Abre el pecho", "Estimula el sistema nervioso", "Da flexibilidad a la columna"],
+    beneficios_en: ["Opens the chest", "Stimulates the nervous system", "Improves flexibility of the spine"],
+    liberar:    "Quita todo el peso de la cabeza y baja con cuidado la nuca. Saca las manos de debajo de las piernas.",
+    liberar_en: "Slowly remove all of the weight off of the head and gently lower the back of the head. Remove the hands from under the legs.",
+    precaucion: ["Lesión reciente o crónica de brazo, hombro, cuello o espalda, o inflamación."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 40 (Plow)
+  halasana: {
+    num: 40, nivel: "avanzado",
+    entrada:    ["Impulsa y mece las piernas arriba y atrás", "Rodillas hacia la frente", "Lleva los pies al piso"],
+    entrada_en: ["Kick and rock the legs up and back", "Knees to the forehead", "Reach toes to the floor"],
+    beneficios:    ["Mejora la circulación", "Estimula el sistema inmune", "Libera tensión en los hombros"],
+    beneficios_en: ["Improves circulation", "Stimulates the immune system", "Releases stress in the shoulders"],
+    liberar:    "Dobla las rodillas hacia la cabeza. Con cuidado y despacio, baja la columna al piso vértebra por vértebra.",
+    liberar_en: "Bend the knees back to the head. Carefully and slowly, roll the spine back onto the floor.",
+    precaucion: ["Lesión reciente o crónica de hombro, cuello o espalda, o inflamación."],
+    respiracion: RESP_HOLD(4, 10).es, respiracion_en: RESP_HOLD(4, 10).en,
+  },
+  // ---------------------------------------------------------------- carta 39 (Locust)
+  salabhasana: {
+    num: 39, nivel: "avanzado",
+    entrada:    ["Piernas juntas", "Mantén la pierna en línea con la columna", "Lleva el pecho al frente", "Brazos a los costados del cuerpo", "Presiona el pubis contra el piso"],
+    entrada_en: ["Legs together", "Keep the leg in line with the spine", "Press chest forward", "Arms alongside the body", "Press the pubic bone into the floor"],
+    beneficios:    ["Fortalece las piernas", "Abre el pecho", "Estira la zona lumbar"],
+    beneficios_en: ["Strengthens the legs", "Opens the chest", "Stretches the low back"],
+    liberar:    "Exhala y baja despacio pecho, cabeza, brazos y piernas al piso. Gira la cabeza a un lado, brazos a los costados, y descansa. Mece las caderas de lado a lado para soltar tensión en la zona lumbar.",
+    liberar_en: "Exhale and slowly lower the chest, head, arms and legs to the floor. Turn the head to one side, slide the arms alongside your body, and rest. Rock the hips from side to side to release any tension in the lower back.",
+    precaucion: ["Lesión reciente o crónica de espalda, brazos u hombros; embarazo, menstruación o cirugía abdominal reciente."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 22 (Cobra)
+  bhujangasana: {
+    num: 22, nivel: "intermedio",
+    entrada:    ["Aprieta muslos y glúteos", "Piernas juntas", "Presiona el pubis contra el piso", "Palmas planas en el piso"],
+    entrada_en: ["Squeeze the thighs and buttocks", "Legs together", "Press the pubic bone down into the floor", "Palms flat on the floor"],
+    beneficios:    ["Abre el pecho", "Fortalece el core", "Alinea la columna"],
+    beneficios_en: ["Opens the chest", "Strengthens the core", "Aligns the spine"],
+    liberar:    "Exhala y baja despacio pecho y cabeza al piso. Gira la cabeza a un lado y descansa. Mece las caderas de lado a lado para soltar tensión en la zona lumbar.",
+    liberar_en: "Exhale and slowly lower the chest and head to the floor. Turn the head to one side and rest. Rock the hips from side to side to release any tension on the lower back.",
+    precaucion: ["Lesión reciente o crónica de espalda, brazos u hombros; embarazo o cirugía abdominal reciente."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 5 (Tiger) — dinámica
+  vyaghrasana: {
+    num: 5, nivel: "principiante",
+    entrada:    ["Manos en posición de mesa", "Inhala llevando la rodilla a la frente", "Mira arriba", "Arquea la columna", "Exhala subiendo el pie hacia el techo"],
+    entrada_en: ["Hands in table pose", "Inhale and bring the knee to the forehead", "Look up", "Arch the spine", "Exhale and bring the foot up towards the ceiling"],
+    beneficios:    ["Estimula el sistema nervioso", "Fortalece el core", "Estira los músculos de la espalda"],
+    beneficios_en: ["Stimulates the nervous system", "Strengthens the core body", "Stretches the back muscles"],
+    liberar:    "Exhala y baja la rodilla al piso, volviendo a la posición de mesa. Repite del otro lado.",
+    liberar_en: "Exhale and bring the knee back down to the floor into table pose. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de muñecas, rodillas, espalda u hombros."],
+    respiracion: "Inhala llevando la rodilla a la frente y exhala subiendo el pie, de 4 a 8 veces.",
+    respiracion_en: "Inhale and bring the knee to the forehead and exhale while bringing the foot up, 4–8 times.",
+  },
+  // ---------------------------------------------------------------- carta 34 (Downward Facing Frog)
+  mandukasana: {
+    num: 34, nivel: "intermedio",
+    entrada:    ["Caderas hacia atrás", "Tobillos detrás de las rodillas", "Palmas juntas", "Siéntate sobre los talones", "Codos y antebrazos en el piso"],
+    entrada_en: ["Hips towards the back", "Ankles behind the knees", "Palms press together", "Sit back on your heels", "Elbows and forearms on the floor"],
+    beneficios:    ["Abre la cara interna de los muslos", "Estira la ingle", "Abre las caderas"],
+    beneficios_en: ["Opens the insides of the thighs", "Stretches the groin", "Opens the hips"],
+    liberar:    "Mece las caderas hacia adelante y lleva las palmas bajo los hombros para subir a la posición de mesa, o camina los brazos hacia adelante bajando el cuerpo al piso.",
+    liberar_en: "Rock the hips forward and either bring the palms under the shoulders and press back up into table pose, or walk the arms forward lowering the hips and whole body flat on the floor.",
+    precaucion: ["Lesión reciente o crónica de rodillas, caderas o piernas."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 38 (Camel)
+  ustrasana: {
+    num: 38, nivel: "avanzado",
+    entrada:    ["Eleva el pecho", "Sostén el peso con los brazos mientras te arqueas hacia atrás", "Lleva las caderas hacia adelante", "Baja una mano al talón a la vez"],
+    entrada_en: ["Lift the chest", "Support your weight with the arms as you bend backwards", "Press hips forward", "Reach one hand down to the heel at a time"],
+    beneficios:    ["Abre el pecho", "Estimula la digestión", "Estimula el sistema respiratorio"],
+    beneficios_en: ["Opens the chest", "Stimulates digestion", "Stimulates the respiratory system"],
+    liberar:    "Lleva una mano a la vez al sacro. Con ambas manos en el sacro, inhala subiendo despacio, dejando que la cabeza y el cuello suban al final.",
+    liberar_en: "Slowly bring one hand at a time back to the sacrum. With both hands on the sacrum, slowly inhale up, letting the head and the neck be the last to come vertical.",
+    precaucion: ["Hernia o cirugía abdominal reciente; lesión reciente o crónica de rodilla, hombro, cuello o espalda, o inflamación."],
+    respiracion: RESP_HOLD(3, 6).es, respiracion_en: RESP_HOLD(3, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 4 (Recline Spinal Twist)
+  "supta-matsyendrasana": {
+    num: 4, nivel: "principiante",
+    entrada:    ["Mira las yemas de los dedos de la mano derecha", "Coloca el pie sobre la rodilla", "Hombros planos en el piso", "Deja que la gravedad lleve la rodilla abajo"],
+    entrada_en: ["Look at right-hand finger tips", "Place the foot on the knee", "Shoulders flat to the floor", "Let gravity pull the knee down"],
+    beneficios:    ["Realinea la columna", "Hidrata los discos", "Estira los músculos de la espalda"],
+    beneficios_en: ["Realigns the spine", "Hydrates the spinal disks", "Stretches the back muscles"],
+    liberar:    "Inhala y regresa las caderas al piso, exhala llevando la pierna de vuelta al piso. Repite del otro lado.",
+    liberar_en: "Inhale and roll the hips back to the floor, and exhale while bringing the leg back down to the floor. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de espalda, caderas u hombros."],
+    respiracion: RESP_HOLD(6, 10).es, respiracion_en: RESP_HOLD(6, 10).en,
+  },
+  // ---------------------------------------------------------------- carta 37 (Cow Face Pose)
+  gomukhasana: {
+    num: 37, nivel: "avanzado",
+    entrada:    ["Lleva una mano por detrás de la espalda para tomar los dedos de la otra", "Cruza una pierna sobre la otra", "Acerca los brazos entre sí", "Caderas hacia el piso"],
+    entrada_en: ["Reach one hand around the back to grasp the other fingers", "Cross the leg in front of the other leg", "Pull the arms towards each other", "Hips down to the floor"],
+    beneficios:    ["Abre las caderas", "Estimula la digestión", "Estimula el sistema reproductor"],
+    beneficios_en: ["Opens the hips", "Stimulates digestion", "Stimulates the reproductive system"],
+    liberar:    "Suelta los brazos y descruza despacio las piernas. Repite del otro lado.",
+    liberar_en: "Release the arms and slowly uncross the legs. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de rodilla o cadera, o inflamación."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 36 (Wind Release)
+  apanasana: {
+    num: 36, nivel: "intermedio",
+    entrada:    ["Rodilla hacia el pecho", "Presiona hombros y espalda contra el piso", "Barbilla hacia el pecho"],
+    entrada_en: ["Knee towards the chest", "Press shoulders and back down into the floor", "Chin into the chest"],
+    beneficios:    ["Alarga la columna", "Estira la zona lumbar", "Estimula la digestión"],
+    beneficios_en: ["Lengthens the spine", "Stretches the lower back", "Stimulates digestion"],
+    liberar:    "Exhala y suelta los brazos y la pierna al piso.",
+    liberar_en: "Exhale and release the arms and leg to the floor.",
+    precaucion: ["Cirugía abdominal reciente o hernia."],
+    respiracion: RESP_HOLD(4, 8).es, respiracion_en: RESP_HOLD(4, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 3 (Crescent Lunge)
+  anjaneyasana: {
+    num: 3, nivel: "principiante",
+    entrada:    ["Barbilla paralela al piso", "Pecho al frente", "Hombros abajo y atrás", "Rodilla sobre el tobillo", "Pierna de atrás recta"],
+    entrada_en: ["Chin parallel to the floor", "Chest forward", "Shoulders down and back", "Knee over the ankle", "Leg straight"],
+    beneficios:    ["Abre las caderas", "Abre el pecho", "Alarga la columna"],
+    beneficios_en: ["Opens the hips", "Opens the chest", "Lengthens the spine"],
+    liberar:    "Baja la rodilla de atrás y desliza la de adelante a la posición de mesa, o lleva el pie de adelante atrás hasta el perro boca abajo. Repite del otro lado.",
+    liberar_en: "Lower the back knee down and slide the front knee into table pose, or step the front foot back into downward facing dog. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de rodillas, caderas o espalda."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 35 (Gate)
+  parighasana: {
+    num: 35, nivel: "intermedio",
+    entrada:    ["Brazo pasando por encima de la oreja", "Barbilla despegada del pecho", "Mantén el pecho abierto", "La otra mano apoyada palma abajo sobre la pierna", "Pie plano en el piso", "Pierna estirada"],
+    entrada_en: ["Arm sweeping over the ear", "Keep the chin off the chest", "Keep the chest open", "Hand resting palm down on the leg", "Foot flat on the floor", "Leg straight"],
+    beneficios:    ["Da flexibilidad a la columna", "Trabaja el core", "Estimula la digestión"],
+    beneficios_en: ["Increases flexibility of the spine", "Builds core strength", "Stimulates digestion"],
+    liberar:    "Inhala y sube el brazo, llevando la rodilla hacia el centro. Repite del otro lado.",
+    liberar_en: "Inhale and bring the arm up, and bring the knee back to center. Repeat on the other side.",
+    precaucion: ["Lesión reciente o crónica de rodilla, cadera u hombro, o inflamación."],
+    respiracion: RESP_HOLD(3, 8).es, respiracion_en: RESP_HOLD(3, 8).en,
+  },
+  // ---------------------------------------------------------------- carta 44 (Shoulderstand)
+  "salamba-sarvangasana": {
+    num: 44, nivel: "avanzado",
+    entrada:    ["Impulsa y mece las piernas arriba", "Manos bajo las caderas", "Poco o nada de peso en cabeza y cuello", "Sostén el peso del cuerpo con los brazos y los hombros"],
+    entrada_en: ["Kick and rock legs up", "Hands under the hips", "Little or no weight in the head and neck", "Support the weight of the body with the arms and the shoulders"],
+    beneficios:    ["Estimula la tiroides", "Activa el sistema inmune", "Mejora la circulación"],
+    beneficios_en: ["Stimulates the thyroid", "Activates the immune system", "Improves circulation"],
+    liberar:    "Dobla las rodillas. Con cuidado y despacio, baja la columna al piso vértebra por vértebra.",
+    liberar_en: "Bend the knees. Carefully and slowly, roll the spine back onto the floor.",
+    precaucion: ["Lesión reciente o crónica de hombro, cuello o espalda; presión arterial alta no controlada, menstruación y embarazo."],
+    respiracion: RESP_HOLD(4, 10).es, respiracion_en: RESP_HOLD(4, 10).en,
+  },
+  // ---------------------------------------------------------------- carta 2 (Upward Salute)
+  "urdhva-hastasana": {
+    num: 2, nivel: "principiante",
+    entrada:    ["Brazos arriba", "Hombros arriba y abajo", "Piernas y glúteos activos", "Presiona los pies contra el piso"],
+    entrada_en: ["Arms up", "Shoulders up and down", "Keep legs and buttocks engaged", "Press feet into the floor"],
+    beneficios:    ["Mejora la circulación", "Mejora la concentración", "Fortalece el core"],
+    beneficios_en: ["Improves circulation", "Improves concentration", "Improves core body strength"],
+    liberar:    "Inhala y presiona los pies mientras bajas los brazos.",
+    liberar_en: "Inhale and press into the feet as you put the arms back down.",
+    precaucion: ["Lesión reciente o crónica de hombros o espalda."],
+    respiracion: RESP_HOLD(2, 6).es, respiracion_en: RESP_HOLD(2, 6).en,
+  },
+  // ---------------------------------------------------------------- carta 45 (Four Limbed Staff)
+  "chaturanga-dandasana": {
+    num: 45, nivel: "avanzado",
+    entrada:    ["Posición de lagartija", "Presiona los talones hacia atrás", "Caderas, piernas y torso en una sola línea", "Codos doblados a 90 grados", "Separa bien los dedos de las manos"],
+    entrada_en: ["Push-up position", "Press the heels back", "Legs, hips, and torso are one straight line", "90 degree bend", "Fingers wide apart"],
+    beneficios:    ["Alarga la columna", "Fortalece el core", "Estira los músculos lumbares"],
+    beneficios_en: ["Lengthens the spine", "Strengthens the core", "Stretches the low back muscles"],
+    liberar:    "Inhala subiendo a la plancha, o exhala bajando hasta el piso.",
+    liberar_en: "Inhale up to plank pose or exhale all the way down to the floor.",
+    precaucion: ["Lesión reciente o crónica de brazos, espalda u hombros."],
+    respiracion: RESP_HOLD(1, 4).es, respiracion_en: RESP_HOLD(1, 4).en,
   },
 };

@@ -71,7 +71,7 @@ const poses = curado.map((c, i) => {
     nombre_en: c.en,
     sanscrito: c.san,
     traduccion: c.trad || "",
-    nivel: c.nivel,
+    nivel: m?.nivel || c.nivel,
     tipo: c.tipo || [],
     zona: c.zona || [],
     dinamica: c.dinamica || [],

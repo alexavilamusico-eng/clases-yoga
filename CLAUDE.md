@@ -39,6 +39,11 @@ Referencia de producto: Tummee.
   También "Subir una foto": la imagen se reduce a 640 px sobre canvas y se guarda como data-URI
   en `glosario.img.<slug>` (mismo override que los dibujos). Se pinta con `.user-img` para
   quitarle el `mix-blend-mode:multiply` que oscurece las ilustraciones de línea.
+- **Mazo de cartas** (`_pipeline/mazo.mjs`): 44 posturas usan la ilustración + textos del mazo
+  de cartas impreso de Andrea (uso personal, ver CREDITOS.md). build.mjs fusiona MAZO[slug]
+  sobre la ficha: nivel/entrada/beneficios/precaución + campos nuevos `liberar` ("Para salir")
+  y `respiracion`. Imagen en `img/mazo/<slug>.jpg`, recortada con `_pipeline/crop_card.py`
+  (detección de carta + warp + limpieza), se pinta con `.deck-img` (panel blanco, sin multiply).
   Nombres verificados contra Wikipedia (`node _pipeline/verify-names.mjs`): 0 inventados.
 - Fase B: constructor de clases + banco (`assets/clases.js`). Pestañas Glosario / Clases.
   - Clase = { nombre, estilo, objetivo(min), semilla{tipo,valor}, bloques[{titulo,objetivo(min),items[]}], notas, fechas[] }.

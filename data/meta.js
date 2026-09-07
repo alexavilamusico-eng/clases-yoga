@@ -1,7 +1,7 @@
 // GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-07
 window.META = {
  "total": 198,
- "con_imagen": 25,
+ "con_imagen": 57,
  "svgCount": 64,
  "vocab": {
   "tipo": [
@@ -105,16 +105,16 @@ window.META = {
    "transición": 3
   },
   "nivel": {
-   "intermedio": 60,
-   "principiante": 81,
-   "avanzado": 57
+   "intermedio": 64,
+   "principiante": 68,
+   "avanzado": 66
   }
  },
  "fuentes": {
-  "mazo": 1,
-  "yoga-api": 42,
-  "yoga-api+propia": 5,
-  "propia": 31,
-  "propia-breve": 119
+  "mazo": 44,
+  "yoga-api": 23,
+  "yoga-api+propia": 2,
+  "propia": 18,
+  "propia-breve": 111
  }
 };
