@@ -447,6 +447,24 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .cf-no{border:1px solid var(--line-strong);background:var(--card);color:var(--ink)}
 .cf-si{border:1px solid #b9564f;background:#a4453f;color:#fff}
 .cf-no:focus-visible,.cf-si:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.pt-msg{font-size:13px;line-height:1.45;margin:0 0 10px;color:var(--ink)}
+.pt-input{width:100%;border:1px solid var(--line-strong);background:var(--card);color:var(--ink);font:inherit;
+  font-size:14px;border-radius:10px;padding:10px 12px;margin:0 0 16px}
+.pt-input:focus-visible{outline:2px solid var(--focus);outline-offset:0}
+
+/* respaldo — mover clases entre dispositivos */
+.rb-body{max-width:520px}
+.rb-title{margin:0 0 8px;font-size:19px}
+.rb-msg{font-size:12.5px;line-height:1.5;margin:0 0 10px;color:var(--ink-soft)}
+.rb-txt{width:100%;min-height:150px;max-height:45vh;resize:vertical;border:1px solid var(--line-strong);
+  background:var(--card-2);color:var(--ink);font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;
+  border-radius:10px;padding:10px;white-space:pre;overflow:auto}
+.rb-txt:focus-visible{outline:2px solid var(--focus);outline-offset:0}
+.rb-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.rb-actions button{font:inherit;font-weight:700;font-size:13px;padding:9px 16px;border-radius:10px;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--card);color:var(--ink)}
+.rb-copy,.rb-import{background:var(--purple);border-color:var(--purple);color:#fff}
+.rb-actions button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.pl-progress i{transition:none}
   .b-insert button,.b-insert::before{transition:none}
   .b-insert button:hover,.b-insert button:focus-visible{transform:none}

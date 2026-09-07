@@ -464,9 +464,9 @@
     setTimeout(function () { f.classList.remove("on"); }, 1400);
   }
 
-  // Confirmación propia. window.confirm() se bloquea/ignora en varios navegadores
-  // de celular y en la app "añadida a la pantalla de inicio", así que los botones
-  // de borrar no hacían nada. Este diálogo sí funciona en todos lados.
+  // Confirmación propia. window.confirm()/prompt()/alert() se bloquean o ignoran
+  // en varios navegadores de celular y en la app "añadida a la pantalla de inicio",
+  // así que los botones no hacían nada. Estos diálogos sí funcionan en todos lados.
   function pedirConfirmacion(msg, onOk, okLabel) {
     var dlg = $("#confirmar");
     if (!dlg || !dlg.showModal) { if (window.confirm(msg)) onOk(); return; }
@@ -476,6 +476,23 @@
     si.onclick = function () { dlg.close(); onOk(); };
     no.onclick = function () { dlg.close(); };
     dlg.showModal();
+  }
+  function pedirTexto(msg, valor, onOk) {
+    var dlg = $("#pedirTexto");
+    if (!dlg || !dlg.showModal) { var v = window.prompt(msg, valor || ""); if (v != null) onOk(v); return; }
+    dlg.querySelector(".pt-msg").textContent = msg;
+    var inp = dlg.querySelector(".pt-input"); inp.value = valor || "";
+    dlg.querySelector(".pt-ok").onclick = function () { dlg.close(); onOk(inp.value); };
+    dlg.querySelector(".pt-no").onclick = function () { dlg.close(); };
+    inp.onkeydown = function (e) { if (e.key === "Enter") { dlg.close(); onOk(inp.value); } };
+    dlg.showModal();
+    setTimeout(function () { inp.focus(); inp.select(); }, 30);
+  }
+  function flashDlg(el, m) {
+    if (el._t) clearTimeout(el._t);
+    if (!el._orig) el._orig = el.textContent;
+    el.textContent = m;
+    el._t = setTimeout(function () { el.textContent = el._orig; el._orig = null; el._t = null; }, 2400);
   }
 
   function valoresSemilla(tipo) {
@@ -691,13 +708,16 @@
     });
     var tpl = el("button", null, "★"); tpl.type = "button"; tpl.title = "Guardar sección como plantilla";
     tpl.addEventListener("click", function () {
-      var nombre = prompt("Nombre de la plantilla:", bl.titulo);
-      if (!nombre) return;
-      var etiqueta = (prompt("Etiqueta (opcional) — ¿para qué sirve? ej: pecho, caderas, suave", "") || "").trim();
-      var arr = loadPlantillas();
-      arr.push({ nombre: nombre.trim(), etiqueta: etiqueta, titulo: bl.titulo, objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) });
-      savePlantillas(arr);
-      flash("Plantilla guardada" + (etiqueta ? " · " + etiqueta : ""));
+      pedirTexto("Nombre de la plantilla (opcional: coma + etiqueta, ej. «Calentamiento pecho, pecho»)", bl.titulo, function (v) {
+        var partes = (v || "").split(",");
+        var nombre = (partes[0] || "").trim();
+        if (!nombre) return;
+        var etiqueta = (partes[1] || "").trim();
+        var arr = loadPlantillas();
+        arr.push({ nombre: nombre, etiqueta: etiqueta, titulo: bl.titulo, objetivo: bl.objetivo || 0, items: JSON.parse(JSON.stringify(bl.items)) });
+        savePlantillas(arr);
+        flash("Plantilla guardada" + (etiqueta ? " · " + etiqueta : ""));
+      });
     });
     var del = el("button", "danger", "×"); del.type = "button"; del.title = "Quitar sección";
     del.addEventListener("click", function () {
@@ -1149,35 +1169,49 @@
   function siguiente() { if (PL.i < PL.pasos.length - 1) cargarPaso(PL.i + 1); else pausar(); }
   function anterior() { cargarPaso(PL.i - 1); }
 
-  /* ---------- respaldo ---------- */
-  function exportar() {
-    var data = JSON.stringify({ app: "yoga-clases", v: 1, clases: loadClases() }, null, 1);
-    var dl = false;
-    try {
-      var a = document.createElement("a");
-      a.href = "data:application/json;charset=utf-8," + encodeURIComponent(data);
-      a.download = "clases-yoga-" + nowISO().slice(0, 10) + ".json";
-      a.click(); dl = true;
-    } catch (e) {}
-    function done() { alert("Respaldo copiado al portapapeles" + (dl ? " y descargado" : "") + ".\nGuárdalo pegándolo en una nota o archivo de texto; sirve para restaurar tus clases o pasarlas a otro dispositivo."); }
-    if (navigator.clipboard) navigator.clipboard.writeText(data).then(done, function () { window.prompt("Copia este respaldo y guárdalo:", data); });
-    else window.prompt("Copia este respaldo y guárdalo:", data);
+  /* ---------- respaldo (mover clases entre dispositivos) ---------- */
+  function abrirRespaldo(modo) {
+    var dlg = $("#respaldo");
+    var txt = dlg.querySelector(".rb-txt"), msg = dlg.querySelector(".rb-msg"), title = dlg.querySelector(".rb-title");
+    var bCopy = dlg.querySelector(".rb-copy"), bImp = dlg.querySelector(".rb-import");
+    msg._orig = null;
+    if (modo === "exportar") {
+      title.textContent = "Guardar respaldo";
+      msg.textContent = "Copia este texto y guárdalo (una nota, un correo a ti misma…). Sirve para restaurar tus clases o pasarlas a otro dispositivo.";
+      txt.value = JSON.stringify({ app: "yoga-clases", v: 1, clases: loadClases() }, null, 1);
+      bCopy.hidden = false; bImp.hidden = true;
+      setTimeout(function () { txt.focus(); txt.select(); }, 30);
+    } else {
+      title.textContent = "Importar respaldo";
+      msg.textContent = "Pega aquí el texto de un respaldo y toca Importar. Solo se añaden las clases que no tengas.";
+      txt.value = "";
+      bCopy.hidden = true; bImp.hidden = false;
+      setTimeout(function () { txt.focus(); }, 30);
+    }
+    bCopy.onclick = function () {
+      txt.focus(); txt.select();
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      if (navigator.clipboard) navigator.clipboard.writeText(txt.value).then(function () { flashDlg(msg, "Copiado ✓"); }, function () { flashDlg(msg, ok ? "Copiado ✓" : "Selecciónalo todo y copia a mano"); });
+      else flashDlg(msg, ok ? "Copiado ✓" : "Selecciónalo todo y copia a mano");
+    };
+    bImp.onclick = function () {
+      try {
+        var obj = JSON.parse(txt.value);
+        var nuevas = obj.clases || obj;
+        if (!Array.isArray(nuevas)) throw 0;
+        var arr = loadClases(); var ids = {}; arr.forEach(function (c) { ids[c.id] = 1; });
+        var add = 0;
+        nuevas.forEach(function (c) { var n = normalizarClase(c); if (n && !ids[n.id]) { arr.push(n); add++; } });
+        saveClases(arr); renderBanco();
+        flashDlg(msg, "Importadas " + add + (add === 1 ? " clase nueva" : " clases nuevas") + " ✓");
+        if (add) setTimeout(function () { dlg.close(); }, 1000);
+      } catch (e) { flashDlg(msg, "No se pudo leer. ¿Pegaste el texto completo del respaldo?"); }
+    };
+    dlg.querySelector(".rb-close").onclick = function () { dlg.close(); };
+    if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
   }
-  function importar() {
-    var txt = prompt("Pega aquí el contenido del archivo de respaldo:");
-    if (!txt) return;
-    try {
-      var obj = JSON.parse(txt);
-      var nuevas = obj.clases || obj;
-      if (!Array.isArray(nuevas)) throw 0;
-      var arr = loadClases();
-      var ids = {}; arr.forEach(function (c) { ids[c.id] = 1; });
-      var add = 0;
-      nuevas.forEach(function (c) { var n = normalizarClase(c); if (n && !ids[n.id]) { arr.push(n); add++; } });
-      saveClases(arr); renderBanco();
-      alert("Importadas " + add + " clases nuevas.");
-    } catch (e) { alert("No se pudo leer el respaldo."); }
-  }
+  function exportar() { abrirRespaldo("exportar"); }
+  function importar() { abrirRespaldo("importar"); }
 
   /* ---------- init ---------- */
   document.addEventListener("DOMContentLoaded", function () {
