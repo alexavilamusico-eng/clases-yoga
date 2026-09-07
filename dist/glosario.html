@@ -326,6 +326,11 @@ dialog::backdrop{background:rgba(30,20,50,.45)}
 .b-dupit:hover{border-color:var(--purple);color:var(--purple-deep)}
 .b-dupit:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .b-hint{display:block;margin:6px 2px 0;font-size:11px;line-height:1.4;color:var(--ink-soft)}
+.b-auto{margin:2px 0 4px}
+.b-auto-btn{width:100%;border:1px solid var(--purple);background:var(--purple);color:#fff;font:inherit;
+  font-weight:800;font-size:14px;padding:12px 16px;border-radius:12px;cursor:pointer}
+.b-auto-btn:hover{background:var(--purple-deep);border-color:var(--purple-deep)}
+.b-auto-btn:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 .b-mas{width:26px;height:26px;border:1px solid var(--line-strong);background:var(--card);color:var(--ink-soft);
   border-radius:7px;cursor:pointer;font:inherit;font-size:12px;line-height:1}
 .b-extra{display:inline-flex;gap:2px}
@@ -11009,6 +11014,179 @@ window.POSES = [
     return scored.slice(0, 6).map(function (x) { return x.p; });
   }
 
+  /* ---------- armar clase automáticamente ----------
+     Basado en cómo se estructura una clase de yoga profesional:
+     arco de montaña — llegada → calentamiento → desarrollo con postura cumbre
+     (~65-70% de la clase) → enfriamiento con contrapostura → Savasana.
+     El estilo cambia el ritmo: cuántas posturas, cuánto se sostienen y qué
+     familias predominan. La semilla (tema / zona / dinámica) sesga la elección.
+     Fuentes: Yoga Journal (principios de secuenciación), método de postura
+     cumbre (yogajala / yoga-sequencing), guías de Yin y Restaurativo. */
+  var CLAMP = function (x, a, b) { return Math.max(a, Math.min(b, x)); };
+  function nivelRank(n) { return n === "avanzado" ? 3 : n === "intermedio" ? 2 : 1; }
+  // familias de "activa/de pie" a "pasiva/en el piso" — para ordenar dentro de la sección
+  var RAMPA = ["de pie", "equilibrio", "equilibrio de brazos", "invertida", "arrodillada", "prona", "sentada", "supina", "restaurativa"];
+  function rangoFamilia(p) {
+    for (var i = 0; i < RAMPA.length; i++) if (p.tipo.indexOf(RAMPA[i]) > -1) return i;
+    return RAMPA.length;
+  }
+  function esBilateral(p) {
+    return p.dinamica.indexOf("torsión") > -1 || p.dinamica.indexOf("flexión lateral") > -1
+      || (p.tipo.indexOf("de pie") > -1 && p.dinamica.indexOf("equilibrio") > -1);
+  }
+
+  // Plantillas de estilo. Cada sección:
+  //   w        peso de tiempo (Savasana, Desarrollo, etc.)
+  //   maxN     tope de posturas de esa sección
+  //   nivelMax tope de dificultad
+  //   semilla  cuánto pesa la semilla aquí (fuerte solo en Desarrollo)
+  //   famMas/famMenos    familias `tipo` que suben / bajan el puntaje
+  //   dinMas/dinMenos    dinámicas que suben / bajan
+  //   peak     true = insertar postura cumbre hacia el 66%
+  //   texto    true = abrir con una nota de respiración/intención
+  // El hold de cada postura se calcula para llenar su sección (minutos), acotado
+  // al rango típico del estilo — así "~X / Y min" cuadra. Andrea puede cambiar
+  // cualquiera a respiraciones con el toggle de siempre.
+  var RANGO = { fluido: [1, 2.5], medio: [1.5, 3.5], largo: [2, 4], yin: [3, 5], resto: [5, 12] };
+
+  function base(rango, minPP, maxN, nivelDes) {
+    return {
+      minPP: minPP, maxN: maxN, rango: rango,
+      secs: [
+        { t: "Llegada · centramiento", w: 1, texto: 1, semilla: 0.5, nivelMax: "principiante", maxN: 3,
+          famMas: ["sentada", "supina", "arrodillada"], famMenos: ["de pie", "equilibrio", "equilibrio de brazos", "invertida", "prona"],
+          dinMas: ["quietud", "apertura de cadera"], dinMenos: ["fuerza", "inversión", "extensión de columna"] },
+        { t: "Calentamiento", w: 2, semilla: 1, nivelMax: "principiante",
+          famMas: ["arrodillada", "sentada", "de pie"], famMenos: ["equilibrio de brazos", "invertida"],
+          dinMas: ["extensión de columna", "apertura de cadera", "flexión hacia adelante", "torsión"], dinMenos: ["fuerza"] },
+        { t: "Desarrollo", w: 4, peak: true, semilla: 4, nivelMax: nivelDes,
+          famMas: ["de pie", "equilibrio", "invertida", "equilibrio de brazos"], famMenos: ["restaurativa"],
+          dinMas: ["fuerza", "equilibrio", "extensión de columna", "flexión lateral"], dinMenos: ["quietud"] },
+        { t: "Enfriamiento", w: 2, semilla: 1, nivelMax: "principiante", maxN: 6,
+          famMas: ["sentada", "supina", "restaurativa"], famMenos: ["de pie", "equilibrio de brazos", "invertida", "prona"],
+          dinMas: ["flexión hacia adelante", "torsión", "apertura de cadera", "quietud"], dinMenos: ["fuerza", "extensión de columna"] },
+        { t: CIERRE, w: 1, cierre: true },
+      ],
+    };
+  }
+  var TEMPLATES = {
+    "vinyasa": base(RANGO.fluido, 1.7, 11, "intermedio"),
+    "hatha": base(RANGO.largo, 2.9, 7, "intermedio"),
+    "hatha-vinyasa": base(RANGO.medio, 2.2, 9, "intermedio"),
+    "ashtanga": base(RANGO.fluido, 1.6, 12, "avanzado"),
+    "suave / terapéutico": (function () {
+      var t = base(RANGO.medio, 2.6, 7, "principiante");
+      t.secs[2].peak = false; t.secs[2].famMas = ["de pie", "sentada"]; t.secs[2].dinMenos = ["fuerza", "inversión"];
+      return t;
+    })(),
+    "yin": {
+      minPP: 3.5, maxN: 6, rango: RANGO.yin,
+      secs: [
+        { t: "Llegada · respiración", w: 1, texto: 1, semilla: 0.5, nivelMax: "principiante", maxN: 2,
+          famMas: ["sentada", "supina"], famMenos: ["de pie", "equilibrio de brazos", "invertida", "prona"], dinMas: ["quietud"], dinMenos: ["fuerza"] },
+        { t: "Cuerpo yin", w: 4, semilla: 2, nivelMax: "intermedio",
+          famMas: ["sentada", "supina", "prona"], famMenos: ["de pie", "equilibrio", "equilibrio de brazos", "invertida"],
+          dinMas: ["flexión hacia adelante", "apertura de cadera", "flexión lateral", "extensión de columna"], dinMenos: ["fuerza", "equilibrio"] },
+        { t: "Enfriamiento yin", w: 2, semilla: 1, nivelMax: "principiante", maxN: 4,
+          famMas: ["supina", "sentada"], famMenos: ["de pie", "prona", "equilibrio de brazos", "invertida"], dinMas: ["torsión", "apertura de cadera", "quietud"], dinMenos: ["fuerza"] },
+        { t: CIERRE, w: 2, cierre: true },
+      ],
+    },
+    "restaurativo": {
+      minPP: 8, maxN: 4, rango: RANGO.resto,
+      secs: [
+        { t: "Llegada", w: 1, texto: 1, semilla: 0.5, nivelMax: "principiante", maxN: 1,
+          famMas: ["sentada", "supina"], famMenos: ["de pie", "equilibrio de brazos", "invertida", "prona"], dinMas: ["quietud"], dinMenos: ["fuerza"] },
+        { t: "Apoyos", w: 5, semilla: 1.5, nivelMax: "principiante",
+          famMas: ["restaurativa", "supina", "sentada"], famMenos: ["de pie", "equilibrio", "equilibrio de brazos", "invertida", "prona"],
+          dinMas: ["quietud", "apertura de cadera", "flexión hacia adelante"], dinMenos: ["fuerza", "equilibrio", "inversión"] },
+        { t: CIERRE, w: 2, cierre: true },
+      ],
+    },
+  };
+
+  function elegirPosturas(sem, s, n, usados) {
+    var maxR = nivelRank(s.nivelMax || "avanzado");
+    var scored = POSES.filter(function (p) {
+      return !usados[p.slug] && p.slug !== "savasana" && nivelRank(p.nivel) <= maxR;
+    }).map(function (p) {
+      var sc = Math.random() * 0.5;
+      if (semillaMatch(p, sem)) sc += s.semilla != null ? s.semilla : 2;
+      (s.famMas || []).forEach(function (t) { if (p.tipo.indexOf(t) > -1) sc += 1.6; });
+      (s.famMenos || []).forEach(function (t) { if (p.tipo.indexOf(t) > -1) sc -= 3; });
+      (s.dinMas || []).forEach(function (d) { if (p.dinamica.indexOf(d) > -1) sc += 1.1; });
+      (s.dinMenos || []).forEach(function (d) { if (p.dinamica.indexOf(d) > -1) sc -= 1.6; });
+      if (s.nivelMax === "principiante" && p.nivel !== "principiante") sc -= 1.4;
+      return { p: p, sc: sc };
+    }).filter(function (x) { return x.sc > 0; }).sort(function (a, b) { return b.sc - a.sc; });
+    return scored.slice(0, Math.max(1, n)).map(function (x) { return x.p; });
+  }
+
+  function elegirCumbre(sem, usados, maxRank) {
+    var scored = POSES.filter(function (p) {
+      return !usados[p.slug] && p.slug !== "savasana" && nivelRank(p.nivel) <= maxRank + 1 && nivelRank(p.nivel) >= 2;
+    }).map(function (p) {
+      var sc = Math.random() * 0.4;
+      if (semillaMatch(p, sem)) sc += 5;
+      if (p.dinamica.indexOf("extensión de columna") > -1 || p.dinamica.indexOf("fuerza") > -1 || p.dinamica.indexOf("equilibrio") > -1 || p.dinamica.indexOf("inversión") > -1) sc += 1.5;
+      sc += nivelRank(p.nivel) * 0.2;
+      return { p: p, sc: sc };
+    }).sort(function (a, b) { return b.sc - a.sc; });
+    return scored.length ? scored[0].p : null;
+  }
+
+  function armarClaseAuto(c) {
+    var estilo = (c.estilo || "").toLowerCase().trim();
+    var tpl = TEMPLATES[estilo] || TEMPLATES["vinyasa"];
+    var total = +c.objetivo || 60;
+    var rango = tpl.rango || RANGO.fluido;
+    var sumaW = tpl.secs.reduce(function (a, s) { return a + s.w; }, 0);
+    var usados = {};
+    repartoManual = {};
+
+    c.bloques = tpl.secs.map(function (s) {
+      var mins = Math.max(3, Math.round(total * s.w / sumaW));
+      var bl = { id: uid("b"), titulo: s.t, objetivo: mins, peso: s.w, items: [] };
+
+      if (s.cierre) {
+        if (bySlug["savasana"]) bl.items.push({ tipo: "postura", slug: "savasana", lado: "", dur: CLAMP(mins, 5, 15), durUnit: "min", nota: "" });
+        return bl;
+      }
+      var libres = mins;
+      if (s.texto) { bl.items.push({ tipo: "texto", texto: "Respiración consciente. Deja que el cuerpo se asiente y pon una intención para la práctica.", min: 1 }); libres -= 1; }
+
+      var topeN = s.maxN || tpl.maxN || 11;
+      var n = CLAMP(Math.round(libres / (tpl.minPP || 1.4)), Math.min(2, topeN), topeN);
+      var elegidas = elegirPosturas(c.semilla, s, n, usados);
+      elegidas.forEach(function (p) { usados[p.slug] = 1; });
+
+      // orden: Desarrollo por dificultad ascendente; Enfriamiento del piso hacia arriba; el resto de suave a activo
+      if (s.peak) elegidas.sort(function (a, b) { return nivelRank(a.nivel) - nivelRank(b.nivel) || rangoFamilia(a) - rangoFamilia(b); });
+      else if (/enfriamiento/i.test(s.t)) elegidas.sort(function (a, b) { return rangoFamilia(b) - rangoFamilia(a); });
+      else elegidas.sort(function (a, b) { return rangoFamilia(a) - rangoFamilia(b); });
+
+      // hold por postura: reparte los minutos libres, acotado al rango del estilo.
+      // las bilaterales (×2) ocupan el doble, así que cuentan doble en el reparto.
+      var pesoT = elegidas.reduce(function (a, p) { return a + (esBilateral(p) ? 2 : 1); }, 0) + (s.peak ? 1.6 : 0);
+      var hold = CLAMP(Math.round(libres / Math.max(1, pesoT) * 2) / 2, rango[0], rango[1]);
+
+      elegidas.forEach(function (p) {
+        bl.items.push({ tipo: "postura", slug: p.slug, lado: esBilateral(p) ? "ambos" : "", dur: hold, durUnit: "min", nota: "" });
+      });
+
+      if (s.peak) {
+        var pk = elegirCumbre(c.semilla, usados, nivelRank(s.nivelMax || "intermedio"));
+        if (pk) {
+          usados[pk.slug] = 1;
+          var at = CLAMP(Math.round(bl.items.length * 0.66), 1, bl.items.length);
+          bl.items.splice(at, 0, { tipo: "postura", slug: pk.slug, lado: esBilateral(pk) ? "ambos" : "", dur: CLAMP(hold + 1, rango[0], rango[1] + 1), durUnit: "min", nota: "Postura cumbre" });
+        }
+      }
+      return bl;
+    });
+    c.modificada = nowISO();
+  }
+
   /* ---------- plantillas de bloque ---------- */
   function loadPlantillas() { return LS.get("plantillas", []); }
   function savePlantillas(a) { LS.set("plantillas", a); }
@@ -11228,6 +11406,20 @@ window.POSES = [
     fObj.appendChild(el("span", "b-hint", "Las secciones se reparten solas. Si escribes el tiempo de una, las demás se ajustan."));
     setup.appendChild(fObj);
     root.appendChild(setup);
+
+    // armar la clase entera en un clic a partir de duración + estilo + semilla
+    var autoWrap = el("div", "b-auto");
+    var autoBtn = el("button", "b-auto-btn", "✨ Armar clase automática");
+    autoBtn.type = "button";
+    autoBtn.addEventListener("click", function () {
+      var correr = function () { armarClaseAuto(c); renderBuilder(); flash("Clase armada — ajústala a tu gusto"); };
+      if (nPosturas(c) > 1 || c.bloques.some(function (b) { return b.items.some(function (i) { return i.tipo === "texto" && (i.texto || "").trim(); }); })) {
+        pedirConfirmacion("Esto reemplaza todas las secciones y posturas de ahora. ¿Armar de nuevo?", correr, "Armar");
+      } else correr();
+    });
+    autoWrap.appendChild(autoBtn);
+    autoWrap.appendChild(el("span", "b-hint", "Usa la duración, el estilo y la semilla de arriba. Te deja un borrador completo que puedes editar."));
+    root.appendChild(autoWrap);
 
     // bloques, con un insertador discreto en cada hueco entre secciones
     c.bloques.forEach(function (bl, bi) {

@@ -59,6 +59,14 @@ Referencia de producto: Tummee.
   - Plantillas de sección: `localStorage['glosario.plantillas']`, ahora con `etiqueta`
     (ej. "pecho"). El desplegable las agrupa por etiqueta.
   - Postura: botón "Duplicar" en el detalle — copia la fila y, si tenía lado, la pone al contrario.
+  - **Armar clase automática** (`armarClaseAuto` + `TEMPLATES` en `clases.js`): botón en
+    el constructor. Con duración + estilo + semilla arma un borrador completo (5 secciones,
+    posturas, tiempos, postura cumbre al ~66%). Cada estilo tiene su plantilla: familias que
+    predominan, tope de nivel, nº de posturas y rango de hold (Vinyasa 1-2.5 min, Hatha 2-4,
+    Yin 3-5, Restaurativo 5-12). La semilla pesa fuerte solo en el Desarrollo. Basado en
+    secuenciación de clase profesional (arco de montaña, contrapostura, Yin/Restaurativo).
+  - Confirmaciones de borrado: `pedirConfirmacion()` + `<dialog id=confirmar>` (window.confirm
+    se ignora en móvil/PWA).
 
 ## Accesibilidad — no negociable
 Andrea tiene autismo: **demasiada información en pantalla la abruma**. Todo lo secundario va plegado.
