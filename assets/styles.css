@@ -16,6 +16,10 @@
   --focus:#8A6FD0;
   --shadow:16px 22px 44px -28px rgba(74,54,110,.36);
   --shadow-soft:0 2px 10px -5px rgba(74,54,110,.20);
+  /* nivel: verdín / ámbar / rosa apagados, sutiles sobre el lavanda */
+  --niv1:#5E9E7A; --niv1-bg:#E4F0E9;
+  --niv2:#B98A3C; --niv2-bg:#F5EBD7;
+  --niv3:#BC5E6E; --niv3-bg:#F4E1E5;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -27,6 +31,9 @@
     --rose:#7A5C77; --chip:#2A2340; --focus:#B9A4E6;
     --shadow:16px 22px 44px -28px rgba(0,0,0,.6);
     --shadow-soft:0 2px 10px -5px rgba(0,0,0,.4);
+    --niv1:#7FC3A0; --niv1-bg:#22352C;
+    --niv2:#E0B368; --niv2-bg:#3A3220;
+    --niv3:#E0899A; --niv3-bg:#3A272C;
   }
 }
 :root[data-theme="dark"]{
@@ -154,6 +161,21 @@ main{padding:14px 0 64px}
 .front-meta{padding:14px 16px 17px}
 .front-meta .name{font-family:"Fraunces",serif;font-size:18px;line-height:1.18;margin:0 0 2px}
 .front-meta .san{font-family:"Fraunces",serif;font-style:italic;color:var(--purple);font-size:12.5px;margin:0}
+
+/* nivel — código de color sutil (verdín / ámbar / rosa) */
+.front-meta .nivel{display:inline-flex;align-items:center;gap:5px;margin:0 0 5px;
+  font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.front-meta .nivel::before{content:"";width:6px;height:6px;border-radius:999px;flex:none}
+.nivel.niv-1{color:var(--niv1)} .nivel.niv-1::before{background:var(--niv1)}
+.nivel.niv-2{color:var(--niv2)} .nivel.niv-2::before{background:var(--niv2)}
+.nivel.niv-3{color:var(--niv3)} .nivel.niv-3::before{background:var(--niv3)}
+.tag-row span.nivel{gap:5px;background:var(--niv1-bg);color:var(--niv1)}
+.tag-row span.nivel.niv-2{background:var(--niv2-bg);color:var(--niv2)}
+.tag-row span.nivel.niv-3{background:var(--niv3-bg);color:var(--niv3)}
+.tag-row span.nivel::before{content:"";display:inline-block;width:5px;height:5px;border-radius:999px;background:currentColor;vertical-align:middle;margin-right:4px}
+.help-niv{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.help-niv .nivel{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:5px}
+.help-niv .nivel::before{content:"";width:6px;height:6px;border-radius:999px;flex:none}
 .card .fav{position:absolute;top:9px;left:11px;z-index:3;font-size:18px;line-height:1;color:rgba(255,255,255,.5);cursor:pointer;text-shadow:0 1px 3px rgba(60,40,90,.4)}
 .card .fav.on{color:#ffd24a}
 .card .fav:focus-visible{outline:2px solid #fff;outline-offset:2px;border-radius:4px}

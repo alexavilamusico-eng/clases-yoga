@@ -249,6 +249,11 @@
     star.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flipFav(e); } });
     front.appendChild(star);
     var fm = el("div", "front-meta");
+    var NIV = { principiante: 1, intermedio: 2, avanzado: 3 };
+    var NIV_EN = { principiante: "beginner", intermedio: "intermediate", avanzado: "advanced" };
+    if (NIV[p.nivel]) {
+      fm.appendChild(el("span", "nivel niv-" + NIV[p.nivel], state.lang === "en" ? NIV_EN[p.nivel] : p.nivel));
+    }
     fm.appendChild(el("p", "name", name));
     fm.appendChild(el("p", "san", p.sanscrito));
     front.appendChild(fm);
@@ -296,7 +301,9 @@
     }
     sc.appendChild(details("etiquetas", function (body) {
       var tr = el("div", "tag-row");
-      [p.nivel].concat(p.tipo, p.zona, p.dinamica, p.tema).forEach(function (x) { tr.appendChild(el("span", null, x)); });
+      var nv = { principiante: 1, intermedio: 2, avanzado: 3 }[p.nivel];
+      if (nv) tr.appendChild(el("span", "nivel niv-" + nv, p.nivel));
+      [].concat(p.tipo, p.zona, p.dinamica, p.tema).forEach(function (x) { tr.appendChild(el("span", null, x)); });
       body.appendChild(tr);
     }));
 
