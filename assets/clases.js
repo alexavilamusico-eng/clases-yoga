@@ -1120,7 +1120,9 @@
   }
   // --- una diapositiva del carrusel (modo por tiempo) o la vista central (modo tranquilo) ---
   function slideEl(s, rol) {  // rol: "actual" | "lado" | "fin"
-    var box = el("div", "pl-slide" + (rol === "actual" ? " is-current" : rol === "fin" ? " fin" : " is-side"));
+    var cls = "pl-slide" + (rol === "actual" ? " is-current" : rol === "fin" ? " fin" : " is-side");
+    if (rol === "lado") cls += (s && s._tag === "sigue") ? " is-next" : " is-prev";
+    var box = el("div", cls);
     if (rol === "fin") { box.textContent = "fin de la clase"; return box; }
     if (rol === "lado") box.appendChild(el("div", "pl-slide-tag", s._tag || ""));
     if (s.tipo === "texto") {
@@ -1134,7 +1136,9 @@
       var txt = el("div", "pl-txt");
       txt.appendChild(el("h2", "pl-name", s.p.nombre));
       txt.appendChild(el("p", "pl-san", s.p.sanscrito + (s.lado ? "  ·  " + s.lado : "")));
-      if (rol === "actual") {
+      // En "por tiempo" no van cues ni nota: solo imagen + nombre + sánscrito, bien grandes
+      // (ese exceso de texto era lo que impedía que cupiera la SIGUIENTE al lado).
+      if (rol === "actual" && PL.modo === "calma") {
         if (s.nota) txt.appendChild(el("p", "pl-nota", s.nota));
         if (s.p.entrada && s.p.entrada.length) {
           var ul = el("ul", "pl-cues");
@@ -1165,7 +1169,7 @@
       var track = el("div", "pl-track");
       var prev = PL.pasos[PL.i - 1], next = PL.pasos[PL.i + 1];
       if (prev) { prev._tag = "anterior"; track.appendChild(slideEl(prev, "lado")); }
-      else track.appendChild(el("div", "pl-slide is-side"));
+      else track.appendChild(el("div", "pl-slide is-side is-prev"));
       track.appendChild(slideEl(PL.pasos[PL.i], "actual"));
       if (next) { next._tag = "sigue"; track.appendChild(slideEl(next, "lado")); }
       else track.appendChild(slideEl(null, "fin"));
@@ -1187,14 +1191,14 @@
   }
 
   // desliza la fila una posición y luego re-renderiza en el nuevo índice
-  function deslizar(dir) {  // dir: +1 siguiente, -1 anterior
+  function deslizar(dir, suave) {  // dir: +1 siguiente, -1 anterior; suave: remate lento (fin de tiempo)
     var track = PL._track;
     if (!track || PL.animando) { cargarPaso(PL.i + dir); return; }
     if (PL.i + dir < 0 || PL.i + dir > PL.pasos.length - 1) return;
     var w = track.children[1].getBoundingClientRect().width;
     PL.animando = true;
     clearInterval(PL.timer);
-    track.style.transition = "transform .5s cubic-bezier(.5,.05,.2,1)";
+    track.style.transition = suave ? "transform .9s linear" : "transform .5s cubic-bezier(.5,.05,.2,1)";
     track.style.transform = "translateX(" + (dir > 0 ? -2 * w : 0) + "px)";
     var hecho = false;
     var done = function () {
@@ -1206,7 +1210,7 @@
       cargarPaso(PL.i + dir);
     };
     track.addEventListener("transitionend", done);
-    PL._slideT = setTimeout(done, 620); // por si transitionend no dispara
+    PL._slideT = setTimeout(done, suave ? 1050 : 620); // por si transitionend no dispara
   }
   function actualizarTimer() {
     var s = PL.pasos[PL.i], t = document.getElementById("plTime");
@@ -1220,21 +1224,33 @@
     var top = $("#player .pl-progress i");
     if (top) top.style.width = ((PL.i + (s.seg ? 1 - PL.restante / s.seg : 1)) / PL.pasos.length * 100) + "%";
   }
+  var GIRO_VENTANA = 15; // segundos antes del final en que el carrusel empieza a girar
+
+  // Giro lento y gradual: en los últimos GIRO_VENTANA s la fila se va corriendo hacia la
+  // SIGUIENTE (y esta se va aclarando), para que Andrea la vea venir y se prepare.
+  // Al llegar a 0, deslizar() remata el tramo que falta y re-renderiza en el nuevo índice.
+  function girarCarrusel() {
+    if (PL.modo === "calma" || !PL.auto || !PL.playing || PL.animando) return;
+    var track = PL._track;
+    if (!track || PL.i >= PL.pasos.length - 1) return;
+    if (PL.restante <= 0 || PL.restante > GIRO_VENTANA) return;
+    var w = track.children[1].getBoundingClientRect().width;
+    var p = (GIRO_VENTANA - PL.restante) / GIRO_VENTANA;   // 0 -> 1 conforme baja el reloj
+    track.style.transition = "transform 1s linear";
+    track.style.transform = "translateX(" + (-w - p * w * 0.62) + "px)"; // ~2/3 de diapositiva
+    var sig = track.children[2];
+    if (sig && sig.classList.contains("is-next")) sig.style.opacity = (0.45 + p * 0.55).toFixed(2);
+  }
+
   function tick() {
     if (PL.restante > 0) PL.restante--;
     actualizarTimer();
     chequearAvisoSeccion();
-    // en automático y con carrusel: el giro arranca con ~1 s de cronómetro por delante,
-    // así el deslizamiento acaba justo cuando el tiempo llega a 0 (se siente ligado al reloj)
-    if (PL.playing && PL.auto && PL.modo !== "calma" && !PL.animando &&
-        PL.restante > 0 && PL.restante <= 1 && PL.i < PL.pasos.length - 1) {
-      deslizar(1);
-      return;
-    }
+    girarCarrusel();
     if (PL.restante <= 0) {
       clearInterval(PL.timer);
       if (PL.auto && PL.i < PL.pasos.length - 1) {
-        if (!PL.animando) setTimeout(function () { if (PL.playing) siguiente(); }, 900);
+        if (!PL.animando) deslizar(1, true);
       } else pausar();
     }
   }
