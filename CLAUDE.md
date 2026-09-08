@@ -84,9 +84,12 @@ Al agregar algo al constructor, la pregunta es "¿esto tiene que verse siempre?"
 - **Tranquilo** (por defecto): sin cronómetro, sin barra de avance. La pantalla entera avanza al tocarla;
   el 22% izquierdo regresa. Dos taps en <420 ms cuentan como uno (doble tap accidental). Muestra la
   hora del día, no una cuenta atrás. Es el que usa dando clase con gente enfrente.
-- **Con tiempos**: cronómetro por postura y avance automático opcional. Muestra la postura
-  que sigue (franja fija sobre los controles) y avisa "queda ~1 min" cuando falta menos de
-  60 s para que termine la sección (una vez por sección).
+- **Con tiempos**: **carrusel horizontal** — la postura actual grande a la izquierda, la
+  siguiente asomándose a la derecha; al avanzar (`deslizar()`) la fila se desliza y se
+  re-renderiza en el nuevo índice (`renderPaso` construye `.pl-track` con anterior/actual/
+  siguiente). Pensado para tablet/celular en horizontal. Cronómetro y barra de progreso en
+  la diapositiva actual; avance automático opcional; aviso "queda ~1 min" por sección.
+  Las posturas sin imagen se muestran como pastilla compacta (no cuadro grande).
 
 - Pendiente: PDF nativo, más precisión en el mapa de dibujos, revisar las ~120 fichas breves,
   sincronizar entre dispositivos (hoy solo respaldo manual por portapapeles).

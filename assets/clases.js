@@ -983,7 +983,8 @@
 
   /* ---------- modo clase (slideshow con timer) ---------- */
   var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null,
-    modo: LS.get("plModo", "calma"), reloj: null, ultimoTap: 0, avisado: {}, avisoT: null };
+    modo: LS.get("plModo", "calma"), reloj: null, ultimoTap: 0, avisado: {}, avisoT: null,
+    animando: false, _track: null };
 
   var MAZO_SLUGS = META.mazoSlugs || [];
   function mazoUrl(slug) { return (window.MAZO_IMG && window.MAZO_IMG[slug]) || ("img/mazo/" + slug + ".jpg"); }
@@ -1076,15 +1077,16 @@
     $("#player").hidden = true; document.body.style.overflow = "";
   }
 
-  // Tap en la pantalla durante el modo tranquilo.
-  // El 22% izquierdo regresa, el resto avanza. Dos taps en menos de 420 ms
-  // cuentan como uno solo: si le tiembla la mano no se brinca una postura.
+  // Tap en la pantalla: el 22% izquierdo regresa, el resto avanza.
+  // Dos taps en menos de 420 ms cuentan como uno (si tiembla la mano, no brinca).
+  // Vale igual en tranquilo y en por tiempo (en por tiempo, además, el carrusel se desliza).
   function tapEscenario(e) {
-    if (PL.modo !== "calma") return;
+    if (PL.animando) return;
+    if (e.target.closest && e.target.closest(".pl-bar")) return;
     var t = Date.now();
     if (t - PL.ultimoTap < 420) return;
     PL.ultimoTap = t;
-    var r = e.currentTarget.getBoundingClientRect();
+    var r = $("#player .pl-stage").getBoundingClientRect();
     if ((e.clientX - r.left) / r.width < 0.22) anterior(); else siguiente();
   }
   function cargarPaso(i) {
@@ -1116,44 +1118,91 @@
       setTimeout(function () { a.hidden = true; }, 400);
     }, 6000);
   }
-  function renderPaso() {
-    var s = PL.pasos[PL.i], st = $("#player .pl-stage");
-    st.textContent = "";
+  // --- una diapositiva del carrusel (modo por tiempo) o la vista central (modo tranquilo) ---
+  function slideEl(s, rol) {  // rol: "actual" | "lado" | "fin"
+    var box = el("div", "pl-slide" + (rol === "actual" ? " is-current" : rol === "fin" ? " fin" : " is-side"));
+    if (rol === "fin") { box.textContent = "fin de la clase"; return box; }
+    if (rol === "lado") box.appendChild(el("div", "pl-slide-tag", s._tag || ""));
     if (s.tipo === "texto") {
-      var tx = el("div", "pl-texto", s.texto);
-      st.appendChild(tx);
+      box.appendChild(el("div", "pl-texto", s.texto));
     } else {
       var fig = el("div", "pl-figure" + (imgKindP(s.p) !== "otro" ? " deck" : ""));
       var src = imgForP(s.p);
       if (src) { var im = el("img"); if (imgKindP(s.p) === "foto") im.className = "user-img"; im.src = src; im.alt = ""; fig.appendChild(im); }
       else { fig.classList.add("ph"); fig.appendChild(el("span", "pl-ph-san", s.p.sanscrito)); }
-      st.appendChild(fig);
+      box.appendChild(fig);
       var txt = el("div", "pl-txt");
       txt.appendChild(el("h2", "pl-name", s.p.nombre));
       txt.appendChild(el("p", "pl-san", s.p.sanscrito + (s.lado ? "  ·  " + s.lado : "")));
-      if (s.nota) txt.appendChild(el("p", "pl-nota", s.nota));
-      if (s.p.entrada && s.p.entrada.length) {
-        var ul = el("ul", "pl-cues");
-        s.p.entrada.forEach(function (x) { ul.appendChild(el("li", null, x)); });
-        txt.appendChild(ul);
+      if (rol === "actual") {
+        if (s.nota) txt.appendChild(el("p", "pl-nota", s.nota));
+        if (s.p.entrada && s.p.entrada.length) {
+          var ul = el("ul", "pl-cues");
+          s.p.entrada.forEach(function (x) { ul.appendChild(el("li", null, x)); });
+          txt.appendChild(ul);
+        }
       }
-      st.appendChild(txt);
+      box.appendChild(txt);
     }
-    if (PL.modo !== "calma") { var t = el("div", "pl-time"); t.id = "plTime"; st.appendChild(t); }
-    // la que sigue, para ir preparándola (fija encima de los controles, solo modo tiempos)
-    var sg = $("#player .pl-sigue");
-    if (sg) {
-      sg.hidden = PL.modo === "calma";
-      var sig = PL.pasos[PL.i + 1];
-      var quien = !sig ? "fin de la clase"
-        : sig.tipo === "texto" ? "lectura / nota"
-        : sig.p.nombre + (sig.lado ? " · " + sig.lado : "");
-      sg.textContent = "Sigue: " + quien;
+    if (rol === "actual" && PL.modo !== "calma") {
+      var t = el("div", "pl-time"); t.id = "plTime"; box.appendChild(t);
+      var pr = el("div", "pl-slide-prog"); pr.appendChild(el("i")); box.appendChild(pr);
     }
+    return box;
+  }
+
+  function renderPaso() {
+    var st = $("#player .pl-stage");
+    st.textContent = "";
     var fin = PL.i === PL.pasos.length - 1;
+
+    if (PL.modo === "calma") {
+      // vista única centrada (se avanza tocando la pantalla)
+      st.appendChild(slideEl(PL.pasos[PL.i], "actual"));
+      var sg = $("#player .pl-sigue"); if (sg) sg.hidden = true;
+    } else {
+      // carrusel horizontal: anterior · ACTUAL · siguiente, la fila se desliza
+      var track = el("div", "pl-track");
+      var prev = PL.pasos[PL.i - 1], next = PL.pasos[PL.i + 1];
+      if (prev) { prev._tag = "anterior"; track.appendChild(slideEl(prev, "lado")); }
+      else track.appendChild(el("div", "pl-slide is-side"));
+      track.appendChild(slideEl(PL.pasos[PL.i], "actual"));
+      if (next) { next._tag = "sigue"; track.appendChild(slideEl(next, "lado")); }
+      else track.appendChild(slideEl(null, "fin"));
+      st.appendChild(track);
+      PL._track = track;
+      // colocar la fila con ACTUAL a la izquierda (SIGUIENTE asomándose a la derecha),
+      // sin transición para que no haya un salto al re-renderizar
+      var w = track.children[1].getBoundingClientRect().width;
+      track.style.transition = "none";
+      track.style.transform = "translateX(" + (-w) + "px)";
+      track.getBoundingClientRect();               // fuerza el reflow
+      track.style.transition = "";                 // vuelve a la transición del CSS
+    }
+
+    var s = PL.pasos[PL.i];
     $("#player .pl-pos").textContent = s.bloque + (s.bloqueObj ? "  ·  " + s.bloqueObj + " min" : "") +
-      "  ·  " + (PL.i + 1) + " / " + PL.pasos.length + (fin && PL.modo === "calma" ? "  ·  última" : "");
+      "  ·  " + (PL.i + 1) + " / " + PL.pasos.length + (fin ? "  ·  última" : "");
     var at = $("#player .pl-atras"); if (at) at.disabled = PL.i === 0;
+  }
+
+  // desliza la fila una posición y luego re-renderiza en el nuevo índice
+  function deslizar(dir) {  // dir: +1 siguiente, -1 anterior
+    var track = PL._track;
+    if (!track || PL.animando) { cargarPaso(PL.i + dir); return; }
+    if (PL.i + dir < 0 || PL.i + dir > PL.pasos.length - 1) return;
+    var w = track.children[1].getBoundingClientRect().width;
+    PL.animando = true;
+    clearInterval(PL.timer);
+    track.style.transition = "transform .5s cubic-bezier(.5,.05,.2,1)";
+    track.style.transform = "translateX(" + (dir > 0 ? -2 * w : 0) + "px)";
+    var done = function () {
+      track.removeEventListener("transitionend", done);
+      PL.animando = false;
+      cargarPaso(PL.i + dir);
+    };
+    track.addEventListener("transitionend", done);
+    setTimeout(done, 620); // por si transitionend no dispara
   }
   function actualizarTimer() {
     var s = PL.pasos[PL.i], t = document.getElementById("plTime");
@@ -1162,8 +1211,10 @@
       if (!s.seg) t.textContent = "";
       else { var m = Math.floor(PL.restante / 60), sec = PL.restante % 60; t.textContent = m + ":" + (sec < 10 ? "0" : "") + sec; }
     }
-    var bar = $("#player .pl-progress i");
+    var bar = $("#player .pl-slide.is-current .pl-slide-prog i") || $("#player .pl-progress i");
     if (bar) bar.style.width = (s.seg ? 100 * (1 - PL.restante / s.seg) : (PL.i + 1) / PL.pasos.length * 100) + "%";
+    var top = $("#player .pl-progress i");
+    if (top) top.style.width = ((PL.i + (s.seg ? 1 - PL.restante / s.seg : 1)) / PL.pasos.length * 100) + "%";
   }
   function tick() {
     if (PL.restante > 0) PL.restante--;
@@ -1171,15 +1222,21 @@
     chequearAvisoSeccion();
     if (PL.restante <= 0) {
       clearInterval(PL.timer);
-      if (PL.auto && PL.i < PL.pasos.length - 1) setTimeout(function () { if (PL.playing) siguiente(); }, 1000);
+      if (PL.auto && PL.i < PL.pasos.length - 1) setTimeout(function () { if (PL.playing) siguiente(); }, 900);
       else pausar();
     }
   }
   function arrancar() { clearInterval(PL.timer); if (PL.pasos[PL.i].seg) PL.timer = setInterval(tick, 1000); }
   function reproducir() { PL.playing = true; $("#player .pl-play").textContent = "⏸"; arrancar(); }
   function pausar() { PL.playing = false; clearInterval(PL.timer); var b = $("#player .pl-play"); if (b) b.textContent = "▶"; }
-  function siguiente() { if (PL.i < PL.pasos.length - 1) cargarPaso(PL.i + 1); else pausar(); }
-  function anterior() { cargarPaso(PL.i - 1); }
+  function siguiente() {
+    if (PL.i >= PL.pasos.length - 1) { pausar(); return; }
+    if (PL.modo !== "calma") deslizar(1); else cargarPaso(PL.i + 1);
+  }
+  function anterior() {
+    if (PL.i <= 0) return;
+    if (PL.modo !== "calma") deslizar(-1); else cargarPaso(PL.i - 1);
+  }
 
   /* ---------- respaldo (mover clases entre dispositivos) ---------- */
   function abrirRespaldo(modo) {
