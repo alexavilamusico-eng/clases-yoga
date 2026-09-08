@@ -1196,13 +1196,17 @@
     clearInterval(PL.timer);
     track.style.transition = "transform .5s cubic-bezier(.5,.05,.2,1)";
     track.style.transform = "translateX(" + (dir > 0 ? -2 * w : 0) + "px)";
+    var hecho = false;
     var done = function () {
+      if (hecho) return;               // transitionend y el respaldo no deben sumar dos avances
+      hecho = true;
+      clearTimeout(PL._slideT);
       track.removeEventListener("transitionend", done);
       PL.animando = false;
       cargarPaso(PL.i + dir);
     };
     track.addEventListener("transitionend", done);
-    setTimeout(done, 620); // por si transitionend no dispara
+    PL._slideT = setTimeout(done, 620); // por si transitionend no dispara
   }
   function actualizarTimer() {
     var s = PL.pasos[PL.i], t = document.getElementById("plTime");
@@ -1220,10 +1224,18 @@
     if (PL.restante > 0) PL.restante--;
     actualizarTimer();
     chequearAvisoSeccion();
+    // en automático y con carrusel: el giro arranca con ~1 s de cronómetro por delante,
+    // así el deslizamiento acaba justo cuando el tiempo llega a 0 (se siente ligado al reloj)
+    if (PL.playing && PL.auto && PL.modo !== "calma" && !PL.animando &&
+        PL.restante > 0 && PL.restante <= 1 && PL.i < PL.pasos.length - 1) {
+      deslizar(1);
+      return;
+    }
     if (PL.restante <= 0) {
       clearInterval(PL.timer);
-      if (PL.auto && PL.i < PL.pasos.length - 1) setTimeout(function () { if (PL.playing) siguiente(); }, 900);
-      else pausar();
+      if (PL.auto && PL.i < PL.pasos.length - 1) {
+        if (!PL.animando) setTimeout(function () { if (PL.playing) siguiente(); }, 900);
+      } else pausar();
     }
   }
   function arrancar() { clearInterval(PL.timer); if (PL.pasos[PL.i].seg) PL.timer = setInterval(tick, 1000); }
