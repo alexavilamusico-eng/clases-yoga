@@ -1,4 +1,4 @@
-// GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-07
+// GENERADO por _pipeline/build.mjs — no editar a mano. 2026-09-08
 window.POSES = [
  {
   "id": 1,

@@ -111,6 +111,7 @@ const meta = {
   total: poses.length,
   con_imagen: poses.filter((p) => p.img).length,
   svgCount,
+  mazoSlugs: Object.keys(MAZO),
   vocab: VOCAB,
   conteos: { tipo: count("tipo"), zona: count("zona"), dinamica: count("dinamica"), tema: count("tema"), nivel: count("nivel") },
   fuentes: count("fuente"),

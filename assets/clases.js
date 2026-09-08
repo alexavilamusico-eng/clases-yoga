@@ -985,12 +985,24 @@
   var PL = { pasos: [], i: 0, restante: 0, playing: false, auto: LS.get("plAuto", true), timer: null, wake: null,
     modo: LS.get("plModo", "calma"), reloj: null, ultimoTap: 0, avisado: {}, avisoT: null };
 
+  var MAZO_SLUGS = META.mazoSlugs || [];
+  function mazoUrl(slug) { return (window.MAZO_IMG && window.MAZO_IMG[slug]) || ("img/mazo/" + slug + ".jpg"); }
   function imgForP(p) {
     var ov = LS.get("img." + p.slug, null);
     if (ov === "none") return null;
     if (typeof ov === "number") return (window.SVGREPO_IMG && window.SVGREPO_IMG[ov]) || ("img/svgrepo/" + ov + ".svg");
-    if (typeof ov === "string" && ov.indexOf("data:") === 0) return ov; // foto subida en el glosario
+    if (typeof ov === "string" && ov.indexOf("data:") === 0) return ov;
+    if (typeof ov === "string" && ov.indexOf("mazo:") === 0) return mazoUrl(ov.slice(5));
     return p.img || null;
+  }
+  // ¿la imagen va sobre fondo blanco (ilustración del mazo o foto)? — se decide
+  // por el override, porque en el bundle mazo y foto quedan como data URI igual.
+  function imgKindP(p) {
+    var ov = LS.get("img." + p.slug, null);
+    if (typeof ov === "string" && ov.indexOf("data:") === 0) return "foto";
+    if (typeof ov === "string" && ov.indexOf("mazo:") === 0) return "deck";
+    if (ov == null && MAZO_SLUGS.indexOf(p.slug) > -1) return "deck";
+    return "otro";
   }
   function segundos(it) {
     if (it.tipo === "texto") return (+it.min || 0) * 60;
@@ -1111,9 +1123,9 @@
       var tx = el("div", "pl-texto", s.texto);
       st.appendChild(tx);
     } else {
-      var fig = el("div", "pl-figure");
+      var fig = el("div", "pl-figure" + (imgKindP(s.p) !== "otro" ? " deck" : ""));
       var src = imgForP(s.p);
-      if (src) { var im = el("img"); if (src.indexOf("data:") === 0) im.className = "user-img"; else if (src.indexOf("img/mazo/") > -1) im.className = "deck-img"; im.src = src; im.alt = ""; fig.appendChild(im); }
+      if (src) { var im = el("img"); if (imgKindP(s.p) === "foto") im.className = "user-img"; im.src = src; im.alt = ""; fig.appendChild(im); }
       else { fig.classList.add("ph"); fig.appendChild(el("span", "pl-ph-san", s.p.sanscrito)); }
       st.appendChild(fig);
       var txt = el("div", "pl-txt");

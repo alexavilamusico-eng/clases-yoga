@@ -51,7 +51,8 @@
       propia: "Ficha redactada para esta app.", breve: "Ficha breve — por completar.", api: "Datos base: yoga-api.",
       mazo: "Ilustración y textos: mazo de cartas de yoga (uso personal).",
       paraSalir: "Para salir", respiracion: "Respiración",
-      cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo",
+      cambiarDibujo: "Cambiar dibujo", sinDibujo: "Sin dibujo", volverOriginal: "Dibujo original",
+      delMazo: "Ilustraciones del mazo", deLinea: "Dibujos de línea",
       subirImg: "Subir una foto", cambiarImg: "Cambiar la foto", quitarImg: "Quitar",
       imgError: "No se pudo leer esa imagen. Prueba con un JPG o PNG.",
       imgGrande: "No hay espacio para esa imagen. Prueba con una más pequeña."
@@ -64,7 +65,8 @@
       propia: "Entry written for this app.", breve: "Short entry — to be completed.", api: "Base data: yoga-api.",
       mazo: "Illustration and text: yoga card deck (personal use).",
       paraSalir: "To release", respiracion: "Breath",
-      cambiarDibujo: "Change drawing", sinDibujo: "No drawing",
+      cambiarDibujo: "Change drawing", sinDibujo: "No drawing", volverOriginal: "Original drawing",
+      delMazo: "Card-deck illustrations", deLinea: "Line drawings",
       subirImg: "Upload a photo", cambiarImg: "Change photo", quitarImg: "Remove",
       imgError: "Couldn't read that image. Try a JPG or PNG.",
       imgGrande: "Not enough space for that image. Try a smaller one."
@@ -76,17 +78,34 @@
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
 
   var SVG_COUNT = META.svgCount || 0;
-  // en el archivo empaquetado los dibujos vienen embebidos en window.SVGREPO_IMG
+  var MAZO_SLUGS = META.mazoSlugs || [];
+  // en el archivo empaquetado los dibujos vienen embebidos en window.SVGREPO_IMG / window.MAZO_IMG
   function svgUrl(i) { return (window.SVGREPO_IMG && window.SVGREPO_IMG[i]) || ("img/svgrepo/" + i + ".svg"); }
+  function mazoUrl(slug) { return (window.MAZO_IMG && window.MAZO_IMG[slug]) || ("img/mazo/" + slug + ".jpg"); }
   // dibujo efectivo de una postura: override elegido por Andrea > dibujo por defecto
+  //   "none" · nº (dibujo SVG) · "mazo:<slug>" (ilustración del mazo) · "data:…" (foto subida)
   function imgFor(p) {
     var ov = LS.get("img." + p.slug, null);
     if (ov === "none") return null;
     if (typeof ov === "number") return svgUrl(ov);
-    if (typeof ov === "string" && ov.indexOf("data:") === 0) return ov; // foto subida por Andrea
+    if (typeof ov === "string" && ov.indexOf("data:") === 0) return ov;
+    if (typeof ov === "string" && ov.indexOf("mazo:") === 0) return mazoUrl(ov.slice(5));
     return p.img || null;
   }
   function esFoto(src) { return typeof src === "string" && src.indexOf("data:") === 0; }
+  // qué tipo de imagen se muestra para una postura, según el override (o el default):
+  //   "svg" dibujo de línea · "deck" ilustración del mazo · "foto" foto subida · "none"
+  // En el archivo empaquetado, mazo y foto quedan como data URI iguales, por eso
+  // se decide por el override, no por la URL.
+  function imgKind(p) {
+    var ov = LS.get("img." + p.slug, null);
+    if (ov === "none") return "none";
+    if (typeof ov === "number") return "svg";
+    if (typeof ov === "string" && ov.indexOf("data:") === 0) return "foto";
+    if (typeof ov === "string" && ov.indexOf("mazo:") === 0) return "deck";
+    if (MAZO_SLUGS.indexOf(p.slug) > -1) return "deck";
+    return p.img ? "svg" : "none";
+  }
 
   // Reduce la foto a máx 640 px y la aplana sobre blanco: sin esto una foto de
   // celular (varios MB) no cabe en localStorage.
@@ -199,10 +218,11 @@
     var thumb = el("div", "thumb");
     function paintThumb() {
       thumb.textContent = "";
-      thumb.classList.remove("ph");
-      var src = imgFor(p);
+      thumb.classList.remove("ph", "deck");
+      var src = imgFor(p), k = imgKind(p);
       if (src) {
-        var img = el("img", esFoto(src) ? "user-img" : (src.indexOf("img/mazo/") > -1 ? "deck-img" : null));
+        var img = el("img", k === "foto" ? "user-img" : null);
+        if (k === "foto" || k === "deck") thumb.classList.add("deck");   // fondo blanco, imagen completa
         img.src = src; img.alt = name; img.loading = "lazy";
         img.addEventListener("error", function () { thumb.classList.add("ph"); thumb.textContent = ""; thumb.appendChild(phInner(p)); });
         thumb.appendChild(img);
@@ -298,7 +318,7 @@
       }));
     }
 
-    if (SVG_COUNT) {
+    if (SVG_COUNT || MAZO_SLUGS.length) {
       sc.appendChild(details("cambiarDibujo", function (body) {
         function pintarPicker() {
           body.textContent = "";
@@ -331,28 +351,50 @@
           }
           body.appendChild(up);
 
-          // --- dibujos de la colección ---
-          var grid = el("div", "pick");
-          function tile(cls, kind, val) {
-            var b = el("button", "pick-tile" + (cls ? " " + cls : ""));
+          function tile(cls, kind, val, imgSrc, deck) {
+            var b = el("button", "pick-tile" + (cls ? " " + cls : "") + (deck ? " deck" : ""));
             b.type = "button";
-            if (kind === "svg") { var im = el("img"); im.src = svgUrl(val); im.loading = "lazy"; im.alt = ""; b.appendChild(im); }
-            else { b.appendChild(el("span", "pick-none", t("sinDibujo"))); }
+            if (imgSrc) { var im = el("img"); im.src = imgSrc; im.loading = "lazy"; im.alt = ""; b.appendChild(im); }
+            else { b.appendChild(el("span", "pick-none", t(kind === "default" ? "volverOriginal" : "sinDibujo"))); }
             b.addEventListener("click", function () {
-              LS.set("img." + p.slug, kind === "svg" ? val : "none");
+              var v = kind === "svg" ? val : kind === "mazo" ? ("mazo:" + val) : kind === "none" ? "none" : null;
+              LS.set("img." + p.slug, v);
               paintThumb(); pintarPicker();
             });
             return b;
           }
-          var none = tile("wide", "none");
+
+          // volver al dibujo por defecto de la postura, y quitar dibujo
+          var def = tile("wide", "default", null);
+          if (cur == null) def.classList.add("on");
+          body.appendChild(def);
+          var none = tile("wide", "none", null);
           if (cur === "none") none.classList.add("on");
-          grid.appendChild(none);
-          for (var i = 0; i < SVG_COUNT; i++) {
-            var tl = tile("", "svg", i);
-            if (cur === i) tl.classList.add("on");
-            grid.appendChild(tl);
+          body.appendChild(none);
+
+          // --- ilustraciones del mazo (sirven para cualquier postura) ---
+          if (MAZO_SLUGS.length) {
+            body.appendChild(el("p", "pick-head", t("delMazo")));
+            var gM = el("div", "pick");
+            MAZO_SLUGS.forEach(function (slug) {
+              var tl = tile("", "mazo", slug, mazoUrl(slug), true);
+              if (cur === "mazo:" + slug) tl.classList.add("on");
+              gM.appendChild(tl);
+            });
+            body.appendChild(gM);
           }
-          body.appendChild(grid);
+
+          // --- dibujos de línea de la colección ---
+          if (SVG_COUNT) {
+            body.appendChild(el("p", "pick-head", t("deLinea")));
+            var gS = el("div", "pick");
+            for (var i = 0; i < SVG_COUNT; i++) {
+              var ts = tile("", "svg", i, svgUrl(i));
+              if (cur === i) ts.classList.add("on");
+              gS.appendChild(ts);
+            }
+            body.appendChild(gS);
+          }
         }
         pintarPicker();
       }));

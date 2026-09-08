@@ -17,11 +17,8 @@ posesJs = posesJs.replace(/"img\/poses\/([a-z0-9-]+)\.svg"/g, (m, slug) => {
   const p = join(ROOT, "img", "poses", slug + ".svg");
   return existsSync(p) ? `"${svgDataUri(p)}"` : "null";
 });
-// "img/mazo/slug.jpg" -> data URI (ilustración del mazo)
-posesJs = posesJs.replace(/"img\/mazo\/([a-z0-9-]+)\.jpg"/g, (m, slug) => {
-  const p = join(ROOT, "img", "mazo", slug + ".jpg");
-  return existsSync(p) ? `"${jpgDataUri(p)}"` : "null";
-});
+// "img/mazo/slug.jpg" -> referencia a window.MAZO_IMG (se inlina una sola vez, más abajo)
+posesJs = posesJs.replace(/"img\/mazo\/([a-z0-9-]+)\.jpg"/g, (m, slug) => `(window.MAZO_IMG&&window.MAZO_IMG["${slug}"])||null`);
 
 // window.SVGREPO_IMG = { 0: "data:...", ... }  (para el selector de dibujo)
 const setDir = join(ROOT, "img", "svgrepo");
@@ -31,6 +28,17 @@ for (const f of readdirSync(setDir)) {
   if (m) svgMap[+m[1]] = svgDataUri(join(setDir, f));
 }
 const svgMapJs = "window.SVGREPO_IMG = " + JSON.stringify(svgMap) + ";";
+
+// window.MAZO_IMG = { slug: "data:...", ... }  (ilustraciones del mazo para el selector)
+const mazoDir = join(ROOT, "img", "mazo");
+const mazoMap = {};
+try {
+  for (const f of readdirSync(mazoDir)) {
+    const m = f.match(/^([a-z0-9-]+)\.jpg$/);
+    if (m) mazoMap[m[1]] = jpgDataUri(join(mazoDir, f));
+  }
+} catch (e) {}
+const mazoMapJs = "window.MAZO_IMG = " + JSON.stringify(mazoMap) + ";";
 
 const css = read("assets/styles.css");
 const metaJs = read("data/meta.js");
@@ -60,6 +68,7 @@ ${metaJs}
 </script>
 <script>
 ${svgMapJs}
+${mazoMapJs}
 </script>
 <script>
 ${posesJs}

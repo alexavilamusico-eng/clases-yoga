@@ -42,8 +42,13 @@ Referencia de producto: Tummee.
 - **Mazo de cartas** (`_pipeline/mazo.mjs`): 44 posturas usan la ilustración + textos del mazo
   de cartas impreso de Andrea (uso personal, ver CREDITOS.md). build.mjs fusiona MAZO[slug]
   sobre la ficha: nivel/entrada/beneficios/precaución + campos nuevos `liberar` ("Para salir")
-  y `respiracion`. Imagen en `img/mazo/<slug>.jpg`, recortada con `_pipeline/crop_card.py`
-  (detección de carta + warp + limpieza), se pinta con `.deck-img` (panel blanco, sin multiply).
+  y `respiracion`. Imagen en `img/mazo/<slug>.jpg`, recortada con `_pipeline/crop_card.py`.
+  - Fondo de la tarjeta: `.thumb.deck` / `.pl-figure.deck` = blanco + `object-fit:contain`
+    (imagen completa), para fotos e ilustraciones del mazo. Se decide con `imgKind(p)`
+    (por el override, no por la URL: en el bundle mazo y foto son data URI igual).
+  - "Cambiar dibujo": Dibujo original / Sin dibujo / 44 ilustraciones del mazo
+    (override `"mazo:<slug>"`) / 64 dibujos de línea / Subir foto. El bundle emite
+    `window.MAZO_IMG` (una copia; `poses.js` la referencia, no reinlina).
   Nombres verificados contra Wikipedia (`node _pipeline/verify-names.mjs`): 0 inventados.
 - Fase B: constructor de clases + banco (`assets/clases.js`). Pestañas Glosario / Clases.
   - Clase = { nombre, estilo, objetivo(min), semilla{tipo,valor}, bloques[{titulo,objetivo(min),items[]}], notas, fechas[] }.
