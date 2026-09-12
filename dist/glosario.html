@@ -11226,13 +11226,24 @@ window.POSES = [
   }
 
   /* ---------- armar clase automáticamente ----------
-     Basado en cómo se estructura una clase de yoga profesional:
-     arco de montaña — llegada → calentamiento → desarrollo con postura cumbre
-     (~65-70% de la clase) → enfriamiento con contrapostura → Savasana.
+     Basado en cómo se estructura una clase de yoga profesional (método de
+     postura cumbre / "peak pose" — Mark Stephens, "Yoga Sequencing"; principios
+     de secuenciación de Yoga Journal; Yin de Paul Grilley; Restaurativo de
+     Judith Hanson Lasater):
+       - arco de montaña: llegada → calentamiento → desarrollo con UNA postura
+         cumbre (~65-70% de la clase) → enfriamiento con contrapostura → Savasana.
+       - la cumbre se elige primero, no al final: las demás posturas de Desarrollo
+         se escogen para PREPARARLA (misma zona/dinámica — p. ej. si la cumbre abre
+         cadera, antes hay más aperturas de cadera), y Enfriamiento busca la misma
+         zona con la dinámica contraria (contrapostura real, no solo "algo suave").
+       - dentro de cada sección, las posturas se agrupan primero por familia
+         (de pie / sentada / supina…) y luego por zona del cuerpo, para no saltar
+         de una parte a otra sin relación.
+       - Calentamiento abre en el suelo/sentado y cierra más activo, preparando el
+         Desarrollo que sigue; Enfriamiento hace lo inverso: empieza más activo y
+         termina en el piso, justo antes de Savasana.
      El estilo cambia el ritmo: cuántas posturas, cuánto se sostienen y qué
-     familias predominan. La semilla (tema / zona / dinámica) sesga la elección.
-     Fuentes: Yoga Journal (principios de secuenciación), método de postura
-     cumbre (yogajala / yoga-sequencing), guías de Yin y Restaurativo. */
+     familias predominan. La semilla (tema / zona / dinámica) sesga la elección. */
   var CLAMP = function (x, a, b) { return Math.max(a, Math.min(b, x)); };
   function nivelRank(n) { return n === "avanzado" ? 3 : n === "intermedio" ? 2 : 1; }
   // familias de "activa/de pie" a "pasiva/en el piso" — para ordenar dentro de la sección
@@ -11240,6 +11251,15 @@ window.POSES = [
   function rangoFamilia(p) {
     for (var i = 0; i < RAMPA.length; i++) if (p.tipo.indexOf(RAMPA[i]) > -1) return i;
     return RAMPA.length;
+  }
+  // zonas del cuerpo en el orden en que se suelen calentar/soltar (de lo distal a lo central):
+  // así dos posturas de la misma zona quedan juntas en vez de alternar sin lógica.
+  var ZONA_ORDEN = ["tobillos y pies", "cuádriceps", "isquiotibiales", "ingles", "caderas", "glúteos",
+    "psoas", "zona lumbar", "columna", "core", "pecho", "hombros", "cuello", "muñecas"];
+  function zonaRango(p) {
+    var best = ZONA_ORDEN.length;
+    (p.zona || []).forEach(function (z) { var i = ZONA_ORDEN.indexOf(z); if (i > -1 && i < best) best = i; });
+    return best;
   }
   function esBilateral(p) {
     return p.dinamica.indexOf("torsión") > -1 || p.dinamica.indexOf("flexión lateral") > -1
@@ -11316,7 +11336,11 @@ window.POSES = [
     },
   };
 
-  function elegirPosturas(sem, s, n, usados) {
+  // foco (opcional): { zona, dinamica } de la postura cumbre de la clase. Sirve para dos cosas
+  // según la sección — en Desarrollo prepara esa zona/dinámica (calienta lo que la cumbre va a
+  // pedir); en Enfriamiento solo pasa la zona (sin dinámica) para buscar el contrapeso: misma
+  // zona, pero la sección ya pide la dinámica opuesta (flexión/torsión/quietud) por su cuenta.
+  function elegirPosturas(sem, s, n, usados, foco) {
     var maxR = nivelRank(s.nivelMax || "avanzado");
     var scored = POSES.filter(function (p) {
       return !usados[p.slug] && p.slug !== "savasana" && nivelRank(p.nivel) <= maxR;
@@ -11328,6 +11352,10 @@ window.POSES = [
       (s.dinMas || []).forEach(function (d) { if (p.dinamica.indexOf(d) > -1) sc += 1.1; });
       (s.dinMenos || []).forEach(function (d) { if (p.dinamica.indexOf(d) > -1) sc -= 1.6; });
       if (s.nivelMax === "principiante" && p.nivel !== "principiante") sc -= 1.4;
+      if (foco) {
+        if ((p.zona || []).some(function (z) { return foco.zona.indexOf(z) > -1; })) sc += 1.3;
+        if ((p.dinamica || []).some(function (d) { return foco.dinamica.indexOf(d) > -1; })) sc += 0.9;
+      }
       return { p: p, sc: sc };
     }).filter(function (x) { return x.sc > 0; }).sort(function (a, b) { return b.sc - a.sc; });
     return scored.slice(0, Math.max(1, n)).map(function (x) { return x.p; });
@@ -11353,6 +11381,7 @@ window.POSES = [
     var rango = tpl.rango || RANGO.fluido;
     var sumaW = tpl.secs.reduce(function (a, s) { return a + s.w; }, 0);
     var usados = {};
+    var cumbre = null; // la postura cumbre, para que Desarrollo la prepare y Enfriamiento la contrarreste
     repartoManual = {};
 
     c.bloques = tpl.secs.map(function (s) {
@@ -11366,32 +11395,46 @@ window.POSES = [
       var libres = mins;
       if (s.texto) { bl.items.push({ tipo: "texto", texto: "Respiración consciente. Deja que el cuerpo se asiente y pon una intención para la práctica.", min: 1 }); libres -= 1; }
 
+      // en Desarrollo, la cumbre se elige ANTES que el resto: así las demás posturas de la
+      // sección se escogen para prepararla (misma zona/dinámica), no al azar.
+      var pk = null;
+      if (s.peak) {
+        pk = elegirCumbre(c.semilla, usados, nivelRank(s.nivelMax || "intermedio"));
+        if (pk) usados[pk.slug] = 1;
+      }
+      // en Enfriamiento, si hubo cumbre, se busca contrapeso: misma zona (lo que trabajó),
+      // pero la dinámica opuesta la pone la propia sección (dinMas ya pide flexión/torsión/quietud).
+      var foco = pk ? { zona: pk.zona || [], dinamica: pk.dinamica || [] }
+        : (cumbre && /enfriamiento/i.test(s.t)) ? { zona: cumbre.zona || [], dinamica: [] } : null;
+
       var topeN = s.maxN || tpl.maxN || 11;
       var n = CLAMP(Math.round(libres / (tpl.minPP || 1.4)), Math.min(2, topeN), topeN);
-      var elegidas = elegirPosturas(c.semilla, s, n, usados);
+      if (pk) n = Math.max(1, n - 1); // un lugar ya lo ocupa la cumbre
+      var elegidas = elegirPosturas(c.semilla, s, n, usados, foco);
       elegidas.forEach(function (p) { usados[p.slug] = 1; });
 
-      // orden: Desarrollo por dificultad ascendente; Enfriamiento del piso hacia arriba; el resto de suave a activo
-      if (s.peak) elegidas.sort(function (a, b) { return nivelRank(a.nivel) - nivelRank(b.nivel) || rangoFamilia(a) - rangoFamilia(b); });
-      else if (/enfriamiento/i.test(s.t)) elegidas.sort(function (a, b) { return rangoFamilia(b) - rangoFamilia(a); });
-      else elegidas.sort(function (a, b) { return rangoFamilia(a) - rangoFamilia(b); });
+      // orden dentro de la sección: agrupa primero por familia de postura (de pie/sentada/…)
+      // y, dentro de cada familia, por zona del cuerpo — así no salta de una zona a otra sin
+      // relación. Desarrollo sube en dificultad hacia la cumbre; Enfriamiento va de activo a
+      // pasivo (termina cerca del piso, justo antes de Savasana); el resto abre suave
+      // (sentado/suelo) y cierra más activo, preparando el Desarrollo que sigue.
+      if (s.peak) elegidas.sort(function (a, b) { return nivelRank(a.nivel) - nivelRank(b.nivel) || rangoFamilia(a) - rangoFamilia(b) || zonaRango(a) - zonaRango(b); });
+      else if (/enfriamiento/i.test(s.t)) elegidas.sort(function (a, b) { return rangoFamilia(a) - rangoFamilia(b) || zonaRango(a) - zonaRango(b); });
+      else elegidas.sort(function (a, b) { return rangoFamilia(b) - rangoFamilia(a) || zonaRango(a) - zonaRango(b); });
 
       // hold por postura: reparte los minutos libres, acotado al rango del estilo.
       // las bilaterales (×2) ocupan el doble, así que cuentan doble en el reparto.
-      var pesoT = elegidas.reduce(function (a, p) { return a + (esBilateral(p) ? 2 : 1); }, 0) + (s.peak ? 1.6 : 0);
+      var pesoT = elegidas.reduce(function (a, p) { return a + (esBilateral(p) ? 2 : 1); }, 0) + (pk ? 1.6 : 0);
       var hold = CLAMP(Math.round(libres / Math.max(1, pesoT) * 2) / 2, rango[0], rango[1]);
 
       elegidas.forEach(function (p) {
         bl.items.push({ tipo: "postura", slug: p.slug, lado: esBilateral(p) ? "ambos" : "", dur: hold, durUnit: "min", nota: "" });
       });
 
-      if (s.peak) {
-        var pk = elegirCumbre(c.semilla, usados, nivelRank(s.nivelMax || "intermedio"));
-        if (pk) {
-          usados[pk.slug] = 1;
-          var at = CLAMP(Math.round(bl.items.length * 0.66), 1, bl.items.length);
-          bl.items.splice(at, 0, { tipo: "postura", slug: pk.slug, lado: esBilateral(pk) ? "ambos" : "", dur: CLAMP(hold + 1, rango[0], rango[1] + 1), durUnit: "min", nota: "Postura cumbre" });
-        }
+      if (pk) {
+        var at = CLAMP(Math.round(bl.items.length * 0.66), 1, bl.items.length);
+        bl.items.splice(at, 0, { tipo: "postura", slug: pk.slug, lado: esBilateral(pk) ? "ambos" : "", dur: CLAMP(hold + 1, rango[0], rango[1] + 1), durUnit: "min", nota: "Postura cumbre" });
+        cumbre = pk;
       }
       return bl;
     });

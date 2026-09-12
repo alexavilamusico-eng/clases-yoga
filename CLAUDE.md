@@ -68,8 +68,19 @@ Referencia de producto: Tummee.
     el constructor. Con duración + estilo + semilla arma un borrador completo (5 secciones,
     posturas, tiempos, postura cumbre al ~66%). Cada estilo tiene su plantilla: familias que
     predominan, tope de nivel, nº de posturas y rango de hold (Vinyasa 1-2.5 min, Hatha 2-4,
-    Yin 3-5, Restaurativo 5-12). La semilla pesa fuerte solo en el Desarrollo. Basado en
-    secuenciación de clase profesional (arco de montaña, contrapostura, Yin/Restaurativo).
+    Yin 3-5, Restaurativo 5-12). La semilla pesa fuerte solo en el Desarrollo. Basado en el
+    método de postura cumbre (Mark Stephens, *Yoga Sequencing*) + Yin (Paul Grilley) +
+    Restaurativo (Judith Hanson Lasater).
+    - Andrea: "las clases automáticas no tienen una secuencia lógica, no fluyen las
+      posturas". Causa real: el orden dentro de Enfriamiento y de Calentamiento estaba
+      **invertido** (Enfriamiento empezaba en el piso y terminaba de pie; Calentamiento
+      empezaba de pie) — se corrigió el sentido del sort. Además: la postura cumbre ahora
+      se elige ANTES que el resto de Desarrollo (no al final), así esas posturas se
+      escogen para prepararla (misma zona/dinámica — `elegirPosturas(..., foco)`); y
+      Enfriamiento busca la misma zona que trabajó la cumbre pero con la dinámica
+      contraria (contrapostura real). Dentro de cada sección, las posturas se agrupan por
+      familia (`rangoFamilia`) y luego por zona del cuerpo (`zonaRango`/`ZONA_ORDEN`,
+      distal → central) para no saltar de una parte a otra sin relación.
   - Confirmaciones de borrado: `pedirConfirmacion()` + `<dialog id=confirmar>` (window.confirm
     se ignora en móvil/PWA).
 
